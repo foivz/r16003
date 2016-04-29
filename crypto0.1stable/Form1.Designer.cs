@@ -1,6 +1,6 @@
 ﻿namespace crypto0._1stable
 {
-    partial class Form1
+    partial class frmCrypto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnRegistracija = new System.Windows.Forms.Button();
+            this.btnC2C = new System.Windows.Forms.Button();
+            this.btnFreeCrypto = new System.Windows.Forms.Button();
+            this.btnChat = new System.Windows.Forms.Button();
+            this.lblPrijavljen = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(30, 50);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(100, 75);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnRegistracija
+            // 
+            this.btnRegistracija.Location = new System.Drawing.Point(148, 50);
+            this.btnRegistracija.Name = "btnRegistracija";
+            this.btnRegistracija.Size = new System.Drawing.Size(100, 75);
+            this.btnRegistracija.TabIndex = 1;
+            this.btnRegistracija.Text = "Registracija";
+            this.btnRegistracija.UseVisualStyleBackColor = true;
+            this.btnRegistracija.Click += new System.EventHandler(this.btnRegistracija_Click);
+            // 
+            // btnC2C
+            // 
+            this.btnC2C.Location = new System.Drawing.Point(148, 205);
+            this.btnC2C.Name = "btnC2C";
+            this.btnC2C.Size = new System.Drawing.Size(100, 75);
+            this.btnC2C.TabIndex = 2;
+            this.btnC2C.Text = "C2C";
+            this.btnC2C.UseVisualStyleBackColor = true;
+            this.btnC2C.Click += new System.EventHandler(this.btnC2C_Click);
+            // 
+            // btnFreeCrypto
+            // 
+            this.btnFreeCrypto.Location = new System.Drawing.Point(30, 205);
+            this.btnFreeCrypto.Name = "btnFreeCrypto";
+            this.btnFreeCrypto.Size = new System.Drawing.Size(100, 75);
+            this.btnFreeCrypto.TabIndex = 3;
+            this.btnFreeCrypto.Text = "Free Crypto";
+            this.btnFreeCrypto.UseVisualStyleBackColor = true;
+            this.btnFreeCrypto.Click += new System.EventHandler(this.btnFreeCrypto_Click);
+            // 
+            // btnChat
+            // 
+            this.btnChat.Location = new System.Drawing.Point(267, 205);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(100, 75);
+            this.btnChat.TabIndex = 4;
+            this.btnChat.Text = "Chat";
+            this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
+            // 
+            // lblPrijavljen
+            // 
+            this.lblPrijavljen.AutoSize = true;
+            this.lblPrijavljen.Location = new System.Drawing.Point(337, 25);
+            this.lblPrijavljen.Name = "lblPrijavljen";
+            this.lblPrijavljen.Size = new System.Drawing.Size(92, 13);
+            this.lblPrijavljen.TabIndex = 5;
+            this.lblPrijavljen.Text = "Prijavljeni ste kao:";
+            // 
+            // frmCrypto
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(642, 320);
+            this.Controls.Add(this.lblPrijavljen);
+            this.Controls.Add(this.btnChat);
+            this.Controls.Add(this.btnFreeCrypto);
+            this.Controls.Add(this.btnC2C);
+            this.Controls.Add(this.btnRegistracija);
+            this.Controls.Add(this.btnLogin);
+            this.Name = "frmCrypto";
+            this.Text = "Crypto";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnRegistracija;
+        private System.Windows.Forms.Button btnC2C;
+        private System.Windows.Forms.Button btnFreeCrypto;
+        private System.Windows.Forms.Button btnChat;
+        private System.Windows.Forms.Label lblPrijavljen;
     }
 }
 
