@@ -11,8 +11,8 @@ namespace crypto0._1stable
         private long size = 0;
         private bool porukaProcitana = false;
 
-        abstract public Poruka Ecrypt();
-        abstract public Poruka Decrypt();
+        abstract public Poruka Ecrypt(int encryptionMethod, int key);
+        abstract public Poruka Decrypt(int decryptionMethod, int key);
         abstract public Poruka Send(Korisnik reciever);
         abstract public Poruka Recieve(Korisnik sender);
     }

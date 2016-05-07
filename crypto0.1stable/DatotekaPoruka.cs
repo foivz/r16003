@@ -13,12 +13,12 @@ namespace crypto0._1stable
         private Korisnik posiljatelj;
         private Korisnik primatelj;
 
-        public override Poruka Ecrypt()
+        public override Poruka Ecrypt(int encryptionMethod, int key)
         {
             throw new NotImplementedException();
         }
 
-        public override Poruka Decrypt()
+        public override Poruka Decrypt(int decryptionMethod, int key)
         {
             throw new NotImplementedException();
         }
