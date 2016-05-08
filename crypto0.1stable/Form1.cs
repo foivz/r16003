@@ -31,8 +31,9 @@ namespace crypto0._1stable
 
         private void btnFreeCrypto_Click(object sender, EventArgs e)
         {
-            Form freeCryptoForm = new Form();
-            freeCryptoForm.Show();
+            var EncryptOrDecrypt = new EncryptOrDecrypt();
+            EncryptOrDecrypt.Show();
+
         }
 
         private void btnC2C_Click(object sender, EventArgs e)

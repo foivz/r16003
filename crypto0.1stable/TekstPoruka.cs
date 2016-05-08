@@ -14,18 +14,28 @@ namespace crypto0._1stable
 
         public TekstPoruka()
         {
-            Korisnik k = new Korisnik();
+            Korisnik k = new Korisnik(); //ovo je vjerojatno suvisno
            
         }
 
-        public override Poruka Decrypt()
+        public override Poruka Decrypt(int decryptionMethod, int key)
         {
-            throw new NotImplementedException();
+            if (decryptionMethod == 1)
+            {
+                tekst = EncryptionHelper.CaesarStringDecrypt(tekst, key);
+                    return this;
+            }
+            else return this;
         }
 
-        public override Poruka Ecrypt()
+        public override Poruka Ecrypt(int encryptionMethod, int key)
         {
-            throw new NotImplementedException();
+            if (encryptionMethod == 1)
+            {
+                tekst = EncryptionHelper.CaesarStringEncrypt(tekst, key);
+                return this;
+            }
+            else return this;
         }
 
         public override Poruka Recieve(Korisnik sender)
