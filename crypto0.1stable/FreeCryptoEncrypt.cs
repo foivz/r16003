@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,6 +51,19 @@ namespace crypto0._1stable
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAesEncrypt_Click(object sender, EventArgs e)
+        {
+            using (Aes myAes = Aes.Create())
+            {
+                byte[] encrypted = EncryptionHelper.AesStringEncrypt(txtText.Text, myAes.Key, myAes.IV); //treba spremiti key i IV u vanjsku datoteku kako bi se moglo dekriptirati
+                string roundtrip = EncryptionHelper.AesStringDecrypt(encrypted, myAes.Key, myAes.IV);
+                txtModified.Text = EncryptionHelper.GetString(encrypted);
+                lblAesKey.Text += " " + EncryptionHelper.GetString(myAes.Key);
+                lblAesIV.Text += " " + EncryptionHelper.GetString(myAes.IV);
+                MessageBox.Show("Aes radi na razini byteova pa je reprezentacija malo nezgodna, probajte s datotekom :), ovo je roundtrip: " + roundtrip);
+            }
         }
     }
 }

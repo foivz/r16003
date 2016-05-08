@@ -37,6 +37,9 @@
             this.txtCaesarKey = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblAesKey = new System.Windows.Forms.Label();
+            this.lblAesIV = new System.Windows.Forms.Label();
+            this.btnAesEncrypt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtText
@@ -50,7 +53,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 50);
+            this.label1.Location = new System.Drawing.Point(12, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
@@ -119,11 +122,42 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblAesKey
+            // 
+            this.lblAesKey.AutoSize = true;
+            this.lblAesKey.Location = new System.Drawing.Point(398, 274);
+            this.lblAesKey.Name = "lblAesKey";
+            this.lblAesKey.Size = new System.Drawing.Size(28, 13);
+            this.lblAesKey.TabIndex = 12;
+            this.lblAesKey.Text = "Key:";
+            // 
+            // lblAesIV
+            // 
+            this.lblAesIV.AutoSize = true;
+            this.lblAesIV.Location = new System.Drawing.Point(487, 274);
+            this.lblAesIV.Name = "lblAesIV";
+            this.lblAesIV.Size = new System.Drawing.Size(20, 13);
+            this.lblAesIV.TabIndex = 13;
+            this.lblAesIV.Text = "IV:";
+            // 
+            // btnAesEncrypt
+            // 
+            this.btnAesEncrypt.Location = new System.Drawing.Point(237, 259);
+            this.btnAesEncrypt.Name = "btnAesEncrypt";
+            this.btnAesEncrypt.Size = new System.Drawing.Size(135, 48);
+            this.btnAesEncrypt.TabIndex = 15;
+            this.btnAesEncrypt.Text = "AES Ecrypt";
+            this.btnAesEncrypt.UseVisualStyleBackColor = true;
+            this.btnAesEncrypt.Click += new System.EventHandler(this.btnAesEncrypt_Click);
+            // 
             // FreeCryptoEncrypt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 555);
+            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.btnAesEncrypt);
+            this.Controls.Add(this.lblAesIV);
+            this.Controls.Add(this.lblAesKey);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCaesarKey);
@@ -151,5 +185,8 @@
         private System.Windows.Forms.TextBox txtCaesarKey;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblAesKey;
+        private System.Windows.Forms.Label lblAesIV;
+        private System.Windows.Forms.Button btnAesEncrypt;
     }
 }

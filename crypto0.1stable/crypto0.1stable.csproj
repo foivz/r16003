@@ -61,6 +61,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FreeCryptoDecrypt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreeCryptoDecrypt.Designer.cs">
+      <DependentUpon>FreeCryptoDecrypt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FreeCryptoEncrypt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreeCryptoDecrypt.resx">
+      <DependentUpon>FreeCryptoDecrypt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FreeCryptoEncrypt.resx">
       <DependentUpon>FreeCryptoEncrypt.cs</DependentUpon>
@@ -102,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

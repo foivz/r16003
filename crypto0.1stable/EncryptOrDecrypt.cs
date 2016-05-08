@@ -23,12 +23,14 @@ namespace crypto0._1stable
             {
                 var FreeCryptoEncrypt = new FreeCryptoEncrypt();
                 FreeCryptoEncrypt.Show();
-                this.Close();
+                Close();
             }
 
             if(radbtnDecrypt.Checked && radbtnText.Checked)                     //decrypt text
             {
-                throw new NotImplementedException();
+                var FreeCryptoDecrypt = new FreeCryptoDecrypt();
+                FreeCryptoDecrypt.Show();
+                Close();
             }
         }
     }
