@@ -12,6 +12,7 @@ namespace crypto0._1stable
 {
     public partial class frmCrypto : Form
     {
+        private string pristup = "Guest";
         public frmCrypto()
         {
             InitializeComponent();
@@ -19,7 +20,8 @@ namespace crypto0._1stable
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Form loginForm = new Form();
+            //Udi u login formu
+            var loginForm = new LoginForm();
             loginForm.Show();
         }
 
@@ -46,6 +48,11 @@ namespace crypto0._1stable
         {
             Form chatForm = new Form();
             chatForm.Show();
+        }
+
+        private void frmCrypto_Load(object sender, EventArgs e)
+        {
+            lblPristup.Text = pristup;
         }
     }
 }
