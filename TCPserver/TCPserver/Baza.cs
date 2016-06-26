@@ -9,16 +9,23 @@ namespace TCPserver
 {
     class Baza
     {
-        //SqlConnection konekcija = new SqlConnection(@"Data Source=DESKTOP-ENTPQER\SQLSERVERIAN;Initial Catalog=testBaza;Integrated Security=True");
+        //SqlConnection konekcija = new SqlConnection("Server=tcp:crypto.database.windows.net,1433;Data Source=crypto.database.windows.net;Initial Catalog=CryptoBaza;Persist Security Info=False;User ID={ivauzarev};Password={crypto2101!};Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         //SqlCommand upit;
         //SqlDataReader dr;
         //int LogickiBrojac;
         //string user = "admin";
         //string password = "admin";
         //public bool Logiran = false;
+        //private string upitZaBazu;
+        //
+        //public Baza(string upitBaza)
+        //{
+        //    upitZaBazu = upitBaza;
+        //}
+        //
         //public void KreirajUpit()
         //{
-        //    upit = new SqlCommand("Select * from korisnik where username = '" + user + "' and password = '" + password + "'", konekcija);
+        //    upit = new SqlCommand(upitZaBazu, konekcija);
         //    konekcija.Open();
         //    dr = upit.ExecuteReader();
         //    if (dr.Read())

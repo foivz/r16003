@@ -30,7 +30,7 @@ namespace crypto0._1stable
             {
                 TcpKlijent tcpKlijent = new TcpKlijent();
                 byte[] poruka = new byte[1024];
-                poruka = Encoding.ASCII.GetBytes("[LOGIN] username: " + txtUser.Text + ", password: " + txtPass.Text);
+                poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
                 tcpKlijent.PosaljiServeru(poruka);
                 tcpKlijent.ZatvoriSocket();
             }

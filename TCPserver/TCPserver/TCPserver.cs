@@ -51,6 +51,7 @@ namespace TCPserver
                 Console.WriteLine(primljenaPoruka);
                 //Enkriptiraj poruku()
                 ObradaPoruke obrada = new ObradaPoruke(readBuffer);
+                obrada.PrepoznavanjePoruke(); //metoda koja provjerava pomocu polja stringova o kakvoj se poruci radi te ju dalje usmjerava klasi UpitZaBazu
                 stream.Flush();
             }
             if (stream.CanWrite)

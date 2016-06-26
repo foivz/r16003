@@ -8,12 +8,41 @@ namespace TCPserver
 {
     class ObradaPoruke
     {
-        private byte[] poruka;
+        private byte[] bytePoruka;
+        private string poruka;
+        private string pomocnaPoruka;
+        private string[] poruke = {"LOGIN","REGISTER"};
+        bool izadiIzPetlje;
         public ObradaPoruke(byte[] primljenaPoruka)
         {
-            poruka = primljenaPoruka;
+            bytePoruka = primljenaPoruka;
         }
         
 
+        //metoda koja prepoznaje da se radi o login poruci. Prije ove metode (i ostalih metoda takve prirode) treba dekriptirati poruku koju je korisnik kriptirao.
+        
+        public void PrepoznavanjePoruke()
+        {
+            poruka = Encoding.ASCII.GetString(bytePoruka);
+            try
+            {
+                izadiIzPetlje = false;
+                foreach (var item in poruke)
+                {
+                    if (poruka.Contains(item))
+                    {
+                        pomocnaPoruka = item;
+                        izadiIzPetlje = true;
+                    }
+                    if (izadiIzPetlje == true) break;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine("Na prepoznajem poruku");
+            }
+
+            UpitZaBazu upit = new UpitZaBazu(pomocnaPoruka, poruka);
+            upit.dohvatiElementeIzPoruke();
+        }
     }
 }
