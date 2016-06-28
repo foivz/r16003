@@ -21,19 +21,25 @@ namespace TCPserver
 
         public void dohvatiElementeIzPoruke()
         {
-            if(identitetPoruke == "LOGIN")
+            if (identitetPoruke == "LOGIN")
+            {
                 StvoriLoginUpit();
+                return;
+            }
 
             if (identitetPoruke == "REGISTER")
+            {
                 StvoriRegisterUpit();
+                return;
+            }
         }
 
         private void StvoriLoginUpit()
         {
             elementiPoruke = poruka.Split(',');
-            upit = "Select * from korisnik where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'";
+            upit = "Select * from korisnik where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'"; //bilo bi kvalitetno hashirati ovo nekako(?)
             Console.WriteLine("Upit: " + upit);
-            //Baza baza = new Baza(upit); proslijedi upit bazi
+            Baza baza = new Baza(upit); //proslijedivanje upita bazi
         }
 
         private void StvoriRegisterUpit()

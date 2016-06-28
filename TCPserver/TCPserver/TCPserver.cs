@@ -45,7 +45,7 @@ namespace TCPserver
             readBuffer = new byte[1024];
             stream = klijent.GetStream();
             if (stream.CanRead)
-            { 
+            {
                 stream.ReadAsync(readBuffer, 0, readBuffer.Length);
                 primljenaPoruka = Encoding.ASCII.GetString(readBuffer);
                 Console.WriteLine(primljenaPoruka);

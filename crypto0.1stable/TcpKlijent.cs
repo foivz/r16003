@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace crypto0._1stable
 {
@@ -29,13 +30,13 @@ namespace crypto0._1stable
             stream = klijent.GetStream();
             writeBuffer = poruka;
             stream.Write(writeBuffer, 0, writeBuffer.Length);
-            stream.Close();
         }
 
         public byte[] PrimiOdServera()
         {
             stream = klijent.GetStream();
             stream.Read(readBuffer, 0, readBuffer.Length);
+            MessageBox.Show(Encoding.ASCII.GetString(readBuffer));
             stream.Close();
             return readBuffer;
         }

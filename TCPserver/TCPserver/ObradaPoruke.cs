@@ -32,9 +32,8 @@ namespace TCPserver
                     if (poruka.Contains(item))
                     {
                         pomocnaPoruka = item;
-                        izadiIzPetlje = true;
+                        break;
                     }
-                    if (izadiIzPetlje == true) break;
                 }
             }catch(Exception ex)
             {
