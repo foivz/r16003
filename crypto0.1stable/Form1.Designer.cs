@@ -34,6 +34,7 @@
             this.btnFreeCrypto = new System.Windows.Forms.Button();
             this.btnChat = new System.Windows.Forms.Button();
             this.lblPrijavljen = new System.Windows.Forms.Label();
+            this.lblPristup = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -58,6 +59,7 @@
             // 
             // btnC2C
             // 
+            this.btnC2C.Enabled = false;
             this.btnC2C.Location = new System.Drawing.Point(148, 205);
             this.btnC2C.Name = "btnC2C";
             this.btnC2C.Size = new System.Drawing.Size(100, 75);
@@ -78,6 +80,7 @@
             // 
             // btnChat
             // 
+            this.btnChat.Enabled = false;
             this.btnChat.Location = new System.Drawing.Point(267, 205);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(100, 75);
@@ -95,11 +98,20 @@
             this.lblPrijavljen.TabIndex = 5;
             this.lblPrijavljen.Text = "Prijavljeni ste kao:";
             // 
+            // lblPristup
+            // 
+            this.lblPristup.AutoSize = true;
+            this.lblPristup.Location = new System.Drawing.Point(436, 25);
+            this.lblPristup.Name = "lblPristup";
+            this.lblPristup.Size = new System.Drawing.Size(0, 13);
+            this.lblPristup.TabIndex = 6;
+            // 
             // frmCrypto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 320);
+            this.Controls.Add(this.lblPristup);
             this.Controls.Add(this.lblPrijavljen);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnFreeCrypto);
@@ -108,6 +120,7 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "frmCrypto";
             this.Text = "Crypto";
+            this.Load += new System.EventHandler(this.frmCrypto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +134,7 @@
         private System.Windows.Forms.Button btnFreeCrypto;
         private System.Windows.Forms.Button btnChat;
         private System.Windows.Forms.Label lblPrijavljen;
+        private System.Windows.Forms.Label lblPristup;
     }
 }
 
