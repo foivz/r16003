@@ -20,7 +20,7 @@ namespace TCPserver
         }
 
         //funkcija za generiranje odgovora (provjerava korisnika u bazi)
-        public static void GeneriranjeOdgovora(string upit)
+        public void GeneriranjeOdgovora(string upit)
         {
             SqlConnection connection = new SqlConnection("Server = tcp:crypto.database.windows.net,1433; Data Source = crypto.database.windows.net; Initial Catalog = CryptoBaza; Persist Security Info = False; User ID = ivauzarev; Password =crypto2101!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             using (connection)
@@ -34,7 +34,7 @@ namespace TCPserver
                 {
                     while (reader.Read())
                     {
-                        Console.WriteLine("{0}\t{1}", reader.GetInt32(0),
+                        Console.WriteLine("{0}\t{1}", reader.GetString(0),
                             reader.GetString(1));
                     }
                 }
@@ -47,7 +47,7 @@ namespace TCPserver
             }
         }
 
-        public static void azuriraj(string upit)
+        public void azuriraj(string upit)
         {
             SqlConnection connection = new SqlConnection("Server = tcp:crypto.database.windows.net,1433; Data Source = crypto.database.windows.net; Initial Catalog = CryptoBaza; Persist Security Info = False; User ID = ivauzarev; Password =crypto2101!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             connection.Open();
