@@ -43,6 +43,7 @@ namespace TCPserver
                     Console.WriteLine("No rows found.");
                 }
                 reader.Close();
+                connection.Close();
             }
         }
 
