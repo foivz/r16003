@@ -37,9 +37,10 @@ namespace TCPserver
         private void StvoriLoginUpit()
         {
             elementiPoruke = poruka.Split(',');
-            upit = "Select * from korisnik where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'"; //bilo bi kvalitetno hashirati ovo nekako(?)
-            Console.WriteLine("Upit: " + upit);
+            upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'"; //bilo bi kvalitetno hashirati ovo nekako(?)
+            //Console.WriteLine("Upit: " + upit);
             Baza baza = new Baza(upit); //proslijedivanje upita bazi
+            baza.GeneriranjeOdgovora(upit);
         }
 
         private void StvoriRegisterUpit()

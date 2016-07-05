@@ -54,5 +54,11 @@ namespace crypto0._1stable
         {
             lblPristup.Text = pristup;
         }
+
+        private void updateProfil_Click(object sender, EventArgs e)
+        {
+            var updateForm = new ProfilUpdateForm();
+            updateForm.Show();
+        }
     }
 }
