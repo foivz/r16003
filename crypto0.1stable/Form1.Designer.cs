@@ -109,6 +109,7 @@
             // 
             // updateProfil
             // 
+            this.updateProfil.Enabled = false;
             this.updateProfil.Location = new System.Drawing.Point(267, 106);
             this.updateProfil.Name = "updateProfil";
             this.updateProfil.Size = new System.Drawing.Size(100, 75);

@@ -12,6 +12,7 @@ namespace crypto0._1stable
 {
     public partial class LoginForm : Form
     {
+        public frmCrypto pocetnaForma { get; set; }
         public LoginForm()
         {
             InitializeComponent();
@@ -33,9 +34,9 @@ namespace crypto0._1stable
                 poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
                 tcpKlijent.PosaljiServeru(poruka);
                 byte[] novo = tcpKlijent.PrimiOdServera();
-                frmCrypto obrada = new frmCrypto();
-                obrada.promijeniPristup(1);
+                pocetnaForma.promijeniPristup(1);
                 tcpKlijent.ZatvoriSocket();
+                this.Close();
             }
             else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
         }

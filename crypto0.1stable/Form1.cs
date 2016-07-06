@@ -13,6 +13,7 @@ namespace crypto0._1stable
     public partial class frmCrypto : Form
     {
         private string pristup = "Guest";
+        Korisnik kPodaci = new Korisnik();
         public frmCrypto()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace crypto0._1stable
         {
             //Udi u login formu
             var loginForm = new LoginForm();
+            loginForm.pocetnaForma = this;
             loginForm.Show();
         }
 
@@ -75,6 +77,12 @@ namespace crypto0._1stable
             {
                 this.pristup = "Korisnik";
             }
+            this.lblPristup.Text = this.pristup;
+            updateProfil.Enabled = true;
+            btnLogin.Enabled = false;
+            btnRegistracija.Enabled = false;
+            btnC2C.Enabled = true;
+            btnChat.Enabled = true;
         }
     }
 }
