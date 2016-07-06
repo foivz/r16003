@@ -60,5 +60,21 @@ namespace crypto0._1stable
             var updateForm = new ProfilUpdateForm();
             updateForm.Show();
         }
+
+        public void promijeniPristup(int razinaAkt)
+        {
+            if (razinaAkt == 1)
+            {
+                this.pristup = "Admin";
+            }
+            else if (razinaAkt == 2)
+            {
+                this.pristup = "Moderator";
+            }
+            else
+            {
+                this.pristup = "Korisnik";
+            }
+        }
     }
 }

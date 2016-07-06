@@ -32,7 +32,9 @@ namespace crypto0._1stable
                 byte[] poruka = new byte[1024];
                 poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
                 tcpKlijent.PosaljiServeru(poruka);
-                tcpKlijent.PrimiOdServera();
+                byte[] novo = tcpKlijent.PrimiOdServera();
+                frmCrypto obrada = new frmCrypto();
+                obrada.promijeniPristup(1);
                 tcpKlijent.ZatvoriSocket();
             }
             else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
