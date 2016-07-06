@@ -23,7 +23,7 @@ namespace TCPserver
         public List<string> GeneriranjeOdgovora(string upit)
         {
             List<string> result = new List<string>();
-            int odgovor = 0;
+            //int odgovor = 0;
             SqlConnection connection = new SqlConnection("Server = tcp:crypto.database.windows.net,1433; Data Source = crypto.database.windows.net; Initial Catalog = CryptoBaza; Persist Security Info = False; User ID = ivauzarev; Password =crypto2101!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             using (connection)
             {
@@ -57,11 +57,10 @@ namespace TCPserver
                 else
                 {
                     Console.WriteLine("Neuspjesna prijava");
-                    odgovor = 0;
                 }
                 reader.Close();
                 connection.Close();
-                return odgovor;
+                return result;
             }
         }
 

@@ -16,6 +16,7 @@ namespace TCPserver
         TcpClient klijent;
         NetworkStream stream;
         string testPoruka = "Test poruka poslana";
+        List<string> podaci;
         byte[] writeBuffer;
         byte[] readBuffer;
         string primljenaPoruka;
