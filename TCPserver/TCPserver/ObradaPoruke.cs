@@ -21,8 +21,9 @@ namespace TCPserver
 
         //metoda koja prepoznaje da se radi o login poruci. Prije ove metode (i ostalih metoda takve prirode) treba dekriptirati poruku koju je korisnik kriptirao.
         
-        public void PrepoznavanjePoruke()
+        public List<string> PrepoznavanjePoruke()
         {
+            List<string> result = new List<string>();
             poruka = Encoding.ASCII.GetString(bytePoruka);
             try
             {
@@ -41,7 +42,8 @@ namespace TCPserver
             }
 
             UpitZaBazu upit = new UpitZaBazu(pomocnaPoruka, poruka);
-            upit.dohvatiElementeIzPoruke();
+            result = upit.dohvatiElementeIzPoruke();
+            return result;
         }
     }
 }

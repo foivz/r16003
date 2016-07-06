@@ -44,6 +44,8 @@ namespace TCPserver
         {
             writeBuffer = new byte[1024];
             readBuffer = new byte[1024];
+            List<string> klijentPodaci = new List<string>();
+            string klijentPodaciString = "";
             stream = klijent.GetStream();
             if (stream.CanRead)
             {
@@ -52,12 +54,13 @@ namespace TCPserver
                 Console.WriteLine(primljenaPoruka);
                 //Enkriptiraj poruku()
                 ObradaPoruke obrada = new ObradaPoruke(readBuffer);
-                obrada.PrepoznavanjePoruke(); //metoda koja provjerava pomocu polja stringova o kakvoj se poruci radi te ju dalje usmjerava klasi UpitZaBazu
+                klijentPodaci = obrada.PrepoznavanjePoruke(); //metoda koja provjerava pomocu polja stringova o kakvoj se poruci radi te ju dalje usmjerava klasi UpitZaBazu
+                klijentPodaciString = string.Join(";", klijentPodaci.ToArray());
                 stream.Flush();
             }
             if (stream.CanWrite)
             {
-                writeBuffer = Encoding.ASCII.GetBytes(testPoruka);
+                writeBuffer = Encoding.ASCII.GetBytes(klijentPodaciString);
                 stream.Write(writeBuffer, 0, writeBuffer.Length);
                 stream.Flush();
             }
