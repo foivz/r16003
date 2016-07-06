@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,11 @@ namespace crypto0._1stable
 {
     public partial class frmCrypto : Form
     {
+        Korisnik kPodaci;
         private string pristup = "Guest";
-        Korisnik kPodaci = new Korisnik();
         public frmCrypto()
         {
+            kPodaci = new Korisnik();
             InitializeComponent();
         }
 
@@ -59,11 +61,11 @@ namespace crypto0._1stable
 
         private void updateProfil_Click(object sender, EventArgs e)
         {
-            var updateForm = new ProfilUpdateForm();
+            var updateForm = new ProfilUpdateForm(kPodaci.username,kPodaci.password,kPodaci.email);
             updateForm.Show();
         }
 
-        public void promijeniPristup(int razinaAkt)
+        public void promijeniPristup(int razinaAkt, string username, string password, string email)
         {
             if (razinaAkt == 1)
             {
@@ -83,6 +85,10 @@ namespace crypto0._1stable
             btnRegistracija.Enabled = false;
             btnC2C.Enabled = true;
             btnChat.Enabled = true;
+
+            kPodaci.username = username;
+            kPodaci.password = password;
+            kPodaci.email = email;
         }
     }
 }

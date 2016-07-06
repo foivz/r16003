@@ -26,15 +26,16 @@ namespace crypto0._1stable
         private void btnPotvrdi_Click_1(object sender, EventArgs e)
         {
             //Povezivanje sa serverom pomocu TCP-a, server obavlja provjeru
-
+            List<string> listaPodataka = new List<string>();
             if (txtUser.Text.Length > 3 && txtPass.Text.Length > 3)
             {
                 TcpKlijent tcpKlijent = new TcpKlijent();
                 byte[] poruka = new byte[1024];
                 poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
                 tcpKlijent.PosaljiServeru(poruka);
-                byte[] novo = tcpKlijent.PrimiOdServera();
-                pocetnaForma.promijeniPristup(1);
+                string novo = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
+                listaPodataka = novo.Split(';').ToList();
+                pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]),listaPodataka[0],listaPodataka[1],listaPodataka[2]);
                 tcpKlijent.ZatvoriSocket();
                 this.Close();
             }

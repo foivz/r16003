@@ -13,9 +13,13 @@ namespace crypto0._1stable
 {
     public partial class ProfilUpdateForm : Form
     {
-        public ProfilUpdateForm()
+        public ProfilUpdateForm(string username,string password,string email)
         {
             InitializeComponent();
+            tbUsername.Text = username;
+            tbUsername.Enabled = false;
+            tbPassword.Text = password;
+            tbEmail.Text = email;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
