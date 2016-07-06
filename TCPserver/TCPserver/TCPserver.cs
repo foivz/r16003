@@ -60,9 +60,18 @@ namespace TCPserver
             }
             if (stream.CanWrite)
             {
-                writeBuffer = Encoding.ASCII.GetBytes(klijentPodaciString);
-                stream.Write(writeBuffer, 0, writeBuffer.Length);
-                stream.Flush();
+                if (klijentPodaci.Count > 0)
+                {
+                    writeBuffer = Encoding.ASCII.GetBytes(klijentPodaciString);
+                    stream.Write(writeBuffer, 0, writeBuffer.Length);
+                    stream.Flush();
+                }
+                else
+                {
+                    writeBuffer = Encoding.ASCII.GetBytes("Netocni podaci");
+                    stream.Write(writeBuffer, 0, writeBuffer.Length);
+                    stream.Flush();
+                }
             }
         }
     }
