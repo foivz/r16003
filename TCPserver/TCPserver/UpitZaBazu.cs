@@ -36,12 +36,12 @@ namespace TCPserver
 
         private void StvoriLoginUpit()
         {
-            int provjeraKorisnika;
+            List<string> podaciKorisnik;
             elementiPoruke = poruka.Split(',');
             upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'"; //bilo bi kvalitetno hashirati ovo nekako(?)
             //Console.WriteLine("Upit: " + upit);
             Baza baza = new Baza(upit); //proslijedivanje upita bazi
-            provjeraKorisnika = baza.GeneriranjeOdgovora(upit); //vraća 1 ako je korisnik pronađen, vraća 0 ako nije pronađen
+            podaciKorisnik = baza.GeneriranjeOdgovora(upit); //vraća 1 ako je korisnik pronađen, vraća 0 ako nije pronađen
         }
 
         private void StvoriRegisterUpit()

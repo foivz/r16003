@@ -20,8 +20,9 @@ namespace TCPserver
         }
 
         //funkcija za generiranje odgovora (provjerava korisnika u bazi)
-        public int GeneriranjeOdgovora(string upit)
+        public List<string> GeneriranjeOdgovora(string upit)
         {
+            List<string> result = new List<string>();
             int odgovor = 0;
             SqlConnection connection = new SqlConnection("Server = tcp:crypto.database.windows.net,1433; Data Source = crypto.database.windows.net; Initial Catalog = CryptoBaza; Persist Security Info = False; User ID = ivauzarev; Password =crypto2101!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             using (connection)
@@ -38,7 +39,19 @@ namespace TCPserver
                         Console.WriteLine("Podaci o uspjesnoj prijavi: ");
                         Console.WriteLine("{0}\t{1}", reader.GetString(0),
                             reader.GetString(1));
-                        odgovor = 1;
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            result.Add(reader[i].ToString());
+                        }
+                        //Ovo je sluzilo samo za provjeru dali se vraćaju svi korektni podaci
+                        /*
+                        foreach (var item in result)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        */
+
+
                     }
                 }
                 else
