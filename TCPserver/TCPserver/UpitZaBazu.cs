@@ -19,33 +19,39 @@ namespace TCPserver
             this.poruka = poruka;
         }
 
-        public void dohvatiElementeIzPoruke()
+        public List<string> dohvatiElementeIzPoruke()
         {
+            List<string> result = new List<string>();
             if (identitetPoruke == "LOGIN")
             {
-                StvoriLoginUpit();
-                return;
+                result = StvoriLoginUpit();
+                return result;
             }
 
             if (identitetPoruke == "REGISTER")
             {
-                StvoriRegisterUpit();
-                return;
+                result = StvoriRegisterUpit();
+                return result;
             }
+            return result;
         }
 
-        private void StvoriLoginUpit()
+        private List<string> StvoriLoginUpit()
         {
+            List<string> podaciKorisnik;
             elementiPoruke = poruka.Split(',');
             upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'"; //bilo bi kvalitetno hashirati ovo nekako(?)
             //Console.WriteLine("Upit: " + upit);
             Baza baza = new Baza(upit); //proslijedivanje upita bazi
-            baza.GeneriranjeOdgovora(upit);
+            podaciKorisnik = baza.GeneriranjeOdgovora(upit); //vraća 1 ako je korisnik pronađen, vraća 0 ako nije pronađen
+            return podaciKorisnik;
         }
 
-        private void StvoriRegisterUpit()
+        private List<string> StvoriRegisterUpit()
         {
-            //
+            List<string> podaciKorisnik = new List<string>();
+            //Ovdje će se kreirati upit koji ce omoguciti dodavanje korisnika u bazu
+            return podaciKorisnik;
         }
     }
 }

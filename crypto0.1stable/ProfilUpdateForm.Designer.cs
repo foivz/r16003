@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 303);
+            this.ClientSize = new System.Drawing.Size(307, 295);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.tbDatum);
             this.Controls.Add(this.tbEmail);
