@@ -35,11 +35,12 @@
             this.btnChat = new System.Windows.Forms.Button();
             this.lblPrijavljen = new System.Windows.Forms.Label();
             this.lblPristup = new System.Windows.Forms.Label();
+            this.updateProfil = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(30, 50);
+            this.btnLogin.Location = new System.Drawing.Point(30, 106);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 75);
             this.btnLogin.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             // btnRegistracija
             // 
-            this.btnRegistracija.Location = new System.Drawing.Point(148, 50);
+            this.btnRegistracija.Location = new System.Drawing.Point(148, 106);
             this.btnRegistracija.Name = "btnRegistracija";
             this.btnRegistracija.Size = new System.Drawing.Size(100, 75);
             this.btnRegistracija.TabIndex = 1;
@@ -106,11 +107,23 @@
             this.lblPristup.Size = new System.Drawing.Size(0, 13);
             this.lblPristup.TabIndex = 6;
             // 
+            // updateProfil
+            // 
+            this.updateProfil.Enabled = false;
+            this.updateProfil.Location = new System.Drawing.Point(267, 106);
+            this.updateProfil.Name = "updateProfil";
+            this.updateProfil.Size = new System.Drawing.Size(100, 75);
+            this.updateProfil.TabIndex = 7;
+            this.updateProfil.Text = "Ažuriranje profila";
+            this.updateProfil.UseVisualStyleBackColor = true;
+            this.updateProfil.Click += new System.EventHandler(this.updateProfil_Click);
+            // 
             // frmCrypto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 320);
+            this.ClientSize = new System.Drawing.Size(668, 317);
+            this.Controls.Add(this.updateProfil);
             this.Controls.Add(this.lblPristup);
             this.Controls.Add(this.lblPrijavljen);
             this.Controls.Add(this.btnChat);
@@ -135,6 +148,7 @@
         private System.Windows.Forms.Button btnChat;
         private System.Windows.Forms.Label lblPrijavljen;
         private System.Windows.Forms.Label lblPristup;
+        private System.Windows.Forms.Button updateProfil;
     }
 }
 

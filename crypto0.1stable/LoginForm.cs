@@ -12,6 +12,7 @@ namespace crypto0._1stable
 {
     public partial class LoginForm : Form
     {
+        public frmCrypto pocetnaForma { get; set; }
         public LoginForm()
         {
             InitializeComponent();
@@ -24,18 +25,27 @@ namespace crypto0._1stable
 
         private void btnPotvrdi_Click_1(object sender, EventArgs e)
         {
-            //Povezivanje sa serverom pomocu TCP-a, server obavlja provjeru
-
-            if (txtUser.Text.Length > 3 && txtPass.Text.Length > 3)
-            {
-                TcpKlijent tcpKlijent = new TcpKlijent();
-                byte[] poruka = new byte[1024];
-                poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
-                tcpKlijent.PosaljiServeru(poruka);
-                tcpKlijent.PrimiOdServera();
-                tcpKlijent.ZatvoriSocket();
+            try {
+                //Povezivanje sa serverom pomocu TCP-a, server obavlja provjeru
+                List<string> listaPodataka = new List<string>();
+                if (txtUser.Text.Length > 3 && txtPass.Text.Length > 3)
+                {
+                    TcpKlijent tcpKlijent = new TcpKlijent();
+                    byte[] poruka = new byte[1024];
+                    poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
+                    tcpKlijent.PosaljiServeru(poruka);
+                    string novo = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
+                    listaPodataka = novo.Split(';').ToList();
+                    pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
+                    tcpKlijent.ZatvoriSocket();
+                    this.Close();
+                }
+                else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
             }
-            else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
+            catch
+            {
+                MessageBox.Show("Nedostupan server");
+            }
         }
     }
 }
