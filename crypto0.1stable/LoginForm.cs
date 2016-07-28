@@ -34,8 +34,8 @@ namespace crypto0._1stable
                     byte[] poruka = new byte[1024];
                     poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
                     tcpKlijent.PosaljiServeru(poruka);
-                    string novo = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
-                    listaPodataka = novo.Split(';').ToList();
+                    string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
+                    listaPodataka = porukaOdServera.Split(';').ToList();
                     pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
                     tcpKlijent.ZatvoriSocket();
                     this.Close();

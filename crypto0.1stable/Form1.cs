@@ -31,7 +31,7 @@ namespace crypto0._1stable
 
         private void btnRegistracija_Click(object sender, EventArgs e)
         {
-            Form registracijaForm = new Form();
+            Form registracijaForm = new RegistracijskaForma();
             registracijaForm.Show();
         }
 
@@ -44,7 +44,7 @@ namespace crypto0._1stable
 
         private void btnC2C_Click(object sender, EventArgs e)
         {
-            Form C2CForm = new Form();
+            var C2CForm = new ClientToClientForm();
             C2CForm.Show();
         }
 
