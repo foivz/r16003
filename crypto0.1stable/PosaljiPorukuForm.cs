@@ -12,16 +12,18 @@ namespace crypto0._1stable
 {
     public partial class PosaljiPorukuForm : Form
     {
-        public PosaljiPorukuForm()
+        string posiljatelj;
+        public PosaljiPorukuForm(string username)
         {
             InitializeComponent();
+            posiljatelj = username;
         }
 
         private void btnSlanjePoruke_Click(object sender, EventArgs e)
         {
             TcpKlijent tcpKlijent = new TcpKlijent();
             byte[] poruka = new byte[1024];
-            poruka = Encoding.ASCII.GetBytes("");
+            poruka = Encoding.ASCII.GetBytes("C2C," + posiljatelj + "," + txtPrimatelj.Text + "," + txtSlanjePoruke.Text + ",");
             tcpKlijent.PosaljiServeru(poruka);
             string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
         }

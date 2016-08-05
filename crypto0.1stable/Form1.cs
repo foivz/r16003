@@ -44,7 +44,7 @@ namespace crypto0._1stable
 
         private void btnC2C_Click(object sender, EventArgs e)
         {
-            var C2CForm = new ClientToClientForm();
+            var C2CForm = new ClientToClientForm(kPodaci.username);
             C2CForm.Show();
         }
 

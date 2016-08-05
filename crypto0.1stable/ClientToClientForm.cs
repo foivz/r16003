@@ -12,20 +12,22 @@ namespace crypto0._1stable
 {
     public partial class ClientToClientForm : Form
     {
-        public ClientToClientForm()
+        string username;
+        public ClientToClientForm(string username)
         {
             InitializeComponent();
+            this.username = username;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form citajC2CPoruke = new CitanjePorukeForm();
+            Form citajC2CPoruke = new CitanjePorukeForm(username);
             citajC2CPoruke.Show();
         }
 
         private void btnPosalji_Click(object sender, EventArgs e)
         {
-            Form saljiC2CPoruku = new PosaljiPorukuForm();
+            Form saljiC2CPoruku = new PosaljiPorukuForm(username);
             saljiC2CPoruku.Show();
         }
     }

@@ -45,7 +45,17 @@ namespace TCPserver
             }
             else if(identitetPoruke == "C2C")
             {
-                result = ClientToClientUpit();
+                result = SLanjeTekstualnePorukeCLientuUpit();
+                return result;
+            }
+            else if(identitetPoruke == "DOHVATIKLIJENTE")
+            {
+                result = DohvatiKlijenteUpit();
+                return result;
+            }
+            else if(identitetPoruke == "CITANJEPORUKE")
+            {
+                result = DohvatiNeprocitanePorukeUpit();
                 return result;
             }
             return result;
@@ -77,6 +87,7 @@ namespace TCPserver
             }
 
             Baza.ZatvaranjeKonekcijeSBazom();
+            reader.Close();
             return podaciKorisnik;
         }
 
@@ -104,12 +115,69 @@ namespace TCPserver
             return podaciKorisnik;
         }
 
-        private List<string> ClientToClientUpit()
+        private List<string> SLanjeTekstualnePorukeCLientuUpit()
         {
             List<string> podaciKorisnik = new List<string>();
             elementiPoruke = poruka.Split(',');
-            upit = "";
+            upit = "insert into Poruke (posiljatelj, primatelj, tekst) values ('"+ elementiPoruke[1] + "','" + elementiPoruke[2] + "','" + elementiPoruke[3] + "')";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
+            podaciKorisnik.Add("Poruka uspjesno poslana!");
             return podaciKorisnik;
+        }
+
+        private List<string> DohvatiKlijenteUpit()
+        {
+            List<string> podaciKorisnik = new List<string>();
+            upit = "select username from Korisnici";
+            Baza.OtvaranjeKonekcijeSBazom();
+            reader = Baza.IzvrsavanjeUpita(upit);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    for(int i = 0; i<reader.FieldCount; i++)
+                    {
+                        podaciKorisnik.Add(reader[i].ToString());
+                    }
+                }
+            }
+            Baza.ZatvaranjeKonekcijeSBazom();
+            reader.Close();
+            return podaciKorisnik;
+        }
+
+        private List<string> DohvatiNeprocitanePorukeUpit()
+        {
+            List<string> podaciKorisnik = new List<string>();
+            elementiPoruke = poruka.Split(',');
+            upit = "select tekst from Poruke where posiljatelj = '" + elementiPoruke[1] + "' and primatelj = '" + elementiPoruke[2] + "' and procitano = 'False'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            reader = Baza.IzvrsavanjeUpita(upit);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        podaciKorisnik.Add(reader[i].ToString());
+                    }
+                }
+            }
+            else podaciKorisnik.Add("Nema neprocitanih poruka!");
+            Baza.ZatvaranjeKonekcijeSBazom();
+            reader.Close();
+            OznaciPorukeProcitanima(elementiPoruke);
+            return podaciKorisnik;
+        }
+
+        private void OznaciPorukeProcitanima(string[] elemntiPoruke)
+        {
+            string upit = "update Poruke set procitano = 'True' where posiljatelj = '" + elementiPoruke[1] + "' and primatelj = '" + elementiPoruke[2] + "' and procitano = 'False'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
         }
     }
 }
