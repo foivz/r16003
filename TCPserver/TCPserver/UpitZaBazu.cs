@@ -63,6 +63,11 @@ namespace TCPserver
                 result = DohvatKorisnikAktivnost();
                 return result;
             }
+            else if (identitetPoruke == "UPDOTKLJUCAJ")
+            {
+                result = UpdateKorisnickogaStatusa();
+                return result;
+            }
             return result;
         }
 
@@ -223,6 +228,19 @@ namespace TCPserver
             reader.Close();
 
             Console.WriteLine(podaciKorisnik);
+            return podaciKorisnik;
+        }
+
+        private List<string> UpdateKorisnickogaStatusa()
+        {
+            List<string> podaciKorisnik = new List<string>();
+            elementiPoruke = poruka.Split(',');
+            string status = elementiPoruke[2];
+            upit = "update Korisnici set aktivnost='" + status + "' where username='" + elementiPoruke[1] + "'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
+            podaciKorisnik.Add("Uspjesno ste izvrsili izmjenu statusa racuna!");
             return podaciKorisnik;
         }
     }
