@@ -127,6 +127,7 @@
             this.btnAdmin.TabIndex = 8;
             this.btnAdmin.Text = "Admin Panel";
             this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // frmCrypto
             // 

@@ -16,5 +16,11 @@ namespace crypto0._1stable
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var otkZakForm = new OtkZakForm();
+            otkZakForm.Show();
+        }
     }
 }
