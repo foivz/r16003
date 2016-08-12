@@ -90,5 +90,11 @@ namespace crypto0._1stable
             kPodaci.password = password;
             kPodaci.email = email;
         }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            var adminskiPanel = new AdminPanelForm();
+            adminskiPanel.Show();
+        }
     }
 }
