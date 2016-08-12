@@ -41,5 +41,28 @@ namespace crypto0._1stable
             //this.listaKorisnika.CheckBoxes = true;
             OsvjeziListu();
         }
+
+        private void btnRadnja_Click(object sender, EventArgs e)
+        {
+            //sto ce se dogoditi klikom na ovaj gumb
+        }
+
+        private void listaKorisnika_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listaKorisnika.SelectedItems.Count == 0)
+                return;
+
+            btnRadnja.Enabled = true;
+            ListViewItem item = listaKorisnika.SelectedItems[0];
+            string tekst = item.SubItems[1].Text;
+            if (tekst == "Otkljucan")
+            {
+                btnRadnja.Text = "Zakljucaj";
+            }
+            else
+            {
+                btnRadnja.Text = "Otkljucaj";
+            }
+        }
     }
 }
