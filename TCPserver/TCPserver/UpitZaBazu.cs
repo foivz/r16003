@@ -201,19 +201,15 @@ namespace TCPserver
                     List<string> pomocnaLista = new List<string>();
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        if (i>0)
-                        {
-                            pomocniString = pomocniString + ",";
-                        }
                         if (i == 1)
                         {
                             if (string.Equals(reader[i].ToString(), "True"))
                             {
-                                pomocniString = pomocniString + "Otkljucan";
+                                pomocniString = pomocniString + ",Otkljucan";
                             }
                             else
                             {
-                                pomocniString = pomocniString + "Zakljucan";
+                                pomocniString = pomocniString + ",Zakljucan";
                             }
                         }
                         else {

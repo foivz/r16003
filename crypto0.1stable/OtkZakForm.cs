@@ -23,7 +23,7 @@ namespace crypto0._1stable
             byte[] poruka = new byte[1024];
             poruka = Encoding.ASCII.GetBytes("[OTKZAK]," + ",");
             tcpKlijent.PosaljiServeru(poruka);
-            string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
+            string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera()).Replace("\0", string.Empty);
             List<string> korisnici = porukaOdServera.Split(';').ToList();
             for (int i = 0; i < korisnici.Count; i++)
             {
@@ -33,6 +33,7 @@ namespace crypto0._1stable
                 listaKorisnika.Items.Add(listViewItem);
             }
             listaKorisnika.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listaKorisnika.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
         }
 
@@ -50,19 +51,22 @@ namespace crypto0._1stable
         private void listaKorisnika_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listaKorisnika.SelectedItems.Count == 0)
+            {
+                btnRadnja.Enabled = false;
                 return;
+            }
 
-            btnRadnja.Enabled = true;
             ListViewItem item = listaKorisnika.SelectedItems[0];
-            string tekst = item.SubItems[1].Text;
-            if (tekst == "Otkljucan")
+            string tekst = item.SubItems[1].Text.Trim();
+            if (tekst.Equals("Otkljucan"))
             {
                 btnRadnja.Text = "Zakljucaj";
             }
-            else
+            if (tekst.Equals("Zakljucan"))
             {
                 btnRadnja.Text = "Otkljucaj";
             }
+            btnRadnja.Enabled = true;
         }
     }
 }
