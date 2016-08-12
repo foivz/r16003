@@ -35,8 +35,8 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.tbDatum = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.dtDatumRodenja = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -83,29 +83,22 @@
             // 
             this.tbUsername.Location = new System.Drawing.Point(171, 51);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(100, 20);
+            this.tbUsername.Size = new System.Drawing.Size(124, 20);
             this.tbUsername.TabIndex = 4;
             // 
             // tbPassword
             // 
             this.tbPassword.Location = new System.Drawing.Point(171, 91);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbPassword.Size = new System.Drawing.Size(124, 20);
             this.tbPassword.TabIndex = 5;
             // 
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(171, 131);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
+            this.tbEmail.Size = new System.Drawing.Size(124, 20);
             this.tbEmail.TabIndex = 6;
-            // 
-            // tbDatum
-            // 
-            this.tbDatum.Location = new System.Drawing.Point(171, 171);
-            this.tbDatum.Name = "tbDatum";
-            this.tbDatum.Size = new System.Drawing.Size(100, 20);
-            this.tbDatum.TabIndex = 7;
             // 
             // btnUpdate
             // 
@@ -117,13 +110,20 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // dtDatumRodenja
+            // 
+            this.dtDatumRodenja.Location = new System.Drawing.Point(171, 171);
+            this.dtDatumRodenja.Name = "dtDatumRodenja";
+            this.dtDatumRodenja.Size = new System.Drawing.Size(124, 20);
+            this.dtDatumRodenja.TabIndex = 9;
+            // 
             // ProfilUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 295);
+            this.Controls.Add(this.dtDatumRodenja);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.tbDatum);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUsername);
@@ -147,7 +147,7 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.TextBox tbDatum;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.DateTimePicker dtDatumRodenja;
     }
 }

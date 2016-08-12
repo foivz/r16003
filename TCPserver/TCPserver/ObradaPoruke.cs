@@ -11,7 +11,7 @@ namespace TCPserver
         private byte[] bytePoruka;
         private string poruka;
         private string pomocnaPoruka;
-        private string[] poruke = {"LOGIN","REGISTER"};
+        private string[] poruke = {"LOGIN","REGISTER", "C2C", "PRUPDATE", "DOHVATIKLIJENTE", "CITANJEPORUKE"};
         bool izadiIzPetlje;
         public ObradaPoruke(byte[] primljenaPoruka)
         {
