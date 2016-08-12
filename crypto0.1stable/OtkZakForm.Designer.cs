@@ -31,20 +31,19 @@
             this.listaKorisnika = new System.Windows.Forms.ListView();
             this.korime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.radnja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listaKorisnika
             // 
             this.listaKorisnika.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.korime,
-            this.status,
-            this.radnja});
+            this.status});
             this.listaKorisnika.Location = new System.Drawing.Point(12, 12);
             this.listaKorisnika.Name = "listaKorisnika";
             this.listaKorisnika.Size = new System.Drawing.Size(461, 267);
             this.listaKorisnika.TabIndex = 0;
             this.listaKorisnika.UseCompatibleStateImageBehavior = false;
+            this.listaKorisnika.View = System.Windows.Forms.View.Details;
             // 
             // korime
             // 
@@ -54,10 +53,6 @@
             // status
             // 
             this.status.Text = "Status";
-            // 
-            // radnja
-            // 
-            this.radnja.Text = "Otkljucaj/Zakljucaj";
             // 
             // OtkZakForm
             // 
@@ -77,6 +72,5 @@
         private System.Windows.Forms.ListView listaKorisnika;
         private System.Windows.Forms.ColumnHeader korime;
         private System.Windows.Forms.ColumnHeader status;
-        private System.Windows.Forms.ColumnHeader radnja;
     }
 }
