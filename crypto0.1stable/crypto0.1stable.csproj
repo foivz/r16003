@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPanelForm.Designer.cs">
+      <DependentUpon>AdminPanelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BazaHelper.cs" />
     <Compile Include="CitanjePorukeForm.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OtkZakForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtkZakForm.Designer.cs">
+      <DependentUpon>OtkZakForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Poruka.cs" />
     <Compile Include="PosaljiPorukuForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +121,9 @@
     </Compile>
     <Compile Include="TcpKlijent.cs" />
     <Compile Include="TekstPoruka.cs" />
+    <EmbeddedResource Include="AdminPanelForm.resx">
+      <DependentUpon>AdminPanelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CitanjePorukeForm.resx">
       <DependentUpon>CitanjePorukeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtkZakForm.resx">
+      <DependentUpon>OtkZakForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PosaljiPorukuForm.resx">
       <DependentUpon>PosaljiPorukuForm.cs</DependentUpon>

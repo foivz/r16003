@@ -57,6 +57,16 @@ namespace TCPserver
                 result = DohvatiNeprocitanePorukeUpit();
                 return result;
             }
+            else if (identitetPoruke == "OTKZAK")
+            {
+                result = DohvatKorisnikAktivnost();
+                return result;
+            }
+            else if (identitetPoruke == "UPDOTKLJUCAJ")
+            {
+                result = UpdateKorisnickogaStatusa();
+                return result;
+            }
             return result;
         }
 
@@ -182,6 +192,60 @@ namespace TCPserver
             Baza.OtvaranjeKonekcijeSBazom();
             Baza.IzvrsavanjeUpita(upit);
             Baza.ZatvaranjeKonekcijeSBazom();
+        }
+
+        private List<string> DohvatKorisnikAktivnost()
+        {
+            //podaci svih korisnika
+            List<string> podaciKorisnik = new List<string>();
+            upit = "select username,aktivnost from Korisnici where razinaPristupa='3' or razinaPristupa='2'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            reader = Baza.IzvrsavanjeUpita(upit);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string pomocniString = "";
+                    //podaci o pojedinom korisniku
+                    List<string> pomocnaLista = new List<string>();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        if (i == 1)
+                        {
+                            if (string.Equals(reader[i].ToString(), "True"))
+                            {
+                                pomocniString = pomocniString + ",Otkljucan";
+                            }
+                            else
+                            {
+                                pomocniString = pomocniString + ",Zakljucan";
+                            }
+                        }
+                        else {
+                            pomocniString = pomocniString + reader[i].ToString();
+                        }
+                    }
+                    podaciKorisnik.Add(pomocniString);
+                }
+            }
+            Baza.ZatvaranjeKonekcijeSBazom();
+            reader.Close();
+
+            Console.WriteLine(podaciKorisnik);
+            return podaciKorisnik;
+        }
+
+        private List<string> UpdateKorisnickogaStatusa()
+        {
+            List<string> podaciKorisnik = new List<string>();
+            elementiPoruke = poruka.Split(',');
+            string status = elementiPoruke[2];
+            upit = "update Korisnici set aktivnost='" + status + "' where username='" + elementiPoruke[1] + "'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
+            podaciKorisnik.Add("Uspjesno ste izvrsili izmjenu statusa racuna!");
+            return podaciKorisnik;
         }
     }
 }

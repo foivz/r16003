@@ -36,6 +36,7 @@
             this.lblPrijavljen = new System.Windows.Forms.Label();
             this.lblPristup = new System.Windows.Forms.Label();
             this.updateProfil = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -118,11 +119,22 @@
             this.updateProfil.UseVisualStyleBackColor = true;
             this.updateProfil.Click += new System.EventHandler(this.updateProfil_Click);
             // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Location = new System.Drawing.Point(373, 154);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(100, 75);
+            this.btnAdmin.TabIndex = 8;
+            this.btnAdmin.Text = "Admin Panel";
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
             // frmCrypto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 317);
+            this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.updateProfil);
             this.Controls.Add(this.lblPristup);
             this.Controls.Add(this.lblPrijavljen);
@@ -149,6 +161,7 @@
         private System.Windows.Forms.Label lblPrijavljen;
         private System.Windows.Forms.Label lblPristup;
         private System.Windows.Forms.Button updateProfil;
+        private System.Windows.Forms.Button btnAdmin;
     }
 }
 
