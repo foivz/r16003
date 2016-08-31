@@ -9,7 +9,6 @@ namespace TCPserver
     {
         static void Main(string[] args)
         {
-            string poruka = "";
             TCPserver server = new TCPserver();
             server.PokreniListener();
         }

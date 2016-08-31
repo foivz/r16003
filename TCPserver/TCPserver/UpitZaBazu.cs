@@ -11,16 +11,15 @@ namespace TCPserver
     class UpitZaBazu
     {
         private string identitetPoruke;
-        private string poruka;
         private string[] elementiPoruke;
         private string upit;
         SqlDataReader reader;
         
 
-        public UpitZaBazu(string item, string poruka)
+        public UpitZaBazu(string item, string[] elementi)
         {
             identitetPoruke = item;
-            this.poruka = poruka;
+            elementiPoruke = elementi;
         }
 
         public List<string> dohvatiElementeIzPoruke()
@@ -64,7 +63,6 @@ namespace TCPserver
         private List<string> StvoriLoginUpit()
         {
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'";
             Baza.OtvaranjeKonekcijeSBazom();
             reader = Baza.IzvrsavanjeUpita(upit);
@@ -93,12 +91,21 @@ namespace TCPserver
 
         private List<string> StvoriRegisterUpit()
         {
+            bool uspjesno = true;
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             upit = "Insert into Korisnici (username, password, email, datumROdjenja, razinaPristupa, aktivnost) values ('"+ elementiPoruke[1] + "','" + elementiPoruke[2] + "','" + elementiPoruke[3] + "','" + elementiPoruke[4] + "','" + 3.ToString() + "','" + "True" + "')";
             Baza.OtvaranjeKonekcijeSBazom();
-            Baza.IzvrsavanjeUpita(upit);
-            podaciKorisnik.Add("Registracija uspjesno izvrsena!");
+            try
+            {
+                Baza.IzvrsavanjeUpita(upit);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Već postoji taj username u bazi");
+                uspjesno = false;
+            }
+            if (uspjesno == true) podaciKorisnik.Add("Registracija uspjesno izvrsena!");
+            else podaciKorisnik.Add("Korisnik sa tim usernameom već postoji, pokušajte ponovo!");
             Baza.ZatvaranjeKonekcijeSBazom();
             return podaciKorisnik;
         }
@@ -106,7 +113,6 @@ namespace TCPserver
         private List<string> UpdateKorisnickihPodatakaUpit()
         {
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             upit = "update Korisnici set password='" + elementiPoruke[2] + "', email='" + elementiPoruke[3] + "', datumRodjenja='" + elementiPoruke[4] + "' where username='" + elementiPoruke[1] + "'";
             Baza.OtvaranjeKonekcijeSBazom();
             Baza.IzvrsavanjeUpita(upit);
@@ -118,7 +124,6 @@ namespace TCPserver
         private List<string> SLanjeTekstualnePorukeCLientuUpit()
         {
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             upit = "insert into Poruke (posiljatelj, primatelj, tekst) values ('"+ elementiPoruke[1] + "','" + elementiPoruke[2] + "','" + elementiPoruke[3] + "')";
             Baza.OtvaranjeKonekcijeSBazom();
             Baza.IzvrsavanjeUpita(upit);
@@ -151,7 +156,6 @@ namespace TCPserver
         private List<string> DohvatiNeprocitanePorukeUpit()
         {
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             upit = "select tekst from Poruke where posiljatelj = '" + elementiPoruke[1] + "' and primatelj = '" + elementiPoruke[2] + "' and procitano = 'False'";
             Baza.OtvaranjeKonekcijeSBazom();
             reader = Baza.IzvrsavanjeUpita(upit);

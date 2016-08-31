@@ -30,7 +30,7 @@ namespace TCPserver
         public static void ZatvaranjeKonekcijeSBazom()
         {
             connection.Close();
-            reader.Close();
+            if(reader != null) reader.Close();
         }
     }
 }

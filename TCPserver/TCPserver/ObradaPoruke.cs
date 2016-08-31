@@ -9,10 +9,11 @@ namespace TCPserver
     class ObradaPoruke
     {
         private byte[] bytePoruka;
-        private string poruka;
         private string pomocnaPoruka;
         private string[] poruke = {"LOGIN","REGISTER", "C2C", "PRUPDATE", "DOHVATIKLIJENTE", "CITANJEPORUKE"};
         bool izadiIzPetlje;
+
+        private string[] elementiPoruke;
         public ObradaPoruke(byte[] primljenaPoruka)
         {
             bytePoruka = primljenaPoruka;
@@ -24,13 +25,13 @@ namespace TCPserver
         public List<string> PrepoznavanjePoruke()
         {
             List<string> result = new List<string>();
-            poruka = Encoding.ASCII.GetString(bytePoruka);
+            elementiPoruke = Encoding.ASCII.GetString(bytePoruka).Split(',');
             try
             {
                 izadiIzPetlje = false;
                 foreach (var item in poruke)
                 {
-                    if (poruka.Contains(item))
+                    if (elementiPoruke[0].Contains(item))
                     {
                         pomocnaPoruka = item;
                         break;
@@ -41,7 +42,7 @@ namespace TCPserver
                 Console.WriteLine("Na prepoznajem poruku");
             }
 
-            UpitZaBazu upit = new UpitZaBazu(pomocnaPoruka, poruka);
+            UpitZaBazu upit = new UpitZaBazu(pomocnaPoruka, elementiPoruke);
             result = upit.dohvatiElementeIzPoruke();
             return result;
         }

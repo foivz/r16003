@@ -26,7 +26,6 @@ namespace TCPserver
             listener = new TcpListener(IPAddress.Any, 9900);
             Thread dretvaZaListen = new Thread(new ParameterizedThreadStart(OsluskujPort));
             dretvaZaListen.Start(listener);
-            
         }
         void OsluskujPort(object listen)
         {
