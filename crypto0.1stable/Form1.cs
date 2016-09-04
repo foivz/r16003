@@ -96,5 +96,10 @@ namespace crypto0._1stable
             var adminskiPanel = new AdminPanelForm();
             adminskiPanel.Show();
         }
+
+        private void frmCrypto_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

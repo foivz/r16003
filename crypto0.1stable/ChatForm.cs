@@ -23,11 +23,29 @@ namespace crypto0._1stable
         string poruka;
         string primljenaPoruka;
         string username;
+        List<string> onlineKlijenti = new List<string>();
+        //Thread dretvaZaPrimanje;
+
         public ChatForm(string username)
         {
             InitializeComponent();
             this.username = username;
             this.AcceptButton = btnPosalji;
+        }
+
+        private void osvjezi (string primljenaPoruka)
+        {
+            string[] parts = primljenaPoruka.Split(';');
+            string firstWord = parts[0];
+            if (String.Compare(firstWord, "ONLKLIJENT", false) == 0)
+            {
+                onlineKlijenti.Clear();
+                var noviKlijenti = primljenaPoruka.Split(';').ToList();
+                onlineKlijenti = noviKlijenti;
+                onlineKlijenti.Remove("ONLKLIJENT");
+                aktKorisnici.DataSource = null;
+                aktKorisnici.DataSource = onlineKlijenti;
+            }
         }
 
         private void ChatForm_Load(object sender, EventArgs e)
@@ -46,9 +64,23 @@ namespace crypto0._1stable
                 stream.Read(readBuffer, 0, readBuffer.Length);
                 stream.Flush();
                 primljenaPoruka = Encoding.ASCII.GetString(readBuffer);
+
+                //ovdje prihvacamo listu svih aktivnih korisnika aplikacije u chatu
+                string[] parts = primljenaPoruka.Split(';');
+                string firstWord = parts[0];
+                if (String.Compare(firstWord,"ONLKLIJENT", false) == 0)
+                {
+                    //onlineKlijenti.Clear();
+                    var noviKlijenti = primljenaPoruka.Split(';').ToList();
+                    onlineKlijenti = noviKlijenti;
+                    onlineKlijenti.Remove("ONLKLIJENT");
+                    aktKorisnici.Items.Clear();
+                    aktKorisnici.DataSource = onlineKlijenti;
+                }
                 msg();
 
                 Thread dretvaZaPrimanje = new Thread(new ThreadStart(DretvaZaPrimanje));
+                dretvaZaPrimanje.IsBackground = true;
                 dretvaZaPrimanje.Start();
             }
             catch(Exception ex)
@@ -85,6 +117,11 @@ namespace crypto0._1stable
                     stream.Read(inStream, 0, inStream.Length);
                     string returndata = System.Text.Encoding.ASCII.GetString(inStream);
                     primljenaPoruka = "" + returndata;
+
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke((MethodInvoker)(() => osvjezi(primljenaPoruka)));
+                    }
                     msg();
                 }
                 catch(Exception ex)
@@ -101,6 +138,16 @@ namespace crypto0._1stable
                 this.Invoke(new MethodInvoker(msg));
             else
                 txtIspis.Text = txtIspis.Text + Environment.NewLine + " >> " + primljenaPoruka;
+        }
+
+        private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }
