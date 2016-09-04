@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.dgwCitanjePoruke = new System.Windows.Forms.DataGridView();
-            this.cmbKlijenti = new System.Windows.Forms.ComboBox();
             this.Poruke = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbKlijenti = new System.Windows.Forms.ComboBox();
+            this.btnOdgovori = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwCitanjePoruke)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,6 +45,13 @@
             this.dgwCitanjePoruke.Size = new System.Drawing.Size(471, 185);
             this.dgwCitanjePoruke.TabIndex = 0;
             // 
+            // Poruke
+            // 
+            this.Poruke.HeaderText = "Poruke";
+            this.Poruke.Name = "Poruke";
+            this.Poruke.ReadOnly = true;
+            this.Poruke.Width = 400;
+            // 
             // cmbKlijenti
             // 
             this.cmbKlijenti.FormattingEnabled = true;
@@ -53,18 +61,22 @@
             this.cmbKlijenti.TabIndex = 1;
             this.cmbKlijenti.SelectedIndexChanged += new System.EventHandler(this.cmbKlijenti_SelectedIndexChanged);
             // 
-            // Poruke
+            // btnOdgovori
             // 
-            this.Poruke.HeaderText = "Poruke";
-            this.Poruke.Name = "Poruke";
-            this.Poruke.ReadOnly = true;
-            this.Poruke.Width = 400;
+            this.btnOdgovori.Location = new System.Drawing.Point(344, 26);
+            this.btnOdgovori.Name = "btnOdgovori";
+            this.btnOdgovori.Size = new System.Drawing.Size(96, 23);
+            this.btnOdgovori.TabIndex = 2;
+            this.btnOdgovori.Text = "Odgovori osobi";
+            this.btnOdgovori.UseVisualStyleBackColor = true;
+            this.btnOdgovori.Click += new System.EventHandler(this.btnOdgovori_Click);
             // 
             // CitanjePorukeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 321);
+            this.Controls.Add(this.btnOdgovori);
             this.Controls.Add(this.cmbKlijenti);
             this.Controls.Add(this.dgwCitanjePoruke);
             this.Name = "CitanjePorukeForm";
@@ -80,5 +92,6 @@
         private System.Windows.Forms.DataGridView dgwCitanjePoruke;
         private System.Windows.Forms.ComboBox cmbKlijenti;
         private System.Windows.Forms.DataGridViewTextBoxColumn Poruke;
+        private System.Windows.Forms.Button btnOdgovori;
     }
 }

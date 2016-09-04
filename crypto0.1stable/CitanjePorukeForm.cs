@@ -46,5 +46,16 @@ namespace crypto0._1stable
                 dgwCitanjePoruke.Rows.Add(item);
             }
         }
+
+        private void btnOdgovori_Click(object sender, EventArgs e)
+        {
+            if (cmbKlijenti.Text.Length > 0)
+            {
+                Form posaljiPoruku = new PosaljiPorukuForm(usernamePrimatelja, cmbKlijenti.Text);
+                posaljiPoruku.Show();
+                this.Close();
+            }
+            else MessageBox.Show("Niste odabrali nijednog korisnika, poušajte ponovo!");
+        }
     }
 }

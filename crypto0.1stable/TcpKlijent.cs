@@ -19,26 +19,47 @@ namespace crypto0._1stable
 
         public TcpKlijent()
         {
-            klijent = new TcpClient();
-            klijent.Connect(IPAddress.Loopback, port);
-            readBuffer = new byte[1024];
-            writeBuffer = new byte[1024];
+            try
+            {
+                klijent = new TcpClient();
+                klijent.Connect(IPAddress.Loopback, port);
+                readBuffer = new byte[1024];
+                writeBuffer = new byte[1024];
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ne mogu se spojiti na web servis, pokušajte ponovo!");
+            }
         }
 
         public void PosaljiServeru(byte[] poruka)
         {
-            stream = klijent.GetStream();
-            writeBuffer = poruka;
-            stream.Write(writeBuffer, 0, writeBuffer.Length);
+            try
+            {
+                stream = klijent.GetStream();
+                writeBuffer = poruka;
+                stream.Write(writeBuffer, 0, writeBuffer.Length);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
+            }
         }
 
         public byte[] PrimiOdServera()
         {
-            stream = klijent.GetStream();
-            stream.Read(readBuffer, 0, readBuffer.Length);
-            MessageBox.Show(Encoding.ASCII.GetString(readBuffer));
-            stream.Close();
-            return readBuffer;
+            try
+            {
+                stream = klijent.GetStream();
+                stream.Read(readBuffer, 0, readBuffer.Length);
+                stream.Close();
+                return readBuffer;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
+                return null;
+            }
         }
 
         public void ZatvoriSocket()
