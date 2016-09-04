@@ -50,7 +50,7 @@ namespace crypto0._1stable
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            Form chatForm = new Form();
+            var chatForm = new ChatForm(kPodaci.username);
             chatForm.Show();
         }
 

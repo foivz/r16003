@@ -23,9 +23,14 @@ namespace crypto0._1stable
             {
                 TcpKlijent tcpKlijent = new TcpKlijent();
                 byte[] poruka = new byte[1024];
-                poruka = Encoding.ASCII.GetBytes("[REGISTER], " + txtUser.Text + "," + txtSifra.Text + "," + txtMail.Text + "," + dtDatum.Value.Date.ToString("yyyyMMdd") + ",");
+                poruka = Encoding.ASCII.GetBytes("REGISTER," + txtUser.Text + "," + txtSifra.Text + "," + txtMail.Text + "," + dtDatum.Value.Date.ToString("yyyyMMdd") + ",");
                 tcpKlijent.PosaljiServeru(poruka);
-                string odgovorOdServera = Encoding.ASCII.GetString(tcpKlijent.PrimiOdServera());
+                byte[] primitak = tcpKlijent.PrimiOdServera();
+                if (primitak != null)
+                {
+                    string odgovorOdServera = Encoding.ASCII.GetString(primitak);
+                    MessageBox.Show(odgovorOdServera);
+                }
                 tcpKlijent.ZatvoriSocket();
             }
             else Console.WriteLine("Nisu uneseni svi podaci, pokušajte ponovi!");
