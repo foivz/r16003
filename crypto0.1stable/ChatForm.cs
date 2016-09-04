@@ -27,6 +27,7 @@ namespace crypto0._1stable
         {
             InitializeComponent();
             this.username = username;
+            this.AcceptButton = btnPosalji;
         }
 
         private void ChatForm_Load(object sender, EventArgs e)
@@ -67,6 +68,7 @@ namespace crypto0._1stable
                 writeBuffer = Encoding.ASCII.GetBytes(poruka);
                 stream.Write(writeBuffer, 0, poruka.Length);
                 stream.Flush();
+                txtUpis.Text = "";
             }
         }
 
