@@ -79,6 +79,7 @@
             this.Controls.Add(this.txtSlanjePoruke);
             this.Name = "PosaljiPorukuForm";
             this.Text = "PosaljiPorukuForm";
+            this.Load += new System.EventHandler(this.PosaljiPorukuForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

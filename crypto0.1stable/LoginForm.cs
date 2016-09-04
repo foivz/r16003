@@ -32,11 +32,16 @@ namespace crypto0._1stable
                 {
                     TcpKlijent tcpKlijent = new TcpKlijent();
                     byte[] poruka = new byte[1024];
-                    poruka = Encoding.ASCII.GetBytes("[LOGIN]," + txtUser.Text + "," + txtPass.Text + ",");
+                    poruka = Encoding.ASCII.GetBytes("LOGIN," + txtUser.Text + "," + txtPass.Text + ",");
                     tcpKlijent.PosaljiServeru(poruka);
-                    string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
-                    listaPodataka = porukaOdServera.Split(';').ToList();
-                    pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
+                    byte[] primitak = tcpKlijent.PrimiOdServera();
+                    if (primitak != null)
+                    {
+                        string porukaOdServera = Encoding.ASCII.GetString(primitak);
+                        MessageBox.Show("Uspješno ste se logirali!");
+                        listaPodataka = porukaOdServera.Split(';').ToList();
+                        pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
+                    }
                     tcpKlijent.ZatvoriSocket();
                     this.Close();
                 }
@@ -44,7 +49,7 @@ namespace crypto0._1stable
             }
             catch
             {
-                MessageBox.Show("Nedostupan server");
+                MessageBox.Show("Pogrešan username ili password!");
             }
         }
     }

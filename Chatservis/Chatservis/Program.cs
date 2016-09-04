@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace TCPserver
+
+namespace Chatservis
 {
     class Program
     {
         static void Main(string[] args)
         {
-            TCPserver server = new TCPserver();
-            server.PokreniListener();
+            PrihvatiKlijenta prihvat = new PrihvatiKlijenta();
+            prihvat.PokreniListener();
         }
     }
 }

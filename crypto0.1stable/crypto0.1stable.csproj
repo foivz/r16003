@@ -53,6 +53,12 @@
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BazaHelper.cs" />
+    <Compile Include="ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CitanjePorukeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="TekstPoruka.cs" />
     <EmbeddedResource Include="AdminPanelForm.resx">
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CitanjePorukeForm.resx">
       <DependentUpon>CitanjePorukeForm.cs</DependentUpon>
