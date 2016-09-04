@@ -73,7 +73,7 @@ namespace TCPserver
         private List<string> StvoriLoginUpit()
         {
             List<string> podaciKorisnik = new List<string>();
-            upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "'";
+            upit = "Select * from Korisnici where username = '" + elementiPoruke[1] + "' and password = '" + elementiPoruke[2] + "' and aktivnost = 'true'";
             Baza.OtvaranjeKonekcijeSBazom();
             reader = Baza.IzvrsavanjeUpita(upit);
             if (reader.HasRows)
