@@ -238,7 +238,6 @@ namespace TCPserver
         private List<string> UpdateKorisnickogaStatusa()
         {
             List<string> podaciKorisnik = new List<string>();
-            elementiPoruke = poruka.Split(',');
             string status = elementiPoruke[2];
             upit = "update Korisnici set aktivnost='" + status + "' where username='" + elementiPoruke[1] + "'";
             Baza.OtvaranjeKonekcijeSBazom();
