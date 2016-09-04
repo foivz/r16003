@@ -30,6 +30,7 @@ namespace crypto0._1stable
         {
             InitializeComponent();
             this.username = username;
+            korIme.Text = username;
             this.AcceptButton = btnPosalji;
         }
 
@@ -77,7 +78,10 @@ namespace crypto0._1stable
                     aktKorisnici.Items.Clear();
                     aktKorisnici.DataSource = onlineKlijenti;
                 }
-                msg();
+                else
+                {
+                    msg();
+                }
 
                 Thread dretvaZaPrimanje = new Thread(new ThreadStart(DretvaZaPrimanje));
                 dretvaZaPrimanje.IsBackground = true;
