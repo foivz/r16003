@@ -17,6 +17,7 @@ namespace Chatservis
         byte[] readBuffer;
         string primljenaPoruka;
         List<TcpClient> listaKlijenata;
+        Thread dretvaZaCitanje;
 
         public ObradiKlijenta(TcpClient klijent, List<TcpClient> listaKlijenata)
         {
@@ -26,7 +27,7 @@ namespace Chatservis
 
         public void CitajSaStreama()
         {
-            Thread dretvaZaCitanje = new Thread(new ParameterizedThreadStart(DretvaZaCitanje));
+            dretvaZaCitanje = new Thread(new ParameterizedThreadStart(DretvaZaCitanje));
             dretvaZaCitanje.Start(klijent);
         }
 
@@ -34,15 +35,23 @@ namespace Chatservis
         {
             while (true)
             {
-                Console.WriteLine("Spojen");
-                primljenaPoruka = "";
-                readBuffer = new byte[1024];
-                TcpClient klijent = (TcpClient)client;
-                stream = klijent.GetStream();
-                stream.Read(readBuffer, 0, readBuffer.Length);
-                stream.Flush();
-                primljenaPoruka = Encoding.ASCII.GetString(readBuffer);
-                ProslijediPoruku(primljenaPoruka);
+                try {
+                    Console.WriteLine("Spojen");
+                    primljenaPoruka = "";
+                    readBuffer = new byte[1024];
+                    TcpClient klijent = (TcpClient)client;
+                    stream = klijent.GetStream();
+                    stream.Read(readBuffer, 0, readBuffer.Length);
+                    stream.Flush();
+                    primljenaPoruka = Encoding.ASCII.GetString(readBuffer);
+                    ProslijediPoruku(primljenaPoruka);
+                }
+                catch (Exception ex)
+                {
+                    listaKlijenata.Remove(klijent);
+                    dretvaZaCitanje.Abort();
+                    break;
+                }
             }
         }
 
