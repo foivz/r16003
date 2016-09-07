@@ -40,6 +40,7 @@ namespace crypto0._1stable
             poruka = Encoding.ASCII.GetBytes("CITANJEPORUKE," + cmbKlijenti.Text + "," + usernamePrimatelja);
             tcpKlijent.PosaljiServeru(poruka);
             string porukaOdServera = Encoding.UTF8.GetString(tcpKlijent.PrimiOdServera());
+            porukaOdServera = EncryptionHelper.CaesarStringDecrypt(porukaOdServera, int.Parse(textBox1.Text));
             dgwCitanjePoruke.Rows.Clear();
             foreach (var item in porukaOdServera.Split(';'))
             {

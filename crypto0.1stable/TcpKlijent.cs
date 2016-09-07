@@ -26,7 +26,7 @@ namespace crypto0._1stable
                 readBuffer = new byte[1024];
                 writeBuffer = new byte[1024];
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 MessageBox.Show("Ne mogu se spojiti na web servis, pokušajte ponovo!");
             }
@@ -40,7 +40,7 @@ namespace crypto0._1stable
                 writeBuffer = poruka;
                 stream.Write(writeBuffer, 0, writeBuffer.Length);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
             }
@@ -55,7 +55,7 @@ namespace crypto0._1stable
                 stream.Close();
                 return readBuffer;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
                 return null;

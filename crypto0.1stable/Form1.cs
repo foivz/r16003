@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,26 @@ namespace crypto0._1stable
         public frmCrypto()
         {
             kPodaci = new Korisnik();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             InitializeComponent();
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString() == "F1")
+            {
+                MessageBox.Show(File.ReadAllText("F1help.txt"));
+            }
+        }
+
+        //private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if(e.
+        //    {
+        //        MessageBox.Show("");
+        //    }
+        //}
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

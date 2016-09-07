@@ -41,8 +41,8 @@ namespace TCPserver
 
         void ObradiKlijenta(TcpClient klijent)
         {
-            writeBuffer = new byte[1024];
-            readBuffer = new byte[1024];
+            writeBuffer = new byte[1900];
+            readBuffer = new byte[1900];
             List<string> klijentPodaci = new List<string>();
             string klijentPodaciString = "";
             stream = klijent.GetStream();

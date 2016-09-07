@@ -79,11 +79,23 @@
     <Compile Include="EncryptOrDecrypt.Designer.cs">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
     </Compile>
+    <Compile Include="filePoruka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filePoruka.Designer.cs">
+      <DependentUpon>filePoruka.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FreeCryptoDecrypt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreeCryptoDecrypt.Designer.cs">
+      <DependentUpon>FreeCryptoDecrypt.cs</DependentUpon>
     </Compile>
     <Compile Include="FreeCryptoEncrypt.cs">
       <SubType>Form</SubType>
@@ -142,8 +154,14 @@
     <EmbeddedResource Include="EncryptOrDecrypt.resx">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="filePoruka.resx">
+      <DependentUpon>filePoruka.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreeCryptoDecrypt.resx">
+      <DependentUpon>FreeCryptoDecrypt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FreeCryptoEncrypt.resx">
       <DependentUpon>FreeCryptoEncrypt.cs</DependentUpon>
