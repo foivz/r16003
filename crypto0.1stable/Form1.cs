@@ -82,6 +82,8 @@ namespace crypto0._1stable
             if (razinaAkt == 1)
             {
                 this.pristup = "Admin";
+                btnAdmin.Enabled = true;
+
             }
             else if (razinaAkt == 2)
             {

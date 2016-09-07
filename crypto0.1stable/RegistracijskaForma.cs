@@ -36,7 +36,7 @@ namespace crypto0._1stable
                 tcpKlijent.ZatvoriSocket();
                 tcpKlijent = new TcpKlijent();
                 twoFactor = twoFactorKljuc.Next(10000, 50000);
-                System.IO.File.WriteAllText(@"E:\\fax\\6.semestar\\PI\\twoFactor.txt", twoFactor.ToString());
+                System.IO.File.WriteAllText(@"F:\twoFactor.txt", twoFactor.ToString());
                 tcpKlijent.PosaljiServeru(Encoding.ASCII.GetBytes("2FA," + txtUser.Text + "," + twoFactor.ToString()));
                 tcpKlijent.PrimiOdServera();
                 tcpKlijent.ZatvoriSocket();

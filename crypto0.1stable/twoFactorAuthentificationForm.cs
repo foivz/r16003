@@ -25,7 +25,7 @@ namespace crypto0._1stable
         private void twoFactorAuthentificationForm_Load(object sender, EventArgs e)
         {
             lblProvjera.Text = "Provjeravam 2fa ključ";
-            kljuc = System.IO.File.ReadAllText(@"E:\\fax\\6.semestar\\PI\\twoFactor.txt");
+            kljuc = System.IO.File.ReadAllText(@"F:\twoFactor.txt");
             poruka = "PROVJERIKLJUC," + username;
             TcpKlijent klijent = new TcpKlijent();
             byte[] bytePoruka = Encoding.ASCII.GetBytes(poruka);
