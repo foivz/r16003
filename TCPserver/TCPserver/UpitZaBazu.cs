@@ -260,7 +260,8 @@ namespace TCPserver
         {   
             Console.WriteLine("tu sam" + elementiPoruke[1] + " " + elementiPoruke[2]);
             List<string> podaciKorisnik = new List<string>();
-            upit = "insert into twoFactorKorisnici (username, twoFactor) values ('" + elementiPoruke[1] + "','" + int.Parse(elementiPoruke[2]) + "')";
+            //upit = "insert into twoFactorKorisnici (username, twoFactor) values ('" + elementiPoruke[1] + "','" + int.Parse(elementiPoruke[2]) + "')";
+            upit = "insert into twoFactorKorisnici (username,twoFactor) values ('" + elementiPoruke[1] + "','" + elementiPoruke[2] + "')";
             Baza.OtvaranjeKonekcijeSBazom();
             Baza.IzvrsavanjeUpita(upit);
             Baza.ZatvaranjeKonekcijeSBazom();
