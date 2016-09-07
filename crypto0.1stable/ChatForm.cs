@@ -87,7 +87,7 @@ namespace crypto0._1stable
                 dretvaZaPrimanje.IsBackground = true;
                 dretvaZaPrimanje.Start();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Ne mogu komunicirati sa chat servisom, pokusajte kasnije");
                 this.Close();
@@ -128,7 +128,7 @@ namespace crypto0._1stable
                     }
                     msg();
                 }
-                catch(Exception ex)
+                catch(Exception )
                 {
                     MessageBox.Show("Prekinuta komunikacija sa serverom, udite ponovo!");
                     break;
