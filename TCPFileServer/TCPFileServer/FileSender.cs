@@ -21,7 +21,7 @@ namespace TCPFileServer
                 using (var stream = client.GetStream())
                 using (var output = File.Create(@"D:\CryptoFileRepo\temp"))
                 {
-                    Console.WriteLine("Client connected. Starting to receive the file");
+                    Console.WriteLine("Klijent se spojio, primam file...");
                     var buffer = new byte[1024];
                     int bytesRead = 0;
                     while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
@@ -39,7 +39,7 @@ namespace TCPFileServer
                 arr[arr.Length-1] = "";
                 File.WriteAllLines(@"D:\CryptoFileRepo\" + filename.Remove(0,3), arr);
                 File.Delete(@"D:\CryptoFileRepo\temp");
-                File.AppendAllText(@"D:\CryptoFileRepo\user_file.txt", korisnik + "," + filename.Remove(0,3)+ "\n");
+                File.AppendAllText(@"D:\CryptoFileRepo\user_file.txt",Environment.NewLine + korisnik + "," + filename.Remove(0,3));
             }
         }
     }
