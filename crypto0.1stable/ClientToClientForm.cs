@@ -30,5 +30,11 @@ namespace crypto0._1stable
             Form saljiC2CPoruku = new PosaljiPorukuForm(username);
             saljiC2CPoruku.Show();
         }
+
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            Form filePoruka = new filePoruka(username);
+            filePoruka.Show();
+        }
     }
 }
