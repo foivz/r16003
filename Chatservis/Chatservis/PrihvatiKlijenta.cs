@@ -29,31 +29,50 @@ namespace Chatservis
         }
         void OsluskujPort(object listen)
         {
+            string[] parts;
+            string lastWord = "";
+            string firstWord = "";
+            string ocistiIme;
+
             listener = (TcpListener)listen;
             listener.Start();
             while (true)
             {
-                    klijent = listener.AcceptTcpClient();
-                    NetworkStream streamZaPodatke = klijent.GetStream();
-                    readBuffer = new byte[1024];
-                    streamZaPodatke.Read(readBuffer, 0, readBuffer.Length);
-                    streamZaPodatke.Flush();
-                    poruka = Encoding.ASCII.GetString(readBuffer);
+                klijent = listener.AcceptTcpClient();
+                NetworkStream streamZaPodatke = klijent.GetStream();
+                readBuffer = new byte[1024];
+                streamZaPodatke.Read(readBuffer, 0, readBuffer.Length);
+                streamZaPodatke.Flush();
+                poruka = Encoding.ASCII.GetString(readBuffer);
 
-                    string[] parts = poruka.Split(' ');
-                    string lastWord = parts[parts.Length - 1];
-                    if (String.Compare(lastWord, "chatu!", false) == 0)
-                    {
-                        if (!klijentiOnline.Contains(poruka.Split(' ').First()))
+                parts = poruka.Split(' ');
+                lastWord = parts[parts.Length - 1];
+                if (poruka.Contains("OCST"))
+                {
+                    parts = poruka.Split(';');
+                    firstWord = parts[0];
+                }
+                if (String.Compare(lastWord, "chatu!", false) == 0)
+                {
+                    if (!klijentiOnline.Contains(poruka.Split(' ').First()))
                         {
                             klijentiOnline += ";" + poruka.Split(' ').First();
                         }
-                    }
+                }
+
+                if (String.Compare(firstWord, "OCST", false) == 0)
+                {
+                    lastWord = parts[parts.Length - 1];
+                    klijentiOnline.Replace(lastWord, "");
+                }
+
+                Console.WriteLine(klijentiOnline);
                     if (!listaKlijenata.Contains(klijent)) listaKlijenata.Add(klijent);
-                    writeBuffer = Encoding.ASCII.GetBytes(klijentiOnline);
-                    foreach (TcpClient item in listaKlijenata)
+                writeBuffer = Encoding.ASCII.GetBytes(klijentiOnline);
+                foreach (TcpClient item in listaKlijenata)
+                {
+                    try
                     {
-                    try {
                         streamZaPodatke = item.GetStream();
                         streamZaPodatke.Write(writeBuffer, 0, writeBuffer.Length);
                         streamZaPodatke.Flush();
@@ -64,24 +83,25 @@ namespace Chatservis
                         streamZaPodatke.Close();
                     }
                 }
-                //Console.WriteLine(poruka); //za provjeru poruke
+                Console.WriteLine(poruka); //za provjeru poruke
 
 
                 //if (!listaKlijenata.Contains(klijent)) listaKlijenata.Add(klijent);
-                writeBuffer = Encoding.ASCII.GetBytes(poruka);
+                    writeBuffer = Encoding.ASCII.GetBytes(poruka);
                     foreach (TcpClient item in listaKlijenata)
                     {
-                    try {
-                        streamZaPodatke = item.GetStream();
-                        streamZaPodatke.Write(writeBuffer, 0, writeBuffer.Length);
-                        streamZaPodatke.Flush();
+                        try
+                        {
+                            streamZaPodatke = item.GetStream();
+                            streamZaPodatke.Write(writeBuffer, 0, writeBuffer.Length);
+                            streamZaPodatke.Flush();
+                        }
+                        catch (Exception ex)
+                        {
+                            streamZaPodatke.Dispose();
+                            streamZaPodatke.Close();
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        streamZaPodatke.Dispose();
-                        streamZaPodatke.Close();
-                    }
-                }
                     ObradiKlijenta obrada = new ObradiKlijenta(klijent, listaKlijenata);
                     obrada.CitajSaStreama();
             }

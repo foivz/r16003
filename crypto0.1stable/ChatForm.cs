@@ -24,7 +24,7 @@ namespace crypto0._1stable
         string primljenaPoruka;
         string username;
         List<string> onlineKlijenti = new List<string>();
-        //Thread dretvaZaPrimanje;
+        Thread dretvaZaPrimanje;
 
         public ChatForm(string username)
         {
@@ -83,7 +83,7 @@ namespace crypto0._1stable
                     msg();
                 }
 
-                Thread dretvaZaPrimanje = new Thread(new ThreadStart(DretvaZaPrimanje));
+                dretvaZaPrimanje = new Thread(new ThreadStart(DretvaZaPrimanje));
                 dretvaZaPrimanje.IsBackground = true;
                 dretvaZaPrimanje.Start();
             }
@@ -121,7 +121,6 @@ namespace crypto0._1stable
                     stream.Read(inStream, 0, inStream.Length);
                     string returndata = System.Text.Encoding.ASCII.GetString(inStream);
                     primljenaPoruka = "" + returndata;
-
                     if (this.InvokeRequired)
                     {
                         this.Invoke((MethodInvoker)(() => osvjezi(primljenaPoruka)));
@@ -146,12 +145,17 @@ namespace crypto0._1stable
 
         private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            /*
+            poruka = "OCST;" + username;
+            writeBuffer = new byte[poruka.Length];
+            writeBuffer = Encoding.ASCII.GetBytes(poruka);
+            stream.Write(writeBuffer, 0, poruka.Length);
+            stream.Flush();
+            */
         }
 
         private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
         }
     }
 }
