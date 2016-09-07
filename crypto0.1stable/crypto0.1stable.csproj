@@ -79,11 +79,11 @@
     <Compile Include="EncryptOrDecrypt.Designer.cs">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
     </Compile>
-    <Compile Include="filePoruka.cs">
+    <Compile Include="FilePoruka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="filePoruka.Designer.cs">
-      <DependentUpon>filePoruka.cs</DependentUpon>
+    <Compile Include="FilePoruka.Designer.cs">
+      <DependentUpon>FilePoruka.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -154,8 +154,8 @@
     <EmbeddedResource Include="EncryptOrDecrypt.resx">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="filePoruka.resx">
-      <DependentUpon>filePoruka.cs</DependentUpon>
+    <EmbeddedResource Include="FilePoruka.resx">
+      <DependentUpon>FilePoruka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
