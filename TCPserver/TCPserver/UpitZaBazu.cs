@@ -67,9 +67,18 @@ namespace TCPserver
                 result = UpdateKorisnickogaStatusa();
                 return result;
             }
+            else if(identitetPoruke == "2FA")
+            {
+                result = DodajTwoFactorKljuc();
+                return result;
+            }
+            else if(identitetPoruke == "PROVJERIKLJUC")
+            {
+                result = ProvjeriTwoFactorKljuc();
+                return result;
+            }
             return result;
         }
-
         private List<string> StvoriLoginUpit()
         {
             List<string> podaciKorisnik = new List<string>();
@@ -245,6 +254,44 @@ namespace TCPserver
             Baza.ZatvaranjeKonekcijeSBazom();
             podaciKorisnik.Add("Uspjesno ste izvrsili izmjenu statusa racuna!");
             return podaciKorisnik;
+        }
+
+        private List<string> DodajTwoFactorKljuc()
+        {   
+            Console.WriteLine("tu sam" + elementiPoruke[1] + " " + elementiPoruke[2]);
+            List<string> podaciKorisnik = new List<string>();
+            upit = "insert into twoFactorKorisnici (username, twoFactor) values ('" + elementiPoruke[1] + "','" + int.Parse(elementiPoruke[2]) + "')";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
+            podaciKorisnik.Add("Dodali ste kljuc");
+            return podaciKorisnik;
+        }
+
+        private List<string> ProvjeriTwoFactorKljuc()
+        {
+            List<string> podaciKorisnik = new List<string>();
+            upit = "select twoFactor from twoFactorKorisnici where username='" + elementiPoruke[1] + "'";
+            Baza.OtvaranjeKonekcijeSBazom();
+            reader = Baza.IzvrsavanjeUpita(upit);
+            if (reader.HasRows)
+            {
+                Console.WriteLine("tu sam");
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        podaciKorisnik.Add(reader[i].ToString());
+                    }
+                }
+            }
+            foreach (var item in podaciKorisnik)
+            {
+                Console.WriteLine("Ispis: " + item.ToString());
+            }
+            Baza.ZatvaranjeKonekcijeSBazom();
+            return podaciKorisnik;
+
         }
     }
 }

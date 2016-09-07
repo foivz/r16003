@@ -12,6 +12,8 @@ namespace crypto0._1stable
 {
     public partial class RegistracijskaForma : Form
     {
+        int twoFactor;
+        Random twoFactorKljuc = new Random();
         public RegistracijskaForma()
         {
             InitializeComponent();
@@ -32,6 +34,13 @@ namespace crypto0._1stable
                     MessageBox.Show(odgovorOdServera);
                 }
                 tcpKlijent.ZatvoriSocket();
+                tcpKlijent = new TcpKlijent();
+                twoFactor = twoFactorKljuc.Next(10000, 50000);
+                System.IO.File.WriteAllText(@"E:\\fax\\6.semestar\\PI\\twoFactor.txt", twoFactor.ToString());
+                tcpKlijent.PosaljiServeru(Encoding.ASCII.GetBytes("2FA," + txtUser.Text + "," + twoFactor.ToString()));
+                tcpKlijent.PrimiOdServera();
+                tcpKlijent.ZatvoriSocket();
+                MessageBox.Show("Spremljen Vam je kod za 2fa, nemojte ga izgubiti!");
             }
             else Console.WriteLine("Nisu uneseni svi podaci, pokušajte ponovi!");
         }

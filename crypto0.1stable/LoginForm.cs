@@ -12,6 +12,7 @@ namespace crypto0._1stable
 {
     public partial class LoginForm : Form
     {
+        List<string> listaPodataka = new List<string>();
         public frmCrypto pocetnaForma { get; set; }
         public LoginForm()
         {
@@ -27,7 +28,6 @@ namespace crypto0._1stable
         {
             try {
                 //Povezivanje sa serverom pomocu TCP-a, server obavlja provjeru
-                List<string> listaPodataka = new List<string>();
                 if (txtUser.Text.Length > 3 && txtPass.Text.Length > 3)
                 {
                     TcpKlijent tcpKlijent = new TcpKlijent();
@@ -43,6 +43,9 @@ namespace crypto0._1stable
                         pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
                     }
                     tcpKlijent.ZatvoriSocket();
+                    MessageBox.Show("Username i Password tocni, pregledavam tocnost 2FA kljuca");
+                    var twoFactor = new twoFactorAuthentificationForm(txtUser.Text);
+                    twoFactor.Show();
                     this.Close();
                 }
                 else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
