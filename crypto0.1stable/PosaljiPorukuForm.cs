@@ -34,7 +34,8 @@ namespace crypto0._1stable
         {
             TcpKlijent tcpKlijent = new TcpKlijent();
             byte[] poruka = new byte[1900];
-            poruka = Encoding.ASCII.GetBytes("C2C," + posiljatelj + "," + txtPrimatelj.Text + "," + txtSlanjePoruke.Text + ",");
+            
+            poruka = Encoding.ASCII.GetBytes("C2C," + posiljatelj + "," + txtPrimatelj.Text + "," + EncryptionHelper.CaesarStringEncrypt(Encoding.ASCII.GetString(poruka), int.Parse(textBox1.Text)) + ",");
             tcpKlijent.PosaljiServeru(poruka);
             byte[] primitak = tcpKlijent.PrimiOdServera();
             if (primitak != null)

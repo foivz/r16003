@@ -69,7 +69,7 @@ namespace crypto0._1stable
         }
         public static byte[] AesStringEncrypt(string message, byte[] key, byte[] IV)
         {
-            //ne smije se proslijediti prazan string, prazan key niti prazan inicijalizacijski vektor
+            
             byte[] encrypted;
             using (Aes aesAlg = Aes.Create())
             {
