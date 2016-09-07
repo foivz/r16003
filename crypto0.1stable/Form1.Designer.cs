@@ -145,6 +145,7 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "frmCrypto";
             this.Text = "Crypto";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCrypto_FormClosed);
             this.Load += new System.EventHandler(this.frmCrypto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

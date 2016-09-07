@@ -38,7 +38,7 @@ namespace crypto0._1stable
                     if (primitak != null)
                     {
                         string porukaOdServera = Encoding.ASCII.GetString(primitak);
-                        MessageBox.Show("Uspješno ste se logirali!");
+                        //MessageBox.Show("Uspješno ste se logirali!");
                         listaPodataka = porukaOdServera.Split(';').ToList();
                         pocetnaForma.promijeniPristup(Int32.Parse(listaPodataka[4]), listaPodataka[0], listaPodataka[1], listaPodataka[2]);
                     }
@@ -49,7 +49,7 @@ namespace crypto0._1stable
             }
             catch
             {
-                MessageBox.Show("Pogrešan username ili password!");
+                MessageBox.Show("Neuspješna prijava (pogrešan unos ili blokiran račun)");
             }
         }
     }
