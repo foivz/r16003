@@ -73,7 +73,6 @@ namespace crypto0._1stable
                     }
                     client.SendFile(openFileDialog1.FileName);
                     client.Close();
-
                 }
                 else
                 {
