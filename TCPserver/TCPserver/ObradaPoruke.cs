@@ -10,7 +10,7 @@ namespace TCPserver
     {
         private byte[] bytePoruka;
         private string pomocnaPoruka;
-        private string[] poruke = {"LOGIN","REGISTER", "C2C", "PRUPDATE", "DOHVATIKLIJENTE", "CITANJEPORUKE","OTKZAK", "UPDOTKLJUCAJ" };
+        private string[] poruke = {"LOGIN","REGISTER", "C2C", "PRUPDATE", "DOHVATIKLIJENTE", "CITANJEPORUKE","OTKZAK", "UPDOTKLJUCAJ", "2FA", "PROVJERIKLJUC"};
         bool izadiIzPetlje;
 
         private string[] elementiPoruke;

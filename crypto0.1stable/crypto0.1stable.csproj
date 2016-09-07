@@ -139,6 +139,12 @@
     </Compile>
     <Compile Include="TcpKlijent.cs" />
     <Compile Include="TekstPoruka.cs" />
+    <Compile Include="twoFactorAuthentificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="twoFactorAuthentificationForm.Designer.cs">
+      <DependentUpon>twoFactorAuthentificationForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminPanelForm.resx">
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="RegistracijskaForma.resx">
       <DependentUpon>RegistracijskaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="twoFactorAuthentificationForm.resx">
+      <DependentUpon>twoFactorAuthentificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
