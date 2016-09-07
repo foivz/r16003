@@ -33,6 +33,8 @@ namespace TCPserver
                 {
                     if (elementiPoruke[0].Contains(item))
                     {
+
+                        Console.WriteLine("Containa" + Environment.NewLine);
                         pomocnaPoruka = item;
                         break;
                     }

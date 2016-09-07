@@ -50,7 +50,7 @@ namespace TCPserver
             {
                 stream.ReadAsync(readBuffer, 0, readBuffer.Length);
                 primljenaPoruka = Encoding.ASCII.GetString(readBuffer);
-                Console.WriteLine(primljenaPoruka);
+                Console.WriteLine("primljena:  " + primljenaPoruka);
                 //Enkriptiraj poruku()
                 ObradaPoruke obrada = new ObradaPoruke(readBuffer);
                 klijentPodaci = obrada.PrepoznavanjePoruke(); //metoda koja provjerava pomocu polja stringova o kakvoj se poruci radi te ju dalje usmjerava klasi UpitZaBazu

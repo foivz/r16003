@@ -79,6 +79,24 @@ namespace TCPserver
             }
             return result;
         }
+
+        private List<string> DodajTwoFactorKljuc()
+        {
+            Console.WriteLine("tu sam" + elementiPoruke[1] + " " + elementiPoruke[2]);
+            List<string> podaciKorisnik = new List<string>();
+            foreach (var item in elementiPoruke)
+            {
+                Console.WriteLine("Element poruke: " + item);
+            }
+            int parse = int.Parse(elementiPoruke[2]);
+            upit = "insert into twoFactorKorisnici (username, twoFactor) values ('" + elementiPoruke[1] + "','" + parse + "')";
+            Baza.OtvaranjeKonekcijeSBazom();
+            Baza.IzvrsavanjeUpita(upit);
+            Baza.ZatvaranjeKonekcijeSBazom();
+            podaciKorisnik.Add("Dodali ste kljuc");
+            return podaciKorisnik;
+        }
+
         private List<string> StvoriLoginUpit()
         {
             List<string> podaciKorisnik = new List<string>();
@@ -255,18 +273,7 @@ namespace TCPserver
             podaciKorisnik.Add("Uspjesno ste izvrsili izmjenu statusa racuna!");
             return podaciKorisnik;
         }
-
-        private List<string> DodajTwoFactorKljuc()
-        {   
-            Console.WriteLine("tu sam" + elementiPoruke[1] + " " + elementiPoruke[2]);
-            List<string> podaciKorisnik = new List<string>();
-            upit = "insert into twoFactorKorisnici (username, twoFactor) values ('" + elementiPoruke[1] + "','" + int.Parse(elementiPoruke[2]) + "')";
-            Baza.OtvaranjeKonekcijeSBazom();
-            Baza.IzvrsavanjeUpita(upit);
-            Baza.ZatvaranjeKonekcijeSBazom();
-            podaciKorisnik.Add("Dodali ste kljuc");
-            return podaciKorisnik;
-        }
+        
 
         private List<string> ProvjeriTwoFactorKljuc()
         {
@@ -274,6 +281,7 @@ namespace TCPserver
             upit = "select twoFactor from twoFactorKorisnici where username='" + elementiPoruke[1] + "'";
             Baza.OtvaranjeKonekcijeSBazom();
             reader = Baza.IzvrsavanjeUpita(upit);
+            Console.WriteLine("evo me odi iznad");
             if (reader.HasRows)
             {
                 Console.WriteLine("tu sam");

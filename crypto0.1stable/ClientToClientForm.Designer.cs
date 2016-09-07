@@ -30,7 +30,6 @@
         {
             this.btnPristigle = new System.Windows.Forms.Button();
             this.btnPosalji = new System.Windows.Forms.Button();
-            this.btnFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPristigle
@@ -53,22 +52,11 @@
             this.btnPosalji.UseVisualStyleBackColor = true;
             this.btnPosalji.Click += new System.EventHandler(this.btnPosalji_Click);
             // 
-            // btnFile
-            // 
-            this.btnFile.Location = new System.Drawing.Point(39, 108);
-            this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(151, 73);
-            this.btnFile.TabIndex = 2;
-            this.btnFile.Text = "Pristigle datoteke";
-            this.btnFile.UseVisualStyleBackColor = true;
-            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
-            // 
             // ClientToClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 248);
-            this.Controls.Add(this.btnFile);
             this.Controls.Add(this.btnPosalji);
             this.Controls.Add(this.btnPristigle);
             this.Name = "ClientToClientForm";
@@ -81,6 +69,5 @@
 
         private System.Windows.Forms.Button btnPristigle;
         private System.Windows.Forms.Button btnPosalji;
-        private System.Windows.Forms.Button btnFile;
     }
 }

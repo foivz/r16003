@@ -44,8 +44,6 @@ namespace crypto0._1stable
                     }
                     tcpKlijent.ZatvoriSocket();
                     MessageBox.Show("Username i Password tocni, pregledavam tocnost 2FA kljuca");
-                    var twoFactor = new twoFactorAuthentificationForm(txtUser.Text);
-                    twoFactor.Show();
                     this.Close();
                 }
                 else MessageBox.Show("Username i password moraju imati vise od 3 charactera");

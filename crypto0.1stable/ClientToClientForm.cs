@@ -37,15 +37,12 @@ namespace crypto0._1stable
         private void btnFile_Click(object sender, EventArgs e)
         {
             Form filePoruka = new FilePoruka(username);
-            int i = 0;
-            while (true)
-            {
                 var listener = new TcpListener(IPAddress.Loopback, 40123);
                 listener.Start();
                 
                 var client = listener.AcceptTcpClient();
                 var stream = client.GetStream();
-                using (var output = File.Create(@"D:\datoteka" + i + ".txt"))
+                using (var output = File.Create(@"E:\datoteka" +".txt"))
                 {
                     var buffer = new byte[1024];
                     int bytesRead = 0;
@@ -56,9 +53,7 @@ namespace crypto0._1stable
                     output.Close();
                     listener.Stop();
                 }
-                i++;
                 }
             }
         }
-    }
 

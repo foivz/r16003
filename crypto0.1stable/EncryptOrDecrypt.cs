@@ -49,7 +49,7 @@ namespace crypto0._1stable
                     if (Path.GetExtension(openFileDialog1.FileName) == ".txt")        //????
                     {
                         string secretKey = EncryptionHelper.GenerateDESKey();
-                        EncryptionHelper.EncryptFileDES(openFileDialog1.FileName, @"D:\Encrypted.txt", secretKey);
+                        EncryptionHelper.EncryptFileDES(openFileDialog1.FileName, @"E:\Encrypted.txt", secretKey);
                         textBox1.Text = secretKey;
                     }
 
@@ -67,7 +67,7 @@ namespace crypto0._1stable
                 //    {
 
                         string secretKey = textBox1.Text;
-                        EncryptionHelper.DecryptFileDES(openFileDialog2.FileName, @"D:\Decrypted", secretKey);
+                        EncryptionHelper.DecryptFileDES(openFileDialog2.FileName, @"E:\Decrypted", secretKey);
              //       }
 
                 }
