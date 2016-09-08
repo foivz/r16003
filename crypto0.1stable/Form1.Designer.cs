@@ -121,6 +121,7 @@
             // 
             // btnAdmin
             // 
+            this.btnAdmin.Enabled = false;
             this.btnAdmin.Location = new System.Drawing.Point(373, 154);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(100, 75);

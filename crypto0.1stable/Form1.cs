@@ -82,6 +82,7 @@ namespace crypto0._1stable
             if (razinaAkt == 1)
             {
                 this.pristup = "Admin";
+                btnAdmin.Enabled = true;
             }
             else if (razinaAkt == 2)
             {
@@ -111,7 +112,7 @@ namespace crypto0._1stable
 
         private void frmCrypto_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Environment.Exit(0);
+            //Environment.Exit(0);
         }
     }
 }
