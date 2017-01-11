@@ -48,9 +48,10 @@
             // 
             // gumbGlavni
             // 
-            this.gumbGlavni.Location = new System.Drawing.Point(12, 12);
+            this.gumbGlavni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbGlavni.Location = new System.Drawing.Point(12, 30);
             this.gumbGlavni.Name = "gumbGlavni";
-            this.gumbGlavni.Size = new System.Drawing.Size(123, 23);
+            this.gumbGlavni.Size = new System.Drawing.Size(123, 32);
             this.gumbGlavni.TabIndex = 2;
             this.gumbGlavni.Text = "Glavni prozor";
             this.gumbGlavni.UseVisualStyleBackColor = true;
@@ -58,9 +59,10 @@
             // 
             // gumbLogout
             // 
-            this.gumbLogout.Location = new System.Drawing.Point(13, 42);
+            this.gumbLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbLogout.Location = new System.Drawing.Point(12, 68);
             this.gumbLogout.Name = "gumbLogout";
-            this.gumbLogout.Size = new System.Drawing.Size(122, 23);
+            this.gumbLogout.Size = new System.Drawing.Size(123, 32);
             this.gumbLogout.TabIndex = 3;
             this.gumbLogout.Text = "Logout";
             this.gumbLogout.UseVisualStyleBackColor = true;

@@ -21,6 +21,21 @@ namespace CryptoNew
             glavnaForma = forma;
         }
 
+        public bool Validacija ()
+        {
+            bool rezultat = true; ;
+            if (unosUsername.Text == "")
+            {
+                rezultat = false;
+            }
+
+            if (unosPassword.Text == "")
+            {
+                rezultat = false;
+            }
+            return rezultat;
+        }
+
         public void napraviResize(Panel panel)
         {
             this.Width = panel.Width;
@@ -29,9 +44,14 @@ namespace CryptoNew
 
         private void gumbLogin_Click(object sender, EventArgs e)
         {
+            if (Validacija() == false)
+            {
+               MessageBox.Show("Neispravan unos");
+               return;
+            }
             Korisnik test = new Korisnik();
-            test.Username = "Pero";
-            test.Password = "AAAA";
+            test.Username = unosUsername.Text;
+            test.Password = unosPassword.Text;
             glavnaForma.NotifyMe(test);
         }
 
