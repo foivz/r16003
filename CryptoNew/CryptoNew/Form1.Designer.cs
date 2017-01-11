@@ -42,7 +42,7 @@
             this.glavniPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glavniPanel.Location = new System.Drawing.Point(141, 12);
             this.glavniPanel.Name = "glavniPanel";
-            this.glavniPanel.Size = new System.Drawing.Size(595, 430);
+            this.glavniPanel.Size = new System.Drawing.Size(558, 434);
             this.glavniPanel.TabIndex = 1;
             this.glavniPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.glavniPanel_Paint);
             // 
@@ -70,12 +70,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 454);
+            this.ClientSize = new System.Drawing.Size(711, 458);
             this.Controls.Add(this.gumbLogout);
             this.Controls.Add(this.gumbGlavni);
             this.Controls.Add(this.glavniPanel);
             this.IsMdiContainer = true;
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(727, 497);
             this.Name = "Form1";
             this.Text = "Aplikacija Crypto";
             this.Load += new System.EventHandler(this.Form1_Load);
