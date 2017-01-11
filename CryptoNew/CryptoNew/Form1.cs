@@ -49,21 +49,33 @@ namespace CryptoNew
 
             if (testKorisnik.Username != null)
             {
+                gumbLogout.Enabled = true;
                 FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
                 Dizajner.prilagodiFormuPanelu(novo, glavniPanel);
                 forma = novo;
             }
             else
             {
+                gumbLogout.Enabled = false;
                 Prijava novo1 = new Prijava(this);
                 Dizajner.prilagodiFormuPanelu(novo1, glavniPanel);
                 forma = novo1;
             }
         }
 
+        public void NotifyRegistracija()
+        {
+            DealocirajGlavniPanel();
+            Registracija registracijskaForma = new Registracija();
+            Dizajner.prilagodiFormuPanelu(registracijskaForma, glavniPanel);
+            forma = registracijskaForma;
+            trenutni = gumbGlavni;
+        }
+
         public Form1(bool test)
         {
             InitializeComponent();
+            gumbLogout.Enabled = false;
             foreach (Control ctrl in this.Controls)
             {
 
@@ -74,6 +86,7 @@ namespace CryptoNew
 
 
             }
+            label1.BackColor = Color.RosyBrown;
             Prijava formaPrijave = new Prijava(this);
             Dizajner.prilagodiFormuPanelu(formaPrijave, glavniPanel);
             forma = formaPrijave;
