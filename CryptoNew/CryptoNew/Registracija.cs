@@ -12,10 +12,18 @@ namespace CryptoNew
 {
     public partial class Registracija : Form
     {
-        public Registracija()
+        Form1 glavnaForma;
+        public Registracija(Form1 forma)
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
+            glavnaForma = forma;
+        }
+
+        private void gumbRegistracija_Click(object sender, EventArgs e)
+        {
+            Korisnik trenutni = new Korisnik();
+            glavnaForma.NotifyMe(trenutni);
         }
     }
 }

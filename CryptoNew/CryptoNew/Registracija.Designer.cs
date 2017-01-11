@@ -195,6 +195,7 @@
             this.gumbRegistracija.TabIndex = 14;
             this.gumbRegistracija.Text = "Registriraj se";
             this.gumbRegistracija.UseVisualStyleBackColor = true;
+            this.gumbRegistracija.Click += new System.EventHandler(this.gumbRegistracija_Click);
             // 
             // Registracija
             // 

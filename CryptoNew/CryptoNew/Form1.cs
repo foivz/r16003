@@ -66,7 +66,7 @@ namespace CryptoNew
         public void NotifyRegistracija()
         {
             DealocirajGlavniPanel();
-            Registracija registracijskaForma = new Registracija();
+            Registracija registracijskaForma = new Registracija(this);
             Dizajner.prilagodiFormuPanelu(registracijskaForma, glavniPanel);
             forma = registracijskaForma;
             trenutni = gumbGlavni;
