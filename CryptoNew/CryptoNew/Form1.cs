@@ -76,6 +76,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             gumbLogout.Enabled = false;
+            trenutni = gumbGlavni;
             foreach (Control ctrl in this.Controls)
             {
 
@@ -87,6 +88,7 @@ namespace CryptoNew
 
             }
             label1.BackColor = Color.RosyBrown;
+
             Prijava formaPrijave = new Prijava(this);
             Dizajner.prilagodiFormuPanelu(formaPrijave, glavniPanel);
             forma = formaPrijave;

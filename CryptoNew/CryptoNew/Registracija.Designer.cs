@@ -34,15 +34,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.unosUsername = new System.Windows.Forms.TextBox();
+            this.unosIme = new System.Windows.Forms.TextBox();
+            this.unosPrezime = new System.Windows.Forms.TextBox();
+            this.unosEmail = new System.Windows.Forms.TextBox();
+            this.unosTelefon = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.unosPassword = new System.Windows.Forms.TextBox();
             this.gumbRegistracija = new System.Windows.Forms.Button();
+            this.unosGodina = new System.Windows.Forms.ComboBox();
+            this.unosMjesec = new System.Windows.Forms.ComboBox();
+            this.unosDan = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -96,9 +98,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(82, 289);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 20);
+            this.label5.Size = new System.Drawing.Size(284, 20);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Datum rođenja:";
+            this.label5.Text = "Datum rođenja(godina, mjesec, dan):";
             // 
             // label6
             // 
@@ -111,59 +113,50 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Broj telefona: ";
             // 
-            // textBox1
+            // unosUsername
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(86, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(533, 26);
-            this.textBox1.TabIndex = 6;
+            this.unosUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosUsername.Location = new System.Drawing.Point(86, 46);
+            this.unosUsername.Name = "unosUsername";
+            this.unosUsername.Size = new System.Drawing.Size(533, 26);
+            this.unosUsername.TabIndex = 6;
             // 
-            // textBox2
+            // unosIme
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(86, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(533, 26);
-            this.textBox2.TabIndex = 7;
+            this.unosIme.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosIme.Location = new System.Drawing.Point(86, 156);
+            this.unosIme.Name = "unosIme";
+            this.unosIme.Size = new System.Drawing.Size(533, 26);
+            this.unosIme.TabIndex = 7;
             // 
-            // textBox3
+            // unosPrezime
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.Location = new System.Drawing.Point(86, 208);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(533, 26);
-            this.textBox3.TabIndex = 8;
+            this.unosPrezime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosPrezime.Location = new System.Drawing.Point(86, 208);
+            this.unosPrezime.Name = "unosPrezime";
+            this.unosPrezime.Size = new System.Drawing.Size(533, 26);
+            this.unosPrezime.TabIndex = 8;
             // 
-            // textBox4
+            // unosEmail
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(86, 260);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(533, 26);
-            this.textBox4.TabIndex = 9;
+            this.unosEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosEmail.Location = new System.Drawing.Point(86, 260);
+            this.unosEmail.Name = "unosEmail";
+            this.unosEmail.Size = new System.Drawing.Size(533, 26);
+            this.unosEmail.TabIndex = 9;
             // 
-            // textBox5
+            // unosTelefon
             // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox5.Location = new System.Drawing.Point(86, 312);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(533, 26);
-            this.textBox5.TabIndex = 10;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox6.Location = new System.Drawing.Point(86, 364);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(533, 26);
-            this.textBox6.TabIndex = 11;
+            this.unosTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosTelefon.Location = new System.Drawing.Point(86, 364);
+            this.unosTelefon.Name = "unosTelefon";
+            this.unosTelefon.Size = new System.Drawing.Size(533, 26);
+            this.unosTelefon.TabIndex = 11;
             // 
             // label7
             // 
@@ -176,14 +169,14 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Lozinka:";
             // 
-            // textBox7
+            // unosPassword
             // 
-            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox7.Location = new System.Drawing.Point(86, 98);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(533, 26);
-            this.textBox7.TabIndex = 13;
+            this.unosPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosPassword.Location = new System.Drawing.Point(86, 98);
+            this.unosPassword.Name = "unosPassword";
+            this.unosPassword.Size = new System.Drawing.Size(533, 26);
+            this.unosPassword.TabIndex = 13;
             // 
             // gumbRegistracija
             // 
@@ -197,21 +190,55 @@
             this.gumbRegistracija.UseVisualStyleBackColor = true;
             this.gumbRegistracija.Click += new System.EventHandler(this.gumbRegistracija_Click);
             // 
+            // unosGodina
+            // 
+            this.unosGodina.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosGodina.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosGodina.FormattingEnabled = true;
+            this.unosGodina.Location = new System.Drawing.Point(86, 313);
+            this.unosGodina.Name = "unosGodina";
+            this.unosGodina.Size = new System.Drawing.Size(121, 28);
+            this.unosGodina.TabIndex = 15;
+            this.unosGodina.SelectedIndexChanged += new System.EventHandler(this.unosGodina_SelectedIndexChanged);
+            // 
+            // unosMjesec
+            // 
+            this.unosMjesec.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosMjesec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosMjesec.FormattingEnabled = true;
+            this.unosMjesec.Location = new System.Drawing.Point(213, 313);
+            this.unosMjesec.Name = "unosMjesec";
+            this.unosMjesec.Size = new System.Drawing.Size(121, 28);
+            this.unosMjesec.TabIndex = 16;
+            this.unosMjesec.SelectedIndexChanged += new System.EventHandler(this.unosMjesec_SelectedIndexChanged);
+            // 
+            // unosDan
+            // 
+            this.unosDan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unosDan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unosDan.FormattingEnabled = true;
+            this.unosDan.Location = new System.Drawing.Point(340, 313);
+            this.unosDan.Name = "unosDan";
+            this.unosDan.Size = new System.Drawing.Size(121, 28);
+            this.unosDan.TabIndex = 17;
+            // 
             // Registracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(686, 444);
+            this.Controls.Add(this.unosDan);
+            this.Controls.Add(this.unosMjesec);
+            this.Controls.Add(this.unosGodina);
             this.Controls.Add(this.gumbRegistracija);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.unosPassword);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.unosTelefon);
+            this.Controls.Add(this.unosEmail);
+            this.Controls.Add(this.unosPrezime);
+            this.Controls.Add(this.unosIme);
+            this.Controls.Add(this.unosUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -233,14 +260,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox unosUsername;
+        private System.Windows.Forms.TextBox unosIme;
+        private System.Windows.Forms.TextBox unosPrezime;
+        private System.Windows.Forms.TextBox unosEmail;
+        private System.Windows.Forms.TextBox unosTelefon;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox unosPassword;
         private System.Windows.Forms.Button gumbRegistracija;
+        private System.Windows.Forms.ComboBox unosGodina;
+        private System.Windows.Forms.ComboBox unosMjesec;
+        private System.Windows.Forms.ComboBox unosDan;
     }
 }
