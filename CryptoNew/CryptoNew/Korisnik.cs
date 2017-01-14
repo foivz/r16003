@@ -13,9 +13,12 @@ namespace CryptoNew
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Email { get; set; }
-        DateTime DatumRodjenja { get; set; }
         public string BrojTelefona { get; set; }
-        public string Kod2FA { get; set; }
+        DateTime DatumRodjenja { get; set; }
+        public string Kljuc2FA { get; set; }
+        public string JavniKljuc { get; set; }
+        public int Status { get; set; }
+        public string TipKorisnika { get; set; }
 
         public void Ispuni(string username, string password, string ime, string prezime, string email, DateTime datumRodjenja, string telefon, string kod2FA)
         {
@@ -26,7 +29,7 @@ namespace CryptoNew
             Email = email;
             DatumRodjenja = datumRodjenja;
             BrojTelefona = telefon;
-            Kod2FA = kod2FA;
+            Kljuc2FA = kod2FA;
         }
     }
 }
