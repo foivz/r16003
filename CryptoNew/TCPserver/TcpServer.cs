@@ -84,11 +84,12 @@ namespace TCPserver
             }
         }
 
-        public string ObradaPoruke(string poruka)
+        public string ObradaPoruke(string json)
         {
             string result = "";
-            if (tipoviPoruka.Contains(CryptoNew.JsonPretvarac.Parsiranje(poruka, "tipPoruke")))
+            if (tipoviPoruka.Contains(CryptoNew.JsonPretvarac.Parsiranje(json, "tipPoruke")))
             {
+                result = BazaManager.IzvrsiUpitNaBazi(json);
                 return result;
             }
             result = "Greska na serveru";

@@ -10,7 +10,8 @@ namespace TCPserver
     {
         static void Main(string[] args)
         {
-
+            TcpServer server = new TcpServer();
+            server.PokreniListener();
         }
     }
 }

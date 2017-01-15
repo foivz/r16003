@@ -41,9 +41,10 @@ namespace CryptoNew
         public static object Deserijalizacija(string json)
         {
             object izlaz = 0;
-            if (Parsiranje(json,"Tip") == "Korisnik")
+            string noviJson = IzbaciTipPoruke(json);
+            if (Parsiranje(noviJson,"Tip") == "Korisnik")
             {
-                Korisnik osoba = JsonConvert.DeserializeObject<Korisnik>(json);
+                Korisnik osoba = JsonConvert.DeserializeObject<Korisnik>(noviJson);
                 izlaz = osoba;
             }
             return izlaz;
@@ -77,6 +78,19 @@ namespace CryptoNew
             JObject o = JObject.Parse(json);
             string izlaz = (string)o[kljuc];
             return izlaz;
+        }
+
+        public static string IzbaciTipPoruke(string json)
+        {
+            var jArr = JArray.Parse(json);
+
+            jArr.Descendants().OfType<JProperty>()
+                              .Where(p => p.Name == "tipPoruke")
+                              .ToList()
+                              .ForEach(att => att.Remove());
+
+            var newJson = jArr.ToString();
+            return newJson;
         }
     }
 }

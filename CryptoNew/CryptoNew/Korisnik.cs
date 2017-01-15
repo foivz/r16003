@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace CryptoNew
 {
@@ -30,6 +31,26 @@ namespace CryptoNew
             DatumRodjenja = datumRodjenja;
             BrojTelefona = telefon;
             Kljuc2FA = kod2FA;
+        }
+
+        public string RegistrirajKorisnika(SqlConnection connection)
+        {
+            string rezultat = "Korisnik je uspjesno registriran";
+            string upit = $@"INSERT INTO Korisnik (Username, Password, Ime, Prezime, Email, BrojTelefona, DatumRodjenja,
+                            Kljuc2FA, JavniKljuc,Status,TipKorisnika) values 
+                            ({Username},{Password},{Ime},{Prezime},{Email},{BrojTelefona},
+                            {DatumRodjenja},{Kljuc2FA},{JavniKljuc},{Status},{TipKorisnika})";
+            SqlCommand command = new SqlCommand(upit, connection);
+            try
+            {
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                rezultat = "Registracija Neuspješna. Postojeći Korisnik!!!";
+            }
+            return rezultat;
         }
     }
 }
