@@ -63,6 +63,16 @@ namespace CryptoNew.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crypto {
+            get {
+                object obj = ResourceManager.GetObject("crypto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_icon_6 {
             get {
                 object obj = ResourceManager.GetObject("user-icon-6", resourceCulture);

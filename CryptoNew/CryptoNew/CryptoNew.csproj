@@ -83,6 +83,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormaPrijavljen.resx">
+      <DependentUpon>FormaPrijavljen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user-icon-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crypto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
