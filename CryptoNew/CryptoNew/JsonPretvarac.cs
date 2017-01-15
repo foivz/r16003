@@ -72,7 +72,7 @@ namespace CryptoNew
             return objectsList;
         }
 
-        private static string Parsiranje(string json, string kljuc)
+        public static string Parsiranje(string json, string kljuc)
         {
             JObject o = JObject.Parse(json);
             string izlaz = (string)o[kljuc];
