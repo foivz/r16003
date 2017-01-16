@@ -20,15 +20,28 @@ namespace CryptoNew
             unosDan.DataSource = Enumerable.Range(1, DateTime.DaysInMonth(godina, mjesec)).ToList();
         }
 
+        private void PostaviAutoComplete()
+        {
+            unosGodina.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            unosGodina.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            unosMjesec.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            unosMjesec.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            unosDan.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            unosDan.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
         public Registracija(Form1 forma)
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
             glavnaForma = forma;
-            unosGodina.DataSource = Enumerable.Range(1900, 2018 - 1800).ToList();
+            unosGodina.DataSource = Enumerable.Range(1900, 2018 - 1900).ToList();
             unosMjesec.DataSource = Enumerable.Range(1, 12).ToList();
-            IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
             unosGodina.SelectedItem = 1976;
+            IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
+            PostaviAutoComplete();
             unosUsername.Focus();
         }
 
@@ -74,7 +87,11 @@ namespace CryptoNew
 
         private void unosMjesec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ValidateGodina();
+            ValidateMjesec();
             IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
+            unosDan.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            unosDan.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         /// <summary>
@@ -86,7 +103,8 @@ namespace CryptoNew
             bool vaUsername = ValidateUsername();
             bool vaPassword = ValidatePassword();
             bool vaEmail = ValidateEmail();
-            if (vaUsername && vaPassword && vaEmail )
+            bool vaTelefon = ValidateTelefon();
+            if (vaUsername && vaPassword && vaEmail && vaTelefon )
             {
                 return true;
             }
@@ -170,6 +188,67 @@ namespace CryptoNew
             return result;
         }
 
+        private bool ValidateTelefon()
+        {
+            bool result = true;
+            if (unosTelefon.Text == "")
+            {
+                errorProvider1.SetError(unosTelefon, "Unesite Broj Mobitela!");
+                result = false;
+            }
+            else
+            {
+                errorProvider1.SetError(unosTelefon, "");
+            }
+            return result;
+        }
+
+        private bool ValidateGodina()
+        {
+            bool result = true;
+            if (unosGodina.Text == "")
+            {
+                errorProvider1.SetError(unosGodina, "Odaberite Godinu!");
+                result = false;
+            }
+            else if (int.Parse(unosGodina.Text) < 1900)
+            {
+                unosGodina.Text = "1900";
+            }
+            else if (int.Parse(unosGodina.Text) > 2017)
+            {
+                unosGodina.Text = "2017";
+            }
+            else
+            {
+                errorProvider1.SetError(unosGodina, "");
+            }
+            return result;
+        }
+
+        private bool ValidateMjesec()
+        {
+            bool result = true;
+            if (unosMjesec.Text == "")
+            {
+                errorProvider1.SetError(unosMjesec, "Odaberite Mjesec!");
+                result = false;
+            }
+            else if (int.Parse(unosMjesec.Text) < 1)
+            {
+                unosMjesec.Text = "1";
+            }
+            else if (int.Parse(unosMjesec.Text) > 12)
+            {
+                unosMjesec.Text = "12";
+            }
+            else
+            {
+                errorProvider1.SetError(unosMjesec, "");
+            }
+            return result;
+        }
+
         private void unosUsername_Validating(object sender, CancelEventArgs e)
         {
             ValidateUsername();
@@ -193,6 +272,26 @@ namespace CryptoNew
         private void unosEmail_Validating(object sender, CancelEventArgs e)
         {
             ValidateEmail();
+        }
+
+        private void unosTelefon_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void unosTelefon_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateTelefon();
+        }
+
+        private void unosGodina_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateGodina();
+        }
+
+        private void unosMjesec_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateMjesec();
         }
     }
 }

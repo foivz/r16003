@@ -168,6 +168,8 @@
             this.unosTelefon.Name = "unosTelefon";
             this.unosTelefon.Size = new System.Drawing.Size(533, 26);
             this.unosTelefon.TabIndex = 11;
+            this.unosTelefon.TextChanged += new System.EventHandler(this.unosTelefon_TextChanged);
+            this.unosTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.unosTelefon_Validating);
             // 
             // label7
             // 
@@ -215,6 +217,7 @@
             this.unosGodina.Size = new System.Drawing.Size(121, 28);
             this.unosGodina.TabIndex = 15;
             this.unosGodina.SelectedIndexChanged += new System.EventHandler(this.unosGodina_SelectedIndexChanged);
+            this.unosGodina.Validating += new System.ComponentModel.CancelEventHandler(this.unosGodina_Validating);
             // 
             // unosMjesec
             // 
@@ -227,6 +230,7 @@
             this.unosMjesec.Size = new System.Drawing.Size(121, 28);
             this.unosMjesec.TabIndex = 16;
             this.unosMjesec.SelectedIndexChanged += new System.EventHandler(this.unosMjesec_SelectedIndexChanged);
+            this.unosMjesec.Validating += new System.ComponentModel.CancelEventHandler(this.unosMjesec_Validating);
             // 
             // unosDan
             // 
