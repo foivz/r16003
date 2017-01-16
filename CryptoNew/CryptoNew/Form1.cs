@@ -50,7 +50,7 @@ namespace CryptoNew
             if (testKorisnik.Username != null)
             {
                 gumbLogout.Enabled = true;
-                FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
+                FormaPrijavljen novo = new FormaPrijavljen(korisnik);
                 Dizajner.prilagodiFormuPanelu(novo, glavniPanel);
                 forma = novo;
             }

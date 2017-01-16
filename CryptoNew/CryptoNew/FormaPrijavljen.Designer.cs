@@ -33,8 +33,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.prikazKorIme = new System.Windows.Forms.TextBox();
+            this.prikazTipKorisnika = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,8 +63,8 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.prikazTipKorisnika);
+            this.panel2.Controls.Add(this.prikazKorIme);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(12, 290);
@@ -92,23 +92,23 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Tip Korisnika:";
             // 
-            // textBox1
+            // prikazKorIme
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(190, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(283, 32);
-            this.textBox1.TabIndex = 2;
+            this.prikazKorIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.prikazKorIme.Location = new System.Drawing.Point(189, 25);
+            this.prikazKorIme.Name = "prikazKorIme";
+            this.prikazKorIme.ReadOnly = true;
+            this.prikazKorIme.Size = new System.Drawing.Size(283, 26);
+            this.prikazKorIme.TabIndex = 2;
             // 
-            // textBox2
+            // prikazTipKorisnika
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(190, 87);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(283, 32);
-            this.textBox2.TabIndex = 3;
+            this.prikazTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.prikazTipKorisnika.Location = new System.Drawing.Point(189, 93);
+            this.prikazTipKorisnika.Name = "prikazTipKorisnika";
+            this.prikazTipKorisnika.ReadOnly = true;
+            this.prikazTipKorisnika.Size = new System.Drawing.Size(283, 26);
+            this.prikazTipKorisnika.TabIndex = 3;
             // 
             // FormaPrijavljen
             // 
@@ -121,6 +121,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormaPrijavljen";
             this.Text = "FormaPrijavljen";
+            this.Load += new System.EventHandler(this.FormaPrijavljen_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -133,8 +134,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox prikazTipKorisnika;
+        private System.Windows.Forms.TextBox prikazKorIme;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }

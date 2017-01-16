@@ -28,11 +28,29 @@ namespace CryptoNew
             IzracunajDan((int)unosGodina.SelectedItem,(int)unosMjesec.SelectedItem);
             unosGodina.SelectedItem = 1976;
         }
+
+        private void PridruziPodatkeKorisniku (Korisnik trenutni)
+        {
+            trenutni.Ime = unosIme.Text;
+            trenutni.Prezime = unosPrezime.Text;
+            trenutni.Username = unosUsername.Text;
+            trenutni.Password = unosPassword.Text;
+            trenutni.Email = unosEmail.Text;
+            trenutni.BrojTelefona = unosTelefon.Text;
+            string datumRodjenja = unosDan.Text + "/" + unosMjesec.Text + "/" + unosGodina.Text;
+            trenutni.DatumRodjenja = Convert.ToDateTime(datumRodjenja);
+            trenutni.Status = 1;
+            trenutni.TipKorisnika = "Korisnik";
+
+            //pitanje hoce li se kljucevi generirati na serveru ili klijentu (bolja opcija je server)
+        }
+
         private void gumbRegistracija_Click(object sender, EventArgs e)
         {
             Korisnik registrirani = new Korisnik();
             Korisnik trenutni = new Korisnik();
-            glavnaForma.NotifyMe(trenutni);
+            PridruziPodatkeKorisniku(trenutni);
+            glavnaForma.NotifyMe(registrirani);
         }
 
         private void unosGodina_SelectedIndexChanged(object sender, EventArgs e)

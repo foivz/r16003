@@ -15,7 +15,7 @@ namespace CryptoNew
         public string Prezime { get; set; }
         public string Email { get; set; }
         public string BrojTelefona { get; set; }
-        DateTime DatumRodjenja { get; set; }
+        public DateTime DatumRodjenja { get; set; }
         public string Kljuc2FA { get; set; }
         public string JavniKljuc { get; set; }
         public int Status { get; set; }

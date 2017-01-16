@@ -16,15 +16,20 @@ namespace CryptoNew
         public FormaPrijavljen(Korisnik korisnik)
         {
             InitializeComponent();
-            InitializeComponent();
             Dizajner.FormaBezOkna(this);
-            //txtKorisnik.Text = korisnik.Username;
+            trenutniKorisnik = new Korisnik();
             trenutniKorisnik = korisnik;
         }
 
         public FormaPrijavljen Reset()
         {
             return new FormaPrijavljen(trenutniKorisnik); ;
+        }
+
+        private void FormaPrijavljen_Load(object sender, EventArgs e)
+        {
+            prikazKorIme.Text = trenutniKorisnik.Username;
+            prikazTipKorisnika.Text = trenutniKorisnik.TipKorisnika;
         }
     }
 }
