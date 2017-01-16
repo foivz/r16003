@@ -32,6 +32,10 @@ namespace CryptoNew
             unosUsername.Focus();
         }
 
+        /// <summary>
+        /// Pridruživanje podataka sa forme korisniku koji se želi registrirati
+        /// </summary>
+        /// <param name="trenutni"></param>
         private void PridruziPodatkeKorisniku (Korisnik trenutni)
         {
             trenutni.Ime = unosIme.Text;
@@ -50,10 +54,17 @@ namespace CryptoNew
 
         private void gumbRegistracija_Click(object sender, EventArgs e)
         {
-            Korisnik registrirani = new Korisnik();
-            Korisnik trenutni = new Korisnik();
-            PridruziPodatkeKorisniku(trenutni);
-            glavnaForma.NotifyMe(registrirani);
+            if (ValidateForm() == true)
+            {
+                Korisnik registrirani = new Korisnik();
+                Korisnik trenutni = new Korisnik();
+                PridruziPodatkeKorisniku(trenutni);
+                glavnaForma.NotifyMe(registrirani);
+            }
+            else
+            {
+                MessageBox.Show("Postoje neispravni podaci na formi - provjerite ih!");
+            }
         }
 
         private void unosGodina_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,11 +77,26 @@ namespace CryptoNew
             IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
         }
 
-        private void ValidateForm()
+        /// <summary>
+        /// Validacija cjelokupne forme
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateForm()
         {
-
+            bool vaUsername = ValidateUsername();
+            bool vaPassword = ValidatePassword();
+            bool vaEmail = ValidateEmail();
+            if (vaUsername && vaPassword && vaEmail )
+            {
+                return true;
+            }
+            return false;
         }
 
+        /// <summary>
+        /// Validacija Korisničkoga imena na formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateUsername()
         {
             bool result = true;
@@ -91,6 +117,10 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Validacija lozinke na registracijskoj formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidatePassword()
         {
             bool result = true;
@@ -111,6 +141,10 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Validacija emaila na registracijskoj formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateEmail()
         {
             string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
