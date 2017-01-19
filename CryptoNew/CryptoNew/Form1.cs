@@ -79,14 +79,12 @@ namespace CryptoNew
             trenutni = gumbGlavni;
             foreach (Control ctrl in this.Controls)
             {
-
                 if (ctrl is MdiClient)
                 {
                     ctrl.BackColor = Color.RosyBrown;
                 }
-
-
             }
+
             label1.BackColor = Color.RosyBrown;
 
             Prijava formaPrijave = new Prijava(this);

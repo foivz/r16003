@@ -17,6 +17,8 @@ namespace CryptoNew
             forma.StartPosition = FormStartPosition.CenterScreen;
             // Remove the control box so the form will only display client area.
             forma.ControlBox = false;
+            forma.BackColor = System.Drawing.Color.SkyBlue;
+            forma.AutoScroll = true;
         }
 
         /// <summary>

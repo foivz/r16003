@@ -38,7 +38,7 @@ namespace CryptoNew
             Dizajner.FormaBezOkna(this);
             glavnaForma = forma;
             unosPassword.PasswordChar = '*';
-            unosGodina.DataSource = Enumerable.Range(1900, 2018 - 1900).ToList();
+            unosGodina.DataSource = Enumerable.Range(1900, DateTime.Now.Year - 1900).ToList();
             unosMjesec.DataSource = Enumerable.Range(1, 12).ToList();
             unosGodina.SelectedItem = 1976;
             IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
@@ -116,7 +116,11 @@ namespace CryptoNew
             bool vaPassword = ValidatePassword();
             bool vaEmail = ValidateEmail();
             bool vaTelefon = ValidateTelefon();
-            if (vaUsername && vaPassword && vaEmail && vaTelefon )
+            bool vaGodina = ValidateGodina();
+            bool vaMjesec = ValidateMjesec();
+            bool vaDan = ValidateDan();
+
+            if (vaUsername && vaPassword && vaEmail && vaTelefon && vaGodina && vaMjesec && vaDan)
             {
                 return true;
             }

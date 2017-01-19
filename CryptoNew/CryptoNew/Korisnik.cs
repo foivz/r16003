@@ -72,7 +72,7 @@ namespace CryptoNew
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex);
+                //Console.WriteLine(ex);
                 uspjeh.PotvrdaKorisnika = 0;
             }
             rezultat = JsonPretvarac.Serijalizacija(uspjeh);
