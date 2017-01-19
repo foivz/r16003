@@ -23,8 +23,6 @@ namespace CryptoNew
             {
                 klijent = new TcpClient();
                 klijent.Connect(IPAddress.Loopback, port);
-                //readBuffer = new byte[5000];
-                //writeBuffer = new byte[5000];
             }
             catch (Exception)
             {
@@ -65,7 +63,6 @@ namespace CryptoNew
                     stream.Flush();
                     myCompleteMessage.AppendFormat("{0}", Encoding.ASCII.GetString(readBuffer, 0, numberOfBytesRead));
                 } while (stream.DataAvailable);
-                //stream.Read(readBuffer, 0, readBuffer.Length);
                 stream.Close();
                 string jsonString = myCompleteMessage.ToString();
                 trenutni = JsonPretvarac.Deserijalizacija(jsonString);

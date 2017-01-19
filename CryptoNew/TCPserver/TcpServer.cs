@@ -28,6 +28,7 @@ namespace TCPserver
 
         public void PokreniListener()
         {
+            Console.WriteLine("SERVER POKRENUT!!!");
             listener = new TcpListener(IPAddress.Any, 9950);
             Thread dretvaZaListen = new Thread(OsluskujPort);
             dretvaZaListen.Start(listener);
@@ -40,7 +41,7 @@ namespace TCPserver
             while (true)
             {
                 klijent = listener.AcceptTcpClient();
-                Console.WriteLine("Spojen");
+                //Console.WriteLine("Spojen");
                 ObradiKlijenta(klijent);
             }
         }

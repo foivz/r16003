@@ -39,18 +39,6 @@ namespace CryptoNew
             Tip = "Korisnik";
             Kljuc2FA = "null";
             JavniKljuc = "null";
-    }
-
-        public void Ispuni(string username, string password, string ime, string prezime, string email, DateTime datumRodjenja, string telefon, string kod2FA)
-        {
-            Username = username;
-            Password = password;
-            Ime = ime;
-            Prezime = prezime;
-            Email = email;
-            //DatumRodjenja = datumRodjenja;
-            BrojTelefona = telefon;
-            Kljuc2FA = kod2FA;
         }
 
         public string RegistrirajKorisnika(SqlConnection connection)
@@ -85,7 +73,6 @@ namespace CryptoNew
             catch (SqlException ex)
             {
                 Console.WriteLine(ex);
-                //rezultat = "Registracija Neuspješna. Postojeći Korisnik!!!";
                 uspjeh.PotvrdaKorisnika = 0;
             }
             rezultat = JsonPretvarac.Serijalizacija(uspjeh);

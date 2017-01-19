@@ -58,8 +58,6 @@ namespace CryptoNew
             trenutni.Password = unosPassword.Text;
             trenutni.Email = unosEmail.Text;
             trenutni.BrojTelefona = unosTelefon.Text;
-            //string datumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
-            //trenutni.DatumRodjenja = Convert.ToDateTime(datumRodjenja);
             trenutni.DatumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
             trenutni.Status = 1; //korisnik je otkljucan
             trenutni.TipKorisnika = "Korisnik";
@@ -140,6 +138,11 @@ namespace CryptoNew
             else if (unosUsername.Text.Count() < 5)
             {
                 errorProvider1.SetError(unosUsername, "Korisničko ime mora imati najmanje 5 znakova");
+                result = false;
+            }
+            else if (unosUsername.Text.Count() > 20)
+            {
+                errorProvider1.SetError(unosUsername, "Korisničko ime ne može imati više od 20 znakova");
                 result = false;
             }
             else

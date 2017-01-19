@@ -42,12 +42,13 @@ namespace CryptoNew
         {
             object izlaz = 0;
             string noviJson = IzbaciTipPoruke(json);
-            if (Parsiranje(noviJson,"Tip") == "Korisnik")
+            string tipKlase = Parsiranje(noviJson, "Tip");
+            if (tipKlase == "Korisnik")
             {
                 Korisnik osoba = JsonConvert.DeserializeObject<Korisnik>(noviJson);
                 izlaz = osoba;
             }
-            if (Parsiranje(noviJson, "Tip") == "UspjehRegistracije")
+            if (tipKlase == "UspjehRegistracije")
             {
                 UspjehRegistracije uspjeh = JsonConvert.DeserializeObject<UspjehRegistracije>(noviJson);
                 izlaz = uspjeh;
@@ -99,18 +100,6 @@ namespace CryptoNew
 
         public static string IzbaciTipPoruke(string json)
         {
-            /*
-            var jArr = JArray.Parse(json);
-
-            jArr.Descendants().OfType<JProperty>()
-                              .Where(p => p.Name == "tipPoruke")
-                              .ToList()
-                              .ForEach(att => att.Remove());
-
-            var newJson = jArr.ToString();
-            return newJson;
-            */
-
             if (Parsiranje(json,"tipPoruke") != null)
             {
                 var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(json);
@@ -123,7 +112,6 @@ namespace CryptoNew
             }
 
         }
-
 
     }
 }
