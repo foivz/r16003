@@ -37,6 +37,7 @@ namespace CryptoNew
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
             glavnaForma = forma;
+            unosPassword.PasswordChar = '*';
             unosGodina.DataSource = Enumerable.Range(1900, 2018 - 1900).ToList();
             unosMjesec.DataSource = Enumerable.Range(1, 12).ToList();
             unosGodina.SelectedItem = 1976;
@@ -57,8 +58,9 @@ namespace CryptoNew
             trenutni.Password = unosPassword.Text;
             trenutni.Email = unosEmail.Text;
             trenutni.BrojTelefona = unosTelefon.Text;
-            string datumRodjenja = unosDan.Text + "/" + unosMjesec.Text + "/" + unosGodina.Text;
-            trenutni.DatumRodjenja = Convert.ToDateTime(datumRodjenja);
+            //string datumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
+            //trenutni.DatumRodjenja = Convert.ToDateTime(datumRodjenja);
+            trenutni.DatumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
             trenutni.Status = 1; //korisnik je otkljucan
             trenutni.TipKorisnika = "Korisnik";
 
@@ -72,7 +74,19 @@ namespace CryptoNew
                 Korisnik registrirani = new Korisnik();
                 Korisnik trenutni = new Korisnik();
                 PridruziPodatkeKorisniku(trenutni);
-                glavnaForma.NotifyMe(registrirani);
+
+                TcpKlijent klijent = new TcpKlijent();
+                klijent.PosaljiServeru(trenutni,"REGISTRACIJA");
+                UspjehRegistracije uspjeh = new UspjehRegistracije();
+                uspjeh = (UspjehRegistracije)klijent.PrimiOdServera();
+                if (uspjeh.PotvrdaKorisnika == 0)
+                {
+                    MessageBox.Show("Korisnik već postoji, odaberite drugo korisničko ime");
+                }
+                else
+                {
+                    glavnaForma.NotifyMe(registrirani); //odi na login formu
+                }
             }
             else
             {
@@ -188,6 +202,10 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Validacija telefona na registracijskoj formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateTelefon()
         {
             bool result = true;
@@ -203,6 +221,10 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Validacija godine na registracijskoj formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateGodina()
         {
             bool result = true;
@@ -226,6 +248,10 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Validacija mjeseca na registracijskoj formi
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateMjesec()
         {
             bool result = true;
@@ -245,6 +271,29 @@ namespace CryptoNew
             else
             {
                 errorProvider1.SetError(unosMjesec, "");
+            }
+            return result;
+        }
+
+        private bool ValidateDan()
+        {
+            bool result = true;
+            if (unosDan.Text == "")
+            {
+                errorProvider1.SetError(unosDan, "Odaberite Dan");
+                result = false;
+            }
+            else if (int.Parse(unosDan.Text) < 1)
+            {
+                unosDan.Text = "1";
+            }
+            else if (int.Parse(unosDan.Text) > unosDan.Items.Count)
+            {
+                unosDan.Text = (unosDan.Items.Count).ToString();
+            }
+            else
+            {
+                errorProvider1.SetError(unosDan, "");
             }
             return result;
         }
@@ -292,6 +341,11 @@ namespace CryptoNew
         private void unosMjesec_Validating(object sender, CancelEventArgs e)
         {
             ValidateMjesec();
+        }
+
+        private void unosDan_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateDan();
         }
     }
 }

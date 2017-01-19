@@ -16,12 +16,13 @@ namespace TCPserver
         private static string IzvadiTipPoruke(string json)
         {
             string tipPoruke = CryptoNew.JsonPretvarac.Parsiranje(json, "tipPoruke");
+            CryptoNew.JsonPretvarac.IzbaciTipPoruke(json);
             return tipPoruke;
         }
 
         private static void OtvaranjeKonekcijeSBazom()
         {
-            connection = new SqlConnection("Server = tcp:crypto.database.windows.net,1433; Data Source = crypto.database.windows.net; Initial Catalog = CryptoBaza; Persist Security Info = False; User ID = ivauzarev; Password =crypto2101!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
+            connection = new SqlConnection("Server=tcp:cryptoserver01.database.windows.net,1433;Initial Catalog=PICryptoBaza;Persist Security Info=False;User ID=ivan.uzarevic;Password=crypto2101#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             connection.Open();
         }
 
@@ -35,7 +36,7 @@ namespace TCPserver
         {
             string result = "";
             OtvaranjeKonekcijeSBazom();
-            if (IzvadiTipPoruke(json) == "REGISTER")
+            if (IzvadiTipPoruke(json) == "REGISTRACIJA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);

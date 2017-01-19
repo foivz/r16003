@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace TCPserver
 {
@@ -22,21 +23,13 @@ namespace TCPserver
 
         private string[] tipoviPoruka = {
             "LOGIN",
-            "REGISTER",
-            "C2C",
-            "PRUPDATE",
-            "DOHVATIKLIJENTE",
-            "CITANJEPORUKE",
-            "OTKZAK",
-            "UPDOTKLJUCAJ",
-            "2FA",
-            "PROVJERIKLJUC"
+            "REGISTRACIJA"
         };
 
         public void PokreniListener()
         {
-            listener = new TcpListener(IPAddress.Any, 9900);
-            Thread dretvaZaListen = new Thread(new ParameterizedThreadStart(OsluskujPort));
+            listener = new TcpListener(IPAddress.Any, 9950);
+            Thread dretvaZaListen = new Thread(OsluskujPort);
             dretvaZaListen.Start(listener);
         }
 
@@ -54,32 +47,37 @@ namespace TCPserver
 
         void ObradiKlijenta(TcpClient klijent)
         {
-            writeBuffer = new byte[1900];
-            readBuffer = new byte[1900];
-            List<string> klijentPodaci = new List<string>();
-            string klijentPodaciString = "";
+            writeBuffer = new byte[1024];
+            readBuffer = new byte[1024];
+            StringBuilder myCompleteMessage = new StringBuilder();
+            int numberOfBytesRead = 0;
+            string klijentPodaciString = "test";
+
             stream = klijent.GetStream();
             if (stream.CanRead)
             {
-                stream.ReadAsync(readBuffer, 0, readBuffer.Length);
-                primljenaPoruka = Encoding.ASCII.GetString(readBuffer); //byte poruka
-                Console.WriteLine("Primljena poruka:  " + primljenaPoruka);
+                do
+                {
+                    numberOfBytesRead = stream.Read(readBuffer, 0, readBuffer.Length);
+                    stream.Flush();
+                    myCompleteMessage.AppendFormat("{0}", Encoding.ASCII.GetString(readBuffer, 0, numberOfBytesRead));
+                } while (stream.DataAvailable);
+                primljenaPoruka = myCompleteMessage.ToString();
+                IspisiPorukuPrihvata(primljenaPoruka);
                 klijentPodaciString = ObradaPoruke(primljenaPoruka);
-                stream.Flush();
             }
             if (stream.CanWrite)
             {
-                if (klijentPodaci.Count > 0)
+                if (!klijentPodaciString.StartsWith("test"))
                 {
+                    IspisiPorukuSlanja(klijentPodaciString);
                     writeBuffer = Encoding.ASCII.GetBytes(klijentPodaciString);
                     stream.Write(writeBuffer, 0, writeBuffer.Length);
                     stream.Flush();
                 }
                 else
                 {
-                    writeBuffer = Encoding.ASCII.GetBytes("Netocni podaci");
-                    stream.Write(writeBuffer, 0, writeBuffer.Length);
-                    stream.Flush();
+
                 }
             }
         }
@@ -94,6 +92,20 @@ namespace TCPserver
             }
             result = "Greska na serveru";
             return result;
+        }
+
+        private void IspisiPorukuSlanja(string poruka)
+        {
+            Console.WriteLine("SERVER SALJE...");
+            Console.WriteLine(poruka);
+            Console.WriteLine();
+        }
+
+        private void IspisiPorukuPrihvata(string poruka)
+        {
+            Console.WriteLine("SERVER PRIMA...");
+            Console.WriteLine(poruka);
+            Console.WriteLine();
         }
     }
 }

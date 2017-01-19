@@ -242,6 +242,7 @@
             this.unosDan.Name = "unosDan";
             this.unosDan.Size = new System.Drawing.Size(121, 28);
             this.unosDan.TabIndex = 17;
+            this.unosDan.Validating += new System.ComponentModel.CancelEventHandler(this.unosDan_Validating);
             // 
             // errorProvider1
             // 

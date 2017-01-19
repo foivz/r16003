@@ -47,6 +47,19 @@ namespace CryptoNew
                 Korisnik osoba = JsonConvert.DeserializeObject<Korisnik>(noviJson);
                 izlaz = osoba;
             }
+            if (Parsiranje(noviJson, "Tip") == "UspjehRegistracije")
+            {
+                UspjehRegistracije uspjeh = JsonConvert.DeserializeObject<UspjehRegistracije>(noviJson);
+                izlaz = uspjeh;
+            }
+            return izlaz;
+        }
+
+        public static T UniqueDeserijalizacija<T>(string json)
+        {
+            T izlaz;
+            string noviJson = IzbaciTipPoruke(json);
+            izlaz = JsonConvert.DeserializeObject<T>(noviJson);
             return izlaz;
         }
 
@@ -75,13 +88,18 @@ namespace CryptoNew
 
         public static string Parsiranje(string json, string kljuc)
         {
-            JObject o = JObject.Parse(json);
-            string izlaz = (string)o[kljuc];
+            string izlaz = null;
+            if (!json.StartsWith("\0"))
+            {
+                JObject o = JObject.Parse(json);
+                izlaz = (string)o[kljuc];
+            }
             return izlaz;
         }
 
         public static string IzbaciTipPoruke(string json)
         {
+            /*
             var jArr = JArray.Parse(json);
 
             jArr.Descendants().OfType<JProperty>()
@@ -91,6 +109,21 @@ namespace CryptoNew
 
             var newJson = jArr.ToString();
             return newJson;
+            */
+
+            if (Parsiranje(json,"tipPoruke") != null)
+            {
+                var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(json);
+                o.Property("tipPoruke").Remove();
+                return o.ToString();
+            }
+            else
+            {
+                return json;
+            }
+
         }
+
+
     }
 }
