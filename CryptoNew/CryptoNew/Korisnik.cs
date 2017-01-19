@@ -41,6 +41,21 @@ namespace CryptoNew
             JavniKljuc = "null";
         }
 
+        private void ZapisiKljuceveUBazu(SqlConnection connection)
+        {
+            var command = new SqlCommand();
+            Enkripcija enkripcija = new RsaEnkripcija();
+            enkripcija.AssignRsaKeys();
+            JavniKljuc = enkripcija.DohvatiJavniKljuc();
+            command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "UPDATE Korisnik SET JavniKljuc = @JavniKljuc WHERE Username=@Username";
+            command.Parameters.AddWithValue("@JavniKljuc", JavniKljuc);
+            command.Parameters.AddWithValue("@Username", Username);
+            command.ExecuteNonQuery();
+        }
+
         public string RegistrirajKorisnika(SqlConnection connection)
         {
             string rezultat;
@@ -68,11 +83,11 @@ namespace CryptoNew
             try
             {
                 command.ExecuteNonQuery();
-
+                ZapisiKljuceveUBazu(connection);
             }
             catch (SqlException ex)
             {
-                //Console.WriteLine(ex);
+                Console.WriteLine(ex);
                 uspjeh.PotvrdaKorisnika = 0;
             }
             rezultat = JsonPretvarac.Serijalizacija(uspjeh);

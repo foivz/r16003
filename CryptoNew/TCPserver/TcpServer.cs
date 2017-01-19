@@ -29,6 +29,13 @@ namespace TCPserver
         public void PokreniListener()
         {
             Console.WriteLine("SERVER POKRENUT!!!");
+            CryptoNew.Enkripcija enkripcija = new CryptoNew.RsaEnkripcija();
+            enkripcija.AssignRsaKeys();
+            var original = enkripcija.EncryptData(Encoding.UTF8.GetBytes("SPAJANJE"));
+            var DEKRIPTIRANO = enkripcija.DecryptData(original);
+            Console.WriteLine(enkripcija.PrikazEnkriptiranihPodataka(original));
+            Console.WriteLine();
+            Console.WriteLine(DEKRIPTIRANO);
             listener = new TcpListener(IPAddress.Any, 9950);
             Thread dretvaZaListen = new Thread(OsluskujPort);
             dretvaZaListen.Start(listener);
@@ -61,7 +68,7 @@ namespace TCPserver
                 {
                     numberOfBytesRead = stream.Read(readBuffer, 0, readBuffer.Length);
                     stream.Flush();
-                    myCompleteMessage.AppendFormat("{0}", Encoding.ASCII.GetString(readBuffer, 0, numberOfBytesRead));
+                    myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readBuffer, 0, numberOfBytesRead));
                 } while (stream.DataAvailable);
                 primljenaPoruka = myCompleteMessage.ToString();
                 IspisiPorukuPrihvata(primljenaPoruka);
@@ -72,7 +79,7 @@ namespace TCPserver
                 if (!klijentPodaciString.StartsWith("test"))
                 {
                     IspisiPorukuSlanja(klijentPodaciString);
-                    writeBuffer = Encoding.ASCII.GetBytes(klijentPodaciString);
+                    writeBuffer = Encoding.UTF8.GetBytes(klijentPodaciString);
                     stream.Write(writeBuffer, 0, writeBuffer.Length);
                     stream.Flush();
                 }

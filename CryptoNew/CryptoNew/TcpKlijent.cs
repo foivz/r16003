@@ -36,9 +36,9 @@ namespace CryptoNew
             {
                 stream = klijent.GetStream();
                 string jsonString = JsonPretvarac.Serijalizacija(objekt,tipPoruke);
-                int length = Encoding.ASCII.GetBytes(jsonString).Length;
+                int length = Encoding.UTF8.GetBytes(jsonString).Length;
                 writeBuffer = new byte[length];
-                writeBuffer = Encoding.ASCII.GetBytes(jsonString);
+                writeBuffer = Encoding.UTF8.GetBytes(jsonString);
                 stream.Write(writeBuffer, 0, writeBuffer.Length);
             }
             catch (Exception)
@@ -61,7 +61,7 @@ namespace CryptoNew
                 {
                     numberOfBytesRead = stream.Read(readBuffer, 0, readBuffer.Length);
                     stream.Flush();
-                    myCompleteMessage.AppendFormat("{0}", Encoding.ASCII.GetString(readBuffer, 0, numberOfBytesRead));
+                    myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readBuffer, 0, numberOfBytesRead));
                 } while (stream.DataAvailable);
                 stream.Close();
                 string jsonString = myCompleteMessage.ToString();

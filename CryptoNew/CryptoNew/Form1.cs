@@ -124,5 +124,13 @@ namespace CryptoNew
         {
 
         }
+
+        private void gumbLokalno_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            LokalnaEnkripcija formaLokalno = new LokalnaEnkripcija();
+            Dizajner.prilagodiFormuPanelu(formaLokalno, glavniPanel);
+            trenutni = gumbLokalno;
+        }
     }
 }

@@ -70,6 +70,12 @@
     </Compile>
     <Compile Include="JsonPretvarac.cs" />
     <Compile Include="Korisnik.cs" />
+    <Compile Include="LokalnaEnkripcija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LokalnaEnkripcija.Designer.cs">
+      <DependentUpon>LokalnaEnkripcija.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormaPrijavljen.resx">
       <DependentUpon>FormaPrijavljen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LokalnaEnkripcija.resx">
+      <DependentUpon>LokalnaEnkripcija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>

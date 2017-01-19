@@ -9,42 +9,30 @@ namespace CryptoNew
 {
     public class RsaEnkripcija : Enkripcija
     {
-        private RSAParameters publicKey;
-        private RSAParameters privateKey;
-
-        public void AssignNewKey()
-        {
-            using (var rsa = new RSACryptoServiceProvider(2048))
-            {
-                rsa.PersistKeyInCsp = false;
-                publicKey = rsa.ExportParameters(false);
-                privateKey = rsa.ExportParameters(true);
-            }
-        }
-
         public override byte[] EncryptData(byte[] dataToEncrypt)
         {
             byte[] cipherbytes;
             using (var rsa = new RSACryptoServiceProvider(2048))
             {
                 rsa.PersistKeyInCsp = false;
-                rsa.ImportParameters(publicKey);
-                cipherbytes = rsa.Encrypt(dataToEncrypt, true);
+                rsa.FromXmlString(publicKey);
+                cipherbytes = rsa.Encrypt(dataToEncrypt, false);
             }
             return cipherbytes;
         }
 
-        public override byte[] DecryptData(byte[] dataToEncrypt)
+        public override string DecryptData(byte[] dataToEncrypt)
         {
+            string result;
             byte[] plain;
             using (var rsa = new RSACryptoServiceProvider(2048))
             {
                 rsa.PersistKeyInCsp = false;
-                rsa.ImportParameters(privateKey);
-                plain = rsa.Decrypt(dataToEncrypt, true);
+                rsa.FromXmlString(privateKey);
+                plain = rsa.Decrypt(dataToEncrypt, false);
             }
-            return plain;
+            result = Encoding.UTF8.GetString(plain);
+            return result;
         }
-
     }
 }

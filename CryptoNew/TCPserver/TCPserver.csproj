@@ -51,11 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CryptoNew\Enkripcija.cs">
+      <Link>Enkripcija.cs</Link>
+    </Compile>
     <Compile Include="..\CryptoNew\JsonPretvarac.cs">
       <Link>JsonPretvarac.cs</Link>
     </Compile>
     <Compile Include="..\CryptoNew\Korisnik.cs">
       <Link>Korisnik.cs</Link>
+    </Compile>
+    <Compile Include="..\CryptoNew\RsaEnkripcija.cs">
+      <Link>RsaEnkripcija.cs</Link>
     </Compile>
     <Compile Include="BazaManager.cs" />
     <Compile Include="Program.cs" />

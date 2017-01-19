@@ -32,9 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.glavniPanel = new System.Windows.Forms.Panel();
             this.gumbGlavni = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gumbLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.gumbLokalno = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // glavniPanel
@@ -68,13 +69,21 @@
             this.gumbGlavni.UseVisualStyleBackColor = true;
             this.gumbGlavni.Click += new System.EventHandler(this.gumbGlavni_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Paomedia-Small-N-Flat-Key.ico");
+            this.imageList1.Images.SetKeyName(1, "Custom-Icon-Design-Pretty-Office-11-Logout.ico");
+            this.imageList1.Images.SetKeyName(2, "Hopstarter-Sleek-Xp-Basic-Home.ico");
+            // 
             // gumbLogout
             // 
             this.gumbLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 91);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 156);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;
@@ -95,13 +104,20 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "F5 - Refresh Prozora";
             // 
-            // imageList1
+            // gumbLokalno
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Paomedia-Small-N-Flat-Key.ico");
-            this.imageList1.Images.SetKeyName(1, "Custom-Icon-Design-Pretty-Office-11-Logout.ico");
-            this.imageList1.Images.SetKeyName(2, "Hopstarter-Sleek-Xp-Basic-Home.ico");
+            this.gumbLokalno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbLokalno.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbLokalno.ImageIndex = 0;
+            this.gumbLokalno.ImageList = this.imageList1;
+            this.gumbLokalno.Location = new System.Drawing.Point(12, 91);
+            this.gumbLokalno.Name = "gumbLokalno";
+            this.gumbLokalno.Size = new System.Drawing.Size(143, 59);
+            this.gumbLokalno.TabIndex = 7;
+            this.gumbLokalno.Text = "Lokalna Enkripcija";
+            this.gumbLokalno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.gumbLokalno.UseVisualStyleBackColor = true;
+            this.gumbLokalno.Click += new System.EventHandler(this.gumbLokalno_Click);
             // 
             // Form1
             // 
@@ -109,6 +125,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.gumbLokalno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gumbLogout);
             this.Controls.Add(this.gumbGlavni);
@@ -133,6 +150,7 @@
         private System.Windows.Forms.Button gumbLogout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button gumbLokalno;
     }
 }
 
