@@ -9,6 +9,11 @@ namespace CryptoNew
 {
     public class RsaEnkripcija : Enkripcija
     {
+        /// <summary>
+        /// Enkriptiranje podataka RSA metodom, ulaz je originalni tekst u byte[] formatu
+        /// </summary>
+        /// <param name="dataToEncrypt"></param>
+        /// <returns></returns>
         public override byte[] EncryptData(byte[] dataToEncrypt)
         {
             byte[] cipherbytes;
@@ -21,6 +26,11 @@ namespace CryptoNew
             return cipherbytes;
         }
 
+        /// <summary>
+        /// Dekriptiranje podataka RSA metodom, ulaz su enkriptirani podaci u byte[] formatu
+        /// </summary>
+        /// <param name="dataToEncrypt"></param>
+        /// <returns></returns>
         public override string DecryptData(byte[] dataToEncrypt)
         {
             string result;

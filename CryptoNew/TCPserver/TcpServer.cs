@@ -31,8 +31,9 @@ namespace TCPserver
             Console.WriteLine("SERVER POKRENUT!!!");
             CryptoNew.Enkripcija enkripcija = new CryptoNew.RsaEnkripcija();
             enkripcija.AssignRsaKeys();
-            var original = enkripcija.EncryptData(Encoding.UTF8.GetBytes("SPAJANJE"));
+            var original = enkripcija.EncryptData(Encoding.UTF8.GetBytes("sto je danas lijep i sunčan dan"));
             var DEKRIPTIRANO = enkripcija.DecryptData(original);
+            Console.WriteLine(Encoding.UTF8.GetBytes(enkripcija.PrikazEnkriptiranihPodataka(original)).Length);
             Console.WriteLine(enkripcija.PrikazEnkriptiranihPodataka(original));
             Console.WriteLine();
             Console.WriteLine(DEKRIPTIRANO);

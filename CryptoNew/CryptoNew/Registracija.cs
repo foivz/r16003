@@ -72,11 +72,12 @@ namespace CryptoNew
                 Korisnik registrirani = new Korisnik();
                 Korisnik trenutni = new Korisnik();
                 PridruziPodatkeKorisniku(trenutni);
-
                 TcpKlijent klijent = new TcpKlijent();
                 klijent.PosaljiServeru(trenutni,"REGISTRACIJA");
+
                 UspjehRegistracije uspjeh = new UspjehRegistracije();
                 uspjeh = (UspjehRegistracije)klijent.PrimiOdServera();
+
                 if (uspjeh.PotvrdaKorisnika == 0)
                 {
                     MessageBox.Show("Korisnik već postoji, odaberite drugo korisničko ime");

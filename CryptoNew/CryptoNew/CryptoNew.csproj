@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Paomedia-Small-N-Flat-Key.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dropbox.Api, Version=0.1.6219.33141, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
       <HintPath>..\packages\Dropbox.Api.4.1.2\lib\net45\Dropbox.Api.dll</HintPath>
@@ -136,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\crypto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Paomedia-Small-N-Flat-Key.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

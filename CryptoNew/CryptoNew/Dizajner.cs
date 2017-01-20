@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,10 @@ namespace CryptoNew
 {
     static class Dizajner
     {
+        /// <summary>
+        /// Poziva se prilikom inicjalizacije forme kako bi dizajn odgovarao ostatku aplikacije i glavnom panelu aplikacije
+        /// </summary>
+        /// <param name="forma"></param>
         public static void FormaBezOkna(Form forma)
         {
             forma.FormBorderStyle = FormBorderStyle.None;
