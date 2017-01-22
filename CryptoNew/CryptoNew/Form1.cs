@@ -130,6 +130,7 @@ namespace CryptoNew
             DealocirajGlavniPanel();
             LokalnaEnkripcija formaLokalno = new LokalnaEnkripcija();
             Dizajner.prilagodiFormuPanelu(formaLokalno, glavniPanel);
+            forma = formaLokalno;
             trenutni = gumbLokalno;
         }
     }

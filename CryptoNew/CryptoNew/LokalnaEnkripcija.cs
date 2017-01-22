@@ -16,6 +16,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
+            odabirAlgoritam.DataSource = new List<string> {"AES","RSA" };
         }
     }
 }

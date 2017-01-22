@@ -44,12 +44,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glavniPanel.AutoScroll = true;
-            this.glavniPanel.BackColor = System.Drawing.Color.PowderBlue;
+            this.glavniPanel.BackColor = System.Drawing.Color.SkyBlue;
             this.glavniPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glavniPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.glavniPanel.Location = new System.Drawing.Point(161, 12);
             this.glavniPanel.Name = "glavniPanel";
-            this.glavniPanel.Size = new System.Drawing.Size(611, 537);
+            this.glavniPanel.Size = new System.Drawing.Size(657, 590);
             this.glavniPanel.TabIndex = 1;
             this.glavniPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.glavniPanel_Paint);
             // 
@@ -98,7 +98,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(9, 533);
+            this.label1.Location = new System.Drawing.Point(9, 586);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 16);
             this.label1.TabIndex = 5;
@@ -124,7 +124,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(830, 614);
             this.Controls.Add(this.gumbLokalno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gumbLogout);
@@ -133,7 +133,7 @@
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(846, 653);
             this.Name = "Form1";
             this.Text = "Aplikacija Crypto";
             this.Load += new System.EventHandler(this.Form1_Load);
