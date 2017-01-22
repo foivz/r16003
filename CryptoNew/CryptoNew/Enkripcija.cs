@@ -11,6 +11,8 @@ namespace CryptoNew
     {
         protected string publicKey;
         protected string privateKey;
+        protected byte[] key;
+        protected byte[] IV;
         /// <summary>
         /// Generira se nasumični broj koji je jedinstven (važno u generiranju inicjalizacijskih vektora i ključeva enkripcije)
         /// </summary>
@@ -76,7 +78,13 @@ namespace CryptoNew
             return result;
         }
 
-        public abstract byte[] EncryptData(byte[] dataToEncrypt);
+        public virtual void GenerirajKljucIV()
+        {
+            key = GenerirajRandomBroj(32);
+            IV = GenerirajRandomBroj(16);
+        }
+
+        public abstract byte[] EncryptData(string dataToEncrypt);
         public abstract string DecryptData(byte[] dataToEncrypt);
     }
 }

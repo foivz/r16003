@@ -29,6 +29,7 @@ namespace TCPserver
         public void PokreniListener()
         {
             Console.WriteLine("SERVER POKRENUT!!!");
+            /*
             CryptoNew.Enkripcija enkripcija = new CryptoNew.RsaEnkripcija();
             enkripcija.AssignRsaKeys();
             var original = enkripcija.EncryptData(Encoding.UTF8.GetBytes("sto je danas lijep i sunčan dan"));
@@ -37,6 +38,14 @@ namespace TCPserver
             Console.WriteLine(enkripcija.PrikazEnkriptiranihPodataka(original));
             Console.WriteLine();
             Console.WriteLine(DEKRIPTIRANO);
+            */
+            CryptoNew.Enkripcija enkripcija = new CryptoNew.AesEnkripcija();
+            enkripcija.GenerirajKljucIV();
+            var original = enkripcija.EncryptData("sto je danas lijep i sunčan dan");
+            Console.WriteLine(enkripcija.PrikazEnkriptiranihPodataka(original));
+            var dekriptirano = enkripcija.DecryptData(original);
+            Console.WriteLine(dekriptirano);
+
             listener = new TcpListener(IPAddress.Any, 9950);
             Thread dretvaZaListen = new Thread(OsluskujPort);
             dretvaZaListen.Start(listener);

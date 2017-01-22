@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AesEnkripcija.cs" />
     <Compile Include="Dizajner.cs" />
     <Compile Include="Enkripcija.cs" />
     <Compile Include="Form1.cs">
