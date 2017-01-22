@@ -49,6 +49,16 @@ namespace CryptoNew
             return publicKey;
         }
 
+        public virtual string DohvatiAESKljuc()
+        {
+            return Convert.ToBase64String(key);
+        }
+
+        public virtual string DohvatiIV()
+        {
+            return Convert.ToBase64String(IV);
+        }
+
         /// <summary>
         /// Pridružuje se javni ključ enkripcijskom objektu kako bi se poruka mogla enkriptirati RSA metodom
         /// </summary>

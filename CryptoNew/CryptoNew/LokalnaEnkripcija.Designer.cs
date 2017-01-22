@@ -33,12 +33,13 @@
             this.odabirAlgoritam = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gumbGeneriraj = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.odabirPrvo = new System.Windows.Forms.TextBox();
             this.labelaPrvo = new System.Windows.Forms.Label();
             this.labelaDrugo = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.odabirDrugo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.prikazEnkriptirano = new System.Windows.Forms.TextBox();
+            this.gumbEnkriptiraj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // prikazOriginal
@@ -92,14 +93,15 @@
             this.gumbGeneriraj.TabIndex = 4;
             this.gumbGeneriraj.Text = "Generiraj ključeve";
             this.gumbGeneriraj.UseVisualStyleBackColor = true;
+            this.gumbGeneriraj.Click += new System.EventHandler(this.gumbGeneriraj_Click);
             // 
-            // textBox2
+            // odabirPrvo
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(237, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(562, 20);
-            this.textBox2.TabIndex = 5;
+            this.odabirPrvo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.odabirPrvo.Location = new System.Drawing.Point(237, 151);
+            this.odabirPrvo.Name = "odabirPrvo";
+            this.odabirPrvo.Size = new System.Drawing.Size(562, 20);
+            this.odabirPrvo.TabIndex = 5;
             // 
             // labelaPrvo
             // 
@@ -121,20 +123,20 @@
             this.labelaDrugo.TabIndex = 7;
             this.labelaDrugo.Text = "IV:";
             // 
-            // textBox3
+            // odabirDrugo
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Location = new System.Drawing.Point(237, 180);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(562, 20);
-            this.textBox3.TabIndex = 8;
+            this.odabirDrugo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.odabirDrugo.Location = new System.Drawing.Point(237, 180);
+            this.odabirDrugo.Name = "odabirDrugo";
+            this.odabirDrugo.Size = new System.Drawing.Size(562, 20);
+            this.odabirDrugo.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(195, 381);
+            this.label3.Location = new System.Drawing.Point(195, 440);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 20);
             this.label3.TabIndex = 9;
@@ -143,11 +145,24 @@
             // prikazEnkriptirano
             // 
             this.prikazEnkriptirano.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.prikazEnkriptirano.Location = new System.Drawing.Point(195, 404);
+            this.prikazEnkriptirano.Location = new System.Drawing.Point(195, 463);
             this.prikazEnkriptirano.Multiline = true;
             this.prikazEnkriptirano.Name = "prikazEnkriptirano";
             this.prikazEnkriptirano.Size = new System.Drawing.Size(604, 125);
             this.prikazEnkriptirano.TabIndex = 10;
+            // 
+            // gumbEnkriptiraj
+            // 
+            this.gumbEnkriptiraj.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gumbEnkriptiraj.Enabled = false;
+            this.gumbEnkriptiraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbEnkriptiraj.Location = new System.Drawing.Point(195, 373);
+            this.gumbEnkriptiraj.Name = "gumbEnkriptiraj";
+            this.gumbEnkriptiraj.Size = new System.Drawing.Size(167, 38);
+            this.gumbEnkriptiraj.TabIndex = 11;
+            this.gumbEnkriptiraj.Text = "Enkriptiraj";
+            this.gumbEnkriptiraj.UseVisualStyleBackColor = true;
+            this.gumbEnkriptiraj.Click += new System.EventHandler(this.gumbEnkriptiraj_Click);
             // 
             // LokalnaEnkripcija
             // 
@@ -155,12 +170,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(987, 611);
+            this.Controls.Add(this.gumbEnkriptiraj);
             this.Controls.Add(this.prikazEnkriptirano);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.odabirDrugo);
             this.Controls.Add(this.labelaDrugo);
             this.Controls.Add(this.labelaPrvo);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.odabirPrvo);
             this.Controls.Add(this.gumbGeneriraj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.odabirAlgoritam);
@@ -180,11 +196,12 @@
         private System.Windows.Forms.ComboBox odabirAlgoritam;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button gumbGeneriraj;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox odabirPrvo;
         private System.Windows.Forms.Label labelaPrvo;
         private System.Windows.Forms.Label labelaDrugo;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox odabirDrugo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox prikazEnkriptirano;
+        private System.Windows.Forms.Button gumbEnkriptiraj;
     }
 }
