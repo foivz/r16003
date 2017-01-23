@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AesEnkripcija.cs" />
     <Compile Include="Dizajner.cs" />
+    <Compile Include="DropboxManager.cs" />
     <Compile Include="Enkripcija.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

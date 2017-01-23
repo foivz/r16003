@@ -76,6 +76,9 @@ namespace CryptoNew
                 command.Parameters.AddWithValue("@Username", Username);
                 command.ExecuteNonQuery();
             }
+
+            DropboxManager dropbox = new DropboxManager();
+            dropbox.CreateANewFolder(Username);
         }
 
         public string RegistrirajKorisnika(SqlConnection connection)

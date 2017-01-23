@@ -62,6 +62,9 @@
     <Compile Include="..\CryptoNew\AesEnkripcija.cs">
       <Link>AesEnkripcija.cs</Link>
     </Compile>
+    <Compile Include="..\CryptoNew\DropboxManager.cs">
+      <Link>DropboxManager.cs</Link>
+    </Compile>
     <Compile Include="..\CryptoNew\Enkripcija.cs">
       <Link>Enkripcija.cs</Link>
     </Compile>
