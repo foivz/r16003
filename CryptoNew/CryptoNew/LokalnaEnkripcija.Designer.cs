@@ -71,6 +71,7 @@
             this.odabirAlgoritam.Name = "odabirAlgoritam";
             this.odabirAlgoritam.Size = new System.Drawing.Size(217, 28);
             this.odabirAlgoritam.TabIndex = 2;
+            this.odabirAlgoritam.SelectedIndexChanged += new System.EventHandler(this.odabirAlgoritam_SelectedIndexChanged);
             // 
             // label2
             // 

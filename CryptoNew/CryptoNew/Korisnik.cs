@@ -47,6 +47,7 @@ namespace CryptoNew
             Enkripcija enkripcija = new RsaEnkripcija();
             enkripcija.AssignRsaKeys();
             JavniKljuc = enkripcija.DohvatiJavniKljuc();
+
             command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
@@ -54,6 +55,27 @@ namespace CryptoNew
             command.Parameters.AddWithValue("@JavniKljuc", JavniKljuc);
             command.Parameters.AddWithValue("@Username", Username);
             command.ExecuteNonQuery();
+
+            command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "INSERT INTO PrivatniKljucevi(Username,PrivatniKljuc) VALUES (@Username,@PrivatniKljuc)";
+            command.Parameters.AddWithValue("@PrivatniKljuc", enkripcija.DohvatiPrivatniKljuc());
+            command.Parameters.AddWithValue("@Username", Username);
+            command.ExecuteNonQuery();
+
+            if (Kljuc2FA == "DA")
+            {
+                Verficiranje2FA verificiranje = new Verficiranje2FA();
+                Kljuc2FA = verificiranje.GenerirajKljuc2FA();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "UPDATE Korisnik SET Kljuc2FA = @Kljuc2FA WHERE Username=@Username";
+                command.Parameters.AddWithValue("@Kljuc2FA", Kljuc2FA);
+                command.Parameters.AddWithValue("@Username", Username);
+                command.ExecuteNonQuery();
+            }
         }
 
         public string RegistrirajKorisnika(SqlConnection connection)
@@ -75,7 +97,7 @@ namespace CryptoNew
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@Ime", Ime);
             command.Parameters.AddWithValue("@Prezime", Prezime);
-            command.Parameters.AddWithValue("@Email", BrojTelefona);
+            command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@BrojTelefona", BrojTelefona);
             command.Parameters.AddWithValue("@DatumRodjenja", DatumRodjenja);
             command.Parameters.AddWithValue("@Status", Status);

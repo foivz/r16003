@@ -41,6 +41,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.2\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +53,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twilio.Api, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.4.7.2\lib\3.5\Twilio.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CryptoNew\AesEnkripcija.cs">
@@ -65,6 +73,9 @@
     </Compile>
     <Compile Include="..\CryptoNew\RsaEnkripcija.cs">
       <Link>RsaEnkripcija.cs</Link>
+    </Compile>
+    <Compile Include="..\CryptoNew\Verficiranje2FA.cs">
+      <Link>Verficiranje2FA.cs</Link>
     </Compile>
     <Compile Include="BazaManager.cs" />
     <Compile Include="Program.cs" />

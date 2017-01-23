@@ -61,6 +61,10 @@ namespace CryptoNew
             trenutni.DatumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
             trenutni.Status = 1; //korisnik je otkljucan
             trenutni.TipKorisnika = "Korisnik";
+            if (check2FA.Checked == true)
+            {
+                trenutni.Kljuc2FA = "DA";
+            }
 
             //pitanje hoce li se kljucevi generirati na serveru ili klijentu (bolja opcija je server)
         }

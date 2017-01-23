@@ -49,6 +49,11 @@ namespace CryptoNew
             return publicKey;
         }
 
+        public virtual string DohvatiPrivatniKljuc()
+        {
+            return privateKey;
+        }
+
         public virtual string DohvatiAESKljuc()
         {
             return Convert.ToBase64String(key);
