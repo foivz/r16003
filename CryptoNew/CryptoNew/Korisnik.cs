@@ -178,11 +178,16 @@ namespace CryptoNew
             }
             if (Kljuc2FA != "" && Kljuc2FA != "null")
             {
+                Korisnik novi = new Korisnik();
                 Verficiranje2FA verificiraj = new Verficiranje2FA();
                 Kljuc2FA = verificiraj.GenerirajKljuc2FA();
                 UnesiUBazuKljuc2FA(connection);
                 verificiraj.PosaljiPorukuNaMobilni(BrojTelefona);
-                Kljuc2FA = "DA";
+                novi.Username = Username;
+                novi.Password = Password;
+                novi.Kljuc2FA = "DA";
+                rezultat = JsonPretvarac.Serijalizacija(novi);
+                return rezultat;
             }
 
             rezultat = JsonPretvarac.Serijalizacija(this);
@@ -222,7 +227,7 @@ namespace CryptoNew
                         BrojTelefona = reader["BrojTelefona"].ToString();
                         DatumRodjenja = reader["DatumRodjenja"].ToString();
                         //JavniKljuc = reader["JavniKljuc"].ToString();
-                        Kljuc2FA = reader["Kljuc2FA"].ToString();
+                        //Kljuc2FA = reader["Kljuc2FA"].ToString();
                         Status = Convert.ToInt32(reader["Status"]);
                         TipKorisnika = reader["Naziv"].ToString();
                     }
