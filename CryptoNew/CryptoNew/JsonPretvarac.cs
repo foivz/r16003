@@ -110,7 +110,14 @@ namespace CryptoNew
             {
                 return json;
             }
+        }
 
+        public static string DodajAtribut(object item, string naziv, string vrijednost="null")
+        {
+            JObject jo = JObject.FromObject(item);
+            jo.Add(naziv, vrijednost);
+            string json = jo.ToString();
+            return json;
         }
 
     }

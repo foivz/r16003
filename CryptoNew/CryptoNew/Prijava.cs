@@ -56,6 +56,9 @@ namespace CryptoNew
             Korisnik trenutniKorisnik = new Korisnik();
             trenutniKorisnik.Username = unosUsername.Text;
             trenutniKorisnik.Password = unosPassword.Text;
+            TcpKlijent klijent = new TcpKlijent();
+            klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
+            trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();
             glavnaForma.NotifyMe(trenutniKorisnik);
         }
 

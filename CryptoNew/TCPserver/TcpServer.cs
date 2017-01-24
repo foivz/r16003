@@ -22,7 +22,7 @@ namespace TCPserver
         string primljenaPoruka;
 
         private string[] tipoviPoruka = {
-            "LOGIN",
+            "PRIJAVA",
             "REGISTRACIJA"
         };
 

@@ -43,7 +43,7 @@ namespace CryptoNew
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
+                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo kasnije");
             }
             stream.Flush();
         }
@@ -70,7 +70,7 @@ namespace CryptoNew
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo");
+                MessageBox.Show("Problemi oko komunikacije sa web servisom, pokušajte ponovo kasnije");
             }
             return trenutni;
         }

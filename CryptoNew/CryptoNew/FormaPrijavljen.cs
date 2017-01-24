@@ -19,6 +19,8 @@ namespace CryptoNew
             Dizajner.FormaBezOkna(this);
             trenutniKorisnik = new Korisnik();
             trenutniKorisnik = korisnik;
+            prikazKorIme.Text = trenutniKorisnik.Username;
+            prikazTipKorisnika.Text = trenutniKorisnik.TipKorisnika;
         }
 
         public FormaPrijavljen Reset()

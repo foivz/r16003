@@ -43,6 +43,13 @@ namespace TCPserver
                 result = noviKorisnik.RegistrirajKorisnika(connection);
 
             }
+            if (IzvadiTipPoruke(json) == "PRIJAVA")
+            {
+                CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
+                noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = noviKorisnik.PrijavaKorisnika(connection);
+
+            }
             ZatvaranjeKonekcijeSBazom();
             return result;
         }

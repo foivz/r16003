@@ -43,14 +43,13 @@ namespace CryptoNew
 
         public void NotifyMe(Korisnik korisnik)
         {
-            testKorisnik.Username = korisnik.Username;
-            testKorisnik.Password = korisnik.Password;
+            testKorisnik = korisnik;
             DealocirajGlavniPanel();
 
             if (testKorisnik.Username != null)
             {
                 gumbLogout.Enabled = true;
-                FormaPrijavljen novo = new FormaPrijavljen(korisnik);
+                FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
                 Dizajner.prilagodiFormuPanelu(novo, glavniPanel);
                 forma = novo;
             }
@@ -99,8 +98,7 @@ namespace CryptoNew
         private void gumbLogout_Click(object sender, EventArgs e)
         {
             trenutni = gumbGlavni;
-            testKorisnik.Username = null;
-            testKorisnik.Password = null;
+            testKorisnik = new Korisnik();
             NotifyMe(testKorisnik);
         }
 

@@ -19,6 +19,17 @@ namespace CryptoNew
             Tip = "UspjehRegistracije";
         }
     }
+
+    public class UspjePrijave:Korisnik
+    {
+        public int IspravniPodaci { get; set; }
+
+        public UspjePrijave()
+        {
+            Tip = "UspjehPrijave";
+        }
+    }
+
     public class Korisnik
     {
         public string Tip { get; set; }
@@ -116,6 +127,43 @@ namespace CryptoNew
                 uspjeh.PotvrdaKorisnika = 0;
             }
             rezultat = JsonPretvarac.Serijalizacija(uspjeh);
+            return rezultat;
+        }
+
+        public string PrijavaKorisnika(SqlConnection connection)
+        {
+            string rezultat="";
+
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT Korisnik.*,TipoviKorisnika.Naziv FROM Korisnik,TipoviKorisnika WHERE Username=@Username AND Password=@Password AND TipKorisnika=Id";
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Username", Username);
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                if (!reader.HasRows)
+                {
+                    Username = null;
+                }
+                else if (reader.Read())
+                {
+                    if (Convert.ToInt32(reader["Status"]) == 0) {
+                        Username = null;
+                    }
+                    Username = reader["Username"].ToString();
+                    Ime = reader["Ime"].ToString();
+                    Prezime = reader["Prezime"].ToString();
+                    Email = reader["Email"].ToString();
+                    BrojTelefona = reader["BrojTelefona"].ToString();
+                    DatumRodjenja = reader["DatumRodjenja"].ToString();
+                    JavniKljuc = reader["JavniKljuc"].ToString();
+                    Status = Convert.ToInt32(reader["Status"]);
+                    TipKorisnika = reader["Naziv"].ToString();
+                }
+            }
+
+            rezultat = JsonPretvarac.Serijalizacija(this);
             return rezultat;
         }
     }
