@@ -59,7 +59,15 @@ namespace CryptoNew
             TcpKlijent klijent = new TcpKlijent();
             klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
             trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();
-            glavnaForma.NotifyMe(trenutniKorisnik);
+            if (trenutniKorisnik.Kljuc2FA == "DA")
+            {
+                Forma2FA forma2FA = new Forma2FA(trenutniKorisnik,glavnaForma);
+                forma2FA.Show();
+            }
+            else
+            {
+                glavnaForma.NotifyMe(trenutniKorisnik);
+            }
         }
 
         public Prijava Reset()

@@ -50,6 +50,13 @@ namespace TCPserver
                 result = noviKorisnik.PrijavaKorisnika(connection);
 
             }
+            if (IzvadiTipPoruke(json) == "Potvrda2FA")
+            {
+                CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
+                noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = noviKorisnik.PotvrdaKljuca2FA(connection);
+
+            }
             ZatvaranjeKonekcijeSBazom();
             return result;
         }

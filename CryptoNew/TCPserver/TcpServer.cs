@@ -23,7 +23,8 @@ namespace TCPserver
 
         private string[] tipoviPoruka = {
             "PRIJAVA",
-            "REGISTRACIJA"
+            "REGISTRACIJA",
+            "Potvrda2FA"
         };
 
         public void PokreniListener()

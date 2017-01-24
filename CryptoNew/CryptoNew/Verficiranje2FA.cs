@@ -39,7 +39,7 @@ namespace CryptoNew
             var twilio = new TwilioRestClient(AccountSid, AuthToken);
             var message = twilio.SendMessage(
                 from, brojMobitela,
-                "Vaš 2fa kod: " + kljuc2FA
+                "Vaš 2fa kod za pristup aplikaciji Crypto glasi: " + kljuc2FA
             );
         }
     }

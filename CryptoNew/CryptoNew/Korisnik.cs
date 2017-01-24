@@ -20,14 +20,10 @@ namespace CryptoNew
         }
     }
 
-    public class UspjePrijave:Korisnik
+    public class Potvrda2FA
     {
-        public int IspravniPodaci { get; set; }
-
-        public UspjePrijave()
-        {
-            Tip = "UspjehPrijave";
-        }
+        public string Tip { get; set; }
+        public int Potvrdi { get; set; }
     }
 
     public class Korisnik
@@ -92,6 +88,18 @@ namespace CryptoNew
             dropbox.CreateANewFolder(Username);
         }
 
+        private void UnesiUBazuKljuc2FA(SqlConnection connection)
+        {
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "UPDATE Korisnik SET Kljuc2FA = @Kljuc2FA WHERE Username=@Username";
+            command.Parameters.AddWithValue("@Kljuc2FA", Kljuc2FA);
+            command.Parameters.AddWithValue("@Username", Username);
+            command.ExecuteNonQuery();
+            Kljuc2FA = null;
+        }
+
         public string RegistrirajKorisnika(SqlConnection connection)
         {
             string rezultat;
@@ -145,24 +153,81 @@ namespace CryptoNew
                 if (!reader.HasRows)
                 {
                     Username = null;
+                    Password = null;
                 }
                 else if (reader.Read())
                 {
                     if (Convert.ToInt32(reader["Status"]) == 0) {
                         Username = null;
+                        Password = null;
                     }
-                    Username = reader["Username"].ToString();
-                    Ime = reader["Ime"].ToString();
-                    Prezime = reader["Prezime"].ToString();
-                    Email = reader["Email"].ToString();
-                    BrojTelefona = reader["BrojTelefona"].ToString();
-                    DatumRodjenja = reader["DatumRodjenja"].ToString();
-                    JavniKljuc = reader["JavniKljuc"].ToString();
-                    Status = Convert.ToInt32(reader["Status"]);
-                    TipKorisnika = reader["Naziv"].ToString();
+                    else
+                    {
+                        Username = reader["Username"].ToString();
+                        Ime = reader["Ime"].ToString();
+                        Prezime = reader["Prezime"].ToString();
+                        Email = reader["Email"].ToString();
+                        BrojTelefona = reader["BrojTelefona"].ToString();
+                        DatumRodjenja = reader["DatumRodjenja"].ToString();
+                        //JavniKljuc = reader["JavniKljuc"].ToString();
+                        Kljuc2FA = reader["Kljuc2FA"].ToString();
+                        Status = Convert.ToInt32(reader["Status"]);
+                        TipKorisnika = reader["Naziv"].ToString();
+                    }
                 }
             }
+            if (Kljuc2FA != "" && Kljuc2FA != "null")
+            {
+                Verficiranje2FA verificiraj = new Verficiranje2FA();
+                Kljuc2FA = verificiraj.GenerirajKljuc2FA();
+                UnesiUBazuKljuc2FA(connection);
+                verificiraj.PosaljiPorukuNaMobilni(BrojTelefona);
+                Kljuc2FA = "DA";
+            }
 
+            rezultat = JsonPretvarac.Serijalizacija(this);
+            return rezultat;
+        }
+
+        public string PotvrdaKljuca2FA(SqlConnection connection)
+        {
+            string rezultat = "";
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT Korisnik.*,TipoviKorisnika.Naziv FROM Korisnik,TipoviKorisnika WHERE Username=@Username AND Password=@Password AND TipKorisnika=Id AND Kljuc2FA = @Kljuc2FA";
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Username", Username);
+            command.Parameters.AddWithValue("@Kljuc2FA", Kljuc2FA);
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                if (!reader.HasRows)
+                {
+                    Username = null;
+                    Password = null;
+                }
+                else if (reader.Read())
+                {
+                    if (Convert.ToInt32(reader["Status"]) == 0)
+                    {
+                        Username = null;
+                        Password = null;
+                    }
+                    else
+                    {
+                        Username = reader["Username"].ToString();
+                        Ime = reader["Ime"].ToString();
+                        Prezime = reader["Prezime"].ToString();
+                        Email = reader["Email"].ToString();
+                        BrojTelefona = reader["BrojTelefona"].ToString();
+                        DatumRodjenja = reader["DatumRodjenja"].ToString();
+                        //JavniKljuc = reader["JavniKljuc"].ToString();
+                        Kljuc2FA = reader["Kljuc2FA"].ToString();
+                        Status = Convert.ToInt32(reader["Status"]);
+                        TipKorisnika = reader["Naziv"].ToString();
+                    }
+                }
+            }
             rezultat = JsonPretvarac.Serijalizacija(this);
             return rezultat;
         }
