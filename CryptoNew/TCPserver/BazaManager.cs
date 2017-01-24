@@ -35,29 +35,29 @@ namespace TCPserver
         public static string IzvrsiUpitNaBazi(string json)
         {
             string result = "";
+            string kljucnaPoruka = IzvadiTipPoruke(json);
+
             OtvaranjeKonekcijeSBazom();
-            if (IzvadiTipPoruke(json) == "REGISTRACIJA")
+            if (kljucnaPoruka == "REGISTRACIJA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.RegistrirajKorisnika(connection);
-
             }
-            if (IzvadiTipPoruke(json) == "PRIJAVA")
+            if (kljucnaPoruka == "PRIJAVA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.PrijavaKorisnika(connection);
-
             }
-            if (IzvadiTipPoruke(json) == "Potvrda2FA")
+            if (kljucnaPoruka == "Potvrda2FA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.PotvrdaKljuca2FA(connection);
-
             }
             ZatvaranjeKonekcijeSBazom();
+
             return result;
         }
     }

@@ -48,6 +48,10 @@ namespace CryptoNew
             JavniKljuc = "null";
         }
 
+        /// <summary>
+        /// Pomoćna funkcija za funkciju RegistrirajKorisnika() koja zapisuje sve potrebne ključeve u bazu podataka(Javni,Privatni,2FA)
+        /// </summary>
+        /// <param name="connection"></param>
         private void ZapisiKljuceveUBazu(SqlConnection connection)
         {
             var command = new SqlCommand();
@@ -88,6 +92,10 @@ namespace CryptoNew
             dropbox.CreateANewFolder(Username);
         }
 
+        /// <summary>
+        /// Pomoćna funkcija za funkciju PrijavaKorisnika() koja unosi 2FA ključ u bazu podataka
+        /// </summary>
+        /// <param name="connection"></param>
         private void UnesiUBazuKljuc2FA(SqlConnection connection)
         {
             var command = new SqlCommand();
@@ -100,6 +108,11 @@ namespace CryptoNew
             Kljuc2FA = null;
         }
 
+        /// <summary>
+        /// Funkcija registrira korisnika u bazu podataka i vraća JSON(string) o uspješnosti  registracije
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public string RegistrirajKorisnika(SqlConnection connection)
         {
             string rezultat;
@@ -138,6 +151,13 @@ namespace CryptoNew
             return rezultat;
         }
 
+        /// <summary>
+        /// Metoda koja prijavljuje korisnika u bazu podataka te vraća odgovarajuće podatke korisnika.
+        /// Ukoliko korisnik prilikom registracije nije odabrao 2FA autentifikaciju vraćaju se njegovi podaci iz baze podataka.
+        /// Ukoliko je korisnik prilikom registracije odabrao 2FA autentifikaciju vraća se Username,Password i obavijest o 2FA autentifikaciji u obliku korisničkoga JSON-a
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public string PrijavaKorisnika(SqlConnection connection)
         {
             string rezultat="";
@@ -194,6 +214,12 @@ namespace CryptoNew
             return rezultat;
         }
 
+        /// <summary>
+        /// Metoda koja na temelju poslanih korisničkih podataka i 2FA ključa vraća praznoga korisnika(2FA ključ na bazi podataka se ne podudara)
+        /// ili ako objekt sadrži ispravan 2FA ključ vraća odgovarajuće podatke koje koristi klijentska aplikacija.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public string PotvrdaKljuca2FA(SqlConnection connection)
         {
             string rezultat = "";
@@ -210,6 +236,7 @@ namespace CryptoNew
                 {
                     Username = null;
                     Password = null;
+                    Kljuc2FA = null;
                 }
                 else if (reader.Read())
                 {
@@ -217,6 +244,7 @@ namespace CryptoNew
                     {
                         Username = null;
                         Password = null;
+                        Kljuc2FA = null;
                     }
                     else
                     {
@@ -226,8 +254,7 @@ namespace CryptoNew
                         Email = reader["Email"].ToString();
                         BrojTelefona = reader["BrojTelefona"].ToString();
                         DatumRodjenja = reader["DatumRodjenja"].ToString();
-                        //JavniKljuc = reader["JavniKljuc"].ToString();
-                        //Kljuc2FA = reader["Kljuc2FA"].ToString();
+                        Kljuc2FA = null;
                         Status = Convert.ToInt32(reader["Status"]);
                         TipKorisnika = reader["Naziv"].ToString();
                     }

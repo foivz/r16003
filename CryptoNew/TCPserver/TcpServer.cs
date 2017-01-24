@@ -15,8 +15,7 @@ namespace TCPserver
         TcpListener listener;
         TcpClient klijent;
         NetworkStream stream;
-        //string testPoruka = "Test poruka poslana";
-        //List<string> podaci;
+
         byte[] writeBuffer;
         byte[] readBuffer;
         string primljenaPoruka;
@@ -27,6 +26,9 @@ namespace TCPserver
             "Potvrda2FA"
         };
 
+        /// <summary>
+        /// Pokreće se server na odgovarajućoj adresi i portu sa dretvom koja prima klijenta koji šalje serveru poruku
+        /// </summary>
         public void PokreniListener()
         {
             Console.WriteLine("SERVER POKRENUT!!!");
@@ -52,6 +54,11 @@ namespace TCPserver
             dretvaZaListen.Start(listener);
         }
 
+        /// <summary>
+        /// Dretva koja stalno, bez prestanka, osluškuje  port prima klijenta i kada serveru klijent posalje poruku
+        /// dretvra pozove funkciju koja obrađuje klijenta i pripadajuću poruku.
+        /// </summary>
+        /// <param name="listen"></param>
         void OsluskujPort(object listen)
         {
             listener = (TcpListener)listen;
@@ -64,6 +71,11 @@ namespace TCPserver
             }
         }
 
+        /// <summary>
+        /// Metoda koja obrađuje klijenta, tj. poruku koju je klijent poslao(u pravilu obrađuje nekakav zavjet i nakon toga
+        /// vraća nekakvu povratnu poruku - ili konkretne podatke iz baze podataka u obliku json-a ili nekakve kratke obavijesti
+        /// </summary>
+        /// <param name="klijent"></param>
         void ObradiKlijenta(TcpClient klijent)
         {
             writeBuffer = new byte[1024];
@@ -101,6 +113,12 @@ namespace TCPserver
             }
         }
 
+        /// <summary>
+        /// Provjerava se ispravnost poruke i izvršava se određena radnja na serveru(u pravilu radnja koja izvršava upite
+        /// na bazi podataka)
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public string ObradaPoruke(string json)
         {
             string result = "";
@@ -113,6 +131,10 @@ namespace TCPserver
             return result;
         }
 
+        /// <summary>
+        /// Ispisuje se poruka na serveru(u pravilu JSON) što server šalje korisniku
+        /// </summary>
+        /// <param name="poruka"></param>
         private void IspisiPorukuSlanja(string poruka)
         {
             Console.WriteLine("SERVER SALJE...");
@@ -120,6 +142,10 @@ namespace TCPserver
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Ispisuje se poruka na serveru(u pravilu JSON) što je klijent poslao serveru
+        /// </summary>
+        /// <param name="poruka"></param>
         private void IspisiPorukuPrihvata(string poruka)
         {
             Console.WriteLine("SERVER PRIMA...");
