@@ -54,14 +54,14 @@ namespace CryptoNew
             return privateKey;
         }
 
-        public virtual string DohvatiAESKljuc()
+        public virtual byte[] DohvatiAESKljuc()
         {
-            return Convert.ToBase64String(key);
+            return key;
         }
 
-        public virtual string DohvatiIV()
+        public virtual byte[] DohvatiIV()
         {
-            return Convert.ToBase64String(IV);
+            return IV;
         }
 
         /// <summary>
@@ -80,6 +80,12 @@ namespace CryptoNew
         public virtual void PridruziPrivatniKljuc(string privatni)
         {
             privateKey = privatni;
+        }
+
+        public virtual void PridruziKljucIV(byte[] kljuc, byte[] iv)
+        {
+            key = kljuc;
+            IV = iv;
         }
 
         /// <summary>
