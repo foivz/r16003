@@ -42,7 +42,7 @@
             this.odabirUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.odabirUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.odabirUsername.FormattingEnabled = true;
-            this.odabirUsername.Location = new System.Drawing.Point(14, 70);
+            this.odabirUsername.Location = new System.Drawing.Point(75, 70);
             this.odabirUsername.Name = "odabirUsername";
             this.odabirUsername.Size = new System.Drawing.Size(215, 28);
             this.odabirUsername.TabIndex = 0;
@@ -52,7 +52,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(11, 47);
+            this.label1.Location = new System.Drawing.Point(72, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(202, 20);
             this.label1.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.unosSadrzaj.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.unosSadrzaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.unosSadrzaj.Location = new System.Drawing.Point(11, 156);
+            this.unosSadrzaj.Location = new System.Drawing.Point(72, 156);
             this.unosSadrzaj.Multiline = true;
             this.unosSadrzaj.Name = "unosSadrzaj";
             this.unosSadrzaj.Size = new System.Drawing.Size(479, 235);
@@ -73,7 +73,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(10, 133);
+            this.label2.Location = new System.Drawing.Point(71, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             this.gumbPosalji.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gumbPosalji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gumbPosalji.Location = new System.Drawing.Point(266, 397);
+            this.gumbPosalji.Location = new System.Drawing.Point(327, 397);
             this.gumbPosalji.Name = "gumbPosalji";
             this.gumbPosalji.Size = new System.Drawing.Size(224, 43);
             this.gumbPosalji.TabIndex = 4;
@@ -94,7 +94,7 @@
             // prikazLog
             // 
             this.prikazLog.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.prikazLog.Location = new System.Drawing.Point(496, 156);
+            this.prikazLog.Location = new System.Drawing.Point(573, 156);
             this.prikazLog.Multiline = true;
             this.prikazLog.Name = "prikazLog";
             this.prikazLog.Size = new System.Drawing.Size(197, 235);
@@ -105,7 +105,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(656, 133);
+            this.label3.Location = new System.Drawing.Point(733, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 20);
             this.label3.TabIndex = 6;
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 497);
+            this.ClientSize = new System.Drawing.Size(879, 497);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.prikazLog);
             this.Controls.Add(this.gumbPosalji);
