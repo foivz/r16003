@@ -41,6 +41,7 @@ namespace CryptoNew
             unosGodina.DataSource = Enumerable.Range(1900, DateTime.Now.Year - 1900).ToList();
             unosMjesec.DataSource = Enumerable.Range(1, 12).ToList();
             unosGodina.SelectedItem = 1976;
+            unosTelefon.Text = "976214654";
             IzracunajDan((int)unosGodina.SelectedItem, (int)unosMjesec.SelectedItem);
             PostaviAutoComplete();
             unosUsername.Focus();
@@ -57,7 +58,7 @@ namespace CryptoNew
             trenutni.Username = unosUsername.Text;
             trenutni.Password = unosPassword.Text;
             trenutni.Email = unosEmail.Text;
-            trenutni.BrojTelefona = unosTelefon.Text;
+            trenutni.BrojTelefona = "+385"+unosTelefon.Text;
             trenutni.DatumRodjenja = unosGodina.Text + "/" + unosMjesec.Text + "/" + unosDan.Text;
             trenutni.Status = 1; //korisnik je otkljucan
             trenutni.TipKorisnika = "Korisnik";

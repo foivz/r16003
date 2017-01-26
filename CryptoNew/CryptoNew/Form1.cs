@@ -50,6 +50,7 @@ namespace CryptoNew
             {
                 gumbLogout.Enabled = true;
                 gumbSlanje.Enabled = true;
+                gumbPregledPoruka.Enabled = true;
                 FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
                 Dizajner.prilagodiFormuPanelu(novo, glavniPanel);
                 forma = novo;
@@ -57,6 +58,8 @@ namespace CryptoNew
             else
             {
                 gumbLogout.Enabled = false;
+                gumbSlanje.Enabled = false;
+                gumbPregledPoruka.Enabled = false;
                 Prijava novo1 = new Prijava(this);
                 Dizajner.prilagodiFormuPanelu(novo1, glavniPanel);
                 forma = novo1;
@@ -140,6 +143,20 @@ namespace CryptoNew
             Dizajner.prilagodiFormuPanelu(formaSlanje, glavniPanel);
             forma = formaSlanje;
             trenutni = gumbSlanje;
+        }
+
+        private void gumbPregledPoruka_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            FormaPregled formaPregledPoruka = new FormaPregled(this, testKorisnik);
+            Dizajner.prilagodiFormuPanelu(formaPregledPoruka, glavniPanel);
+            forma = formaPregledPoruka;
+            trenutni = gumbPregledPoruka;
+        }
+
+        private void timerVrijeme_Tick(object sender, EventArgs e)
+        {
+            statusTimer.Text = DateTime.Now.ToString();
         }
     }
 }

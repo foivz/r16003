@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AesEnkripcija.cs" />
+    <Compile Include="DesEnkripcija.cs" />
     <Compile Include="Dizajner.cs" />
     <Compile Include="DropboxManager.cs" />
     <Compile Include="Enkripcija.cs" />
@@ -80,6 +81,12 @@
     </Compile>
     <Compile Include="Forma2FA.Designer.cs">
       <DependentUpon>Forma2FA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaPregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaPregled.Designer.cs">
+      <DependentUpon>FormaPregled.cs</DependentUpon>
     </Compile>
     <Compile Include="FormaPrijavljen.cs">
       <SubType>Form</SubType>
@@ -119,12 +126,16 @@
       <DependentUpon>SlanjePoruka.cs</DependentUpon>
     </Compile>
     <Compile Include="TcpKlijent.cs" />
+    <Compile Include="TripleDesEnkripcija.cs" />
     <Compile Include="Verficiranje2FA.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forma2FA.resx">
       <DependentUpon>Forma2FA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaPregled.resx">
+      <DependentUpon>FormaPregled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormaPrijavljen.resx">
       <DependentUpon>FormaPrijavljen.cs</DependentUpon>

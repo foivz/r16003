@@ -49,6 +49,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.check2FA = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,9 +167,9 @@
             this.unosTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.unosTelefon.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.unosTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.unosTelefon.Location = new System.Drawing.Point(182, 580);
+            this.unosTelefon.Location = new System.Drawing.Point(234, 580);
             this.unosTelefon.Name = "unosTelefon";
-            this.unosTelefon.Size = new System.Drawing.Size(533, 26);
+            this.unosTelefon.Size = new System.Drawing.Size(481, 26);
             this.unosTelefon.TabIndex = 11;
             this.unosTelefon.TextChanged += new System.EventHandler(this.unosTelefon_TextChanged);
             this.unosTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.unosTelefon_Validating);
@@ -273,12 +274,23 @@
             this.check2FA.Text = "DA";
             this.check2FA.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(182, 579);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 27);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "+385";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Registracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(879, 865);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.check2FA);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.unosDan);
@@ -328,5 +340,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.CheckBox check2FA;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
     }
 }
