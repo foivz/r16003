@@ -87,6 +87,7 @@
     <Compile Include="FormaPrijavljen.Designer.cs">
       <DependentUpon>FormaPrijavljen.cs</DependentUpon>
     </Compile>
+    <Compile Include="HibridnaEnkripcija.cs" />
     <Compile Include="JsonPretvarac.cs" />
     <Compile Include="Korisnik.cs" />
     <Compile Include="LokalnaEnkripcija.cs">
@@ -95,6 +96,7 @@
     <Compile Include="LokalnaEnkripcija.Designer.cs">
       <DependentUpon>LokalnaEnkripcija.cs</DependentUpon>
     </Compile>
+    <Compile Include="Poruka.cs" />
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>

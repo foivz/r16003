@@ -13,9 +13,9 @@ namespace CryptoNew
             Enkripcija aes = new AesEnkripcija();
             Enkripcija rsa = new RsaEnkripcija();
             rsa.PridruziPrivatniKljuc(privatniKljuc);
+
             // Decrypt AES key with RSA and then decrypt data with AES.
-            var dekriptiraniKljuc =
-            rsa.DecryptData(poruka.Paket.EnkriptiraniKljuc);
+            var dekriptiraniKljuc = rsa.DecryptData(poruka.Paket.EnkriptiraniKljuc);
             aes.PridruziKljucIV(Convert.FromBase64String(dekriptiraniKljuc), poruka.Paket.Iv);
             var decryptedData = aes.DecryptData(poruka.Paket.EnkriptiraniPodaci);
             return decryptedData;

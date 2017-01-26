@@ -49,6 +49,10 @@ namespace CryptoNew
             return publicKey;
         }
 
+        /// <summary>
+        /// Dohvaća se privatni ključ enkripcijskoga objekta
+        /// </summary>
+        /// <returns></returns>
         public virtual string DohvatiPrivatniKljuc()
         {
             return privateKey;
@@ -74,7 +78,7 @@ namespace CryptoNew
         }
 
         /// <summary>
-        /// Pridružuje se privatni ključ enkripcsijskom objektu kako bi se poruka mogla dekriptirati RSA metodom
+        /// Pridružuje se privatni ključ enkripcijskom objektu kako bi se poruka mogla dekriptirati RSA metodom
         /// </summary>
         /// <param name="privatni"></param>
         public virtual void PridruziPrivatniKljuc(string privatni)
@@ -99,6 +103,9 @@ namespace CryptoNew
             return result;
         }
 
+        /// <summary>
+        /// Generiranje aes ključa i inicijalizacijskoga vektora za potrebe aes enkripcije
+        /// </summary>
         public virtual void GenerirajKljucIV()
         {
             key = GenerirajRandomBroj(32);

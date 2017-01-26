@@ -68,11 +68,17 @@
     <Compile Include="..\CryptoNew\Enkripcija.cs">
       <Link>Enkripcija.cs</Link>
     </Compile>
+    <Compile Include="..\CryptoNew\HibridnaEnkripcija.cs">
+      <Link>HibridnaEnkripcija.cs</Link>
+    </Compile>
     <Compile Include="..\CryptoNew\JsonPretvarac.cs">
       <Link>JsonPretvarac.cs</Link>
     </Compile>
     <Compile Include="..\CryptoNew\Korisnik.cs">
       <Link>Korisnik.cs</Link>
+    </Compile>
+    <Compile Include="..\CryptoNew\Poruka.cs">
+      <Link>Poruka.cs</Link>
     </Compile>
     <Compile Include="..\CryptoNew\RsaEnkripcija.cs">
       <Link>RsaEnkripcija.cs</Link>

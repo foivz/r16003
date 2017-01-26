@@ -34,8 +34,8 @@ namespace CryptoNew
             {
                 Enkripcija aesEnkripcija = new AesEnkripcija();
                 aesEnkripcija.GenerirajKljucIV();
-                odabirPrvo.Text=aesEnkripcija.DohvatiAESKljuc();
-                odabirDrugo.Text = aesEnkripcija.DohvatiIV();
+                odabirPrvo.Text=Convert.ToBase64String(aesEnkripcija.DohvatiAESKljuc());
+                odabirDrugo.Text = Convert.ToBase64String(aesEnkripcija.DohvatiIV());
                 trenutna = aesEnkripcija;
             }
             if (odabirAlgoritam.SelectedValue == (object)"RSA")

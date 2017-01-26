@@ -20,12 +20,10 @@ namespace CryptoNew
         public DateTime DatumSlanja { get; set; }
         public EnkripcijskiPaket Paket { get; set; }
 
-        Poruka(byte[] enkriptiraniKljuc,byte[] enkriptiraniPodaci, byte[] iv)
+        Poruka(EnkripcijskiPaket paket)
         {
             Paket = new EnkripcijskiPaket();
-            Paket.EnkriptiraniKljuc = enkriptiraniKljuc;
-            Paket.EnkriptiraniPodaci = enkriptiraniPodaci;
-            Paket.Iv = iv;
+            Paket = paket;
         }
     }
 }
