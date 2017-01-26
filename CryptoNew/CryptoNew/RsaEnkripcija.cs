@@ -14,7 +14,7 @@ namespace CryptoNew
         /// </summary>
         /// <param name="dataToEncrypt"></param>
         /// <returns></returns>
-        public override byte[] EncryptData(string dataToEncrypt)
+        public override string EncryptData(string dataToEncrypt)
         {
             var data = Encoding.UTF8.GetBytes(dataToEncrypt);
             byte[] cipherbytes;
@@ -24,7 +24,7 @@ namespace CryptoNew
                 rsa.FromXmlString(publicKey);
                 cipherbytes = rsa.Encrypt(data, false);
             }
-            return cipherbytes;
+            return Convert.ToBase64String(cipherbytes);
         }
 
         /// <summary>
@@ -32,8 +32,9 @@ namespace CryptoNew
         /// </summary>
         /// <param name="dataToEncrypt"></param>
         /// <returns></returns>
-        public override string DecryptData(byte[] dataToEncrypt)
+        public override string DecryptData(string data)
         {
+            byte[] dataToEncrypt = Convert.FromBase64String(data);
             string result;
             byte[] plain;
             using (var rsa = new RSACryptoServiceProvider(2048))

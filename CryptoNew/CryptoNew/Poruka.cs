@@ -9,8 +9,8 @@ namespace CryptoNew
 
     public class EnkripcijskiPaket
     {
-        public byte[] EnkriptiraniKljuc;
-        public byte[] EnkriptiraniPodaci;
+        public string EnkriptiraniKljuc;
+        public string EnkriptiraniPodaci;
         public byte[] Iv;
     }
     public class Poruka

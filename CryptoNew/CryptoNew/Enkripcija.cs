@@ -112,7 +112,7 @@ namespace CryptoNew
             IV = GenerirajRandomBroj(16);
         }
 
-        public abstract byte[] EncryptData(string dataToEncrypt);
-        public abstract string DecryptData(byte[] dataToEncrypt);
+        public abstract string EncryptData(string dataToEncrypt);
+        public abstract string DecryptData(string dataToEncrypt);
     }
 }

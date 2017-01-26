@@ -53,13 +53,13 @@ namespace CryptoNew
         {
             if (odabirAlgoritam.SelectedValue == (object)"AES")
             {
-                byte[] podaci = trenutna.EncryptData(prikazOriginal.Text);
-                prikazEnkriptirano.Text = trenutna.PrikazEnkriptiranihPodataka(podaci);
+                string podaci = trenutna.EncryptData(prikazOriginal.Text);
+                prikazEnkriptirano.Text = podaci;
             }
             if (odabirAlgoritam.SelectedValue == (object)"RSA")
             {
-                byte[] podaci = trenutna.EncryptData(prikazOriginal.Text);
-                prikazEnkriptirano.Text = trenutna.PrikazEnkriptiranihPodataka(podaci);
+                string podaci = trenutna.EncryptData(prikazOriginal.Text);
+                prikazEnkriptirano.Text = podaci;
             }
         }
 

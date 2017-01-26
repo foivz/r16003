@@ -45,7 +45,7 @@ namespace TCPserver
             CryptoNew.Enkripcija enkripcija = new CryptoNew.AesEnkripcija();
             enkripcija.GenerirajKljucIV();
             var original = enkripcija.EncryptData("sto je danas lijep i sunčan dan####!!!");
-            Console.WriteLine(enkripcija.PrikazEnkriptiranihPodataka(original));
+            Console.WriteLine(original);
             var dekriptirano = enkripcija.DecryptData(original);
             Console.WriteLine(dekriptirano);
 

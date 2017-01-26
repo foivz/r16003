@@ -112,6 +112,12 @@
       <DependentUpon>Registracija.cs</DependentUpon>
     </Compile>
     <Compile Include="RsaEnkripcija.cs" />
+    <Compile Include="SlanjePoruka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SlanjePoruka.Designer.cs">
+      <DependentUpon>SlanjePoruka.cs</DependentUpon>
+    </Compile>
     <Compile Include="TcpKlijent.cs" />
     <Compile Include="Verficiranje2FA.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlanjePoruka.resx">
+      <DependentUpon>SlanjePoruka.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

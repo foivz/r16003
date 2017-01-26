@@ -10,7 +10,7 @@ namespace CryptoNew
 {
     public class AesEnkripcija : Enkripcija
     {
-        public override byte[] EncryptData(string dataToEncrypt)
+        public override string EncryptData(string dataToEncrypt)
         {
             var data = Encoding.UTF8.GetBytes(dataToEncrypt);
             using (var aes = new AesCryptoServiceProvider())
@@ -25,14 +25,15 @@ namespace CryptoNew
                     aes.CreateEncryptor(), CryptoStreamMode.Write);
                     cryptoStream.Write(data, 0, data.Length);
                     cryptoStream.FlushFinalBlock();
-                    return memoryStream.ToArray();
+                    return Convert.ToBase64String(memoryStream.ToArray());
                 }
             }
         }
 
-        public override string DecryptData(byte[] dataToDecrypt)
+        public override string DecryptData(string data)
         {
             string result;
+            byte[] dataToDecrypt = Convert.FromBase64String(data);
             using (var aes = new AesCryptoServiceProvider())
             {
                 aes.Mode = CipherMode.CBC;

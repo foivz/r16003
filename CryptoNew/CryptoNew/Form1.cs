@@ -49,6 +49,7 @@ namespace CryptoNew
             if (testKorisnik.Username != null)
             {
                 gumbLogout.Enabled = true;
+                gumbSlanje.Enabled = true;
                 FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
                 Dizajner.prilagodiFormuPanelu(novo, glavniPanel);
                 forma = novo;
@@ -130,6 +131,15 @@ namespace CryptoNew
             Dizajner.prilagodiFormuPanelu(formaLokalno, glavniPanel);
             forma = formaLokalno;
             trenutni = gumbLokalno;
+        }
+
+        private void gumbSlanje_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            SlanjePoruka formaSlanje = new SlanjePoruka(this,testKorisnik);
+            Dizajner.prilagodiFormuPanelu(formaSlanje, glavniPanel);
+            forma = formaSlanje;
+            trenutni = gumbSlanje;
         }
     }
 }

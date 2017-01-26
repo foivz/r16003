@@ -36,6 +36,7 @@
             this.gumbLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.gumbLokalno = new System.Windows.Forms.Button();
+            this.gumbSlanje = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // glavniPanel
@@ -49,7 +50,7 @@
             this.glavniPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.glavniPanel.Location = new System.Drawing.Point(161, 12);
             this.glavniPanel.Name = "glavniPanel";
-            this.glavniPanel.Size = new System.Drawing.Size(657, 590);
+            this.glavniPanel.Size = new System.Drawing.Size(787, 637);
             this.glavniPanel.TabIndex = 1;
             this.glavniPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.glavniPanel_Paint);
             // 
@@ -83,7 +84,7 @@
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 156);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 221);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;
@@ -98,7 +99,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(9, 586);
+            this.label1.Location = new System.Drawing.Point(9, 633);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 16);
             this.label1.TabIndex = 5;
@@ -119,12 +120,29 @@
             this.gumbLokalno.UseVisualStyleBackColor = true;
             this.gumbLokalno.Click += new System.EventHandler(this.gumbLokalno_Click);
             // 
+            // gumbSlanje
+            // 
+            this.gumbSlanje.Enabled = false;
+            this.gumbSlanje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbSlanje.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbSlanje.ImageIndex = 0;
+            this.gumbSlanje.ImageList = this.imageList1;
+            this.gumbSlanje.Location = new System.Drawing.Point(12, 156);
+            this.gumbSlanje.Name = "gumbSlanje";
+            this.gumbSlanje.Size = new System.Drawing.Size(143, 59);
+            this.gumbSlanje.TabIndex = 9;
+            this.gumbSlanje.Text = "Slanje Poruka";
+            this.gumbSlanje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.gumbSlanje.UseVisualStyleBackColor = true;
+            this.gumbSlanje.Click += new System.EventHandler(this.gumbSlanje_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(830, 614);
+            this.ClientSize = new System.Drawing.Size(960, 661);
+            this.Controls.Add(this.gumbSlanje);
             this.Controls.Add(this.gumbLokalno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gumbLogout);
@@ -133,7 +151,7 @@
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(846, 653);
+            this.MinimumSize = new System.Drawing.Size(976, 700);
             this.Name = "Form1";
             this.Text = "Aplikacija Crypto";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -151,6 +169,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button gumbLokalno;
+        private System.Windows.Forms.Button gumbSlanje;
     }
 }
 
