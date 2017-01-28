@@ -138,6 +138,7 @@ namespace TCPserver
         private void IspisiPorukuSlanja(string poruka)
         {
             Console.WriteLine("SERVER SALJE...");
+            Console.WriteLine("Vrijeme slanja poruke: " + DateTime.Now.ToString());
             Console.WriteLine(poruka);
             Console.WriteLine();
         }
@@ -149,6 +150,7 @@ namespace TCPserver
         private void IspisiPorukuPrihvata(string poruka)
         {
             Console.WriteLine("SERVER PRIMA...");
+            Console.WriteLine("Vrijeme primanja poruke: " + DateTime.Now.ToString());
             Console.WriteLine(poruka);
             Console.WriteLine();
         }
