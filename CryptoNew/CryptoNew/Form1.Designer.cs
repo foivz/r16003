@@ -40,15 +40,15 @@
             this.gumbPregledPoruka = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBarUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBarTipKorisnika = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerVrijeme = new System.Windows.Forms.Timer(this.components);
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,10 +170,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
+            this.statusBarUsername,
             this.toolStripSplitButton1,
             this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4,
+            this.statusBarTipKorisnika,
             this.toolStripStatusLabel6,
             this.toolStripSplitButton2,
             this.toolStripStatusLabel5,
@@ -191,12 +191,12 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(80, 19);
             this.toolStripStatusLabel1.Text = "Username:";
             // 
-            // toolStripStatusLabel2
+            // statusBarUsername
             // 
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(38, 19);
-            this.toolStripStatusLabel2.Text = "Gost";
+            this.statusBarUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.statusBarUsername.Name = "statusBarUsername";
+            this.statusBarUsername.Size = new System.Drawing.Size(38, 19);
+            this.statusBarUsername.Text = "Gost";
             // 
             // toolStripSplitButton1
             // 
@@ -215,12 +215,36 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(100, 19);
             this.toolStripStatusLabel3.Text = "Tip Korisnika:";
             // 
-            // toolStripStatusLabel4
+            // statusBarTipKorisnika
             // 
-            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(38, 19);
-            this.toolStripStatusLabel4.Text = "Gost";
+            this.statusBarTipKorisnika.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.statusBarTipKorisnika.Name = "statusBarTipKorisnika";
+            this.statusBarTipKorisnika.Size = new System.Drawing.Size(38, 19);
+            this.statusBarTipKorisnika.Text = "Gost";
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(518, 19);
+            this.toolStripStatusLabel6.Spring = true;
+            // 
+            // toolStripSplitButton2
+            // 
+            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.toolStripSplitButton2.Enabled = false;
+            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
+            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
+            this.toolStripSplitButton2.Size = new System.Drawing.Size(16, 22);
+            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(65, 19);
+            this.toolStripStatusLabel5.Text = "Vrijeme:";
             // 
             // statusTimer
             // 
@@ -235,30 +259,6 @@
             this.timerVrijeme.Enabled = true;
             this.timerVrijeme.Interval = 1000;
             this.timerVrijeme.Tick += new System.EventHandler(this.timerVrijeme_Tick);
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(65, 19);
-            this.toolStripStatusLabel5.Text = "Vrijeme:";
-            // 
-            // toolStripSplitButton2
-            // 
-            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.toolStripSplitButton2.Enabled = false;
-            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
-            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
-            this.toolStripSplitButton2.Size = new System.Drawing.Size(16, 22);
-            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(518, 19);
-            this.toolStripStatusLabel6.Spring = true;
             // 
             // Form1
             // 
@@ -301,10 +301,10 @@
         private System.Windows.Forms.Button gumbPregledPoruka;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarUsername;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarTipKorisnika;
         private System.Windows.Forms.ToolStripStatusLabel statusTimer;
         private System.Windows.Forms.Timer timerVrijeme;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
