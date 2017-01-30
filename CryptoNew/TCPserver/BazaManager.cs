@@ -56,6 +56,17 @@ namespace TCPserver
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.PotvrdaKljuca2FA(connection);
             }
+            if (kljucnaPoruka == "DohvatiKorisnike")
+            {
+                CryptoNew.ListaKorisnika noviKorisnik = new CryptoNew.ListaKorisnika();
+                result = noviKorisnik.DohvatiKorisnike(connection);
+            }
+            if (kljucnaPoruka == "PosaljiPoruku")
+            {
+                CryptoNew.Poruka novaPoruka = new CryptoNew.Poruka();
+                novaPoruka = (CryptoNew.Poruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = novaPoruka.ZapisiPorukuUBazu(connection);
+            }
             ZatvaranjeKonekcijeSBazom();
 
             return result;

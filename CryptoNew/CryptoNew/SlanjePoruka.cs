@@ -14,17 +14,52 @@ namespace CryptoNew
     {
         Form1 glavnaForma;
         Korisnik prijavljeniKorisnik;
+        TcpKlijent klijent;
+        ListaKorisnika novaLista;
         public SlanjePoruka(Form1 glavna, Korisnik korisnik)
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
             glavnaForma = glavna;
             prijavljeniKorisnik = korisnik;
+
+            klijent = new TcpKlijent();
+            novaLista = new ListaKorisnika();
+            klijent.PosaljiServeru(novaLista, "DohvatiKorisnike");
+            novaLista = (ListaKorisnika)klijent.PrimiOdServera();
+            odabirUsername.DataSource = novaLista.Korisnici.Select(i => i.Username).ToList();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gumbPosalji_Click(object sender, EventArgs e)
+        {
+            string sadrzaj;
+            string javniKljuc;
+            klijent = new TcpKlijent();
+            Poruka novaPoruka = new Poruka();
+            UspjehSlanjaPoruke uspjeh;
+
+            novaPoruka.Posiljatelj = prijavljeniKorisnik.Username;
+            novaPoruka.Primatelj = odabirUsername.Text;
+            novaPoruka.DatumSlanja = DateTime.Now;
+            sadrzaj = unosSadrzaj.Text;
+            javniKljuc = novaLista.Korisnici.Where(i => i.Username == novaPoruka.Primatelj).Select(p => p.JavniKljuc).First();
+            novaPoruka.FormirajEnkripcijskiPaket(sadrzaj, javniKljuc);
+
+            klijent.PosaljiServeru(novaPoruka, "PosaljiPoruku");
+            uspjeh = (UspjehSlanjaPoruke)klijent.PrimiOdServera();
+            if (uspjeh.PorukaPoslana == "DA")
+            {
+                prikazLog.Text += "Poruka poslana, " + "Vrijeme: " + DateTime.Now.ToString() + Environment.NewLine;
+            }
+            else
+            {
+                prikazLog.Text += "Poruka nije poslana, " + "Vrijeme: " + DateTime.Now.ToString() + Environment.NewLine;
+            }
         }
     }
 }

@@ -8,6 +8,42 @@ using System.Data;
 
 namespace CryptoNew
 {
+    class ListaKorisnika
+    {
+        public string Tip { get; set; }
+        public List<Korisnik> Korisnici { get; set; }
+
+        public ListaKorisnika()
+        {
+            Tip = "ListaKorisnika";
+            Korisnici = new List<Korisnik>();
+        }
+
+        public string DohvatiKorisnike(SqlConnection connection)
+        {
+            string rezultat = "";
+            Korisnik korisnik;
+
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT Username,Ime,Prezime,JavniKljuc from Korisnik";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    korisnik = new Korisnik();
+                    korisnik.Username = reader["Username"].ToString();
+                    korisnik.Ime = reader["Ime"].ToString();
+                    korisnik.Prezime = reader["Prezime"].ToString();
+                    korisnik.JavniKljuc = reader["JavniKljuc"].ToString();
+                    Korisnici.Add(korisnik);
+                }
+            }
+            rezultat = JsonPretvarac.Serijalizacija(this);
+            return rezultat;
+        }
+    }
 
     public class UspjehRegistracije
     {

@@ -23,7 +23,9 @@ namespace TCPserver
         private string[] tipoviPoruka = {
             "PRIJAVA",
             "REGISTRACIJA",
-            "Potvrda2FA"
+            "Potvrda2FA",
+            "DohvatiKorisnike",
+            "PosaljiPoruku"
         };
 
         /// <summary>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
-    class HibridnaEnkripcija
+    public class HibridnaEnkripcija
     {
-        private static string DecryptData(Poruka poruka,string privatniKljuc)
+        public static string DecryptData(Poruka poruka,string privatniKljuc)
         {
             Enkripcija aes = new AesEnkripcija();
             Enkripcija rsa = new RsaEnkripcija();
@@ -21,7 +21,7 @@ namespace CryptoNew
             return decryptedData;
         }
 
-        private static EnkripcijskiPaket EncryptData(string poruka, string javniKljuc)
+        public static EnkripcijskiPaket EncryptData(string poruka, string javniKljuc)
         {
             EnkripcijskiPaket novi = new EnkripcijskiPaket();
             Enkripcija aes = new AesEnkripcija();

@@ -90,6 +90,7 @@
             this.gumbPosalji.TabIndex = 4;
             this.gumbPosalji.Text = "Enkriptiraj i Pošalji";
             this.gumbPosalji.UseVisualStyleBackColor = true;
+            this.gumbPosalji.Click += new System.EventHandler(this.gumbPosalji_Click);
             // 
             // prikazLog
             // 

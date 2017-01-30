@@ -53,6 +53,21 @@ namespace CryptoNew
                 UspjehRegistracije uspjeh = JsonConvert.DeserializeObject<UspjehRegistracije>(noviJson);
                 izlaz = uspjeh;
             }
+            if (tipKlase == "ListaKorisnika")
+            {
+                ListaKorisnika lista = JsonConvert.DeserializeObject<ListaKorisnika>(noviJson);
+                izlaz = lista;
+            }
+            if (tipKlase == "Poruka")
+            {
+                Poruka poruka = JsonConvert.DeserializeObject<Poruka>(noviJson);
+                izlaz = poruka;
+            }
+            if (tipKlase == "UspjehSlanjaPoruke")
+            {
+                UspjehSlanjaPoruke uspjeh = JsonConvert.DeserializeObject<UspjehSlanjaPoruke>(noviJson);
+                izlaz = uspjeh;
+            }
             return izlaz;
         }
 
