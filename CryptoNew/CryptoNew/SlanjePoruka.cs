@@ -54,11 +54,11 @@ namespace CryptoNew
             uspjeh = (UspjehSlanjaPoruke)klijent.PrimiOdServera();
             if (uspjeh.PorukaPoslana == "DA")
             {
-                prikazLog.Text += "Poruka poslana, " + "Vrijeme: " + DateTime.Now.ToString() + Environment.NewLine;
+                prikazLog.Text += "Vrijeme: " + DateTime.Now.ToString() + " - Poruka poslana" + Environment.NewLine;
             }
             else
             {
-                prikazLog.Text += "Poruka nije poslana, " + "Vrijeme: " + DateTime.Now.ToString() + Environment.NewLine;
+                prikazLog.Text += "Vrijeme: " + DateTime.Now.ToString() + " - Poruka nije poslana" + Environment.NewLine;
             }
         }
     }

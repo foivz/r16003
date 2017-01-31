@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa za rad sa dropbox-om, sadrži metode za kreiranje mapa te preuzimanje u upload sadržaja na dropbox
+    /// </summary>
     class DropboxManager
     {
         string token = "kU5cuLun14AAAAAAAAAADuqHTOzUyYuSfqbF0ekL2tcaiqfQiuRcYrpjbrvxBbDQ";
         string path = "/crypto/";
 
+        /// <summary>
+        /// Metoda koja kreira folder na dropboxu prilikom registracije korisnika kako bi mu bila omogućena
+        /// razmjena datoteka
+        /// </summary>
+        /// <param name="name"></param>
         public async void CreateANewFolder(string name)
         {
             string patrRecieve = path + name + "/primljeno";

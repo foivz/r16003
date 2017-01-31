@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Osnova klasa za enkkripcijske objekte
+    /// </summary>
     public abstract class Enkripcija
     {
         protected string publicKey;
@@ -58,11 +61,19 @@ namespace CryptoNew
             return privateKey;
         }
 
+        /// <summary>
+        /// Dohvaćanje AES,DES,TRIPLE DES Ključa
+        /// </summary>
+        /// <returns></returns>
         public virtual byte[] DohvatiAESKljuc()
         {
             return key;
         }
 
+        /// <summary>
+        /// Dohvaćanje inicijalizacijskoga vektora
+        /// </summary>
+        /// <returns></returns>
         public virtual byte[] DohvatiIV()
         {
             return IV;
@@ -86,6 +97,12 @@ namespace CryptoNew
             privateKey = privatni;
         }
 
+        /// <summary>
+        /// Pridružuje se ključ i inicijalizacijski vektor enkripcijskom objektu kako bi se poruka mogla dekriptirati aes, des
+        /// ili triple des metodom
+        /// </summary>
+        /// <param name="kljuc"></param>
+        /// <param name="iv"></param>
         public virtual void PridruziKljucIV(byte[] kljuc, byte[] iv)
         {
             key = kljuc;

@@ -51,6 +51,7 @@ namespace CryptoNew
             string rezultat = "";
             UspjehSlanjaPoruke uspjeh = new UspjehSlanjaPoruke("DA");
             int idEnkriptiraniPaket;
+
             var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;

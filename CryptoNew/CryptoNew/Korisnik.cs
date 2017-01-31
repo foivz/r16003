@@ -8,6 +8,10 @@ using System.Data;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja u pravilu sadrži listu korisnika u bazi podataka.
+    /// Glavna metoda dohvaća korisnike u bazi i pridružuje ih odgovarajućem svojstvu.
+    /// </summary>
     class ListaKorisnika
     {
         public string Tip { get; set; }
@@ -62,6 +66,10 @@ namespace CryptoNew
         public int Potvrdi { get; set; }
     }
 
+    /// <summary>
+    /// Klasa za entitete korisnika, sadrži svojstva koja su zapravo identična atributima pripadajuće tablice u bazi podataka.
+    /// Sadrži metode koje rade nešto sa pripadajućom tablicom u bazi podataka.
+    /// </summary>
     public class Korisnik
     {
         public string Tip { get; set; }

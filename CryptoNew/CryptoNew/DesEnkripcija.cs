@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja sadrži metode za enkripciju i dekriptiranje sadržaja pomoću DES algoritma
+    /// </summary>
     public class DesEnkripcija : Enkripcija
     {
+        /// <summary>
+        /// Metoda koja enkriptira sadržaj na temelju ključa i inicijalizacijskoga vekrota
+        /// </summary>
+        /// <param name="dataToEncrypt"></param>
+        /// <returns></returns>
         public override string EncryptData(string dataToEncrypt)
         {
             var data = Encoding.UTF8.GetBytes(dataToEncrypt);
@@ -30,6 +38,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja dekriptira sadržaj na temelju ključa i inicijalizacijskoga vekrota
+        /// </summary>
+        /// <param name="dataToDecrypt"></param>
+        /// <returns></returns>
         public override string DecryptData(string dataToDecrypt)
         {
             string result;

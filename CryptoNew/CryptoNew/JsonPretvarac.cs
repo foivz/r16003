@@ -8,10 +8,20 @@ using Newtonsoft.Json.Linq;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa čija je osnovna namjena serijalizacija objekata u json objekt te deserijalizacija json objekta u objekt pripadajuće
+    /// klase
+    /// </summary>
     public static class JsonPretvarac
     {
         public static List<string> InvalidJsonElements;
 
+        /// <summary>
+        /// Serijalizacija objekta u pripadajući json string
+        /// </summary>
+        /// <param name="objekt"></param>
+        /// <param name="tipPoruke"></param>
+        /// <returns></returns>
         public static string Serijalizacija(object objekt, string tipPoruke = "null")
         {
             JObject temp = JObject.FromObject(objekt);
@@ -26,18 +36,15 @@ namespace CryptoNew
 
         public static string SerijalizacijaListe<T>(List<T> objekti)
         {
-            /*
-            JObject temp = JObject.FromObject(objekti);
-            if (tipPoruke != "null")
-            {
-                //DODATNI ATRRIBUT TIP PORUKE KOJI OZNAČAVA ZBOG ČEGA SE ŠALJE JSON SA PODACIMA (NPR. REGISTRACIJA, PRIJAVA...)
-                temp.Add("tipPoruke", tipPoruke);
-            }
-            */
             string json = JsonConvert.SerializeObject(objekti, Formatting.Indented);
             return json;
         }
 
+        /// <summary>
+        /// Deserijalizacija json stringa u pripadajući objekt klase
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static object Deserijalizacija(string json)
         {
             object izlaz = 0;
@@ -102,6 +109,14 @@ namespace CryptoNew
             return objectsList;
         }
 
+        /// <summary>
+        /// Pretraga jsona s obzirom na kljuc pretrage i vraćanje vrijednosti toga atributa, 
+        /// npr. postoji atribut u json datoteci sa nazivom 'Tip' te ako je to kljuc pretrage
+        /// vratiti ce se vrijednost atributa 'Tip'
+        /// </summary>
+        /// <param name="json"></param>
+        /// <param name="kljuc"></param>
+        /// <returns></returns>
         public static string Parsiranje(string json, string kljuc)
         {
             string izlaz = null;
@@ -113,6 +128,12 @@ namespace CryptoNew
             return izlaz;
         }
 
+        /// <summary>
+        /// Izbacuje tip poruke iz jsona, tj. razlog slanja prema serveru kako bi se json string mogao uspjesno deserijalizirati
+        /// u pripadajuci objekt neke klase
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static string IzbaciTipPoruke(string json)
         {
             if (Parsiranje(json,"tipPoruke") != null)
