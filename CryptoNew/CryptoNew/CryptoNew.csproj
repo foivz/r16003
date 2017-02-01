@@ -97,6 +97,7 @@
     <Compile Include="HibridnaEnkripcija.cs" />
     <Compile Include="JsonPretvarac.cs" />
     <Compile Include="Korisnik.cs" />
+    <Compile Include="ListaPoruka.cs" />
     <Compile Include="LokalnaEnkripcija.cs">
       <SubType>Form</SubType>
     </Compile>

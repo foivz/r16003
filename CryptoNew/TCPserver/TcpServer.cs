@@ -25,7 +25,9 @@ namespace TCPserver
             "REGISTRACIJA",
             "Potvrda2FA",
             "DohvatiKorisnike",
-            "PosaljiPoruku"
+            "PosaljiPoruku",
+            "DohvatiPrimljenePoruke",
+            "DohvatiPoslanePoruke"
         };
 
         /// <summary>

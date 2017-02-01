@@ -67,6 +67,18 @@ namespace TCPserver
                 novaPoruka = (CryptoNew.Poruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = novaPoruka.ZapisiPorukuUBazu(connection);
             }
+            if (kljucnaPoruka == "DohvatiPrimljenePoruke")
+            {
+                CryptoNew.ListaPoruka listaPoruka = new CryptoNew.ListaPoruka();
+                listaPoruka = (CryptoNew.ListaPoruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = listaPoruka.DohvatiPrimljenePoruke(connection);
+            }
+            if (kljucnaPoruka == "DohvatiPoslanePoruke")
+            {
+                CryptoNew.ListaPoruka listaPoruka = new CryptoNew.ListaPoruka();
+                listaPoruka = (CryptoNew.ListaPoruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = listaPoruka.DohvatiPrimljenePoruke(connection);
+            }
             ZatvaranjeKonekcijeSBazom();
 
             return result;

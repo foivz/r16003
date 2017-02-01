@@ -77,6 +77,9 @@
     <Compile Include="..\CryptoNew\Korisnik.cs">
       <Link>Korisnik.cs</Link>
     </Compile>
+    <Compile Include="..\CryptoNew\ListaPoruka.cs">
+      <Link>ListaPoruka.cs</Link>
+    </Compile>
     <Compile Include="..\CryptoNew\Poruka.cs">
       <Link>Poruka.cs</Link>
     </Compile>

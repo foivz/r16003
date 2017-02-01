@@ -75,6 +75,11 @@ namespace CryptoNew
                 UspjehSlanjaPoruke uspjeh = JsonConvert.DeserializeObject<UspjehSlanjaPoruke>(noviJson);
                 izlaz = uspjeh;
             }
+            if (tipKlase == "ListaPoruka")
+            {
+                ListaPoruka poruke = JsonConvert.DeserializeObject<ListaPoruka>(noviJson);
+                izlaz = poruke;
+            }
             return izlaz;
         }
 
