@@ -10,12 +10,22 @@ using System.Windows.Forms;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Forma za pregled primljenih i poslanih poruka
+    /// </summary>
     public partial class FormaPregled : Form
     {
         Form1 glavnaForma;
         Korisnik prijavljeniKorisnik;
         ListaPoruka listaPoruka;
         TcpKlijent klijent;
+
+        /// <summary>
+        /// Konstuktor FormePregled koji inicijalizira formu, oblikuje gridview te odmah dohvaća primljenje poruke korisnika s obzirom
+        /// da je tab aktivan prilikom inicijalizacije forme
+        /// </summary>
+        /// <param name="forma"></param>
+        /// <param name="korisnik"></param>
         public FormaPregled(Form1 forma, Korisnik korisnik)
         {
             InitializeComponent();
@@ -38,6 +48,10 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja oblikuje i prilagođava datagriedview  u takom obliku da se podaci koje klijent primi od servera
+        /// mogu prikazati korisniku
+        /// </summary>
         private void FormirajDataGridove()
         {
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -80,13 +94,26 @@ namespace CryptoNew
 
         }
 
+        /// <summary>
+        /// Event Handler koji se aktivira pritiskom na gumb pregledaj za određenu poruku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewPrimljeno_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
-                Poruka poruka = dataGridViewPrimljeno.Rows[e.RowIndex].Cells["Poruka"].Value as Poruka;
-                FormaDekriptiranaPoruka novaForma = new FormaDekriptiranaPoruka(poruka);
-                novaForma.ShowDialog();
+                try
+                {
+                    Poruka poruka = dataGridViewPrimljeno.Rows[e.RowIndex].Cells["Poruka"].Value as Poruka;
+                    FormaDekriptiranaPoruka novaForma = new FormaDekriptiranaPoruka(poruka);
+                    novaForma.StartPosition = FormStartPosition.CenterParent;
+                    novaForma.ShowDialog();
+                }
+                catch
+                {
+
+                }
             }
         }
     }

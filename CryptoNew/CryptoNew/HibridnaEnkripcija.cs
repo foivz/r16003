@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja služi za enkripciju poruka koje korisnici međusobno razmjenjuju
+    /// </summary>
     public class HibridnaEnkripcija
     {
+        /// <summary>
+        /// Metoda koja služi za dekripciju poruke s obzirom na sam sadržaj poruke. 
+        /// Za dekripciju same poruke važan je privatni ključ koji se prosljeđuje ovoj metodi te ona pomoću toga ključa 
+        /// rsa algoritmom dekriptira ključ kojim je enkriptirana poruka. 
+        /// Zatim se taj ključ i inicijalizacijski vektor pridružuje aes objektu koji zatim može dekriptirari sam sadržaj poruke.
+        /// </summary>
+        /// <param name="poruka"></param>
+        /// <param name="privatniKljuc"></param>
+        /// <returns></returns>
         public static string DecryptData(Poruka poruka,string privatniKljuc)
         {
             Enkripcija aes = new AesEnkripcija();
@@ -21,6 +33,15 @@ namespace CryptoNew
             return decryptedData;
         }
 
+        /// <summary>
+        /// Metoda koja služi za enkripciju poruke s obzirom na sam sadržaj poruke.
+        /// Prvo se izgenerira ključ i inicijalizacijski vekor pomoću kojih se aes algoritmom enkriptira sadm sadržaj poruke.
+        /// Zatim se izgenerirani ključ enkriptira pomoću rsa algoritma i to zahvaljujući javnome ključu koji se prosljeđuje
+        /// samoj metodi.
+        /// </summary>
+        /// <param name="poruka"></param>
+        /// <param name="javniKljuc"></param>
+        /// <returns></returns>
         public static EnkripcijskiPaket EncryptData(string poruka, string javniKljuc)
         {
             EnkripcijskiPaket novi = new EnkripcijskiPaket();

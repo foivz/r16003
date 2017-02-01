@@ -11,8 +11,16 @@ using System.Windows.Forms;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa forme koja prikazuje enkriptirani i dekriptirani tekst poruka koje je korisnik primio od drugih korisnika
+    /// </summary>
     public partial class FormaDekriptiranaPoruka : Form
     {
+        /// <summary>
+        /// Konstruktor forme koji za parametar ima objekt 'Poruka' kako bi se uopce mogao prikazati enkriptirani i
+        /// dekriptirani tekst
+        /// </summary>
+        /// <param name="poruka"></param>
         public FormaDekriptiranaPoruka(Poruka poruka)
         {
             InitializeComponent();
@@ -22,6 +30,11 @@ namespace CryptoNew
             prikazDekriptiran.Text = dekriptiranaPoruka;
         }
 
+        /// <summary>
+        /// Metoda koja dohvaća privatni ključ iz baze podataka na temelju prijavljenoga korisnika
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         private string DohvatiPrivatniKljuc(string username)
         {
             string rezultat = "";

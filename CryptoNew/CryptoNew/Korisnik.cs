@@ -23,6 +23,12 @@ namespace CryptoNew
             Korisnici = new List<Korisnik>();
         }
 
+        /// <summary>
+        /// Metoda koja dohvaća korisnike iz baze podataka te vraća json koji sadrži samo one podatke koji su dovoljni da bi korisnik
+        /// mogao enkriptirati samu poruku i proslijediti je drugom korisniku.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public string DohvatiKorisnike(SqlConnection connection)
         {
             string rezultat = "";
@@ -49,6 +55,10 @@ namespace CryptoNew
         }
     }
 
+    /// <summary>
+    /// Klasa koja sadrži svojstvo PotvrdaKorisnika, tj. je li se korisnik uspješno registrirao ili ne (1 - Uspješna registracija, 
+    /// 0 - neuspješna registracija). Json objekta ove klase se prosljeđuje korisniku.
+    /// </summary>
     public class UspjehRegistracije
     {
         public string Tip { get; set; }
@@ -60,6 +70,10 @@ namespace CryptoNew
         }
     }
 
+    /// <summary>
+    /// !!! Ova klasa se više ne koristi u programu, tj. potvrda da je korisnik unijeo usješan 2fa koda se prenosi kroz sam objekt
+    /// klase Korisnik
+    /// </summary>
     public class Potvrda2FA
     {
         public string Tip { get; set; }

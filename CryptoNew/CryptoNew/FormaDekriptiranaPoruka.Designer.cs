@@ -36,6 +36,7 @@
             // 
             // prikazEnkriptiran
             // 
+            this.prikazEnkriptiran.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.prikazEnkriptiran.Location = new System.Drawing.Point(12, 72);
             this.prikazEnkriptiran.Multiline = true;
             this.prikazEnkriptiran.Name = "prikazEnkriptiran";
@@ -54,6 +55,7 @@
             // 
             // prikazDekriptiran
             // 
+            this.prikazDekriptiran.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.prikazDekriptiran.Location = new System.Drawing.Point(12, 263);
             this.prikazDekriptiran.Multiline = true;
             this.prikazDekriptiran.Name = "prikazDekriptiran";

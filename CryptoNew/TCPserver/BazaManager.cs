@@ -37,7 +37,15 @@ namespace TCPserver
             string result = "";
             string kljucnaPoruka = IzvadiTipPoruke(json);
 
-            OtvaranjeKonekcijeSBazom();
+            try
+            {
+                OtvaranjeKonekcijeSBazom();
+            }
+            catch
+            {
+                result = "Nedostupan server";
+                return result;
+            }
             if (kljucnaPoruka == "REGISTRACIJA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
