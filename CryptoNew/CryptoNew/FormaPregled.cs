@@ -22,8 +22,8 @@ namespace CryptoNew
             Dizajner.FormaBezOkna(this);
             glavnaForma = forma;
             prijavljeniKorisnik = korisnik;
-
             FormirajDataGridove();
+
             klijent = new TcpKlijent();
             listaPoruka = new ListaPoruka();
             listaPoruka.Username = prijavljeniKorisnik.Username;
@@ -34,12 +34,21 @@ namespace CryptoNew
             {
                 Poruka poruka = listaPoruka.Poruke[i];
                 EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
-                dataGridViewPrimljeno.Rows.Add(poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
+                dataGridViewPrimljeno.Rows.Add("",poruka,poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
             }
         }
 
         private void FormirajDataGridove()
         {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            dataGridViewPrimljeno.Columns.Add(btn);
+            btn.FlatStyle = FlatStyle.Popup;
+            btn.DefaultCellStyle.BackColor = Color.SkyBlue;
+            btn.Text = "Pregledaj";
+            btn.HeaderText = "Pregledaj";
+            btn.UseColumnTextForButtonValue = true;
+            dataGridViewPrimljeno.Columns.Add("Poruka", "Poruka");
+            dataGridViewPrimljeno.Columns["Poruka"].Visible = false;
             dataGridViewPrimljeno.Columns.Add("Posiljatelj", "Posiljatelj");
             dataGridViewPrimljeno.Columns.Add("Primatelj", "Primatelj");
             dataGridViewPrimljeno.Columns["Primatelj"].Visible = false;
@@ -51,6 +60,7 @@ namespace CryptoNew
             dataGridViewPrimljeno.Columns.Add("Iv", "Iv");
             dataGridViewPrimljeno.Columns["Iv"].Visible = false;
             dataGridViewPrimljeno.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewPrimljeno.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             dataGridViewPoslano.Columns.Add("Posiljatelj", "Posiljatelj");
             dataGridViewPoslano.Columns.Add("Primatelj", "Primatelj");
@@ -63,6 +73,21 @@ namespace CryptoNew
             dataGridViewPoslano.Columns.Add("Iv", "Iv");
             dataGridViewPoslano.Columns["Iv"].Visible = false;
             dataGridViewPoslano.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
+        private void dataGridViewPrimljeno_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPrimljeno_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                Poruka poruka = dataGridViewPrimljeno.Rows[e.RowIndex].Cells["Poruka"].Value as Poruka;
+                FormaDekriptiranaPoruka novaForma = new FormaDekriptiranaPoruka(poruka);
+                novaForma.ShowDialog();
+            }
         }
     }
 }

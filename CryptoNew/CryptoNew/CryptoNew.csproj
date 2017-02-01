@@ -82,6 +82,12 @@
     <Compile Include="Forma2FA.Designer.cs">
       <DependentUpon>Forma2FA.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormaDekriptiranaPoruka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaDekriptiranaPoruka.Designer.cs">
+      <DependentUpon>FormaDekriptiranaPoruka.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaPregled.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forma2FA.resx">
       <DependentUpon>Forma2FA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaDekriptiranaPoruka.resx">
+      <DependentUpon>FormaDekriptiranaPoruka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormaPregled.resx">
       <DependentUpon>FormaPregled.cs</DependentUpon>

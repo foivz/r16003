@@ -76,6 +76,8 @@
             this.dataGridViewPrimljeno.Name = "dataGridViewPrimljeno";
             this.dataGridViewPrimljeno.Size = new System.Drawing.Size(759, 336);
             this.dataGridViewPrimljeno.TabIndex = 0;
+            this.dataGridViewPrimljeno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrimljeno_CellClick);
+            this.dataGridViewPrimljeno.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrimljeno_CellContentClick);
             // 
             // tabPoslano
             // 
