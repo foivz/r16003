@@ -18,6 +18,23 @@ namespace CryptoNew
         TcpKlijent klijent;
         string fileName;
 
+        private void DodajGumbe()
+        {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            prikazDatoteke.Columns.Add(btn);
+            btn.HeaderText = "";
+            btn.Text = "Skini";
+            btn.Name = "gumbSkini";
+            btn.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+            prikazDatoteke.Columns.Add(btn2);
+            btn2.HeaderText = "";
+            btn2.Text = "Izbriši";
+            btn2.Name = "gumbIzbrisi";
+            btn2.UseColumnTextForButtonValue = true;
+        }
+
         private void IspisLoga(int status)
         {
             string vrijeme = DateTime.Now.ToString();
@@ -25,9 +42,13 @@ namespace CryptoNew
             {
                 prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka Poslana!" + Environment.NewLine;
             }
-            else
+            else if (status == 2)
             {
                 prikazLog.Text += $"- Vrijeme: {vrijeme} - Neuspješno slanje!" + Environment.NewLine;
+            }
+            else
+            {
+                prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje!" + Environment.NewLine;
             }
         }
 
@@ -38,6 +59,7 @@ namespace CryptoNew
             klijent.PosaljiServeru(listaKorisnika, "DohvatiKorisnike");
             listaKorisnika = (ListaKorisnika)klijent.PrimiOdServera();
             odabirKorisnik.DataSource = listaKorisnika.IzdvojiKorisnickaImena();
+            odabirKorisnik.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         public FormaRazmjenaDatoteka(Form1 glavna, Korisnik korisnik)
@@ -46,7 +68,7 @@ namespace CryptoNew
             Dizajner.FormaBezOkna(this);
             glavnaForma = glavna;
             prijavljeniKorisnik = korisnik;
-
+            DodajGumbe();
             DohvatiKorisnike();
         }
 
@@ -61,17 +83,33 @@ namespace CryptoNew
             }
         }
 
-        private void gumbPosalji_Click(object sender, EventArgs e)
+        private async void gumbPosalji_Click(object sender, EventArgs e)
         {
             try
             {
+                IspisLoga(0);
                 DropboxManager novo = new DropboxManager();
-                novo.Upload(fileName, prijavljeniKorisnik.Username, odabirKorisnik.SelectedItem.ToString());
-                IspisLoga(1);
+                int result = await novo.Upload(fileName, prijavljeniKorisnik.Username, odabirKorisnik.SelectedItem.ToString());
+                if (result == 1)
+                {
+                    IspisLoga(1);
+                }
             }
             catch
             {
-                IspisLoga(0);
+                IspisLoga(2);
+            }
+        }
+
+        private async void tabKontrola_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabKontrola.SelectedIndex == 1)
+            {
+                DropboxManager novo = new DropboxManager();
+                List<Datoteka> listaDatoteka = await novo.ListRootFolder(prijavljeniKorisnik.Username, listaKorisnika.Korisnici);
+                prikazDatoteke.DataSource = listaDatoteka;
+                prikazDatoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                //prikazDatoteke.Columns[prikazDatoteke.Columns.Count-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
     }

@@ -34,16 +34,34 @@ namespace CryptoNew
             }
         }
 
-        public async Task ListRootFolder(string Username)
+        public async Task<List<Datoteka>> ListRootFolder(string Username, List<Korisnik> listaKorisnika)
         {
+            string input, ime;
+            List<Datoteka> listaDatoteka = new List<Datoteka>();
             using (var dbx = new DropboxClient(token))
             {
-                var list = await dbx.Files.ListFolderAsync(path+Username+"/primljeno");
+                string completePath = path + Username + "/primljeno/";
+                var list = await dbx.Files.ListFolderAsync(path:completePath);
                 foreach (var item in list.Entries.Where(i => i.IsFile))
                 {
-                    Console.WriteLine("F{0,8} {1}", item.AsFile.Size, item.Name);
+                    Datoteka nova = new Datoteka();
+                    input = item.Name;
+                    ime = input.Substring(input.IndexOf('_') + 1);
+                    nova.ImeDatoteke = ime;
+                    nova.Velicina = item.AsFile.Size;
+                    nova.Datum = item.AsFile.ClientModified.AddMinutes(60);
+                    foreach (var korisnik in listaKorisnika)
+                    {
+                        if (item.Name.Contains(korisnik.Username))
+                        {
+                            nova.Posiljatelj = korisnik.Username;
+                            break;
+                        }
+                    }
+                    listaDatoteka.Add(nova);
                 }
             }
+            return listaDatoteka;
         }
 
         /// <summary>
@@ -54,7 +72,7 @@ namespace CryptoNew
         /// <param name="filePath"></param>
         /// <param name="posiljatelj"></param>
         /// <param name="primatelj"></param>
-        public async void Upload(string filePath, string posiljatelj, string primatelj)
+        public async Task<int> Upload(string filePath, string posiljatelj, string primatelj)
         {
             string fileName = Path.GetFileName(filePath);
             string uploadFilePath = path + primatelj + "/primljeno/" + posiljatelj + "_" + fileName;
@@ -69,6 +87,7 @@ namespace CryptoNew
                     //Console.WriteLine($"Saved {uploadFilePath} rev {updated.Rev}");
                 }
             }
+            return 1;
         }
     }
 }

@@ -30,17 +30,20 @@
         {
             this.tabKontrola = new System.Windows.Forms.TabControl();
             this.tabSlanje = new System.Windows.Forms.TabPage();
-            this.tabPregled = new System.Windows.Forms.TabPage();
-            this.unosDatoteka = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gumbTrazi = new System.Windows.Forms.Button();
-            this.gumbPosalji = new System.Windows.Forms.Button();
-            this.prikazLog = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.odabirKorisnik = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.prikazLog = new System.Windows.Forms.TextBox();
+            this.gumbPosalji = new System.Windows.Forms.Button();
+            this.gumbTrazi = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.unosDatoteka = new System.Windows.Forms.TextBox();
+            this.tabPregled = new System.Windows.Forms.TabPage();
+            this.prikazDatoteke = new System.Windows.Forms.DataGridView();
             this.tabKontrola.SuspendLayout();
             this.tabSlanje.SuspendLayout();
+            this.tabPregled.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prikazDatoteke)).BeginInit();
             this.SuspendLayout();
             // 
             // tabKontrola
@@ -56,10 +59,12 @@
             this.tabKontrola.SelectedIndex = 0;
             this.tabKontrola.Size = new System.Drawing.Size(610, 441);
             this.tabKontrola.TabIndex = 0;
+            this.tabKontrola.SelectedIndexChanged += new System.EventHandler(this.tabKontrola_SelectedIndexChanged);
             // 
             // tabSlanje
             // 
             this.tabSlanje.BackColor = System.Drawing.Color.LightCyan;
+            this.tabSlanje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabSlanje.Controls.Add(this.odabirKorisnik);
             this.tabSlanje.Controls.Add(this.label3);
             this.tabSlanje.Controls.Add(this.label2);
@@ -75,42 +80,43 @@
             this.tabSlanje.TabIndex = 0;
             this.tabSlanje.Text = "Slanje Datoteka";
             // 
-            // tabPregled
+            // odabirKorisnik
             // 
-            this.tabPregled.BackColor = System.Drawing.Color.LightCyan;
-            this.tabPregled.Location = new System.Drawing.Point(4, 29);
-            this.tabPregled.Name = "tabPregled";
-            this.tabPregled.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPregled.Size = new System.Drawing.Size(602, 408);
-            this.tabPregled.TabIndex = 1;
-            this.tabPregled.Text = "Pregled Primljenih Datoteka";
+            this.odabirKorisnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.odabirKorisnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.odabirKorisnik.FormattingEnabled = true;
+            this.odabirKorisnik.Location = new System.Drawing.Point(10, 38);
+            this.odabirKorisnik.Name = "odabirKorisnik";
+            this.odabirKorisnik.Size = new System.Drawing.Size(491, 28);
+            this.odabirKorisnik.TabIndex = 8;
             // 
-            // unosDatoteka
+            // label3
             // 
-            this.unosDatoteka.Location = new System.Drawing.Point(10, 102);
-            this.unosDatoteka.Name = "unosDatoteka";
-            this.unosDatoteka.ReadOnly = true;
-            this.unosDatoteka.Size = new System.Drawing.Size(491, 26);
-            this.unosDatoteka.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(167, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Odaberite Primatelja:";
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Putanja Datoteke:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Log:";
             // 
-            // gumbTrazi
+            // prikazLog
             // 
-            this.gumbTrazi.Location = new System.Drawing.Point(507, 102);
-            this.gumbTrazi.Name = "gumbTrazi";
-            this.gumbTrazi.Size = new System.Drawing.Size(89, 26);
-            this.gumbTrazi.TabIndex = 2;
-            this.gumbTrazi.Text = "Pretraži";
-            this.gumbTrazi.UseVisualStyleBackColor = true;
-            this.gumbTrazi.Click += new System.EventHandler(this.gumbTrazi_Click);
+            this.prikazLog.Location = new System.Drawing.Point(10, 191);
+            this.prikazLog.Multiline = true;
+            this.prikazLog.Name = "prikazLog";
+            this.prikazLog.ReadOnly = true;
+            this.prikazLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.prikazLog.Size = new System.Drawing.Size(586, 211);
+            this.prikazLog.TabIndex = 4;
             // 
             // gumbPosalji
             // 
@@ -123,43 +129,55 @@
             this.gumbPosalji.UseVisualStyleBackColor = true;
             this.gumbPosalji.Click += new System.EventHandler(this.gumbPosalji_Click);
             // 
-            // prikazLog
+            // gumbTrazi
             // 
-            this.prikazLog.Location = new System.Drawing.Point(10, 191);
-            this.prikazLog.Multiline = true;
-            this.prikazLog.Name = "prikazLog";
-            this.prikazLog.ReadOnly = true;
-            this.prikazLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.prikazLog.Size = new System.Drawing.Size(586, 211);
-            this.prikazLog.TabIndex = 4;
+            this.gumbTrazi.Location = new System.Drawing.Point(507, 102);
+            this.gumbTrazi.Name = "gumbTrazi";
+            this.gumbTrazi.Size = new System.Drawing.Size(89, 26);
+            this.gumbTrazi.TabIndex = 2;
+            this.gumbTrazi.Text = "Odaberi";
+            this.gumbTrazi.UseVisualStyleBackColor = true;
+            this.gumbTrazi.Click += new System.EventHandler(this.gumbTrazi_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 168);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Log:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Putanja Datoteke:";
             // 
-            // label3
+            // unosDatoteka
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Odaberite Primatelja:";
+            this.unosDatoteka.Location = new System.Drawing.Point(10, 102);
+            this.unosDatoteka.Name = "unosDatoteka";
+            this.unosDatoteka.ReadOnly = true;
+            this.unosDatoteka.Size = new System.Drawing.Size(491, 26);
+            this.unosDatoteka.TabIndex = 0;
             // 
-            // odabirKorisnik
+            // tabPregled
             // 
-            this.odabirKorisnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.odabirKorisnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.odabirKorisnik.FormattingEnabled = true;
-            this.odabirKorisnik.Location = new System.Drawing.Point(10, 38);
-            this.odabirKorisnik.Name = "odabirKorisnik";
-            this.odabirKorisnik.Size = new System.Drawing.Size(491, 28);
-            this.odabirKorisnik.TabIndex = 8;
+            this.tabPregled.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPregled.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPregled.Controls.Add(this.prikazDatoteke);
+            this.tabPregled.Location = new System.Drawing.Point(4, 29);
+            this.tabPregled.Name = "tabPregled";
+            this.tabPregled.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPregled.Size = new System.Drawing.Size(602, 408);
+            this.tabPregled.TabIndex = 1;
+            this.tabPregled.Text = "Pregled Primljenih Datoteka";
+            // 
+            // prikazDatoteke
+            // 
+            this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.prikazDatoteke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.prikazDatoteke.Location = new System.Drawing.Point(6, 6);
+            this.prikazDatoteke.Name = "prikazDatoteke";
+            this.prikazDatoteke.Size = new System.Drawing.Size(588, 394);
+            this.prikazDatoteke.TabIndex = 0;
             // 
             // FormaRazmjenaDatoteka
             // 
@@ -172,6 +190,8 @@
             this.tabKontrola.ResumeLayout(false);
             this.tabSlanje.ResumeLayout(false);
             this.tabSlanje.PerformLayout();
+            this.tabPregled.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.prikazDatoteke)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +209,6 @@
         private System.Windows.Forms.Button gumbPosalji;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox odabirKorisnik;
+        private System.Windows.Forms.DataGridView prikazDatoteke;
     }
 }
