@@ -68,6 +68,7 @@ namespace CryptoNew
                 gumbLogout.Enabled = true;
                 gumbSlanje.Enabled = true;
                 gumbPregledPoruka.Enabled = true;
+                gumbRazmjenaDatoteka.Enabled = true;
                 statusBarUsername.Text = testKorisnik.Username;
                 statusBarTipKorisnika.Text = testKorisnik.TipKorisnika;
                 FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
@@ -79,6 +80,7 @@ namespace CryptoNew
                 gumbLogout.Enabled = false;
                 gumbSlanje.Enabled = false;
                 gumbPregledPoruka.Enabled = false;
+                gumbRazmjenaDatoteka.Enabled = false;
                 Prijava novo1 = new Prijava(this);
                 Dizajner.prilagodiFormuPanelu(novo1, glavniPanel);
                 forma = novo1;
@@ -226,6 +228,20 @@ namespace CryptoNew
         private void timerVrijeme_Tick(object sender, EventArgs e)
         {
             statusTimer.Text = DateTime.Now.ToString();
+        }
+
+        /// <summary>
+        /// Event metoda koja se aktivira prilikom klika na gumb za razmjenu datoteka
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gumbRazmjenaDatoteka_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            FormaRazmjenaDatoteka formaRazmjenaDatoteka = new FormaRazmjenaDatoteka(this, testKorisnik);
+            Dizajner.prilagodiFormuPanelu(formaRazmjenaDatoteka, glavniPanel);
+            forma = formaRazmjenaDatoteka;
+            trenutni = gumbRazmjenaDatoteka;
         }
     }
 }

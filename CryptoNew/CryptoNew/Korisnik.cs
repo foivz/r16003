@@ -53,6 +53,11 @@ namespace CryptoNew
             rezultat = JsonPretvarac.Serijalizacija(this);
             return rezultat;
         }
+
+        public List<string> IzdvojiKorisnickaImena()
+        {
+            return (this.Korisnici.Select(i => i.Username).ToList());
+        }
     }
 
     /// <summary>

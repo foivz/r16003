@@ -1,6 +1,8 @@
 ﻿using Dropbox.Api;
+using Dropbox.Api.Files;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,43 @@ namespace CryptoNew
                 var createdRecieve = await dbx.Files.CreateFolderAsync(patrRecieve);
                 var createdSend = await dbx.Files.CreateFolderAsync(pathSend);
                 //var endCreated = await dbx.Files.EndCreateFolder();
+            }
+        }
+
+        public async Task ListRootFolder(string Username)
+        {
+            using (var dbx = new DropboxClient(token))
+            {
+                var list = await dbx.Files.ListFolderAsync(path+Username+"/primljeno");
+                foreach (var item in list.Entries.Where(i => i.IsFile))
+                {
+                    Console.WriteLine("F{0,8} {1}", item.AsFile.Size, item.Name);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Metoda koja uploada datoteku na dropbox na temelju putanje datoteke. Username Pošiljatelja datoteke služi za
+        /// formiranje imena datoteke kako bi se znalo tko je datoteku poslao, dok username primatelja služi za formiranje isprave
+        /// lokacije gdje će se datoteka uploadati
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="posiljatelj"></param>
+        /// <param name="primatelj"></param>
+        public async void Upload(string filePath, string posiljatelj, string primatelj)
+        {
+            string fileName = Path.GetFileName(filePath);
+            string uploadFilePath = path + primatelj + "/primljeno/" + posiljatelj + "_" + fileName;
+            byte[] fileToUpload = File.ReadAllBytes(filePath);
+            using (var dbx = new DropboxClient(token))
+            {
+                using (var mem = new MemoryStream((fileToUpload)))
+                {
+                    var updated = await dbx.Files.UploadAsync(uploadFilePath,
+                        WriteMode.Add.Instance,autorename:true,
+                        body: mem);
+                    //Console.WriteLine($"Saved {uploadFilePath} rev {updated.Rev}");
+                }
             }
         }
     }

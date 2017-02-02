@@ -49,6 +49,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerVrijeme = new System.Windows.Forms.Timer(this.components);
+            this.gumbRazmjenaDatoteka = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +76,7 @@
             this.imageList1.Images.SetKeyName(1, "Custom-Icon-Design-Pretty-Office-11-Logout.ico");
             this.imageList1.Images.SetKeyName(2, "Hopstarter-Sleek-Xp-Basic-Home.ico");
             this.imageList1.Images.SetKeyName(3, "send.ico");
+            this.imageList1.Images.SetKeyName(4, "files.ico");
             // 
             // label1
             // 
@@ -125,7 +127,7 @@
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 286);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 351);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;
@@ -225,7 +227,7 @@
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(518, 19);
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(549, 19);
             this.toolStripStatusLabel6.Spring = true;
             // 
             // toolStripSplitButton2
@@ -260,12 +262,29 @@
             this.timerVrijeme.Interval = 1000;
             this.timerVrijeme.Tick += new System.EventHandler(this.timerVrijeme_Tick);
             // 
+            // gumbRazmjenaDatoteka
+            // 
+            this.gumbRazmjenaDatoteka.Enabled = false;
+            this.gumbRazmjenaDatoteka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbRazmjenaDatoteka.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbRazmjenaDatoteka.ImageIndex = 4;
+            this.gumbRazmjenaDatoteka.ImageList = this.imageList1;
+            this.gumbRazmjenaDatoteka.Location = new System.Drawing.Point(12, 286);
+            this.gumbRazmjenaDatoteka.Name = "gumbRazmjenaDatoteka";
+            this.gumbRazmjenaDatoteka.Size = new System.Drawing.Size(143, 59);
+            this.gumbRazmjenaDatoteka.TabIndex = 14;
+            this.gumbRazmjenaDatoteka.Text = "Razmjena Datoteka";
+            this.gumbRazmjenaDatoteka.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.gumbRazmjenaDatoteka.UseVisualStyleBackColor = true;
+            this.gumbRazmjenaDatoteka.Click += new System.EventHandler(this.gumbRazmjenaDatoteka_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(960, 679);
+            this.Controls.Add(this.gumbRazmjenaDatoteka);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gumbPregledPoruka);
             this.Controls.Add(this.gumbSlanje);
@@ -310,6 +329,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.Button gumbRazmjenaDatoteka;
     }
 }
 

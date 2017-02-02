@@ -57,16 +57,24 @@ namespace CryptoNew
             trenutniKorisnik.Username = unosUsername.Text;
             trenutniKorisnik.Password = unosPassword.Text;
             TcpKlijent klijent = new TcpKlijent();
-            klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
-            trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();
-            if (trenutniKorisnik.Kljuc2FA == "DA")
+            try
             {
-                Forma2FA forma2FA = new Forma2FA(trenutniKorisnik,glavnaForma);
-                forma2FA.Show();
+
+                klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
+                trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();
+                if (trenutniKorisnik.Kljuc2FA == "DA")
+                {
+                    Forma2FA forma2FA = new Forma2FA(trenutniKorisnik, glavnaForma);
+                    forma2FA.Show();
+                }
+                else
+                {
+                    glavnaForma.NotifyMe(trenutniKorisnik);
+                }
             }
-            else
+            catch
             {
-                glavnaForma.NotifyMe(trenutniKorisnik);
+                return;
             }
         }
 

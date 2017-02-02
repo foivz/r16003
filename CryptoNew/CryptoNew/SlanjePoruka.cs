@@ -27,7 +27,7 @@ namespace CryptoNew
             novaLista = new ListaKorisnika();
             klijent.PosaljiServeru(novaLista, "DohvatiKorisnike");
             novaLista = (ListaKorisnika)klijent.PrimiOdServera();
-            odabirUsername.DataSource = novaLista.Korisnici.Select(i => i.Username).ToList();
+            odabirUsername.DataSource = novaLista.IzdvojiKorisnickaImena();
         }
 
         private void label2_Click(object sender, EventArgs e)
