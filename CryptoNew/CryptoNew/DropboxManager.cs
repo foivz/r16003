@@ -48,7 +48,7 @@ namespace CryptoNew
                     input = item.Name;
                     ime = input.Substring(input.IndexOf('_') + 1);
                     nova.ImeDatoteke = ime;
-                    nova.Velicina = item.AsFile.Size;
+                    nova.IzracunajVelicinu(item.AsFile.Size);
                     nova.Datum = item.AsFile.ClientModified.AddMinutes(60);
                     foreach (var korisnik in listaKorisnika)
                     {
@@ -84,10 +84,24 @@ namespace CryptoNew
                     var updated = await dbx.Files.UploadAsync(uploadFilePath,
                         WriteMode.Add.Instance,autorename:true,
                         body: mem);
-                    //Console.WriteLine($"Saved {uploadFilePath} rev {updated.Rev}");
                 }
             }
             return 1;
+        }
+
+        public async Task<byte[]> Download(string primatelj ,string posiljatelj, string fileName)
+        {
+            byte[] file;
+            string fullName = posiljatelj + "_" + fileName;
+            string downloadFilePath = path + primatelj + "/primljeno/" + fullName;
+            using (var dbx = new DropboxClient(token))
+            {
+                using (var response = await dbx.Files.DownloadAsync(downloadFilePath))
+                {
+                    file = await response.GetContentAsByteArrayAsync();
+                }
+            }
+            return file;
         }
     }
 }
