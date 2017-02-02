@@ -70,6 +70,28 @@ namespace CryptoNew
             }
         }
 
+        private void OtvoriSaveFileDialog(byte[] file)
+        {
+            string saveFilePath = "";
+            SaveFileDialog spremiDatoteku = new SaveFileDialog();
+            spremiDatoteku.FileName = fileName;
+            spremiDatoteku.DefaultExt = Path.GetExtension(fileName);
+            spremiDatoteku.Filter = "All files (*.*)|*.*";
+            spremiDatoteku.AddExtension = true;
+            spremiDatoteku.OverwritePrompt = true;
+            DialogResult spremiDatotekuPovrat = spremiDatoteku.ShowDialog();
+            if (spremiDatotekuPovrat == DialogResult.OK)
+            {
+                saveFilePath = spremiDatoteku.FileName;
+                File.WriteAllBytes(saveFilePath, file);
+                IspisLogaZaPregled(2);
+            }
+            else
+            {
+                IspisLogaZaPregled(0);
+            }
+        }
+
         private void DohvatiKorisnike()
         {
             listaKorisnika = new ListaKorisnika();
@@ -135,30 +157,13 @@ namespace CryptoNew
         {
             if (e.ColumnIndex == 0)
             {
-                string saveFilePath = "";
                 DropboxManager novo = new DropboxManager();
                 string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
                 fileName = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
                 IspisLogaZaPregled(1);
                 byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileName);
 
-                SaveFileDialog spremiDatoteku = new SaveFileDialog();
-                spremiDatoteku.FileName = fileName;
-                spremiDatoteku.DefaultExt = Path.GetExtension(fileName);
-                spremiDatoteku.Filter = "All files (*.*)|*.*";
-                spremiDatoteku.AddExtension = true;
-                spremiDatoteku.OverwritePrompt = true;
-                DialogResult spremiDatotekuPovrat = spremiDatoteku.ShowDialog();
-                if (spremiDatotekuPovrat == DialogResult.OK)
-                {
-                    saveFilePath = spremiDatoteku.FileName;
-                    File.WriteAllBytes(saveFilePath, file);
-                    IspisLogaZaPregled(2);
-                }
-                else if (spremiDatotekuPovrat == DialogResult.Cancel)
-                {
-                    IspisLogaZaPregled(0);
-                }
+                OtvoriSaveFileDialog(file);
             }
         }
     }

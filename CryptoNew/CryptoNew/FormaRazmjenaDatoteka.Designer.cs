@@ -174,11 +174,14 @@
             // 
             // prikazDatoteke
             // 
+            this.prikazDatoteke.AllowUserToAddRows = false;
+            this.prikazDatoteke.AllowUserToDeleteRows = false;
             this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prikazDatoteke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prikazDatoteke.Location = new System.Drawing.Point(6, 6);
             this.prikazDatoteke.Name = "prikazDatoteke";
+            this.prikazDatoteke.ReadOnly = true;
             this.prikazDatoteke.Size = new System.Drawing.Size(588, 266);
             this.prikazDatoteke.TabIndex = 0;
             this.prikazDatoteke.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prikazDatoteke_CellClick);
