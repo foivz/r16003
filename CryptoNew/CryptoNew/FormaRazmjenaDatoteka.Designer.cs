@@ -39,9 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.unosDatoteka = new System.Windows.Forms.TextBox();
             this.tabPregled = new System.Windows.Forms.TabPage();
-            this.prikazDatoteke = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.logPregledDatoteka = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.prikazDatoteke = new System.Windows.Forms.DataGridView();
             this.tabKontrola.SuspendLayout();
             this.tabSlanje.SuspendLayout();
             this.tabPregled.SuspendLayout();
@@ -91,6 +91,7 @@
             this.odabirKorisnik.Name = "odabirKorisnik";
             this.odabirKorisnik.Size = new System.Drawing.Size(491, 28);
             this.odabirKorisnik.TabIndex = 8;
+            this.odabirKorisnik.SelectedIndexChanged += new System.EventHandler(this.odabirKorisnik_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -172,29 +173,6 @@
             this.tabPregled.TabIndex = 1;
             this.tabPregled.Text = "Pregled Primljenih Datoteka";
             // 
-            // prikazDatoteke
-            // 
-            this.prikazDatoteke.AllowUserToAddRows = false;
-            this.prikazDatoteke.AllowUserToDeleteRows = false;
-            this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.prikazDatoteke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.prikazDatoteke.Location = new System.Drawing.Point(6, 6);
-            this.prikazDatoteke.Name = "prikazDatoteke";
-            this.prikazDatoteke.ReadOnly = true;
-            this.prikazDatoteke.Size = new System.Drawing.Size(588, 266);
-            this.prikazDatoteke.TabIndex = 0;
-            this.prikazDatoteke.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prikazDatoteke_CellClick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Log:";
-            // 
             // logPregledDatoteka
             // 
             this.logPregledDatoteka.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -206,6 +184,30 @@
             this.logPregledDatoteka.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.logPregledDatoteka.Size = new System.Drawing.Size(300, 106);
             this.logPregledDatoteka.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 275);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Log:";
+            // 
+            // prikazDatoteke
+            // 
+            this.prikazDatoteke.AllowUserToAddRows = false;
+            this.prikazDatoteke.AllowUserToDeleteRows = false;
+            this.prikazDatoteke.AllowUserToOrderColumns = true;
+            this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.prikazDatoteke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.prikazDatoteke.Location = new System.Drawing.Point(6, 6);
+            this.prikazDatoteke.Name = "prikazDatoteke";
+            this.prikazDatoteke.ReadOnly = true;
+            this.prikazDatoteke.Size = new System.Drawing.Size(588, 266);
+            this.prikazDatoteke.TabIndex = 0;
+            this.prikazDatoteke.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prikazDatoteke_CellClick);
             // 
             // FormaRazmjenaDatoteka
             // 

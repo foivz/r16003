@@ -18,6 +18,7 @@ namespace CryptoNew
         ListaKorisnika listaKorisnika;
         TcpKlijent klijent;
         string fileName;
+        string fileNameSkini;
 
         private void DodajGumbe()
         {
@@ -74,8 +75,8 @@ namespace CryptoNew
         {
             string saveFilePath = "";
             SaveFileDialog spremiDatoteku = new SaveFileDialog();
-            spremiDatoteku.FileName = fileName;
-            spremiDatoteku.DefaultExt = Path.GetExtension(fileName);
+            spremiDatoteku.FileName = fileNameSkini;
+            spremiDatoteku.DefaultExt = Path.GetExtension(fileNameSkini);
             spremiDatoteku.Filter = "All files (*.*)|*.*";
             spremiDatoteku.AddExtension = true;
             spremiDatoteku.OverwritePrompt = true;
@@ -100,6 +101,13 @@ namespace CryptoNew
             listaKorisnika = (ListaKorisnika)klijent.PrimiOdServera();
             odabirKorisnik.DataSource = listaKorisnika.IzdvojiKorisnickaImena();
             odabirKorisnik.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
+        private void TablicaDatoteka(List<Datoteka> listaDatoteka)
+        {
+            prikazDatoteke.DataSource = listaDatoteka;
+            prikazDatoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //prikazDatoteke.Columns[prikazDatoteke.Columns.Count-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public FormaRazmjenaDatoteka(Form1 glavna, Korisnik korisnik)
@@ -147,9 +155,8 @@ namespace CryptoNew
             {
                 DropboxManager novo = new DropboxManager();
                 List<Datoteka> listaDatoteka = await novo.ListRootFolder(prijavljeniKorisnik.Username, listaKorisnika.Korisnici);
-                prikazDatoteke.DataSource = listaDatoteka;
-                prikazDatoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                //prikazDatoteke.Columns[prikazDatoteke.Columns.Count-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                listaDatoteka = listaDatoteka.OrderByDescending(x => x.Datum).ToList();
+                TablicaDatoteka(listaDatoteka);
             }
         }
 
@@ -159,12 +166,18 @@ namespace CryptoNew
             {
                 DropboxManager novo = new DropboxManager();
                 string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
-                fileName = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
+                fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
                 IspisLogaZaPregled(1);
-                byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileName);
+                byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
 
                 OtvoriSaveFileDialog(file);
             }
+        }
+
+        private void odabirKorisnik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //unosDatoteka.Text = null;
+            //gumbPosalji.Enabled = false;
         }
     }
 }
