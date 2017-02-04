@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,16 @@ namespace CryptoNew
     /// </summary>
     class Datoteka
     {
+        [DisplayName("Pošiljatelj")]
         public string Posiljatelj { get; set; }
+
+        [DisplayName("Ime Datoteke")]
         public string ImeDatoteke { get; set; }
+
+        [DisplayName("Datum")]
         public DateTime Datum { get; set; }
+
+        [DisplayName("Veličina Datoteke")]
         public string Velicina { get; set; }
 
         public void IzracunajVelicinu(ulong len)

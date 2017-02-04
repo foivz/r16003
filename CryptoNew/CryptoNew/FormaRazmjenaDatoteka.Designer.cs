@@ -59,7 +59,7 @@
             this.tabKontrola.Location = new System.Drawing.Point(12, 12);
             this.tabKontrola.Name = "tabKontrola";
             this.tabKontrola.SelectedIndex = 0;
-            this.tabKontrola.Size = new System.Drawing.Size(610, 441);
+            this.tabKontrola.Size = new System.Drawing.Size(710, 515);
             this.tabKontrola.TabIndex = 0;
             this.tabKontrola.SelectedIndexChanged += new System.EventHandler(this.tabKontrola_SelectedIndexChanged);
             // 
@@ -169,26 +169,26 @@
             this.tabPregled.Location = new System.Drawing.Point(4, 29);
             this.tabPregled.Name = "tabPregled";
             this.tabPregled.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPregled.Size = new System.Drawing.Size(602, 408);
+            this.tabPregled.Size = new System.Drawing.Size(702, 482);
             this.tabPregled.TabIndex = 1;
             this.tabPregled.Text = "Pregled Primljenih Datoteka";
             // 
             // logPregledDatoteka
             // 
-            this.logPregledDatoteka.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.logPregledDatoteka.Location = new System.Drawing.Point(6, 298);
+            this.logPregledDatoteka.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.logPregledDatoteka.Location = new System.Drawing.Point(6, 317);
             this.logPregledDatoteka.Multiline = true;
             this.logPregledDatoteka.Name = "logPregledDatoteka";
             this.logPregledDatoteka.ReadOnly = true;
             this.logPregledDatoteka.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logPregledDatoteka.Size = new System.Drawing.Size(300, 106);
+            this.logPregledDatoteka.Size = new System.Drawing.Size(300, 161);
             this.logPregledDatoteka.TabIndex = 2;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 275);
+            this.label4.Location = new System.Drawing.Point(6, 294);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 20);
             this.label4.TabIndex = 1;
@@ -199,13 +199,14 @@
             this.prikazDatoteke.AllowUserToAddRows = false;
             this.prikazDatoteke.AllowUserToDeleteRows = false;
             this.prikazDatoteke.AllowUserToOrderColumns = true;
-            this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.prikazDatoteke.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prikazDatoteke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prikazDatoteke.Location = new System.Drawing.Point(6, 6);
             this.prikazDatoteke.Name = "prikazDatoteke";
             this.prikazDatoteke.ReadOnly = true;
-            this.prikazDatoteke.Size = new System.Drawing.Size(588, 266);
+            this.prikazDatoteke.Size = new System.Drawing.Size(688, 285);
             this.prikazDatoteke.TabIndex = 0;
             this.prikazDatoteke.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prikazDatoteke_CellClick);
             // 
@@ -213,7 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 465);
+            this.ClientSize = new System.Drawing.Size(734, 539);
             this.Controls.Add(this.tabKontrola);
             this.Name = "FormaRazmjenaDatoteka";
             this.Text = "FormaRazmjenaDatoteka";
