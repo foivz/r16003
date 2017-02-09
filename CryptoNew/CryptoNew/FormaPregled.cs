@@ -129,6 +129,8 @@ namespace CryptoNew
         {
             if (tabKontrola.SelectedIndex == 1)
             {
+                dataGridViewPoslano.Rows.Clear();
+                dataGridViewPoslano.Refresh();
                 klijent = new TcpKlijent();
                 listaPoruka = new ListaPoruka();
                 listaPoruka.Username = prijavljeniKorisnik.Username;
@@ -140,6 +142,24 @@ namespace CryptoNew
                     Poruka poruka = listaPoruka.Poruke[i];
                     EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
                     dataGridViewPoslano.Rows.Add(poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
+                }
+            }
+
+            if (tabKontrola.SelectedIndex == 0)
+            {
+                dataGridViewPrimljeno.Rows.Clear();
+                dataGridViewPrimljeno.Refresh();
+                klijent = new TcpKlijent();
+                listaPoruka = new ListaPoruka();
+                listaPoruka.Username = prijavljeniKorisnik.Username;
+                klijent.PosaljiServeru(listaPoruka, "DohvatiPrimljenePoruke");
+                listaPoruka = (ListaPoruka)klijent.PrimiOdServera();
+
+                for (int i = 0; i < listaPoruka.Poruke.Count; i++)
+                {
+                    Poruka poruka = listaPoruka.Poruke[i];
+                    EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
+                    dataGridViewPrimljeno.Rows.Add("",poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
                 }
             }
         }
