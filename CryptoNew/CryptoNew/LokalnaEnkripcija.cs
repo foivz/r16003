@@ -17,7 +17,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
-            odabirAlgoritam.DataSource = new List<string> {"AES","RSA" };
+            odabirAlgoritam.DataSource = new List<string> {"AES","RSA","DES","TripleDES" };
         }
 
         private void Ocisti()
@@ -46,6 +46,22 @@ namespace CryptoNew
                 odabirDrugo.Text = rsaEnkripcija.DohvatiPrivatniKljuc();
                 trenutna = rsaEnkripcija;
             }
+            if (odabirAlgoritam.SelectedValue == (object)"DES")
+            {
+                Enkripcija des = new DesEnkripcija();
+                des.GenerirajKljucIV();
+                odabirPrvo.Text = Convert.ToBase64String(des.DohvatiAESKljuc());
+                odabirDrugo.Text = Convert.ToBase64String(des.DohvatiIV());
+                trenutna = des;
+            }
+            if (odabirAlgoritam.SelectedValue == (object)"TripleDES")
+            {
+                Enkripcija tripleDes = new TripleDesEnkripcija();
+                tripleDes.GenerirajKljucIV();
+                odabirPrvo.Text = Convert.ToBase64String(tripleDes.DohvatiAESKljuc());
+                odabirDrugo.Text = Convert.ToBase64String(tripleDes.DohvatiIV());
+                trenutna = tripleDes;
+            }
             gumbEnkriptiraj.Enabled = true;
         }
 
@@ -61,6 +77,16 @@ namespace CryptoNew
                 string podaci = trenutna.EncryptData(prikazOriginal.Text);
                 prikazEnkriptirano.Text = podaci;
             }
+            if (odabirAlgoritam.SelectedValue == (object)"DES")
+            {
+                string podaci = trenutna.EncryptData(prikazOriginal.Text);
+                prikazEnkriptirano.Text = podaci;
+            }
+            if (odabirAlgoritam.SelectedValue == (object)"TripleDES")
+            {
+                string podaci = trenutna.EncryptData(prikazOriginal.Text);
+                prikazEnkriptirano.Text = podaci;
+            }
         }
 
         private void odabirAlgoritam_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +97,8 @@ namespace CryptoNew
                 labelaDrugo.Text = "Privatni:";
                 Ocisti();
             }
-            if (odabirAlgoritam.SelectedValue == (object)"AES")
+            if (odabirAlgoritam.SelectedValue == (object)"AES" || odabirAlgoritam.SelectedValue == (object)"DES"
+                || odabirAlgoritam.SelectedValue == (object)"TripleDES")
             {
                 labelaPrvo.Text = "Key:";
                 labelaDrugo.Text = "IV:";

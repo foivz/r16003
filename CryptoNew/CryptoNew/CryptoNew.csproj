@@ -83,6 +83,12 @@
     <Compile Include="Forma2FA.Designer.cs">
       <DependentUpon>Forma2FA.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormaAdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaAdminPanel.Designer.cs">
+      <DependentUpon>FormaAdminPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaDekriptiranaPoruka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     </Compile>
     <Compile Include="FormaRazmjenaDatoteka.Designer.cs">
       <DependentUpon>FormaRazmjenaDatoteka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaUrediPodatke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaUrediPodatke.Designer.cs">
+      <DependentUpon>FormaUrediPodatke.cs</DependentUpon>
     </Compile>
     <Compile Include="HibridnaEnkripcija.cs" />
     <Compile Include="JsonPretvarac.cs" />
@@ -148,6 +160,9 @@
     <EmbeddedResource Include="Forma2FA.resx">
       <DependentUpon>Forma2FA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormaAdminPanel.resx">
+      <DependentUpon>FormaAdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormaDekriptiranaPoruka.resx">
       <DependentUpon>FormaDekriptiranaPoruka.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormaRazmjenaDatoteka.resx">
       <DependentUpon>FormaRazmjenaDatoteka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaUrediPodatke.resx">
+      <DependentUpon>FormaUrediPodatke.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LokalnaEnkripcija.resx">
       <DependentUpon>LokalnaEnkripcija.cs</DependentUpon>

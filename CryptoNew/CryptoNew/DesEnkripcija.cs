@@ -65,5 +65,11 @@ namespace CryptoNew
                 }
             }
         }
+
+        public override void GenerirajKljucIV()
+        {
+            key = GenerirajRandomBroj(8);
+            IV = GenerirajRandomBroj(8);
+        }
     }
 }
