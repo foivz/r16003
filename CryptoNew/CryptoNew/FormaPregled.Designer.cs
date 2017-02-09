@@ -53,6 +53,7 @@
             this.tabKontrola.SelectedIndex = 0;
             this.tabKontrola.Size = new System.Drawing.Size(779, 385);
             this.tabKontrola.TabIndex = 0;
+            this.tabKontrola.SelectedIndexChanged += new System.EventHandler(this.tabKontrola_SelectedIndexChanged);
             // 
             // tabPrimljeno
             // 

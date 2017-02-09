@@ -76,6 +76,8 @@ namespace CryptoNew
             dataGridViewPrimljeno.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewPrimljeno.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
+            dataGridViewPoslano.Columns.Add("Poruka", "Poruka");
+            dataGridViewPoslano.Columns["Poruka"].Visible = false;
             dataGridViewPoslano.Columns.Add("Posiljatelj", "Posiljatelj");
             dataGridViewPoslano.Columns.Add("Primatelj", "Primatelj");
             dataGridViewPoslano.Columns["Posiljatelj"].Visible = false;
@@ -87,6 +89,7 @@ namespace CryptoNew
             dataGridViewPoslano.Columns.Add("Iv", "Iv");
             dataGridViewPoslano.Columns["Iv"].Visible = false;
             dataGridViewPoslano.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewPoslano.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void dataGridViewPrimljeno_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -113,6 +116,30 @@ namespace CryptoNew
                 catch
                 {
 
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event Handler koji se aktivira prilikom klika na određeni tab u formi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabKontrola_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabKontrola.SelectedIndex == 1)
+            {
+                klijent = new TcpKlijent();
+                listaPoruka = new ListaPoruka();
+                listaPoruka.Username = prijavljeniKorisnik.Username;
+                klijent.PosaljiServeru(listaPoruka, "DohvatiPoslanePoruke");
+                listaPoruka = (ListaPoruka)klijent.PrimiOdServera();
+
+                for (int i = 0; i < listaPoruka.Poruke.Count; i++)
+                {
+                    Poruka poruka = listaPoruka.Poruke[i];
+                    EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
+                    dataGridViewPoslano.Rows.Add(poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
                 }
             }
         }

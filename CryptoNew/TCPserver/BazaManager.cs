@@ -85,7 +85,7 @@ namespace TCPserver
             {
                 CryptoNew.ListaPoruka listaPoruka = new CryptoNew.ListaPoruka();
                 listaPoruka = (CryptoNew.ListaPoruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
-                result = listaPoruka.DohvatiPrimljenePoruke(connection);
+                result = listaPoruka.DohvatiPoslanePoruke(connection);
             }
             ZatvaranjeKonekcijeSBazom();
 
