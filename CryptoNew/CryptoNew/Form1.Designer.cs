@@ -54,6 +54,7 @@
             this.izbornikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oNamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gumbAdmin = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +83,7 @@
             this.imageList1.Images.SetKeyName(2, "Hopstarter-Sleek-Xp-Basic-Home.ico");
             this.imageList1.Images.SetKeyName(3, "send.ico");
             this.imageList1.Images.SetKeyName(4, "files.ico");
+            this.imageList1.Images.SetKeyName(5, "settings.ico");
             // 
             // label1
             // 
@@ -132,7 +134,7 @@
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 351);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 416);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;
@@ -313,12 +315,29 @@
             this.oNamaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.oNamaToolStripMenuItem.Text = "O nama";
             // 
+            // gumbAdmin
+            // 
+            this.gumbAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbAdmin.ImageIndex = 5;
+            this.gumbAdmin.ImageList = this.imageList1;
+            this.gumbAdmin.Location = new System.Drawing.Point(12, 351);
+            this.gumbAdmin.Name = "gumbAdmin";
+            this.gumbAdmin.Size = new System.Drawing.Size(143, 59);
+            this.gumbAdmin.TabIndex = 18;
+            this.gumbAdmin.Text = "Admin Panel";
+            this.gumbAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.gumbAdmin.UseVisualStyleBackColor = true;
+            this.gumbAdmin.Visible = false;
+            this.gumbAdmin.Click += new System.EventHandler(this.gumbAdmin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1033, 695);
+            this.Controls.Add(this.gumbAdmin);
             this.Controls.Add(this.gumbRazmjenaDatoteka);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -373,6 +392,7 @@
         private System.Windows.Forms.ToolStripMenuItem izbornikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oNamaToolStripMenuItem;
+        private System.Windows.Forms.Button gumbAdmin;
     }
 }
 

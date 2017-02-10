@@ -85,6 +85,11 @@ namespace CryptoNew
                 Dizajner.prilagodiFormuPanelu(novo1, glavniPanel);
                 forma = novo1;
             }
+
+            if (testKorisnik.TipKorisnika == "Admin")
+            {
+                gumbAdmin.Visible = true;
+            }
         }
 
         /// <summary>
@@ -134,6 +139,7 @@ namespace CryptoNew
         /// <param name="e"></param>
         private void gumbLogout_Click(object sender, EventArgs e)
         {
+            gumbAdmin.Visible = false;
             trenutni = gumbGlavni;
             statusBarUsername.Text = "Gost";
             statusBarTipKorisnika.Text = "Gost";
@@ -242,6 +248,20 @@ namespace CryptoNew
             Dizajner.prilagodiFormuPanelu(formaRazmjenaDatoteka, glavniPanel);
             forma = formaRazmjenaDatoteka;
             trenutni = gumbRazmjenaDatoteka;
+        }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb koji otvara admin panel formu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gumbAdmin_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            FormaAdminPanel formaAdminPanel = new FormaAdminPanel();
+            Dizajner.prilagodiFormuPanelu(formaAdminPanel, glavniPanel);
+            forma = formaAdminPanel;
+            trenutni = gumbAdmin;
         }
     }
 }

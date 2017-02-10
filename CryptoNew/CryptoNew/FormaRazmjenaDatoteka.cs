@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja predstavlja formu za razmjenu datoteka
+    /// </summary>
     public partial class FormaRazmjenaDatoteka : Form
     {
         Form1 glavnaForma;
@@ -20,12 +23,15 @@ namespace CryptoNew
         string fileName;
         string fileNameSkini;
 
+        /// <summary>
+        /// Metoda za dodavanje gumba za preuzimanje i brisanje datoteka
+        /// </summary>
         private void DodajGumbe()
         {
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             prikazDatoteke.Columns.Add(btn);
             btn.HeaderText = "";
-            btn.Text = "Skini";
+            btn.Text = "Preuzmi";
             btn.Name = "gumbSkini";
             btn.UseColumnTextForButtonValue = true;
 
@@ -37,6 +43,10 @@ namespace CryptoNew
             btn2.UseColumnTextForButtonValue = true;
         }
 
+        /// <summary>
+        /// Metoda koja ispisuje odgovarajuću poruku kada se datoteka šalje na dropbox server
+        /// </summary>
+        /// <param name="status"></param>
         private void IspisLoga(int status)
         {
             string vrijeme = DateTime.Now.ToString();
@@ -54,6 +64,10 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja ispisuje odgovarajuću poruku kada se datoteka preuzima ili briše sa dropbox servera
+        /// </summary>
+        /// <param name="status"></param>
         private void IspisLogaZaPregled(int status)
         {
             string vrijeme = DateTime.Now.ToString();
@@ -75,6 +89,10 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Otvaranje Windows dijaloga za spremanje datoteke
+        /// </summary>
+        /// <param name="file"></param>
         private void OtvoriSaveFileDialog(byte[] file)
         {
             string saveFilePath = "";
@@ -97,6 +115,9 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja dohvaća korisnike aplikacije kako bi im se mogla poslati datoteka
+        /// </summary>
         private void DohvatiKorisnike()
         {
             listaKorisnika = new ListaKorisnika();
@@ -107,6 +128,10 @@ namespace CryptoNew
             odabirKorisnik.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
+        /// <summary>
+        /// Osvježava prikaz, tj. datagridview za primljenje datoteke
+        /// </summary>
+        /// <param name="listaDatoteka"></param>
         private void TablicaDatoteka(List<Datoteka> listaDatoteka)
         {
             prikazDatoteke.DataSource = null;
@@ -117,6 +142,11 @@ namespace CryptoNew
             //prikazDatoteke.Columns[prikazDatoteke.Columns.Count-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        /// <summary>
+        /// Konstruktor forme FormaRazmjenaDatoteka
+        /// </summary>
+        /// <param name="glavna"></param>
+        /// <param name="korisnik"></param>
         public FormaRazmjenaDatoteka(Form1 glavna, Korisnik korisnik)
         {
             InitializeComponent();
@@ -127,6 +157,11 @@ namespace CryptoNew
             DohvatiKorisnike();
         }
 
+        /// <summary>
+        /// Event handler koji prilikom klika na gumb "Trazi" otvara dialog za pronalaz datoteke
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gumbTrazi_Click(object sender, EventArgs e)
         {
             OpenFileDialog traziDatoteku = new OpenFileDialog();
@@ -138,6 +173,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Event handler koji prilikom klika na gumb "Posalji" salje datoteku na dropbox server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void gumbPosalji_Click(object sender, EventArgs e)
         {
             try
@@ -156,6 +196,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira kada se promijeni tab na formi, tj aktivira se tab za pregled datoteka
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void tabKontrola_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabKontrola.SelectedIndex == 1)
@@ -167,6 +212,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb za skidanje ili brisanje datoteke sa dropbox servera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void prikazDatoteke_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int delete = 0;
@@ -212,6 +262,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Nepotreban event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void odabirKorisnik_SelectedIndexChanged(object sender, EventArgs e)
         {
             //unosDatoteka.Text = null;

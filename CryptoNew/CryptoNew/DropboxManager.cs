@@ -89,6 +89,13 @@ namespace CryptoNew
             return 1;
         }
 
+        /// <summary>
+        /// Metoda koja preuzima datoteku sa dropbox servera
+        /// </summary>
+        /// <param name="primatelj"></param>
+        /// <param name="posiljatelj"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public async Task<byte[]> Download(string primatelj ,string posiljatelj, string fileName)
         {
             byte[] file;
@@ -104,6 +111,13 @@ namespace CryptoNew
             return file;
         }
 
+        /// <summary>
+        /// Metoda koja briše određenu datoteku sa dropbox servera
+        /// </summary>
+        /// <param name="primatelj"></param>
+        /// <param name="posiljatelj"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public async Task<int> DeleteFile(string primatelj, string posiljatelj, string fileName)
         {
             string fullName = posiljatelj + "_" + fileName;

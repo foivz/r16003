@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanel.cs" />
     <Compile Include="AesEnkripcija.cs" />
     <Compile Include="Datoteka.cs" />
     <Compile Include="DesEnkripcija.cs" />

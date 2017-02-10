@@ -37,7 +37,7 @@ namespace CryptoNew
             var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT Username,Ime,Prezime,JavniKljuc from Korisnik";
+            command.CommandText = "SELECT Username,Ime,Prezime,JavniKljuc,Status from Korisnik";
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -47,6 +47,7 @@ namespace CryptoNew
                     korisnik.Ime = reader["Ime"].ToString();
                     korisnik.Prezime = reader["Prezime"].ToString();
                     korisnik.JavniKljuc = reader["JavniKljuc"].ToString();
+                    korisnik.Status = Convert.ToInt32(reader["Status"]);
                     Korisnici.Add(korisnik);
                 }
             }
@@ -109,6 +110,20 @@ namespace CryptoNew
             Tip = "Korisnik";
             Kljuc2FA = "null";
             JavniKljuc = "null";
+        }
+
+        public string DohvatiStatus()
+        {
+            string rezultat = "";
+            if (Status == 1)
+            {
+                rezultat = "Otključan";
+            }
+            else
+            {
+                rezultat = "Zaključan";
+            }
+            return rezultat;
         }
 
         /// <summary>
