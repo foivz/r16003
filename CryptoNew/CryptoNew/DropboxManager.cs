@@ -103,5 +103,16 @@ namespace CryptoNew
             }
             return file;
         }
+
+        public async Task<int> DeleteFile(string primatelj, string posiljatelj, string fileName)
+        {
+            string fullName = posiljatelj + "_" + fileName;
+            string deletePath = path + primatelj + "/primljeno/" + fullName;
+            using (var dbx = new DropboxClient(token))
+            {
+                await dbx.Files.DeleteAsync(deletePath);
+            }
+            return 1;
+        }
     }
 }

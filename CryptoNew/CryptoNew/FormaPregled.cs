@@ -39,12 +39,13 @@ namespace CryptoNew
             listaPoruka.Username = prijavljeniKorisnik.Username;
             klijent.PosaljiServeru(listaPoruka, "DohvatiPrimljenePoruke");
             listaPoruka = (ListaPoruka)klijent.PrimiOdServera();
+            listaPoruka.Poruke = listaPoruka.Poruke.OrderByDescending(x => x.DatumSlanja).ToList();
 
             for (int i = 0; i < listaPoruka.Poruke.Count; i++)
             {
                 Poruka poruka = listaPoruka.Poruke[i];
                 EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
-                dataGridViewPrimljeno.Rows.Add("",poruka,poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
+                dataGridViewPrimljeno.Rows.Add("",poruka,poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja, paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
             }
         }
 
@@ -136,12 +137,13 @@ namespace CryptoNew
                 listaPoruka.Username = prijavljeniKorisnik.Username;
                 klijent.PosaljiServeru(listaPoruka, "DohvatiPoslanePoruke");
                 listaPoruka = (ListaPoruka)klijent.PrimiOdServera();
+                listaPoruka.Poruke = listaPoruka.Poruke.OrderByDescending(x => x.DatumSlanja).ToList();
 
                 for (int i = 0; i < listaPoruka.Poruke.Count; i++)
                 {
                     Poruka poruka = listaPoruka.Poruke[i];
                     EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
-                    dataGridViewPoslano.Rows.Add(poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
+                    dataGridViewPoslano.Rows.Add(poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja, paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
                 }
             }
 
@@ -154,12 +156,13 @@ namespace CryptoNew
                 listaPoruka.Username = prijavljeniKorisnik.Username;
                 klijent.PosaljiServeru(listaPoruka, "DohvatiPrimljenePoruke");
                 listaPoruka = (ListaPoruka)klijent.PrimiOdServera();
+                listaPoruka.Poruke = listaPoruka.Poruke.OrderByDescending(x => x.DatumSlanja).ToList();
 
                 for (int i = 0; i < listaPoruka.Poruke.Count; i++)
                 {
                     Poruka poruka = listaPoruka.Poruke[i];
                     EnkripcijskiPaket paket = listaPoruka.Poruke[i].Paket;
-                    dataGridViewPrimljeno.Rows.Add("",poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja.ToShortDateString(), paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
+                    dataGridViewPrimljeno.Rows.Add("",poruka, poruka.Posiljatelj, poruka.Primatelj, poruka.DatumSlanja, paket.EnkriptiraniKljuc, paket.EnkriptiraniPodaci, Convert.ToBase64String(paket.Iv));
                 }
             }
         }

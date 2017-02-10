@@ -65,6 +65,10 @@ namespace CryptoNew
             {
                 logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka je skinuta!" + Environment.NewLine;
             }
+            else if (status == 3)
+            {
+                logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka je obrisana!" + Environment.NewLine;
+            }
             else
             {
                 logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Neuspješno skidanje!" + Environment.NewLine;
@@ -105,6 +109,9 @@ namespace CryptoNew
 
         private void TablicaDatoteka(List<Datoteka> listaDatoteka)
         {
+            prikazDatoteke.DataSource = null;
+            prikazDatoteke.Rows.Clear();
+            prikazDatoteke.Refresh();
             prikazDatoteke.DataSource = listaDatoteka;
             prikazDatoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             //prikazDatoteke.Columns[prikazDatoteke.Columns.Count-1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -162,15 +169,46 @@ namespace CryptoNew
 
         private async void prikazDatoteke_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int delete = 0;
             if (e.ColumnIndex == 0)
             {
-                DropboxManager novo = new DropboxManager();
-                string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
-                fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
-                IspisLogaZaPregled(1);
-                byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
+                try
+                {
+                    DropboxManager novo = new DropboxManager();
+                    string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
+                    fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
+                    IspisLogaZaPregled(1);
+                    byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
 
-                OtvoriSaveFileDialog(file);
+                    OtvoriSaveFileDialog(file);
+                }
+                catch
+                {
+
+                }
+            }
+
+            if (e.ColumnIndex == 1)
+            {
+                try
+                {
+                    DropboxManager novo = new DropboxManager();
+                    string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
+                    fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
+                    delete = await novo.DeleteFile(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
+                    IspisLogaZaPregled(3);
+
+                    if (delete == 1)
+                    {
+                        List<Datoteka> listaDatoteka = await novo.ListRootFolder(prijavljeniKorisnik.Username, listaKorisnika.Korisnici);
+                        listaDatoteka = listaDatoteka.OrderByDescending(x => x.Datum).ToList();
+                        TablicaDatoteka(listaDatoteka);
+                    }
+                }
+                catch
+                {
+
+                }
             }
         }
 
