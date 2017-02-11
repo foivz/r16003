@@ -105,6 +105,9 @@ namespace CryptoNew
         public int Status { get; set; }
         public string TipKorisnika { get; set; }
 
+        /// <summary>
+        /// Konstruktor klase Korisnik()
+        /// </summary>
         public Korisnik()
         {
             Tip = "Korisnik";
@@ -112,6 +115,11 @@ namespace CryptoNew
             JavniKljuc = "null";
         }
 
+        /// <summary>
+        /// Metoda koja vraća status korisnika ne temelju vrijednosti Status-a (ili je korisnik Otključan - može se prijaviti ili
+        /// je korisnik zaključan - ne može se prijaviti)
+        /// </summary>
+        /// <returns></returns>
         public string DohvatiStatus()
         {
             string rezultat = "";

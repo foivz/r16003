@@ -14,7 +14,7 @@ namespace CryptoNew
     public class DesEnkripcija : Enkripcija
     {
         /// <summary>
-        /// Metoda koja enkriptira sadržaj na temelju ključa i inicijalizacijskoga vekrota
+        /// Metoda koja enkriptira sadržaj na temelju ključa i inicijalizacijskoga vektora
         /// </summary>
         /// <param name="dataToEncrypt"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace CryptoNew
         }
 
         /// <summary>
-        /// Metoda koja dekriptira sadržaj na temelju ključa i inicijalizacijskoga vekrota
+        /// Metoda koja dekriptira sadržaj na temelju ključa i inicijalizacijskoga vektora
         /// </summary>
         /// <param name="dataToDecrypt"></param>
         /// <returns></returns>
@@ -66,6 +66,9 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Override metoda koja generira pripadajući ključ i inicjalizacijski vektor odgovarajuće veličine
+        /// </summary>
         public override void GenerirajKljucIV()
         {
             key = GenerirajRandomBroj(8);

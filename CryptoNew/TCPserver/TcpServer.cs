@@ -27,7 +27,8 @@ namespace TCPserver
             "DohvatiKorisnike",
             "PosaljiPoruku",
             "DohvatiPrimljenePoruke",
-            "DohvatiPoslanePoruke"
+            "DohvatiPoslanePoruke",
+            "OtkljucajZakljucaj"
         };
 
         /// <summary>

@@ -93,13 +93,19 @@ namespace CryptoNew
             dataGridViewPoslano.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
+        /// <summary>
+        /// Nepotreban event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewPrimljeno_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
         /// <summary>
-        /// Event Handler koji se aktivira pritiskom na gumb pregledaj za određenu poruku.
+        /// Event Handler koji se aktivira pritiskom na gumb pregledaj za određenu poruku. Otvara se forma
+        /// koja prikazuje poruku u enkriptiranom i dekriptiranom obliku.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -122,7 +128,8 @@ namespace CryptoNew
         }
 
         /// <summary>
-        /// Event Handler koji se aktivira prilikom klika na određeni tab u formi
+        /// Event Handler koji se aktivira prilikom klika na određeni tab u formi. Ovisno na koji se tab klikne
+        /// šalju se odgovarajući podaci prema serveru na temelju kojih se dohavaćaju poslane ili primljene poruke.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

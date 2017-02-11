@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja predstavlja formu za lokalnu enkripciju podataka
+    /// </summary>
     public partial class LokalnaEnkripcija : Form
     {
         Enkripcija trenutna;
@@ -20,6 +23,9 @@ namespace CryptoNew
             odabirAlgoritam.DataSource = new List<string> {"AES","RSA","DES","TripleDES" };
         }
 
+        /// <summary>
+        /// Metoda koja čisti kontrole na formi nakon što korisnik promijeni vrstu algoritma
+        /// </summary>
         private void Ocisti()
         {
             odabirPrvo.Clear();
@@ -28,6 +34,12 @@ namespace CryptoNew
             gumbEnkriptiraj.Enabled = false;
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb Generiraj. Na temelju pripadajućeg odabira vrste algoritma
+        /// generiraju se potrebni ključevi i inicijalizacijski vektori potrebni za određenu vrsu algoritma enkripcije.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gumbGeneriraj_Click(object sender, EventArgs e)
         {
             if (odabirAlgoritam.SelectedValue == (object)"AES")
@@ -65,6 +77,12 @@ namespace CryptoNew
             gumbEnkriptiraj.Enabled = true;
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb Enkriptiraj. Na temelju odgovarajućeg odabira algoritma
+        /// poziva se metoda trenutno odabrane enkripcije
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gumbEnkriptiraj_Click(object sender, EventArgs e)
         {
             if (odabirAlgoritam.SelectedValue == (object)"AES")
@@ -89,6 +107,11 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira prilikom promjene algoritma enkripcije - mijenja labele na formi i čisti kontrole
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void odabirAlgoritam_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (odabirAlgoritam.SelectedValue == (object)"RSA")

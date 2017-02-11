@@ -30,11 +30,21 @@ namespace CryptoNew
             prikazTipKorisnika.Text = trenutniKorisnik.TipKorisnika;
         }
 
+        /// <summary>
+        /// Resetiranje forme, zapravo ovo uopće nije potrebno
+        /// </summary>
+        /// <returns></returns>
         public FormaPrijavljen Reset()
         {
             return new FormaPrijavljen(trenutniKorisnik); ;
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira nakon što se forma učita, samo prikazuje trenutnu Username korisnika na ekran zajedno
+        /// sa Tipom Korisnika (admin ili obični korisnik)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormaPrijavljen_Load(object sender, EventArgs e)
         {
             prikazKorIme.Text = trenutniKorisnik.Username;

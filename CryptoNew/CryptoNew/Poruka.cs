@@ -8,11 +8,18 @@ using System.Threading.Tasks;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja predstavlja Uspjeh slanja poruke - je li poruka poslana ili nije
+    /// </summary>
     public class UspjehSlanjaPoruke
     {
         public string Tip { get; set; }
         public string PorukaPoslana { get; set; }
 
+        /// <summary>
+        /// Konstruktor klase UspjehSlanjaPoruke
+        /// </summary>
+        /// <param name="poslano"></param>
         public UspjehSlanjaPoruke(string poslano)
         {
             Tip = "UspjehSlanjaPoruke";
@@ -20,6 +27,10 @@ namespace CryptoNew
         }
     }
 
+    /// <summary>
+    /// Klasa koja sadrži podatke o enkripcijskom paketu neke poruke - enkriptirani ključ, enkriptirane podatke i inicijalizacijski
+    /// vektor
+    /// </summary>
     public class EnkripcijskiPaket
     {
         public string EnkriptiraniKljuc;
@@ -27,6 +38,10 @@ namespace CryptoNew
         public byte[] Iv;
     }
 
+    /// <summary>
+    /// Klasa Poruka koja predstavlja koja sadrži sve osnovne podatke o određenoj poruci, svojstva ove klase zapravo predstavljaju
+    /// stupce odgovarajuće tablice u bazi podataka
+    /// </summary>
     public class Poruka
     {
         public string Tip { get; set; }
@@ -35,17 +50,32 @@ namespace CryptoNew
         public DateTime DatumSlanja { get; set; }
         public EnkripcijskiPaket Paket { get; set; }
 
+        /// <summary>
+        /// Konstruktor Klase Poruka - inicijalizira prazni enkripcijski paket koj se kasnije popunjava
+        /// </summary>
         public Poruka()
         {
             Tip = "Poruka";
             Paket = new EnkripcijskiPaket();
         }
 
+        /// <summary>
+        /// Metoda koja enkriptira sadrzaj na temelju javnoga ključa te stvara enkripcijski paket koji pridružuje
+        /// svom enkripcijskom paketu.
+        /// </summary>
+        /// <param name="sadrzaj"></param>
+        /// <param name="javniKljuc"></param>
         public void FormirajEnkripcijskiPaket(string sadrzaj, string javniKljuc)
         {
             Paket = HibridnaEnkripcija.EncryptData(sadrzaj, javniKljuc);
         }
 
+        /// <summary>
+        /// Metoda koja zapisuje poruku u bazu podataka - potreno je izvršiti 2 upita - jedan na tablici EnkriptiraniPaket, a drugi
+        /// na tablici Poruka - tada je poruka usješno zapisana u bazu podataka.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public string ZapisiPorukuUBazu(SqlConnection connection)
         {
             string rezultat = "";

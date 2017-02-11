@@ -25,6 +25,10 @@ namespace CryptoNew
         [DisplayName("Veličina Datoteke")]
         public string Velicina { get; set; }
 
+        /// <summary>
+        /// Metoda koja računa veličinu datoteke iz bajtova
+        /// </summary>
+        /// <param name="len"></param>
         public void IzracunajVelicinu(ulong len)
         {
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };

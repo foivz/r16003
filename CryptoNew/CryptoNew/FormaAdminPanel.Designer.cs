@@ -30,8 +30,8 @@
         {
             this.tabKontrolaAdmin = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
-            this.tabAdminMail = new System.Windows.Forms.TabPage();
             this.tablicaKorisnici = new System.Windows.Forms.DataGridView();
+            this.tabAdminMail = new System.Windows.Forms.TabPage();
             this.tabKontrolaAdmin.SuspendLayout();
             this.tabStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablicaKorisnici)).BeginInit();
@@ -62,16 +62,6 @@
             this.tabStatus.Text = "Upravljanje Statusom računa";
             this.tabStatus.UseVisualStyleBackColor = true;
             // 
-            // tabAdminMail
-            // 
-            this.tabAdminMail.Location = new System.Drawing.Point(4, 29);
-            this.tabAdminMail.Name = "tabAdminMail";
-            this.tabAdminMail.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdminMail.Size = new System.Drawing.Size(619, 375);
-            this.tabAdminMail.TabIndex = 1;
-            this.tabAdminMail.Text = "Slanje Admin maila";
-            this.tabAdminMail.UseVisualStyleBackColor = true;
-            // 
             // tablicaKorisnici
             // 
             this.tablicaKorisnici.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -82,6 +72,17 @@
             this.tablicaKorisnici.Name = "tablicaKorisnici";
             this.tablicaKorisnici.Size = new System.Drawing.Size(607, 363);
             this.tablicaKorisnici.TabIndex = 0;
+            this.tablicaKorisnici.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablicaKorisnici_CellClick);
+            // 
+            // tabAdminMail
+            // 
+            this.tabAdminMail.Location = new System.Drawing.Point(4, 29);
+            this.tabAdminMail.Name = "tabAdminMail";
+            this.tabAdminMail.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAdminMail.Size = new System.Drawing.Size(619, 375);
+            this.tabAdminMail.TabIndex = 1;
+            this.tabAdminMail.Text = "Slanje Admin maila";
+            this.tabAdminMail.UseVisualStyleBackColor = true;
             // 
             // FormaAdminPanel
             // 
@@ -90,7 +91,7 @@
             this.ClientSize = new System.Drawing.Size(651, 432);
             this.Controls.Add(this.tabKontrolaAdmin);
             this.Name = "FormaAdminPanel";
-            this.Text = "FormaAdminPanel";
+            this.Text = "Admin Panel";
             this.tabKontrolaAdmin.ResumeLayout(false);
             this.tabStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablicaKorisnici)).EndInit();

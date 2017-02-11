@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace CryptoNew
 {
+    /// <summary>
+    /// Klasa koja prefstavlja TCP klijenta - sadrži metode za slanje podataka prema serveru i primanje podataka sa servera
+    /// </summary>
     class TcpKlijent
     {
         TcpClient klijent;
@@ -17,6 +20,9 @@ namespace CryptoNew
         byte[] readBuffer;
         byte[] writeBuffer;
 
+        /// <summary>
+        /// Konstruktor klase TcpKlijent
+        /// </summary>
         public TcpKlijent()
         {
             try
@@ -30,6 +36,12 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja šalje serveru objekt - taj objekt serijalizira u json te ga zapisuje na stream sa kojega server
+        /// može pročitati podatke.
+        /// </summary>
+        /// <param name="objekt"></param>
+        /// <param name="tipPoruke"></param>
         public void PosaljiServeru(object objekt, string tipPoruke = "null")
         {
             try
@@ -49,6 +61,11 @@ namespace CryptoNew
             stream.Flush();
         }
 
+        /// <summary>
+        /// Metoda koja prima json od servera u chunkovima te konsturira kompletnu poruku sve dok su podaci na streamu dohvatljivi.
+        /// Deserijalizira json u odgovarajući podatkovni objekt.
+        /// </summary>
+        /// <returns></returns>
         public object PrimiOdServera()
         {
             readBuffer = new byte[1024];
@@ -76,6 +93,9 @@ namespace CryptoNew
             return trenutni;
         }
 
+        /// <summary>
+        /// Metoda koja zatvara otvoreni socket između klijenta i servera
+        /// </summary>
         public void ZatvoriSocket()
         {
             klijent.Close();
