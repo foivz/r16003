@@ -70,9 +70,17 @@ namespace CryptoNew
                 korisnik.Status = 1;
             }
             klijent.PosaljiServeru(korisnik, "OtkljucajZakljucaj");
-            korisnik = (Korisnik)klijent.PrimiOdServera();
+            listaKorisnika = (ListaKorisnika)klijent.PrimiOdServera();
 
-            DohvatiKorisnike();
+
+            tablicaKorisnici.Rows.Clear();
+            tablicaKorisnici.Refresh();
+
+            for (int i = 0; i < listaKorisnika.Korisnici.Count; i++)
+            {
+                korisnik = listaKorisnika.Korisnici[i];
+                int rowIndex = tablicaKorisnici.Rows.Add(korisnik.Username, korisnik.Ime, korisnik.Prezime, korisnik.DohvatiStatus());
+            }
         }
 
         /// <summary>

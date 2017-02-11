@@ -96,6 +96,12 @@
     <Compile Include="FormaDekriptiranaPoruka.Designer.cs">
       <DependentUpon>FormaDekriptiranaPoruka.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormaONama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaONama.Designer.cs">
+      <DependentUpon>FormaONama.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormaPregled.cs">
       <SubType>Form</SubType>
     </Compile>

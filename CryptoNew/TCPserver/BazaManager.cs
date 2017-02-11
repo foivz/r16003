@@ -46,46 +46,60 @@ namespace TCPserver
                 result = "Nedostupan server";
                 return result;
             }
+
             if (kljucnaPoruka == "REGISTRACIJA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.RegistrirajKorisnika(connection);
             }
+
             if (kljucnaPoruka == "PRIJAVA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.PrijavaKorisnika(connection);
             }
+
             if (kljucnaPoruka == "Potvrda2FA")
             {
                 CryptoNew.Korisnik noviKorisnik = new CryptoNew.Korisnik();
                 noviKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = noviKorisnik.PotvrdaKljuca2FA(connection);
             }
+
             if (kljucnaPoruka == "DohvatiKorisnike")
             {
                 CryptoNew.ListaKorisnika noviKorisnik = new CryptoNew.ListaKorisnika();
                 result = noviKorisnik.DohvatiKorisnike(connection);
             }
+
             if (kljucnaPoruka == "PosaljiPoruku")
             {
                 CryptoNew.Poruka novaPoruka = new CryptoNew.Poruka();
                 novaPoruka = (CryptoNew.Poruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = novaPoruka.ZapisiPorukuUBazu(connection);
             }
+
             if (kljucnaPoruka == "DohvatiPrimljenePoruke")
             {
                 CryptoNew.ListaPoruka listaPoruka = new CryptoNew.ListaPoruka();
                 listaPoruka = (CryptoNew.ListaPoruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = listaPoruka.DohvatiPrimljenePoruke(connection);
             }
+
             if (kljucnaPoruka == "DohvatiPoslanePoruke")
             {
                 CryptoNew.ListaPoruka listaPoruka = new CryptoNew.ListaPoruka();
                 listaPoruka = (CryptoNew.ListaPoruka)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = listaPoruka.DohvatiPoslanePoruke(connection);
+            }
+
+            if (kljucnaPoruka == "OtkljucajZakljucaj")
+            {
+                CryptoNew.Korisnik korisnik = new CryptoNew.Korisnik();
+                korisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = CryptoNew.AdminPanel.PromijeniStatusKorisnika(connection, korisnik);
             }
             ZatvaranjeKonekcijeSBazom();
 
