@@ -263,5 +263,14 @@ namespace CryptoNew
             forma = formaAdminPanel;
             trenutni = gumbAdmin;
         }
+
+        private void oNamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            FormaONama formaONama = new FormaONama();
+            Dizajner.prilagodiFormuPanelu(formaONama, glavniPanel);
+            forma = formaONama;
+            trenutni = gumbGlavni;
+        }
     }
 }

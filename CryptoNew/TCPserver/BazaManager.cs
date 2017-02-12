@@ -101,6 +101,14 @@ namespace TCPserver
                 korisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
                 result = CryptoNew.AdminPanel.PromijeniStatusKorisnika(connection, korisnik);
             }
+
+            if (kljucnaPoruka == "AdminMail")
+            {
+                CryptoNew.Korisnik korisnik = new CryptoNew.Korisnik();
+                korisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = CryptoNew.AdminPanel.PromijeniStatusKorisnika(connection, korisnik);
+            }
+
             ZatvaranjeKonekcijeSBazom();
 
             return result;

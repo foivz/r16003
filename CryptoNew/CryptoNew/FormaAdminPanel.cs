@@ -130,5 +130,31 @@ namespace CryptoNew
                 }
             }
         }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom promjene taba na tab kontroli
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabKontrolaAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabKontrolaAdmin.SelectedIndex == 0)
+            {
+                DohvatiKorisnike();
+            }
+        }
+
+        /// <summary>
+        /// Event Handler koji se aktivira kada se klikne na gumb Pošalji, tj. kada se posalje adminska poruka na server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gumbPosalji_Click(object sender, EventArgs e)
+        {
+            klijent = new TcpKlijent();
+            Korisnik korisnik = new Korisnik();
+            klijent.PosaljiServeru(korisnik, "AdminMail");
+            korisnik = (Korisnik)klijent.PrimiOdServera();
+        }
     }
 }

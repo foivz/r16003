@@ -32,9 +32,12 @@
             this.tabStatus = new System.Windows.Forms.TabPage();
             this.tablicaKorisnici = new System.Windows.Forms.DataGridView();
             this.tabAdminMail = new System.Windows.Forms.TabPage();
+            this.unosPoruka = new System.Windows.Forms.TextBox();
+            this.gumbPosalji = new System.Windows.Forms.Button();
             this.tabKontrolaAdmin.SuspendLayout();
             this.tabStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablicaKorisnici)).BeginInit();
+            this.tabAdminMail.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabKontrolaAdmin
@@ -50,6 +53,7 @@
             this.tabKontrolaAdmin.SelectedIndex = 0;
             this.tabKontrolaAdmin.Size = new System.Drawing.Size(627, 408);
             this.tabKontrolaAdmin.TabIndex = 0;
+            this.tabKontrolaAdmin.SelectedIndexChanged += new System.EventHandler(this.tabKontrolaAdmin_SelectedIndexChanged);
             // 
             // tabStatus
             // 
@@ -76,6 +80,8 @@
             // 
             // tabAdminMail
             // 
+            this.tabAdminMail.Controls.Add(this.gumbPosalji);
+            this.tabAdminMail.Controls.Add(this.unosPoruka);
             this.tabAdminMail.Location = new System.Drawing.Point(4, 29);
             this.tabAdminMail.Name = "tabAdminMail";
             this.tabAdminMail.Padding = new System.Windows.Forms.Padding(3);
@@ -83,6 +89,24 @@
             this.tabAdminMail.TabIndex = 1;
             this.tabAdminMail.Text = "Slanje Admin maila";
             this.tabAdminMail.UseVisualStyleBackColor = true;
+            // 
+            // unosPoruka
+            // 
+            this.unosPoruka.Location = new System.Drawing.Point(6, 6);
+            this.unosPoruka.Multiline = true;
+            this.unosPoruka.Name = "unosPoruka";
+            this.unosPoruka.Size = new System.Drawing.Size(607, 302);
+            this.unosPoruka.TabIndex = 0;
+            // 
+            // gumbPosalji
+            // 
+            this.gumbPosalji.Location = new System.Drawing.Point(6, 314);
+            this.gumbPosalji.Name = "gumbPosalji";
+            this.gumbPosalji.Size = new System.Drawing.Size(607, 29);
+            this.gumbPosalji.TabIndex = 1;
+            this.gumbPosalji.Text = "Pošalji";
+            this.gumbPosalji.UseVisualStyleBackColor = true;
+            this.gumbPosalji.Click += new System.EventHandler(this.gumbPosalji_Click);
             // 
             // FormaAdminPanel
             // 
@@ -95,6 +119,8 @@
             this.tabKontrolaAdmin.ResumeLayout(false);
             this.tabStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablicaKorisnici)).EndInit();
+            this.tabAdminMail.ResumeLayout(false);
+            this.tabAdminMail.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -105,5 +131,7 @@
         private System.Windows.Forms.TabPage tabStatus;
         private System.Windows.Forms.TabPage tabAdminMail;
         private System.Windows.Forms.DataGridView tablicaKorisnici;
+        private System.Windows.Forms.Button gumbPosalji;
+        private System.Windows.Forms.TextBox unosPoruka;
     }
 }

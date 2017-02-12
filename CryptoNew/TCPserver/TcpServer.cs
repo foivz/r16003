@@ -28,7 +28,8 @@ namespace TCPserver
             "PosaljiPoruku",
             "DohvatiPrimljenePoruke",
             "DohvatiPoslanePoruke",
-            "OtkljucajZakljucaj"
+            "OtkljucajZakljucaj",
+            "AdminMail"
         };
 
         /// <summary>

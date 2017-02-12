@@ -173,6 +173,9 @@
     <EmbeddedResource Include="FormaDekriptiranaPoruka.resx">
       <DependentUpon>FormaDekriptiranaPoruka.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormaONama.resx">
+      <DependentUpon>FormaONama.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormaPregled.resx">
       <DependentUpon>FormaPregled.cs</DependentUpon>
     </EmbeddedResource>

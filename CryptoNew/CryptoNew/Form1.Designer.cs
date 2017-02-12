@@ -50,13 +50,13 @@
             this.statusTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerVrijeme = new System.Windows.Forms.Timer(this.components);
             this.gumbRazmjenaDatoteka = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.trakaIzbornik = new System.Windows.Forms.MenuStrip();
             this.izbornikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oNamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gumbAdmin = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.trakaIzbornik.SuspendLayout();
             this.SuspendLayout();
             // 
             // glavniPanel
@@ -285,17 +285,17 @@
             this.gumbRazmjenaDatoteka.UseVisualStyleBackColor = true;
             this.gumbRazmjenaDatoteka.Click += new System.EventHandler(this.gumbRazmjenaDatoteka_Click);
             // 
-            // menuStrip1
+            // trakaIzbornik
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trakaIzbornik.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.izbornikToolStripMenuItem,
             this.pomoćToolStripMenuItem,
             this.oNamaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1033, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "menuStrip1";
+            this.trakaIzbornik.Location = new System.Drawing.Point(0, 0);
+            this.trakaIzbornik.Name = "trakaIzbornik";
+            this.trakaIzbornik.Size = new System.Drawing.Size(1033, 24);
+            this.trakaIzbornik.TabIndex = 16;
+            this.trakaIzbornik.Text = "Izbornik";
             // 
             // izbornikToolStripMenuItem
             // 
@@ -314,6 +314,7 @@
             this.oNamaToolStripMenuItem.Name = "oNamaToolStripMenuItem";
             this.oNamaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.oNamaToolStripMenuItem.Text = "O nama";
+            this.oNamaToolStripMenuItem.Click += new System.EventHandler(this.oNamaToolStripMenuItem_Click);
             // 
             // gumbAdmin
             // 
@@ -340,7 +341,7 @@
             this.Controls.Add(this.gumbAdmin);
             this.Controls.Add(this.gumbRazmjenaDatoteka);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.trakaIzbornik);
             this.Controls.Add(this.gumbPregledPoruka);
             this.Controls.Add(this.gumbSlanje);
             this.Controls.Add(this.gumbLokalno);
@@ -351,7 +352,7 @@
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.trakaIzbornik;
             this.MinimumSize = new System.Drawing.Size(1049, 718);
             this.Name = "Form1";
             this.Text = "Aplikacija Crypto";
@@ -359,8 +360,8 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.trakaIzbornik.ResumeLayout(false);
+            this.trakaIzbornik.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,7 +389,7 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.Button gumbRazmjenaDatoteka;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip trakaIzbornik;
         private System.Windows.Forms.ToolStripMenuItem izbornikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oNamaToolStripMenuItem;
