@@ -32,8 +32,10 @@
             this.tabStatus = new System.Windows.Forms.TabPage();
             this.tablicaKorisnici = new System.Windows.Forms.DataGridView();
             this.tabAdminMail = new System.Windows.Forms.TabPage();
-            this.unosPoruka = new System.Windows.Forms.TextBox();
             this.gumbPosalji = new System.Windows.Forms.Button();
+            this.unosPoruka = new System.Windows.Forms.TextBox();
+            this.prikazLog = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabKontrolaAdmin.SuspendLayout();
             this.tabStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablicaKorisnici)).BeginInit();
@@ -80,6 +82,8 @@
             // 
             // tabAdminMail
             // 
+            this.tabAdminMail.Controls.Add(this.label1);
+            this.tabAdminMail.Controls.Add(this.prikazLog);
             this.tabAdminMail.Controls.Add(this.gumbPosalji);
             this.tabAdminMail.Controls.Add(this.unosPoruka);
             this.tabAdminMail.Location = new System.Drawing.Point(4, 29);
@@ -90,23 +94,42 @@
             this.tabAdminMail.Text = "Slanje Admin maila";
             this.tabAdminMail.UseVisualStyleBackColor = true;
             // 
+            // gumbPosalji
+            // 
+            this.gumbPosalji.Location = new System.Drawing.Point(6, 339);
+            this.gumbPosalji.Name = "gumbPosalji";
+            this.gumbPosalji.Size = new System.Drawing.Size(392, 30);
+            this.gumbPosalji.TabIndex = 1;
+            this.gumbPosalji.Text = "Pošalji";
+            this.gumbPosalji.UseVisualStyleBackColor = true;
+            this.gumbPosalji.Click += new System.EventHandler(this.gumbPosalji_Click);
+            // 
             // unosPoruka
             // 
             this.unosPoruka.Location = new System.Drawing.Point(6, 6);
             this.unosPoruka.Multiline = true;
             this.unosPoruka.Name = "unosPoruka";
-            this.unosPoruka.Size = new System.Drawing.Size(607, 302);
+            this.unosPoruka.Size = new System.Drawing.Size(392, 327);
             this.unosPoruka.TabIndex = 0;
             // 
-            // gumbPosalji
+            // prikazLog
             // 
-            this.gumbPosalji.Location = new System.Drawing.Point(6, 314);
-            this.gumbPosalji.Name = "gumbPosalji";
-            this.gumbPosalji.Size = new System.Drawing.Size(607, 29);
-            this.gumbPosalji.TabIndex = 1;
-            this.gumbPosalji.Text = "Pošalji";
-            this.gumbPosalji.UseVisualStyleBackColor = true;
-            this.gumbPosalji.Click += new System.EventHandler(this.gumbPosalji_Click);
+            this.prikazLog.Location = new System.Drawing.Point(404, 32);
+            this.prikazLog.Multiline = true;
+            this.prikazLog.Name = "prikazLog";
+            this.prikazLog.ReadOnly = true;
+            this.prikazLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.prikazLog.Size = new System.Drawing.Size(209, 337);
+            this.prikazLog.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(404, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Log:";
             // 
             // FormaAdminPanel
             // 
@@ -133,5 +156,7 @@
         private System.Windows.Forms.DataGridView tablicaKorisnici;
         private System.Windows.Forms.Button gumbPosalji;
         private System.Windows.Forms.TextBox unosPoruka;
+        private System.Windows.Forms.TextBox prikazLog;
+        private System.Windows.Forms.Label label1;
     }
 }

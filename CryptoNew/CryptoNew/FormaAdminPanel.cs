@@ -151,10 +151,21 @@ namespace CryptoNew
         /// <param name="e"></param>
         private void gumbPosalji_Click(object sender, EventArgs e)
         {
+            AdminMail mail = new AdminMail();
             klijent = new TcpKlijent();
-            Korisnik korisnik = new Korisnik();
-            klijent.PosaljiServeru(korisnik, "AdminMail");
-            korisnik = (Korisnik)klijent.PrimiOdServera();
+
+            mail.Sadrzaj = unosPoruka.Text;
+            klijent.PosaljiServeru(mail, "AdminMail");
+            mail = (AdminMail)klijent.PrimiOdServera();
+
+            if (mail.Status == 1)
+            {
+                prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka poslana!" + Environment.NewLine;
+            }
+            else
+            {
+                prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka nije poslana. Pokušajte kasnije!" + Environment.NewLine;
+            }
         }
     }
 }

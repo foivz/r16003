@@ -50,36 +50,49 @@ namespace CryptoNew
             object izlaz = 0;
             string noviJson = IzbaciTipPoruke(json);
             string tipKlase = Parsiranje(noviJson, "Tip");
+
             if (tipKlase == "Korisnik")
             {
                 Korisnik osoba = JsonConvert.DeserializeObject<Korisnik>(noviJson);
                 izlaz = osoba;
             }
+
             if (tipKlase == "UspjehRegistracije")
             {
                 UspjehRegistracije uspjeh = JsonConvert.DeserializeObject<UspjehRegistracije>(noviJson);
                 izlaz = uspjeh;
             }
+
             if (tipKlase == "ListaKorisnika")
             {
                 ListaKorisnika lista = JsonConvert.DeserializeObject<ListaKorisnika>(noviJson);
                 izlaz = lista;
             }
+
             if (tipKlase == "Poruka")
             {
                 Poruka poruka = JsonConvert.DeserializeObject<Poruka>(noviJson);
                 izlaz = poruka;
             }
+
             if (tipKlase == "UspjehSlanjaPoruke")
             {
                 UspjehSlanjaPoruke uspjeh = JsonConvert.DeserializeObject<UspjehSlanjaPoruke>(noviJson);
                 izlaz = uspjeh;
             }
+
             if (tipKlase == "ListaPoruka")
             {
                 ListaPoruka poruke = JsonConvert.DeserializeObject<ListaPoruka>(noviJson);
                 izlaz = poruke;
             }
+
+            if (tipKlase == "AdminMail")
+            {
+                AdminMail mail = JsonConvert.DeserializeObject<AdminMail>(noviJson);
+                izlaz = mail;
+            }
+
             return izlaz;
         }
 
