@@ -36,6 +36,18 @@ namespace CryptoNew
         public string EnkriptiraniKljuc;
         public string EnkriptiraniPodaci;
         public byte[] Iv;
+
+        private byte[] datoteka;
+
+        public void PridruziDatoteku(byte[] file)
+        {
+            datoteka = file;
+        }
+
+        public byte[] VratiDatoteku()
+        {
+            return datoteka;
+        }
     }
 
     /// <summary>

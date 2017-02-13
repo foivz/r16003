@@ -264,6 +264,11 @@ namespace CryptoNew
             trenutni = gumbAdmin;
         }
 
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na menu item "O nama"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void oNamaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DealocirajGlavniPanel();
@@ -271,6 +276,28 @@ namespace CryptoNew
             Dizajner.prilagodiFormuPanelu(formaONama, glavniPanel);
             forma = formaONama;
             trenutni = gumbGlavni;
+        }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na menu item "Izbornik-Glavni Prozor"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void glavniProzorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gumbGlavni.PerformClick();
+            trenutni = gumbGlavni;
+        }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na menu item "Izbornik-Lokalna Enkripcija"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lokalnaEnkripcijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gumbLokalno.PerformClick();
+            trenutni = gumbLokalno;
         }
     }
 }

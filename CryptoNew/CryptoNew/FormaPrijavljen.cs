@@ -50,5 +50,17 @@ namespace CryptoNew
             prikazKorIme.Text = trenutniKorisnik.Username;
             prikazTipKorisnika.Text = trenutniKorisnik.TipKorisnika;
         }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb "Uredi podatke" te otvara formu za uređivanje podataka
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gumbUrediPodatke_Click(object sender, EventArgs e)
+        {
+            FormaUrediPodatke novaForma = new FormaUrediPodatke(trenutniKorisnik);
+            novaForma.StartPosition = FormStartPosition.CenterParent;
+            novaForma.ShowDialog();
+        }
     }
 }

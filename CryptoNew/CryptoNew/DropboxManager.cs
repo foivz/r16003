@@ -2,6 +2,8 @@
 using Dropbox.Api.Files;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -58,7 +60,10 @@ namespace CryptoNew
                             break;
                         }
                     }
-                    listaDatoteka.Add(nova);
+                    if (Path.GetExtension(nova.ImeDatoteke) != ".crypto")
+                    {
+                        listaDatoteka.Add(nova);
+                    }
                 }
             }
             return listaDatoteka;
@@ -72,17 +77,44 @@ namespace CryptoNew
         /// <param name="filePath"></param>
         /// <param name="posiljatelj"></param>
         /// <param name="primatelj"></param>
-        public async Task<int> Upload(string filePath, string posiljatelj, string primatelj)
+        public async Task<int> Upload(string filePath, string posiljatelj, string primatelj, string javniKljuc)
         {
+            EnkripcijskiPaket paket;
+            RsaEnkripcija rsa = new RsaEnkripcija();
+            rsa.PridruziJavniKljuc(javniKljuc);
+
             string fileName = Path.GetFileName(filePath);
             string uploadFilePath = path + primatelj + "/primljeno/" + posiljatelj + "_" + fileName;
-            byte[] fileToUpload = File.ReadAllBytes(filePath);
+
+            paket = HibridnaEnkripcija.EncryptFile(File.ReadAllBytes(filePath), javniKljuc);
+            byte[] fileToUpload = paket.VratiDatoteku();
+            string fileName2 = posiljatelj + "_" + Path.GetFileNameWithoutExtension(filePath)+ ".crypto";
+            string uploadFilePath2 = path + primatelj + "/primljeno/" + fileName2;
+
+            byte[] fileToUpload2 = null;
+            using (var ms = new MemoryStream())
+            {
+                TextWriter tw = new StreamWriter(ms);
+                tw.WriteLine(paket.EnkriptiraniKljuc);
+                tw.WriteLine(Convert.ToBase64String(paket.Iv));
+                tw.Flush();
+                ms.Position = 0;
+                fileToUpload2 = ms.ToArray();
+            }
+
             using (var dbx = new DropboxClient(token))
             {
                 using (var mem = new MemoryStream((fileToUpload)))
                 {
                     var updated = await dbx.Files.UploadAsync(uploadFilePath,
                         WriteMode.Add.Instance,autorename:true,
+                        body: mem);
+                }
+
+                using (var mem = new MemoryStream(fileToUpload2))
+                {
+                    var updated = await dbx.Files.UploadAsync(uploadFilePath2,
+                        WriteMode.Add.Instance, autorename: true,
                         body: mem);
                 }
             }
@@ -98,16 +130,32 @@ namespace CryptoNew
         /// <returns></returns>
         public async Task<byte[]> Download(string primatelj ,string posiljatelj, string fileName)
         {
+            EnkripcijskiPaket paket = new EnkripcijskiPaket();
             byte[] file;
+            byte[] helpFile;
             string fullName = posiljatelj + "_" + fileName;
             string downloadFilePath = path + primatelj + "/primljeno/" + fullName;
+            string helpFilePath = path + primatelj + "/primljeno/" + Path.GetFileNameWithoutExtension(fullName) + ".crypto";
             using (var dbx = new DropboxClient(token))
             {
+                using (var response = await dbx.Files.DownloadAsync(helpFilePath))
+                {
+                    helpFile = await response.GetContentAsByteArrayAsync();
+
+                    using (var ms = new MemoryStream(helpFile))
+                    {
+                        StreamReader msReader = new StreamReader(ms);
+                        paket.EnkriptiraniKljuc = msReader.ReadLine();
+                        paket.Iv = Convert.FromBase64String((msReader.ReadLine()));
+                    }
+                }
+
                 using (var response = await dbx.Files.DownloadAsync(downloadFilePath))
                 {
                     file = await response.GetContentAsByteArrayAsync();
                 }
             }
+            file = HibridnaEnkripcija.DecryptFile(file, paket.EnkriptiraniKljuc, paket.Iv, DohvatiPrivatniKljuc(primatelj));
             return file;
         }
 
@@ -127,6 +175,28 @@ namespace CryptoNew
                 await dbx.Files.DeleteAsync(deletePath);
             }
             return 1;
+        }
+
+        private string DohvatiPrivatniKljuc(string username)
+        {
+            string rezultat = "";
+            SqlConnection connection = new SqlConnection("Server=tcp:cryptoserver01.database.windows.net,1433;Initial Catalog=PICryptoBaza;Persist Security Info=False;User ID=ivan.uzarevic;Password=crypto2101#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            connection.Open();
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT * FROM PrivatniKljucevi WHERE Username=@Username";
+            command.Parameters.AddWithValue("@Username", username);
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    rezultat = reader["PrivatniKljuc"].ToString();
+                }
+                reader.Close();
+            }
+            connection.Close();
+            return rezultat;
         }
     }
 }

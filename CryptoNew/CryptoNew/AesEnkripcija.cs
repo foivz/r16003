@@ -65,5 +65,47 @@ namespace CryptoNew
                 }
             }
         }
+
+        public byte[] DecryptFile(byte[] file)
+        {
+            //string result;
+            byte[] dataToDecrypt = file;
+            using (var aes = new AesCryptoServiceProvider())
+            {
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
+                aes.Key = key;
+                aes.IV = IV;
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream,
+                    aes.CreateDecryptor(), CryptoStreamMode.Write);
+                    cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
+                    cryptoStream.FlushFinalBlock();
+                    var decryptBytes = memoryStream.ToArray();
+                    return decryptBytes;
+                }
+            }
+        }
+
+        public byte[] EncryptFile(byte[] file)
+        {
+            var data = file;
+            using (var aes = new AesCryptoServiceProvider())
+            {
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
+                aes.Key = key;
+                aes.IV = IV;
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream,
+                    aes.CreateEncryptor(), CryptoStreamMode.Write);
+                    cryptoStream.Write(data, 0, data.Length);
+                    cryptoStream.FlushFinalBlock();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
     }
 }

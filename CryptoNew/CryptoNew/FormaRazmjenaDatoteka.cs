@@ -184,7 +184,8 @@ namespace CryptoNew
             {
                 IspisLoga(0);
                 DropboxManager novo = new DropboxManager();
-                int result = await novo.Upload(fileName, prijavljeniKorisnik.Username, odabirKorisnik.SelectedItem.ToString());
+                string javniKljuc = listaKorisnika.Korisnici.Where(i => i.Username == odabirKorisnik.SelectedItem.ToString()).Select(p => p.JavniKljuc).First();
+                int result = await novo.Upload(fileName, prijavljeniKorisnik.Username, odabirKorisnik.SelectedItem.ToString(),javniKljuc);
                 if (result == 1)
                 {
                     IspisLoga(1);

@@ -31,10 +31,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.prikazKorIme = new System.Windows.Forms.TextBox();
             this.prikazTipKorisnika = new System.Windows.Forms.TextBox();
+            this.prikazKorIme = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gumbUrediPodatke = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.Controls.Add(this.gumbUrediPodatke);
             this.panel2.Controls.Add(this.prikazTipKorisnika);
             this.panel2.Controls.Add(this.prikazKorIme);
             this.panel2.Controls.Add(this.label3);
@@ -71,6 +73,34 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(511, 154);
             this.panel2.TabIndex = 2;
+            // 
+            // prikazTipKorisnika
+            // 
+            this.prikazTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.prikazTipKorisnika.Location = new System.Drawing.Point(189, 77);
+            this.prikazTipKorisnika.Name = "prikazTipKorisnika";
+            this.prikazTipKorisnika.ReadOnly = true;
+            this.prikazTipKorisnika.Size = new System.Drawing.Size(283, 26);
+            this.prikazTipKorisnika.TabIndex = 3;
+            // 
+            // prikazKorIme
+            // 
+            this.prikazKorIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.prikazKorIme.Location = new System.Drawing.Point(189, 25);
+            this.prikazKorIme.Name = "prikazKorIme";
+            this.prikazKorIme.ReadOnly = true;
+            this.prikazKorIme.Size = new System.Drawing.Size(283, 26);
+            this.prikazKorIme.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(22, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 26);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tip Korisnika:";
             // 
             // label2
             // 
@@ -82,33 +112,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Korisničko Ime:";
             // 
-            // label3
+            // gumbUrediPodatke
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(22, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 26);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Tip Korisnika:";
-            // 
-            // prikazKorIme
-            // 
-            this.prikazKorIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.prikazKorIme.Location = new System.Drawing.Point(189, 25);
-            this.prikazKorIme.Name = "prikazKorIme";
-            this.prikazKorIme.ReadOnly = true;
-            this.prikazKorIme.Size = new System.Drawing.Size(283, 26);
-            this.prikazKorIme.TabIndex = 2;
-            // 
-            // prikazTipKorisnika
-            // 
-            this.prikazTipKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.prikazTipKorisnika.Location = new System.Drawing.Point(189, 93);
-            this.prikazTipKorisnika.Name = "prikazTipKorisnika";
-            this.prikazTipKorisnika.ReadOnly = true;
-            this.prikazTipKorisnika.Size = new System.Drawing.Size(283, 26);
-            this.prikazTipKorisnika.TabIndex = 3;
+            this.gumbUrediPodatke.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbUrediPodatke.Location = new System.Drawing.Point(27, 116);
+            this.gumbUrediPodatke.Name = "gumbUrediPodatke";
+            this.gumbUrediPodatke.Size = new System.Drawing.Size(445, 35);
+            this.gumbUrediPodatke.TabIndex = 4;
+            this.gumbUrediPodatke.Text = "Uredi podatke";
+            this.gumbUrediPodatke.UseVisualStyleBackColor = true;
+            this.gumbUrediPodatke.Click += new System.EventHandler(this.gumbUrediPodatke_Click);
             // 
             // FormaPrijavljen
             // 
@@ -138,5 +151,6 @@
         private System.Windows.Forms.TextBox prikazKorIme;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button gumbUrediPodatke;
     }
 }

@@ -78,7 +78,7 @@
             this.tabSlanje.Location = new System.Drawing.Point(4, 29);
             this.tabSlanje.Name = "tabSlanje";
             this.tabSlanje.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSlanje.Size = new System.Drawing.Size(602, 408);
+            this.tabSlanje.Size = new System.Drawing.Size(702, 482);
             this.tabSlanje.TabIndex = 0;
             this.tabSlanje.Text = "Slanje Datoteka";
             // 
@@ -217,7 +217,7 @@
             this.ClientSize = new System.Drawing.Size(734, 539);
             this.Controls.Add(this.tabKontrola);
             this.Name = "FormaRazmjenaDatoteka";
-            this.Text = "FormaRazmjenaDatoteka";
+            this.Text = "Razmjena Datoteka";
             this.tabKontrola.ResumeLayout(false);
             this.tabSlanje.ResumeLayout(false);
             this.tabSlanje.PerformLayout();

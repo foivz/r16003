@@ -52,6 +52,14 @@
             this.gumbRazmjenaDatoteka = new System.Windows.Forms.Button();
             this.trakaIzbornik = new System.Windows.Forms.MenuStrip();
             this.izbornikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.glavniProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lokalnaEnkripcijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porukeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slanjePorukaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledPorukaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.razmjenaDatotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oNamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gumbAdmin = new System.Windows.Forms.Button();
@@ -299,9 +307,69 @@
             // 
             // izbornikToolStripMenuItem
             // 
+            this.izbornikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.glavniProzorToolStripMenuItem,
+            this.lokalnaEnkripcijaToolStripMenuItem,
+            this.porukeToolStripMenuItem,
+            this.razmjenaDatotekaToolStripMenuItem,
+            this.adminPanelToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.izbornikToolStripMenuItem.Name = "izbornikToolStripMenuItem";
             this.izbornikToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.izbornikToolStripMenuItem.Text = "Izbornik";
+            // 
+            // glavniProzorToolStripMenuItem
+            // 
+            this.glavniProzorToolStripMenuItem.Name = "glavniProzorToolStripMenuItem";
+            this.glavniProzorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.glavniProzorToolStripMenuItem.Text = "Glavni prozor";
+            this.glavniProzorToolStripMenuItem.Click += new System.EventHandler(this.glavniProzorToolStripMenuItem_Click);
+            // 
+            // lokalnaEnkripcijaToolStripMenuItem
+            // 
+            this.lokalnaEnkripcijaToolStripMenuItem.Name = "lokalnaEnkripcijaToolStripMenuItem";
+            this.lokalnaEnkripcijaToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.lokalnaEnkripcijaToolStripMenuItem.Text = "Lokalna Enkripcija";
+            this.lokalnaEnkripcijaToolStripMenuItem.Click += new System.EventHandler(this.lokalnaEnkripcijaToolStripMenuItem_Click);
+            // 
+            // porukeToolStripMenuItem
+            // 
+            this.porukeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.slanjePorukaToolStripMenuItem,
+            this.pregledPorukaToolStripMenuItem});
+            this.porukeToolStripMenuItem.Name = "porukeToolStripMenuItem";
+            this.porukeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.porukeToolStripMenuItem.Text = "Poruke";
+            // 
+            // slanjePorukaToolStripMenuItem
+            // 
+            this.slanjePorukaToolStripMenuItem.Name = "slanjePorukaToolStripMenuItem";
+            this.slanjePorukaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.slanjePorukaToolStripMenuItem.Text = "Slanje Poruka";
+            // 
+            // pregledPorukaToolStripMenuItem
+            // 
+            this.pregledPorukaToolStripMenuItem.Name = "pregledPorukaToolStripMenuItem";
+            this.pregledPorukaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.pregledPorukaToolStripMenuItem.Text = "Pregled Poruka";
+            // 
+            // razmjenaDatotekaToolStripMenuItem
+            // 
+            this.razmjenaDatotekaToolStripMenuItem.Name = "razmjenaDatotekaToolStripMenuItem";
+            this.razmjenaDatotekaToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.razmjenaDatotekaToolStripMenuItem.Text = "Razmjena Datoteka";
+            // 
+            // adminPanelToolStripMenuItem
+            // 
+            this.adminPanelToolStripMenuItem.Name = "adminPanelToolStripMenuItem";
+            this.adminPanelToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.adminPanelToolStripMenuItem.Text = "Admin Panel";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // pomoćToolStripMenuItem
             // 
@@ -394,6 +462,14 @@
         private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oNamaToolStripMenuItem;
         private System.Windows.Forms.Button gumbAdmin;
+        private System.Windows.Forms.ToolStripMenuItem glavniProzorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lokalnaEnkripcijaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porukeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem slanjePorukaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledPorukaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem razmjenaDatotekaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminPanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
 

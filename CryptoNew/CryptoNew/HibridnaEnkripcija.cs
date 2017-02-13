@@ -56,5 +56,33 @@ namespace CryptoNew
 
             return novi;
         }
+
+        public static EnkripcijskiPaket EncryptFile(byte[] file, string javniKljuc)
+        {
+            EnkripcijskiPaket novi = new EnkripcijskiPaket();
+            AesEnkripcija aes = new AesEnkripcija();
+            Enkripcija rsa = new RsaEnkripcija();
+            rsa.PridruziJavniKljuc(javniKljuc);
+            aes.GenerirajKljucIV();
+
+            novi.Iv = aes.DohvatiIV();
+            novi.PridruziDatoteku(aes.EncryptFile(file));
+            novi.EnkriptiraniKljuc = rsa.EncryptData(Convert.ToBase64String(aes.DohvatiAESKljuc()));
+
+            return novi;
+        }
+
+        public static byte[] DecryptFile(byte[] file, string kljuc, byte[] iv, string privatniKljuc)
+        {
+            AesEnkripcija aes = new AesEnkripcija();
+            Enkripcija rsa = new RsaEnkripcija();
+            rsa.PridruziPrivatniKljuc(privatniKljuc);
+
+            // Decrypt AES key with RSA and then decrypt data with AES.
+            var dekriptiraniKljuc = rsa.DecryptData(kljuc);
+            aes.PridruziKljucIV(Convert.FromBase64String(dekriptiraniKljuc), iv);
+            var decryptedData = aes.DecryptFile(file);
+            return decryptedData;
+        }
     }
 }
