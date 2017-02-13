@@ -36,10 +36,20 @@ namespace CryptoNew
             }
         }
 
+        /// <summary>
+        /// Metoda koja na dropbox serveru pronalazi datoteke koje je korisnik sam sebi poslao ili primio od drugih korisnika.
+        /// Datotekama se pridružuju metapodaci te se takve datoteke dodaju u listu datoteka koja predstavlja izlaz ove metode.
+        /// U listu datoteka se ne dodaju takozvane .crypto datoteke koje samo predstavljaju pomoćne datoteke koje služe za
+        /// dekriptiranje datoteka.
+        /// </summary>
+        /// <param name="Username"></param>
+        /// <param name="listaKorisnika"></param>
+        /// <returns></returns>
         public async Task<List<Datoteka>> ListRootFolder(string Username, List<Korisnik> listaKorisnika)
         {
             string input, ime;
             List<Datoteka> listaDatoteka = new List<Datoteka>();
+
             using (var dbx = new DropboxClient(token))
             {
                 string completePath = path + Username + "/primljeno/";
@@ -71,8 +81,9 @@ namespace CryptoNew
 
         /// <summary>
         /// Metoda koja uploada datoteku na dropbox na temelju putanje datoteke. Username Pošiljatelja datoteke služi za
-        /// formiranje imena datoteke kako bi se znalo tko je datoteku poslao, dok username primatelja služi za formiranje isprave
-        /// lokacije gdje će se datoteka uploadati
+        /// formiranje imena datoteke kako bi se znalo tko je datoteku poslao, dok username primatelja služi za formiranje ispravne
+        /// lokacije gdje će se datoteka uploadati. Datoteka se prije uploada enkriptira hibridnom enkripcijom. Uz glavnu datoteku
+        /// šalje se i pomoćna .crypto datoteka koja sadrži enkriptirani AES ključ i inicijalizacijski vektor.
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="posiljatelj"></param>
@@ -80,17 +91,14 @@ namespace CryptoNew
         public async Task<int> Upload(string filePath, string posiljatelj, string primatelj, string javniKljuc)
         {
             EnkripcijskiPaket paket;
-            RsaEnkripcija rsa = new RsaEnkripcija();
-            rsa.PridruziJavniKljuc(javniKljuc);
 
             string fileName = Path.GetFileName(filePath);
             string uploadFilePath = path + primatelj + "/primljeno/" + posiljatelj + "_" + fileName;
-
             paket = HibridnaEnkripcija.EncryptFile(File.ReadAllBytes(filePath), javniKljuc);
             byte[] fileToUpload = paket.VratiDatoteku();
+
             string fileName2 = posiljatelj + "_" + Path.GetFileNameWithoutExtension(filePath)+ ".crypto";
             string uploadFilePath2 = path + primatelj + "/primljeno/" + fileName2;
-
             byte[] fileToUpload2 = null;
             using (var ms = new MemoryStream())
             {
@@ -104,17 +112,19 @@ namespace CryptoNew
 
             using (var dbx = new DropboxClient(token))
             {
-                using (var mem = new MemoryStream((fileToUpload)))
-                {
-                    var updated = await dbx.Files.UploadAsync(uploadFilePath,
-                        WriteMode.Add.Instance,autorename:true,
-                        body: mem);
-                }
 
                 using (var mem = new MemoryStream(fileToUpload2))
                 {
                     var updated = await dbx.Files.UploadAsync(uploadFilePath2,
                         WriteMode.Add.Instance, autorename: true,
+                        body: mem);
+                    uploadFilePath = path + primatelj + "/primljeno/" + Path.GetFileNameWithoutExtension(updated.AsFile.Name) + Path.GetExtension(fileName);
+                }
+
+                using (var mem = new MemoryStream((fileToUpload)))
+                {
+                    var updated = await dbx.Files.UploadAsync(uploadFilePath,
+                        WriteMode.Add.Instance,autorename:true,
                         body: mem);
                 }
             }
@@ -122,7 +132,9 @@ namespace CryptoNew
         }
 
         /// <summary>
-        /// Metoda koja preuzima datoteku sa dropbox servera
+        /// Metoda koja preuzima datoteku sa dropbox servera. Prvo se skida pomoćna .crypto datoteka te se iz nje čita inicijalizacijski
+        /// vektor i ključ. Zatim se dohvaća glavna datoteka sa dropbox servera koja se na kraju dekriptira uz pomoć inicijalizacijskoga
+        /// vektora, aes ključa i privatnoga ključa prijavljenoga korisnika.
         /// </summary>
         /// <param name="primatelj"></param>
         /// <param name="posiljatelj"></param>
@@ -134,8 +146,10 @@ namespace CryptoNew
             byte[] file;
             byte[] helpFile;
             string fullName = posiljatelj + "_" + fileName;
+
             string downloadFilePath = path + primatelj + "/primljeno/" + fullName;
             string helpFilePath = path + primatelj + "/primljeno/" + Path.GetFileNameWithoutExtension(fullName) + ".crypto";
+
             using (var dbx = new DropboxClient(token))
             {
                 using (var response = await dbx.Files.DownloadAsync(helpFilePath))
@@ -155,12 +169,13 @@ namespace CryptoNew
                     file = await response.GetContentAsByteArrayAsync();
                 }
             }
+
             file = HibridnaEnkripcija.DecryptFile(file, paket.EnkriptiraniKljuc, paket.Iv, DohvatiPrivatniKljuc(primatelj));
             return file;
         }
 
         /// <summary>
-        /// Metoda koja briše određenu datoteku sa dropbox servera
+        /// Metoda koja briše određenu datoteku sa dropbox servera zajedno sa pomoćnom .crypto datotekom
         /// </summary>
         /// <param name="primatelj"></param>
         /// <param name="posiljatelj"></param>
@@ -170,9 +185,11 @@ namespace CryptoNew
         {
             string fullName = posiljatelj + "_" + fileName;
             string deletePath = path + primatelj + "/primljeno/" + fullName;
+            string helpFilePath = path + primatelj + "/primljeno/" + Path.GetFileNameWithoutExtension(fullName) + ".crypto";
             using (var dbx = new DropboxClient(token))
             {
                 await dbx.Files.DeleteAsync(deletePath);
+                await dbx.Files.DeleteAsync(helpFilePath);
             }
             return 1;
         }

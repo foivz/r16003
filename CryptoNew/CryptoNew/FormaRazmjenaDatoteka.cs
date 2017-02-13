@@ -221,6 +221,8 @@ namespace CryptoNew
         private async void prikazDatoteke_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int delete = 0;
+
+            //index klika za preuzimanje datoteke
             if (e.ColumnIndex == 0)
             {
                 try
@@ -228,7 +230,9 @@ namespace CryptoNew
                     DropboxManager novo = new DropboxManager();
                     string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
                     fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
+
                     IspisLogaZaPregled(1);
+
                     byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
 
                     OtvoriSaveFileDialog(file);
@@ -239,6 +243,7 @@ namespace CryptoNew
                 }
             }
 
+            //index klika za brisanje datoteke
             if (e.ColumnIndex == 1)
             {
                 try
