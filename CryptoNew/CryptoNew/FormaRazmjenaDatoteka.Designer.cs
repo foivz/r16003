@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabKontrola = new System.Windows.Forms.TabControl();
             this.tabSlanje = new System.Windows.Forms.TabPage();
             this.odabirKorisnik = new System.Windows.Forms.ComboBox();
@@ -42,6 +43,8 @@
             this.logPregledDatoteka = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.prikazDatoteke = new System.Windows.Forms.DataGridView();
+            this.timerLog = new System.Windows.Forms.Timer(this.components);
+            this.timerPreuzmi = new System.Windows.Forms.Timer(this.components);
             this.tabKontrola.SuspendLayout();
             this.tabSlanje.SuspendLayout();
             this.tabPregled.SuspendLayout();
@@ -210,6 +213,16 @@
             this.prikazDatoteke.TabIndex = 0;
             this.prikazDatoteke.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prikazDatoteke_CellClick);
             // 
+            // timerLog
+            // 
+            this.timerLog.Interval = 1000;
+            this.timerLog.Tick += new System.EventHandler(this.timerLog_Tick);
+            // 
+            // timerPreuzmi
+            // 
+            this.timerPreuzmi.Interval = 1000;
+            this.timerPreuzmi.Tick += new System.EventHandler(this.timerPreuzmi_Tick);
+            // 
             // FormaRazmjenaDatoteka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,5 +257,7 @@
         private System.Windows.Forms.DataGridView prikazDatoteke;
         private System.Windows.Forms.TextBox logPregledDatoteka;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timerLog;
+        private System.Windows.Forms.Timer timerPreuzmi;
     }
 }

@@ -59,6 +59,8 @@ namespace CryptoNew
         public string Tip { get; set; }
         public string Posiljatelj { get; set; }
         public string Primatelj { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
         public DateTime DatumSlanja { get; set; }
         public EnkripcijskiPaket Paket { get; set; }
 

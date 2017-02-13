@@ -15,7 +15,7 @@ namespace CryptoNew
         /// Metoda koja služi za dekripciju poruke s obzirom na sam sadržaj poruke. 
         /// Za dekripciju same poruke važan je privatni ključ koji se prosljeđuje ovoj metodi te ona pomoću toga ključa 
         /// rsa algoritmom dekriptira ključ kojim je enkriptirana poruka. 
-        /// Zatim se taj ključ i inicijalizacijski vektor pridružuje aes objektu koji zatim može dekriptirari sam sadržaj poruke.
+        /// Zatim se taj ključ i inicijalizacijski vektor pridružuje aes objektu koji zatim može dekriptirati sam sadržaj poruke.
         /// </summary>
         /// <param name="poruka"></param>
         /// <param name="privatniKljuc"></param>
@@ -26,7 +26,6 @@ namespace CryptoNew
             Enkripcija rsa = new RsaEnkripcija();
             rsa.PridruziPrivatniKljuc(privatniKljuc);
 
-            // Decrypt AES key with RSA and then decrypt data with AES.
             var dekriptiraniKljuc = rsa.DecryptData(poruka.Paket.EnkriptiraniKljuc);
             aes.PridruziKljucIV(Convert.FromBase64String(dekriptiraniKljuc), poruka.Paket.Iv);
             var decryptedData = aes.DecryptData(poruka.Paket.EnkriptiraniPodaci);
@@ -57,6 +56,15 @@ namespace CryptoNew
             return novi;
         }
 
+        /// <summary>
+        /// Metoda koja služi za enkripciju datoteke.
+        /// Prvo se izgenerira ključ i inicijalizacijski vekor pomoću kojih se aes algoritmom enkriptira sadm sadržaj datoteke.
+        /// Zatim se izgenerirani ključ enkriptira pomoću rsa algoritma i to zahvaljujući javnome ključu koji se prosljeđuje
+        /// samoj metodi.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="javniKljuc"></param>
+        /// <returns></returns>
         public static EnkripcijskiPaket EncryptFile(byte[] file, string javniKljuc)
         {
             EnkripcijskiPaket novi = new EnkripcijskiPaket();
@@ -72,13 +80,23 @@ namespace CryptoNew
             return novi;
         }
 
+        /// <summary>
+        /// Metoda koja služi za dekripciju datoteke.
+        /// Za dekripciju same datoteke važan je privatni ključ koji se prosljeđuje ovoj metodi te ona pomoću toga ključa 
+        /// rsa algoritmom dekriptira ključ kojim je enkriptirana datoteka. 
+        /// Zatim se taj ključ i inicijalizacijski vektor pridružuje aes objektu koji zatim može dekriptirati sam sadržaj datoteke.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="kljuc"></param>
+        /// <param name="iv"></param>
+        /// <param name="privatniKljuc"></param>
+        /// <returns></returns>
         public static byte[] DecryptFile(byte[] file, string kljuc, byte[] iv, string privatniKljuc)
         {
             AesEnkripcija aes = new AesEnkripcija();
             Enkripcija rsa = new RsaEnkripcija();
             rsa.PridruziPrivatniKljuc(privatniKljuc);
 
-            // Decrypt AES key with RSA and then decrypt data with AES.
             var dekriptiraniKljuc = rsa.DecryptData(kljuc);
             aes.PridruziKljucIV(Convert.FromBase64String(dekriptiraniKljuc), iv);
             var decryptedData = aes.DecryptFile(file);

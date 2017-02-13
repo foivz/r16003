@@ -188,8 +188,8 @@ namespace CryptoNew
             string helpFilePath = path + primatelj + "/primljeno/" + Path.GetFileNameWithoutExtension(fullName) + ".crypto";
             using (var dbx = new DropboxClient(token))
             {
-                await dbx.Files.DeleteAsync(deletePath);
                 await dbx.Files.DeleteAsync(helpFilePath);
+                await dbx.Files.DeleteAsync(deletePath);
             }
             return 1;
         }

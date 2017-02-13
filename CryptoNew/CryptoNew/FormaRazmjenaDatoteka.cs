@@ -22,6 +22,8 @@ namespace CryptoNew
         TcpKlijent klijent;
         string fileName;
         string fileNameSkini;
+        int statusLoga;
+        int statusPreuzimanja;
 
         /// <summary>
         /// Metoda za dodavanje gumba za preuzimanje i brisanje datoteka
@@ -43,12 +45,36 @@ namespace CryptoNew
             btn2.UseColumnTextForButtonValue = true;
         }
 
+        public String IzbrisiRedLoga(String myStr)
+        {
+            String result = "";
+            if (myStr.Length > 2)
+            {
+                String temporary = myStr.Substring(0,myStr.Length - 2);
+
+                int lastNewLine = temporary.LastIndexOf("\r\n");
+
+                if (lastNewLine != -1)
+                {
+                    result = myStr.Substring(0, lastNewLine + 2);
+                }
+            }
+            return (result);
+        }
+
         /// <summary>
         /// Metoda koja ispisuje odgovarajuću poruku kada se datoteka šalje na dropbox server
         /// </summary>
         /// <param name="status"></param>
         private void IspisLoga(int status)
         {
+            string lastLine = "";
+            string lastword = "";
+            if (prikazLog.Lines.Length > 0)
+            {
+                lastLine = prikazLog.Lines[prikazLog.Lines.Length-2];
+                lastword = lastLine.Split(' ').Last();
+            }
             string vrijeme = DateTime.Now.ToString();
             if (status == 1)
             {
@@ -58,9 +84,31 @@ namespace CryptoNew
             {
                 prikazLog.Text += $"- Vrijeme: {vrijeme} - Neuspješno slanje!" + Environment.NewLine;
             }
+            else if (status == 3)
+            {
+                prikazLog.Text = $"- Vrijeme: {vrijeme} - Početak slanja!" + Environment.NewLine;
+            }
             else
             {
-                prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje!" + Environment.NewLine;
+                if (lastword == "šalje...")
+                {
+                    prikazLog.Text = IzbrisiRedLoga(prikazLog.Text);
+                    prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje."  + Environment.NewLine;
+                }
+                else if(lastword == "šalje..")
+                {
+                    prikazLog.Text = IzbrisiRedLoga(prikazLog.Text);
+                    prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje..." + Environment.NewLine;
+                }
+                else if (lastword == "šalje.")
+                {
+                    prikazLog.Text = IzbrisiRedLoga(prikazLog.Text);
+                    prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje.." + Environment.NewLine;
+                }
+                else
+                {
+                    prikazLog.Text += $"- Vrijeme: {vrijeme} - Datoteka se šalje..." +Environment.NewLine;
+                }
             }
         }
 
@@ -70,19 +118,52 @@ namespace CryptoNew
         /// <param name="status"></param>
         private void IspisLogaZaPregled(int status)
         {
+            string lastLine = "";
+            string lastword = "";
+            if (logPregledDatoteka.Lines.Length > 0)
+            {
+                lastLine = logPregledDatoteka.Lines[logPregledDatoteka.Lines.Length - 2];
+                lastword = lastLine.Split(' ').Last();
+            }
             string vrijeme = DateTime.Now.ToString();
+
             if (status == 1)
             {
-                logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka se skida!" + Environment.NewLine;
+                if (lastword == "skida...")
+                {
+                    logPregledDatoteka.Text = IzbrisiRedLoga(logPregledDatoteka.Text);
+                    logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka se skida." + Environment.NewLine;
+                }
+                else if (lastword == "skida..")
+                {
+                    logPregledDatoteka.Text = IzbrisiRedLoga(logPregledDatoteka.Text);
+                    logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka se skida..." + Environment.NewLine;
+                }
+                else if (lastword == "skida.")
+                {
+                    logPregledDatoteka.Text = IzbrisiRedLoga(logPregledDatoteka.Text);
+                    logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka se skida.." + Environment.NewLine;
+                }
+                else
+                {
+                    logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka se skida..." + Environment.NewLine;
+                }
             }
+
             else if (status == 2)
             {
                 logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka je skinuta!" + Environment.NewLine;
             }
+
             else if (status == 3)
             {
                 logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Datoteka je obrisana!" + Environment.NewLine;
             }
+            else if (status == 4)
+            {
+                logPregledDatoteka.Text = $"- Vrijeme: {vrijeme} - Početak preuzimanja!" + Environment.NewLine;
+            }
+
             else
             {
                 logPregledDatoteka.Text += $"- Vrijeme: {vrijeme} - Neuspješno skidanje!" + Environment.NewLine;
@@ -182,7 +263,10 @@ namespace CryptoNew
         {
             try
             {
-                IspisLoga(0);
+                IspisLoga(3);
+                statusLoga = 0;
+                timerLog.Start();
+
                 DropboxManager novo = new DropboxManager();
                 string javniKljuc = listaKorisnika.Korisnici.Where(i => i.Username == odabirKorisnik.SelectedItem.ToString()).Select(p => p.JavniKljuc).First();
                 int result = await novo.Upload(fileName, prijavljeniKorisnik.Username, odabirKorisnik.SelectedItem.ToString(),javniKljuc);
@@ -195,6 +279,7 @@ namespace CryptoNew
             {
                 IspisLoga(2);
             }
+            timerLog.Stop();
         }
 
         /// <summary>
@@ -231,8 +316,10 @@ namespace CryptoNew
                     string posiljatelj = prikazDatoteke.Rows[e.RowIndex].Cells["Posiljatelj"].Value as string;
                     fileNameSkini = prikazDatoteke.Rows[e.RowIndex].Cells["ImeDatoteke"].Value as string;
 
-                    IspisLogaZaPregled(1);
+                    IspisLogaZaPregled(4);
 
+                    statusPreuzimanja = 1;
+                    timerPreuzmi.Start();
                     byte[] file = await novo.Download(prijavljeniKorisnik.Username, posiljatelj, fileNameSkini);
 
                     OtvoriSaveFileDialog(file);
@@ -241,6 +328,7 @@ namespace CryptoNew
                 {
 
                 }
+                timerPreuzmi.Stop();
             }
 
             //index klika za brisanje datoteke
@@ -277,6 +365,16 @@ namespace CryptoNew
         {
             //unosDatoteka.Text = null;
             //gumbPosalji.Enabled = false;
+        }
+
+        private void timerLog_Tick(object sender, EventArgs e)
+        {
+            IspisLoga(statusLoga);
+        }
+
+        private void timerPreuzmi_Tick(object sender, EventArgs e)
+        {
+            IspisLogaZaPregled(statusPreuzimanja);
         }
     }
 }
