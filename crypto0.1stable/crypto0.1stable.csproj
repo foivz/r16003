@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Authenticator, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleAuthenticator.1.2.0\lib\net45\Google.Authenticator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +82,12 @@
     </Compile>
     <Compile Include="EncryptOrDecrypt.Designer.cs">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraLoginForm.Designer.cs">
+      <DependentUpon>ExtraLoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FilePoruka.cs">
       <SubType>Form</SubType>
@@ -160,6 +170,9 @@
     <EmbeddedResource Include="EncryptOrDecrypt.resx">
       <DependentUpon>EncryptOrDecrypt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExtraLoginForm.resx">
+      <DependentUpon>ExtraLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FilePoruka.resx">
       <DependentUpon>FilePoruka.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +212,7 @@
     <EmbeddedResource Include="twoFactorAuthentificationForm.resx">
       <DependentUpon>twoFactorAuthentificationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

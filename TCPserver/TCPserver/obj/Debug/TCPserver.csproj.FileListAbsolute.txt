@@ -1,0 +1,10 @@
+C:\Users\Ivan\Documents\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.exe.config
+C:\Users\Ivan\Documents\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.exe
+C:\Users\Ivan\Documents\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.pdb
+C:\Users\Ivan\Documents\r16003\TCPserver\TCPserver\obj\Debug\TCPserver.exe
+C:\Users\Ivan\Documents\r16003\TCPserver\TCPserver\obj\Debug\TCPserver.pdb
+D:\Moje\Projects\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.exe.config
+D:\Moje\Projects\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.exe
+D:\Moje\Projects\r16003\TCPserver\TCPserver\bin\Debug\TCPserver.pdb
+D:\Moje\Projects\r16003\TCPserver\TCPserver\obj\Debug\TCPserver.exe
+D:\Moje\Projects\r16003\TCPserver\TCPserver\obj\Debug\TCPserver.pdb

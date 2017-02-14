@@ -1,0 +1,5 @@
+C:\Users\Ivan\Documents\r16003\Chatservis\Chatservis\bin\Debug\Chatservis.exe.config
+C:\Users\Ivan\Documents\r16003\Chatservis\Chatservis\bin\Debug\Chatservis.exe
+C:\Users\Ivan\Documents\r16003\Chatservis\Chatservis\bin\Debug\Chatservis.pdb
+C:\Users\Ivan\Documents\r16003\Chatservis\Chatservis\obj\Debug\Chatservis.exe
+C:\Users\Ivan\Documents\r16003\Chatservis\Chatservis\obj\Debug\Chatservis.pdb
