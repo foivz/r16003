@@ -349,5 +349,30 @@ namespace CryptoNew
             rezultat = JsonPretvarac.Serijalizacija(this);
             return rezultat;
         }
+
+        /// <summary>
+        /// Metoda koja uređuje podatke korisnika na bazi podataka, izvršava se UPDATE upit podataka na temelju podataka
+        /// koje je korisnik poslao da mu se promijene
+        /// </summary>
+        /// <param name="connection"></param>
+        public string UrediPodatke(SqlConnection connection)
+        {
+            string rezultat = "";
+
+            var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"UPDATE Korisnik SET Ime = @Ime, 
+Prezime=@Prezime, Email=@Email, BrojTelefona=@BrojTelefona WHERE Username=@Username";
+            command.Parameters.AddWithValue("@Username", Username);
+            command.Parameters.AddWithValue("@Ime", Ime);
+            command.Parameters.AddWithValue("@Prezime", Prezime);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@BrojTelefona", BrojTelefona);
+            command.ExecuteNonQuery();
+
+            rezultat = JsonPretvarac.Serijalizacija(this);
+            return rezultat;
+        }
     }
 }

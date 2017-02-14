@@ -172,6 +172,8 @@ namespace CryptoNew
         /// <returns></returns>
         private bool ValidateUsername()
         {
+            string validateUnderscore = @"^[^_]+$";
+            Regex ValidUsernameRegex = new Regex(validateUnderscore, RegexOptions.IgnoreCase);
             bool result = true;
             if (unosUsername.Text == "")
             {
@@ -186,6 +188,11 @@ namespace CryptoNew
             else if (unosUsername.Text.Count() > 20)
             {
                 errorProvider1.SetError(unosUsername, "Korisničko ime ne može imati više od 20 znakova");
+                result = false;
+            }
+            else if (!ValidUsernameRegex.IsMatch(unosUsername.Text))
+            {
+                errorProvider1.SetError(unosUsername, "Korisničko ime ne smije sadržavati znak _ (underscore)");
                 result = false;
             }
             else

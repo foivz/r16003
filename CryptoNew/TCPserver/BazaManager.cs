@@ -109,6 +109,13 @@ namespace TCPserver
                 result = CryptoNew.AdminPanel.PosaljiAdminMail(connection, mail);
             }
 
+            if (kljucnaPoruka == "UrediPodatke")
+            {
+                CryptoNew.Korisnik urediKorisnik = new CryptoNew.Korisnik();
+                urediKorisnik = (CryptoNew.Korisnik)CryptoNew.JsonPretvarac.Deserijalizacija(json);
+                result = urediKorisnik.UrediPodatke(connection);
+            }
+
             ZatvaranjeKonekcijeSBazom();
 
             return result;

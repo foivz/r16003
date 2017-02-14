@@ -15,6 +15,7 @@ namespace CryptoNew
     /// </summary>
     static class AdminPanel
     {
+        static ListaKorisnika listaKorisnika;
         /// <summary>
         /// Metoda koja ažurira status korisnika u bazi podataka na temelju poslanih podataka od strane klijenta
         /// </summary>
@@ -23,7 +24,7 @@ namespace CryptoNew
         /// <returns></returns>
         public static string PromijeniStatusKorisnika(SqlConnection connection, Korisnik korisnik)
         {
-            ListaKorisnika listaKorisnika = new ListaKorisnika();
+            listaKorisnika = new ListaKorisnika();
             string rezultat = "";
             var command = new SqlCommand();
             command.Connection = connection;

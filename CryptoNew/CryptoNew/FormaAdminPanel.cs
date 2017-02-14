@@ -17,6 +17,8 @@ namespace CryptoNew
     {
         TcpKlijent klijent;
         ListaKorisnika listaKorisnika;
+        Korisnik korisnik;
+        AdminMail mail;
 
         /// <summary>
         /// Konstruktor forme
@@ -44,7 +46,7 @@ namespace CryptoNew
             tablicaKorisnici.Refresh();
             for (int i = 0; i < listaKorisnika.Korisnici.Count; i++)
             {
-                Korisnik korisnik = listaKorisnika.Korisnici[i];
+                korisnik = listaKorisnika.Korisnici[i];
                 int rowIndex = tablicaKorisnici.Rows.Add(korisnik.Username,korisnik.Ime,korisnik.Prezime,korisnik.DohvatiStatus());
             }
 
@@ -58,7 +60,7 @@ namespace CryptoNew
         /// <param name="status"></param>
         private void PromijeniStatus(string username, string status)
         {
-            Korisnik korisnik = new Korisnik();
+            korisnik = new Korisnik();
             klijent = new TcpKlijent();
             korisnik.Username = username;
             if (status == "Otključan")
@@ -151,7 +153,7 @@ namespace CryptoNew
         /// <param name="e"></param>
         private void gumbPosalji_Click(object sender, EventArgs e)
         {
-            AdminMail mail = new AdminMail();
+            mail = new AdminMail();
             klijent = new TcpKlijent();
 
             mail.Sadrzaj = unosPoruka.Text;

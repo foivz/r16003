@@ -76,10 +76,12 @@ namespace CryptoNew
                MessageBox.Show(validacijskaPoruka);
                return;
             }
+
             Korisnik trenutniKorisnik = new Korisnik();
             trenutniKorisnik.Username = unosUsername.Text;
             trenutniKorisnik.Password = unosPassword.Text;
             TcpKlijent klijent = new TcpKlijent();
+
             try
             {
 

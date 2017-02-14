@@ -20,7 +20,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
-            odabirAlgoritam.DataSource = new List<string> {"AES","RSA","DES","TripleDES" };
+            odabirAlgoritam.DataSource = new List<string> {"AES","DES","TripleDES" };
         }
 
         /// <summary>
