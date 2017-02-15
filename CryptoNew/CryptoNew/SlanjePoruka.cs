@@ -19,6 +19,7 @@ namespace CryptoNew
         Korisnik prijavljeniKorisnik;
         TcpKlijent klijent;
         ListaKorisnika novaLista;
+        UspjehSlanjaPoruke uspjeh;
 
         /// <summary>
         /// Konstruktor forme SlanjePoruka - prilikom inicijalizacije forme dohvaća se lista korisnika aplikacije
@@ -57,7 +58,6 @@ namespace CryptoNew
             string javniKljuc;
             klijent = new TcpKlijent();
             Poruka novaPoruka = new Poruka();
-            UspjehSlanjaPoruke uspjeh;
 
             novaPoruka.Posiljatelj = prijavljeniKorisnik.Username;
             novaPoruka.Primatelj = odabirUsername.Text;
