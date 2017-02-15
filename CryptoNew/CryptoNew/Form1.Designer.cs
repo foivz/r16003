@@ -63,6 +63,8 @@
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oNamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gumbAdmin = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gumbChat = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.trakaIzbornik.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +94,7 @@
             this.imageList1.Images.SetKeyName(3, "send.ico");
             this.imageList1.Images.SetKeyName(4, "files.ico");
             this.imageList1.Images.SetKeyName(5, "settings.ico");
+            this.imageList1.Images.SetKeyName(6, "chat.ico");
             // 
             // label1
             // 
@@ -142,7 +145,7 @@
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 416);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 481);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;
@@ -400,12 +403,29 @@
             this.gumbAdmin.Visible = false;
             this.gumbAdmin.Click += new System.EventHandler(this.gumbAdmin_Click);
             // 
+            // gumbChat
+            // 
+            this.gumbChat.Enabled = false;
+            this.gumbChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbChat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbChat.ImageIndex = 6;
+            this.gumbChat.ImageList = this.imageList1;
+            this.gumbChat.Location = new System.Drawing.Point(12, 416);
+            this.gumbChat.Name = "gumbChat";
+            this.gumbChat.Size = new System.Drawing.Size(143, 59);
+            this.gumbChat.TabIndex = 20;
+            this.gumbChat.Text = "Chat";
+            this.gumbChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.gumbChat.UseVisualStyleBackColor = true;
+            this.gumbChat.Click += new System.EventHandler(this.gumbChat_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1033, 695);
+            this.Controls.Add(this.gumbChat);
             this.Controls.Add(this.gumbAdmin);
             this.Controls.Add(this.gumbRazmjenaDatoteka);
             this.Controls.Add(this.statusStrip1);
@@ -470,6 +490,8 @@
         private System.Windows.Forms.ToolStripMenuItem razmjenaDatotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminPanelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button gumbChat;
     }
 }
 

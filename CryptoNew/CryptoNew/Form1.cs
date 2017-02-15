@@ -299,5 +299,19 @@ namespace CryptoNew
             gumbLokalno.PerformClick();
             trenutni = gumbLokalno;
         }
+
+        /// <summary>
+        /// Event handler koji se aktivira prilikom klika na gumb koji otvara admin chat formu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gumbChat_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            FormaONama formaChat = new FormaONama();
+            Dizajner.prilagodiFormuPanelu(formaChat, glavniPanel);
+            forma = formaChat;
+            trenutni = gumbChat;
+        }
     }
 }
