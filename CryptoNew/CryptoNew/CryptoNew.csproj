@@ -68,6 +68,12 @@
     <Compile Include="AdminMail.cs" />
     <Compile Include="AdminPanel.cs" />
     <Compile Include="AesEnkripcija.cs" />
+    <Compile Include="Chat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat.Designer.cs">
+      <DependentUpon>Chat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Datoteka.cs" />
     <Compile Include="DesEnkripcija.cs" />
     <Compile Include="Dizajner.cs" />
@@ -162,6 +168,9 @@
     <Compile Include="TcpKlijent.cs" />
     <Compile Include="TripleDesEnkripcija.cs" />
     <Compile Include="Verficiranje2FA.cs" />
+    <EmbeddedResource Include="Chat.resx">
+      <DependentUpon>Chat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

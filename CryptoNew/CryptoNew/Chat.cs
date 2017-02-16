@@ -11,9 +11,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace crypto0._1stable
+namespace CryptoNew
 {
-    public partial class ChatForm : Form
+    public partial class Chat : Form
     {
         TcpClient klijent;
         Int32 port = 6123;
@@ -24,32 +24,39 @@ namespace crypto0._1stable
         string primljenaPoruka;
         string username;
         List<string> onlineKlijenti = new List<string>();
-        //Thread dretvaZaPrimanje;
 
-        public ChatForm(string username)
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        public Chat(string username)
         {
             InitializeComponent();
             this.username = username;
-            korIme.Text = username;
-            this.AcceptButton = btnPosalji;
         }
 
-        private void osvjezi(string primljenaPoruka)
+        private void Osvjezi(string primljenaPoruka)
         {
-            string[] parts = primljenaPoruka.Split(';');
-            string firstWord = parts[0];
-            if (String.Compare(firstWord, "ONLKLIJENT", false) == 0)
+            if (primljenaPoruka.Contains("KLIJENT"))
             {
                 onlineKlijenti.Clear();
-                var noviKlijenti = primljenaPoruka.Split(';').ToList();
-                onlineKlijenti = noviKlijenti;
-                onlineKlijenti.Remove("ONLKLIJENT");
-                aktKorisnici.DataSource = null;
-                aktKorisnici.DataSource = onlineKlijenti;
+                var klijenti = primljenaPoruka.Split(';');
+                foreach (var klijent in klijenti)
+                {
+                    if (klijent != "ONLKLIJENT")
+                        onlineKlijenti.Add(klijent);
+                }
             }
+
+            aktivniKorisnici.Text = "";
+
+            foreach (var klijent in onlineKlijenti)
+            {
+                aktivniKorisnici.Text = aktivniKorisnici.Text + klijent + Environment.NewLine;
+            }
+
         }
 
-        private void ChatForm_Load(object sender, EventArgs e)
+        private void Chat_Load(object sender, EventArgs e)
         {
             try
             {
@@ -69,14 +76,17 @@ namespace crypto0._1stable
                 //ovdje prihvacamo listu svih aktivnih korisnika aplikacije u chatu
                 string[] parts = primljenaPoruka.Split(';');
                 string firstWord = parts[0];
-                if (String.Compare(firstWord,"ONLKLIJENT", false) == 0)
+                if (String.Compare(firstWord, "ONLKLIJENT", false) == 0)
                 {
                     //onlineKlijenti.Clear();
                     var noviKlijenti = primljenaPoruka.Split(';').ToList();
                     onlineKlijenti = noviKlijenti;
                     onlineKlijenti.Remove("ONLKLIJENT");
-                    aktKorisnici.Items.Clear();
-                    aktKorisnici.DataSource = onlineKlijenti;
+                    aktivniKorisnici.Text = "";
+                    foreach (var klijent in onlineKlijenti)
+                    {
+                        aktivniKorisnici.Text = aktivniKorisnici.Text + klijent + Environment.NewLine;
+                    }
                 }
                 else
                 {
@@ -87,27 +97,16 @@ namespace crypto0._1stable
                 dretvaZaPrimanje.IsBackground = true;
                 dretvaZaPrimanje.Start();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Ne mogu komunicirati sa chat servisom, pokusajte kasnije");
                 this.Close();
             }
         }
 
-        private void btnPosalji_Click(object sender, EventArgs e)
-        {
-            if (txtUpis.Text != "")
-            {
-                stream = klijent.GetStream();
-                poruka = username + " says: " + txtUpis.Text;
-                writeBuffer = new byte[poruka.Length];
-                writeBuffer = Encoding.ASCII.GetBytes(poruka);
-                stream.Write(writeBuffer, 0, poruka.Length);
-                stream.Flush();
-                txtUpis.Text = "";
-            }
-        }
-
+        /// <summary>
+        /// Dretva koja služi primanju poruka od servera, bilo da se radi o poruci koju je poslao neki drugi klijent ili da je netko pristupio chatu.
+        /// </summary>
         private void DretvaZaPrimanje()
         {
             while (true)
@@ -121,14 +120,14 @@ namespace crypto0._1stable
                     stream.Read(inStream, 0, inStream.Length);
                     string returndata = System.Text.Encoding.ASCII.GetString(inStream);
                     primljenaPoruka = "" + returndata;
-
-                    if (this.InvokeRequired)
+                    if (primljenaPoruka.Contains("chatu") || primljenaPoruka.Contains("ONLKLIJENT"))
                     {
-                        this.Invoke((MethodInvoker)(() => osvjezi(primljenaPoruka)));
+                        this.Invoke((MethodInvoker)(() => Osvjezi(primljenaPoruka)));
                     }
-                    msg();
+                    else
+                        msg();
                 }
-                catch(Exception )
+                catch (Exception)
                 {
                     MessageBox.Show("Prekinuta komunikacija sa serverom, udite ponovo!");
                     break;
@@ -136,22 +135,34 @@ namespace crypto0._1stable
             }
         }
 
+        /// <summary>
+        /// Metoda koja ispisuje poruke na formu
+        /// </summary>
         private void msg()
         {
             if (this.InvokeRequired)
                 this.Invoke(new MethodInvoker(msg));
             else
+            {
                 txtIspis.Text = txtIspis.Text + Environment.NewLine + " >> " + primljenaPoruka;
+            }
         }
 
-        private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
+        /// <summary>
+        /// Metoda sa kojom se šalju poruke klikom na gumb pošalji
+        /// </summary>
+        private void btnPosalji_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
+            if (txtUpis.Text != "")
+            {
+                stream = klijent.GetStream();
+                poruka = username + " says: " + txtUpis.Text;
+                writeBuffer = new byte[poruka.Length];
+                writeBuffer = Encoding.ASCII.GetBytes(poruka);
+                stream.Write(writeBuffer, 0, poruka.Length);
+                stream.Flush();
+                txtUpis.Text = "";
+            }
         }
     }
 }

@@ -299,5 +299,14 @@ namespace CryptoNew
             gumbLokalno.PerformClick();
             trenutni = gumbLokalno;
         }
+
+        private void gumbChat_Click(object sender, EventArgs e)
+        {
+            DealocirajGlavniPanel();
+            var chatForma = new Chat(testKorisnik.Username);
+            Dizajner.prilagodiFormuPanelu(chatForma, glavniPanel);
+            forma = chatForma;
+            trenutni = gumbChat;
+        }
     }
 }
