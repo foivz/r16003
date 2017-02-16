@@ -92,32 +92,32 @@ namespace TCPserver
             string klijentPodaciString = "test";
 
             stream = klijent.GetStream();
-            if (stream.CanRead)
-            {
-                do
+                if (stream.CanRead)
                 {
-                    numberOfBytesRead = stream.Read(readBuffer, 0, readBuffer.Length);
-                    stream.Flush();
-                    myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readBuffer, 0, numberOfBytesRead));
-                } while (stream.DataAvailable);
-                primljenaPoruka = myCompleteMessage.ToString();
-                IspisiPorukuPrihvata(primljenaPoruka);
-                klijentPodaciString = ObradaPoruke(primljenaPoruka);
-            }
-            if (stream.CanWrite)
-            {
-                if (!klijentPodaciString.StartsWith("test"))
-                {
-                    IspisiPorukuSlanja(klijentPodaciString);
-                    writeBuffer = Encoding.UTF8.GetBytes(klijentPodaciString);
-                    stream.Write(writeBuffer, 0, writeBuffer.Length);
-                    stream.Flush();
+                    do
+                    {
+                        numberOfBytesRead = stream.Read(readBuffer, 0, readBuffer.Length);
+                        stream.Flush();
+                        myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readBuffer, 0, numberOfBytesRead));
+                    } while (stream.DataAvailable);
+                    primljenaPoruka = myCompleteMessage.ToString();
+                    IspisiPorukuPrihvata(primljenaPoruka);
+                    klijentPodaciString = ObradaPoruke(primljenaPoruka);
                 }
-                else
+                if (stream.CanWrite)
                 {
+                    if (!klijentPodaciString.StartsWith("test"))
+                    {
+                        IspisiPorukuSlanja(klijentPodaciString);
+                        writeBuffer = Encoding.UTF8.GetBytes(klijentPodaciString);
+                        stream.Write(writeBuffer, 0, writeBuffer.Length);
+                        stream.Flush();
+                    }
+                    else
+                    {
 
+                    }
                 }
-            }
         }
 
         /// <summary>
