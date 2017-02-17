@@ -76,7 +76,11 @@ namespace crypto0._1stable
                         childForm.ShowDialog();
                     }
                     tcpKlijent.ZatvoriSocket();
+<<<<<<< HEAD
+                    MessageBox.Show("Username i Password tocni, pregledavam tocnost 2FA kljuca");
+=======
                     //MessageBox.Show("Username i Password tocni, pregledavam tocnost 2FA kljuca");
+>>>>>>> ivan-crypto
                     this.Close();
                 }
                 else MessageBox.Show("Username i password moraju imati vise od 3 charactera");
