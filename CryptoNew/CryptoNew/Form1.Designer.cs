@@ -36,9 +36,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBarUsername = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBarTipKorisnika = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerVrijeme = new System.Windows.Forms.Timer(this.components);
@@ -57,8 +59,6 @@
             this.gumbChat = new System.Windows.Forms.Button();
             this.gumbAdmin = new System.Windows.Forms.Button();
             this.gumbRazmjenaDatoteka = new System.Windows.Forms.Button();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
             this.gumbPregledPoruka = new System.Windows.Forms.Button();
             this.gumbSlanje = new System.Windows.Forms.Button();
             this.gumbLokalno = new System.Windows.Forms.Button();
@@ -139,6 +139,16 @@
             this.statusBarUsername.Size = new System.Drawing.Size(38, 19);
             this.statusBarUsername.Text = "Gost";
             // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.toolStripSplitButton1.Enabled = false;
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(16, 22);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -158,6 +168,16 @@
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(622, 19);
             this.toolStripStatusLabel6.Spring = true;
+            // 
+            // toolStripSplitButton2
+            // 
+            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.toolStripSplitButton2.Enabled = false;
+            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
+            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
+            this.toolStripSplitButton2.Size = new System.Drawing.Size(16, 22);
+            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
             // 
             // toolStripStatusLabel5
             // 
@@ -274,11 +294,17 @@
             // 
             // gumbChat
             // 
-            this.gumbChat.Location = new System.Drawing.Point(12, 416);
+            this.gumbChat.Enabled = false;
+            this.gumbChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gumbChat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gumbChat.ImageIndex = 6;
+            this.gumbChat.ImageList = this.imageList1;
+            this.gumbChat.Location = new System.Drawing.Point(12, 351);
             this.gumbChat.Name = "gumbChat";
             this.gumbChat.Size = new System.Drawing.Size(143, 66);
             this.gumbChat.TabIndex = 20;
             this.gumbChat.Text = "Chat";
+            this.gumbChat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.gumbChat.UseVisualStyleBackColor = true;
             this.gumbChat.Click += new System.EventHandler(this.gumbChat_Click);
             // 
@@ -288,7 +314,7 @@
             this.gumbAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbAdmin.ImageIndex = 5;
             this.gumbAdmin.ImageList = this.imageList1;
-            this.gumbAdmin.Location = new System.Drawing.Point(12, 351);
+            this.gumbAdmin.Location = new System.Drawing.Point(12, 423);
             this.gumbAdmin.Name = "gumbAdmin";
             this.gumbAdmin.Size = new System.Drawing.Size(143, 59);
             this.gumbAdmin.TabIndex = 18;
@@ -313,26 +339,6 @@
             this.gumbRazmjenaDatoteka.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.gumbRazmjenaDatoteka.UseVisualStyleBackColor = true;
             this.gumbRazmjenaDatoteka.Click += new System.EventHandler(this.gumbRazmjenaDatoteka_Click);
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.toolStripSplitButton1.Enabled = false;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(16, 4);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // toolStripSplitButton2
-            // 
-            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.toolStripSplitButton2.Enabled = false;
-            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
-            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
-            this.toolStripSplitButton2.Size = new System.Drawing.Size(16, 4);
-            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
             // 
             // gumbPregledPoruka
             // 
@@ -387,7 +393,7 @@
             this.gumbLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gumbLogout.ImageIndex = 1;
             this.gumbLogout.ImageList = this.imageList1;
-            this.gumbLogout.Location = new System.Drawing.Point(12, 500);
+            this.gumbLogout.Location = new System.Drawing.Point(12, 488);
             this.gumbLogout.Name = "gumbLogout";
             this.gumbLogout.Size = new System.Drawing.Size(143, 59);
             this.gumbLogout.TabIndex = 3;

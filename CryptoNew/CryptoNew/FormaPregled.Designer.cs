@@ -47,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabKontrola.Controls.Add(this.tabPrimljeno);
             this.tabKontrola.Controls.Add(this.tabPoslano);
-            this.tabKontrola.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tabKontrola.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabKontrola.Location = new System.Drawing.Point(12, 12);
             this.tabKontrola.Name = "tabKontrola";
             this.tabKontrola.SelectedIndex = 0;
@@ -58,10 +58,10 @@
             // tabPrimljeno
             // 
             this.tabPrimljeno.Controls.Add(this.dataGridViewPrimljeno);
-            this.tabPrimljeno.Location = new System.Drawing.Point(4, 33);
+            this.tabPrimljeno.Location = new System.Drawing.Point(4, 29);
             this.tabPrimljeno.Name = "tabPrimljeno";
             this.tabPrimljeno.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPrimljeno.Size = new System.Drawing.Size(771, 348);
+            this.tabPrimljeno.Size = new System.Drawing.Size(771, 352);
             this.tabPrimljeno.TabIndex = 0;
             this.tabPrimljeno.Text = "Primljeno";
             this.tabPrimljeno.UseVisualStyleBackColor = true;
@@ -75,7 +75,7 @@
             this.dataGridViewPrimljeno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPrimljeno.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewPrimljeno.Name = "dataGridViewPrimljeno";
-            this.dataGridViewPrimljeno.Size = new System.Drawing.Size(759, 336);
+            this.dataGridViewPrimljeno.Size = new System.Drawing.Size(759, 340);
             this.dataGridViewPrimljeno.TabIndex = 0;
             this.dataGridViewPrimljeno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrimljeno_CellClick);
             this.dataGridViewPrimljeno.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrimljeno_CellContentClick);

@@ -93,7 +93,6 @@ namespace CryptoNew
         public string ZapisiPorukuUBazu(SqlConnection connection)
         {
             string rezultat = "";
-            UspjehSlanjaPoruke uspjeh = new UspjehSlanjaPoruke("DA");
             int idEnkriptiraniPaket;
 
             var command = new SqlCommand();
@@ -115,6 +114,7 @@ namespace CryptoNew
             command.Parameters.AddWithValue("@IdPaketa", idEnkriptiraniPaket);
             command.ExecuteNonQuery();
 
+            UspjehSlanjaPoruke uspjeh = new UspjehSlanjaPoruke("DA");
             rezultat = JsonPretvarac.Serijalizacija(uspjeh);
             return rezultat;
         }

@@ -95,6 +95,7 @@
             // prikazLog
             // 
             this.prikazLog.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.prikazLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.prikazLog.Location = new System.Drawing.Point(573, 156);
             this.prikazLog.Multiline = true;
             this.prikazLog.Name = "prikazLog";

@@ -69,6 +69,7 @@ namespace CryptoNew
                 gumbSlanje.Enabled = true;
                 gumbPregledPoruka.Enabled = true;
                 gumbRazmjenaDatoteka.Enabled = true;
+                gumbChat.Enabled = true;
                 statusBarUsername.Text = testKorisnik.Username;
                 statusBarTipKorisnika.Text = testKorisnik.TipKorisnika;
                 FormaPrijavljen novo = new FormaPrijavljen(testKorisnik);
@@ -81,6 +82,7 @@ namespace CryptoNew
                 gumbSlanje.Enabled = false;
                 gumbPregledPoruka.Enabled = false;
                 gumbRazmjenaDatoteka.Enabled = false;
+                gumbChat.Enabled = false;
                 Prijava novo1 = new Prijava(this);
                 Dizajner.prilagodiFormuPanelu(novo1, glavniPanel);
                 forma = novo1;

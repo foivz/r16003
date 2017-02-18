@@ -31,6 +31,7 @@ namespace CryptoNew
         public Chat(string username)
         {
             InitializeComponent();
+            Dizajner.FormaBezOkna(this);
             this.username = username;
         }
 
