@@ -91,7 +91,9 @@ namespace TCPserver
             int numberOfBytesRead = 0;
             string klijentPodaciString = "test";
 
-            stream = klijent.GetStream();
+            try
+            {
+                stream = klijent.GetStream();
                 if (stream.CanRead)
                 {
                     do
@@ -118,6 +120,13 @@ namespace TCPserver
 
                     }
                 }
+            }
+            catch
+            {
+                stream.Close();
+                klijent.Close();
+                return;
+            }
         }
 
         /// <summary>

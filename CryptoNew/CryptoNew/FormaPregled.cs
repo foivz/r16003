@@ -64,7 +64,7 @@ namespace CryptoNew
             btn.UseColumnTextForButtonValue = true;
             dataGridViewPrimljeno.Columns.Add("Poruka", "Poruka");
             dataGridViewPrimljeno.Columns["Poruka"].Visible = false;
-            dataGridViewPrimljeno.Columns.Add("Posiljatelj", "Posiljatelj");
+            dataGridViewPrimljeno.Columns.Add("Posiljatelj", "Pošiljatelj");
             dataGridViewPrimljeno.Columns.Add("Primatelj", "Primatelj");
             dataGridViewPrimljeno.Columns["Primatelj"].Visible = false;
             dataGridViewPrimljeno.Columns.Add("DatumSlanja", "Datum Slanja");
@@ -79,7 +79,7 @@ namespace CryptoNew
 
             dataGridViewPoslano.Columns.Add("Poruka", "Poruka");
             dataGridViewPoslano.Columns["Poruka"].Visible = false;
-            dataGridViewPoslano.Columns.Add("Posiljatelj", "Posiljatelj");
+            dataGridViewPoslano.Columns.Add("Posiljatelj", "Pošiljatelj");
             dataGridViewPoslano.Columns.Add("Primatelj", "Primatelj");
             dataGridViewPoslano.Columns["Posiljatelj"].Visible = false;
             dataGridViewPoslano.Columns.Add("DatumSlanja", "Datum Slanja");

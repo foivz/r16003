@@ -84,8 +84,8 @@ namespace CryptoNew
 
             try
             {
-
                 klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
+                trenutniKorisnik = null;
                 trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();
                 if (trenutniKorisnik.Kljuc2FA == "DA")
                 {
