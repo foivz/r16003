@@ -45,10 +45,11 @@
             // prikazOriginal
             // 
             this.prikazOriginal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.prikazOriginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.prikazOriginal.Location = new System.Drawing.Point(195, 243);
             this.prikazOriginal.Multiline = true;
             this.prikazOriginal.Name = "prikazOriginal";
-            this.prikazOriginal.Size = new System.Drawing.Size(604, 124);
+            this.prikazOriginal.Size = new System.Drawing.Size(637, 124);
             this.prikazOriginal.TabIndex = 0;
             // 
             // label1
@@ -99,18 +100,20 @@
             // odabirPrvo
             // 
             this.odabirPrvo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.odabirPrvo.Location = new System.Drawing.Point(237, 151);
+            this.odabirPrvo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.odabirPrvo.Location = new System.Drawing.Point(270, 154);
             this.odabirPrvo.Name = "odabirPrvo";
-            this.odabirPrvo.Size = new System.Drawing.Size(562, 20);
+            this.odabirPrvo.Size = new System.Drawing.Size(562, 26);
             this.odabirPrvo.TabIndex = 5;
             // 
             // labelaPrvo
             // 
             this.labelaPrvo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelaPrvo.AutoSize = true;
+            this.labelaPrvo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelaPrvo.Location = new System.Drawing.Point(196, 154);
             this.labelaPrvo.Name = "labelaPrvo";
-            this.labelaPrvo.Size = new System.Drawing.Size(28, 13);
+            this.labelaPrvo.Size = new System.Drawing.Size(42, 20);
             this.labelaPrvo.TabIndex = 6;
             this.labelaPrvo.Text = "Key:";
             // 
@@ -118,18 +121,20 @@
             // 
             this.labelaDrugo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelaDrugo.AutoSize = true;
+            this.labelaDrugo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelaDrugo.Location = new System.Drawing.Point(196, 183);
             this.labelaDrugo.Name = "labelaDrugo";
-            this.labelaDrugo.Size = new System.Drawing.Size(20, 13);
+            this.labelaDrugo.Size = new System.Drawing.Size(29, 20);
             this.labelaDrugo.TabIndex = 7;
             this.labelaDrugo.Text = "IV:";
             // 
             // odabirDrugo
             // 
             this.odabirDrugo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.odabirDrugo.Location = new System.Drawing.Point(237, 180);
+            this.odabirDrugo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.odabirDrugo.Location = new System.Drawing.Point(270, 183);
             this.odabirDrugo.Name = "odabirDrugo";
-            this.odabirDrugo.Size = new System.Drawing.Size(562, 20);
+            this.odabirDrugo.Size = new System.Drawing.Size(562, 26);
             this.odabirDrugo.TabIndex = 8;
             // 
             // label3
@@ -146,10 +151,11 @@
             // prikazEnkriptirano
             // 
             this.prikazEnkriptirano.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.prikazEnkriptirano.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.prikazEnkriptirano.Location = new System.Drawing.Point(195, 463);
             this.prikazEnkriptirano.Multiline = true;
             this.prikazEnkriptirano.Name = "prikazEnkriptirano";
-            this.prikazEnkriptirano.Size = new System.Drawing.Size(604, 125);
+            this.prikazEnkriptirano.Size = new System.Drawing.Size(637, 125);
             this.prikazEnkriptirano.TabIndex = 10;
             // 
             // gumbEnkriptiraj

@@ -54,7 +54,7 @@
             this.razmjenaDatotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oNamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gumbChat = new System.Windows.Forms.Button();
             this.gumbAdmin = new System.Windows.Forms.Button();
@@ -205,7 +205,7 @@
             // 
             this.trakaIzbornik.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.izbornikToolStripMenuItem,
-            this.pomoćToolStripMenuItem,
+            this.pomocToolStripMenuItem,
             this.oNamaToolStripMenuItem});
             this.trakaIzbornik.Location = new System.Drawing.Point(0, 0);
             this.trakaIzbornik.Name = "trakaIzbornik";
@@ -279,11 +279,12 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
-            // pomoćToolStripMenuItem
+            // pomocToolStripMenuItem
             // 
-            this.pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.pomoćToolStripMenuItem.Text = "Pomoć";
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "Pomoć";
+            this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
             // oNamaToolStripMenuItem
             // 
@@ -478,7 +479,7 @@
         private System.Windows.Forms.Button gumbRazmjenaDatoteka;
         private System.Windows.Forms.MenuStrip trakaIzbornik;
         private System.Windows.Forms.ToolStripMenuItem izbornikToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pomoćToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oNamaToolStripMenuItem;
         private System.Windows.Forms.Button gumbAdmin;
         private System.Windows.Forms.ToolStripMenuItem glavniProzorToolStripMenuItem;

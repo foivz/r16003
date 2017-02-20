@@ -21,12 +21,16 @@ namespace CryptoNew
 
         /// <summary>
         /// Custom Event koji koji na određeni pritisak na tipkovnici bira akciju za refresh trenutnoga prozora
-        /// ili za logout ili za izklazak iz aplikacije
+        /// ili za logout ili za izlazak iz aplikacije
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyEvent(object sender, KeyEventArgs e) //Keyup Event 
         {
+            if (e.KeyCode == Keys.F1)
+            {
+                System.Diagnostics.Process.Start("https://www.dropbox.com/s/70sa5gi70f8t37c/KorisnickaDokumentacija.pdf?dl=0");
+            }
             if (e.KeyCode == Keys.F5)
             {
                 trenutni.PerformClick();
@@ -309,6 +313,11 @@ namespace CryptoNew
             Dizajner.prilagodiFormuPanelu(chatForma, glavniPanel);
             forma = chatForma;
             trenutni = gumbChat;
+        }
+
+        private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.dropbox.com/s/70sa5gi70f8t37c/KorisnickaDokumentacija.pdf?dl=0");
         }
     }
 }
