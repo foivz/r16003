@@ -52,6 +52,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
+            Dizajner.SetDefaultButton(this, gumbRegistracija);
             glavnaForma = forma;
             unosPassword.PasswordChar = '*';
             unosGodina.DataSource = Enumerable.Range(1900, DateTime.Now.Year - 1900).ToList();

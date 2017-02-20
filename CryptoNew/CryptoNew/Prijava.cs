@@ -27,8 +27,10 @@ namespace CryptoNew
             InitializeComponent();
             unosPassword.PasswordChar = '*';
             Dizajner.FormaBezOkna(this);
+            Dizajner.SetDefaultButton(this, gumbLogin);
             glavnaForma = forma;
         }
+
 
         /// <summary>
         /// Metoda koja provjerava sadrži li korisničko ime i lozinka bilo kakve podatke - ti podaci ne mogu biti prazni
