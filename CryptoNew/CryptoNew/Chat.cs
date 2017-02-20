@@ -32,6 +32,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
+            Dizajner.SetDefaultButton(this, btnPosalji);
             this.username = username;
         }
 
