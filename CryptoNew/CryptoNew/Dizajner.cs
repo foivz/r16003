@@ -49,5 +49,14 @@ namespace CryptoNew
             forma.Height = panel.Height;
             forma.Width = panel.Width;
         }
+
+        /// <summary>
+        /// Glavni button za formu - enter button
+        /// </summary>
+        /// <param name="myDefaultBtn"></param>
+        public static void SetDefaultButton(Form forma, Button myDefaultBtn)
+        {
+            forma.AcceptButton = myDefaultBtn;
+        }
     }
 }
