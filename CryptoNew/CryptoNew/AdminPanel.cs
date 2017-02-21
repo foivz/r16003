@@ -24,7 +24,6 @@ namespace CryptoNew
         /// <returns></returns>
         public static string PromijeniStatusKorisnika(SqlConnection connection, Korisnik korisnik)
         {
-            listaKorisnika = new ListaKorisnika();
             string rezultat = "";
             var command = new SqlCommand();
             command.Connection = connection;
@@ -34,6 +33,7 @@ namespace CryptoNew
             command.Parameters.AddWithValue("@Username", korisnik.Username);
             command.ExecuteNonQuery();
 
+            listaKorisnika = new ListaKorisnika();
             rezultat = listaKorisnika.DohvatiKorisnike(connection);
 
             return rezultat;
@@ -77,9 +77,15 @@ namespace CryptoNew
             {
                 msg.To.Add(item);
             }
-            client.Send(msg);
-
-            adminMail.Status = 1;
+            try
+            {
+                client.Send(msg);
+                adminMail.Status = 1;
+            }
+            catch
+            {
+                adminMail.Status = 0;
+            }
             rezultat = JsonPretvarac.Serijalizacija(adminMail);
             return rezultat;
         }

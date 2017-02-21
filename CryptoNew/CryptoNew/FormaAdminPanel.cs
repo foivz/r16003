@@ -27,6 +27,7 @@ namespace CryptoNew
         {
             InitializeComponent();
             Dizajner.FormaBezOkna(this);
+            Dizajner.SetDefaultButton(this, gumbPosalji);
             FormirajDataGridove();
             DohvatiKorisnike();
         }
@@ -61,7 +62,6 @@ namespace CryptoNew
         private void PromijeniStatus(string username, string status)
         {
             korisnik = new Korisnik();
-            klijent = new TcpKlijent();
             korisnik.Username = username;
             if (status == "Otključan")
             {
@@ -71,13 +71,14 @@ namespace CryptoNew
             {
                 korisnik.Status = 1;
             }
+
+            klijent = new TcpKlijent();
             klijent.PosaljiServeru(korisnik, "OtkljucajZakljucaj");
             listaKorisnika = (ListaKorisnika)klijent.PrimiOdServera();
 
 
             tablicaKorisnici.Rows.Clear();
             tablicaKorisnici.Refresh();
-
             for (int i = 0; i < listaKorisnika.Korisnici.Count; i++)
             {
                 korisnik = listaKorisnika.Korisnici[i];
@@ -154,19 +155,25 @@ namespace CryptoNew
         private void gumbPosalji_Click(object sender, EventArgs e)
         {
             mail = new AdminMail();
-            klijent = new TcpKlijent();
-
             mail.Sadrzaj = unosPoruka.Text;
-            klijent.PosaljiServeru(mail, "AdminMail");
-            mail = (AdminMail)klijent.PrimiOdServera();
+            try
+            {
+                klijent = new TcpKlijent();
+                klijent.PosaljiServeru(mail, "AdminMail");
+                mail = (AdminMail)klijent.PrimiOdServera();
 
-            if (mail.Status == 1)
-            {
-                prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka poslana!" + Environment.NewLine;
+                if (mail.Status == 1)
+                {
+                    prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka poslana!" + Environment.NewLine;
+                }
+                else
+                {
+                    prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka nije poslana. Pokušajte kasnije!" + Environment.NewLine;
+                }
             }
-            else
+            catch
             {
-                prikazLog.Text += "Vrijeme: " + DateTime.Now + " -> Poruka nije poslana. Pokušajte kasnije!" + Environment.NewLine;
+                return;
             }
         }
     }
