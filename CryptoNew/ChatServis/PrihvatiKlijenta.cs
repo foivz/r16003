@@ -64,25 +64,6 @@ namespace ChatServis
                         streamZaPodatke.Close();
                     }
                 }
-                //Console.WriteLine(poruka); //za provjeru poruke
-
-
-                //if (!listaKlijenata.Contains(klijent)) listaKlijenata.Add(klijent);
-                writeBuffer = Encoding.ASCII.GetBytes(poruka);
-                foreach (TcpClient item in listaKlijenata)
-                {
-                    try
-                    {
-                        streamZaPodatke = item.GetStream();
-                        streamZaPodatke.Write(writeBuffer, 0, writeBuffer.Length);
-                        streamZaPodatke.Flush();
-                    }
-                    catch (Exception ex)
-                    {
-                        streamZaPodatke.Dispose();
-                        streamZaPodatke.Close();
-                    }
-                }
                 ObradiKlijenta obrada = new ObradiKlijenta(klijent, listaKlijenata);
                 obrada.CitajSaStreama();
             }

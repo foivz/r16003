@@ -275,13 +275,13 @@ namespace CryptoNew
                         Email = reader["Email"].ToString();
                         BrojTelefona = reader["BrojTelefona"].ToString();
                         DatumRodjenja = reader["DatumRodjenja"].ToString();
-                        //JavniKljuc = reader["JavniKljuc"].ToString();
                         Kljuc2FA = reader["Kljuc2FA"].ToString();
                         Status = Convert.ToInt32(reader["Status"]);
                         TipKorisnika = reader["Naziv"].ToString();
                     }
                 }
             }
+
             if (Kljuc2FA != "" && Kljuc2FA != "null")
             {
                 Korisnik novi = new Korisnik();
