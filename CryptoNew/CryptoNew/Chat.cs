@@ -90,10 +90,6 @@ namespace CryptoNew
                         aktivniKorisnici.Text = aktivniKorisnici.Text + klijent + Environment.NewLine;
                     }
                 }
-                else
-                {
-                    msg();
-                }
 
                 Thread dretvaZaPrimanje = new Thread(new ThreadStart(DretvaZaPrimanje));
                 dretvaZaPrimanje.IsBackground = true;
@@ -131,7 +127,7 @@ namespace CryptoNew
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Prekinuta komunikacija sa serverom, udite ponovo!");
+                    //MessageBox.Show("Prekinuta komunikacija sa serverom");
                     break;
                 }
             }
