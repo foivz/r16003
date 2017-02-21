@@ -82,10 +82,10 @@ namespace CryptoNew
             Korisnik trenutniKorisnik = new Korisnik();
             trenutniKorisnik.Username = unosUsername.Text;
             trenutniKorisnik.Password = unosPassword.Text;
-            TcpKlijent klijent = new TcpKlijent();
 
             try
             {
+                TcpKlijent klijent = new TcpKlijent();
                 klijent.PosaljiServeru(trenutniKorisnik, "PRIJAVA");
                 trenutniKorisnik = null;
                 trenutniKorisnik = (Korisnik)klijent.PrimiOdServera();

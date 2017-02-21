@@ -91,8 +91,6 @@ namespace TCPserver
             int numberOfBytesRead = 0;
             string klijentPodaciString = "test";
 
-            try
-            {
                 stream = klijent.GetStream();
                 if (stream.CanRead)
                 {
@@ -106,6 +104,7 @@ namespace TCPserver
                     IspisiPorukuPrihvata(primljenaPoruka);
                     klijentPodaciString = ObradaPoruke(primljenaPoruka);
                 }
+
                 if (stream.CanWrite)
                 {
                     if (!klijentPodaciString.StartsWith("test"))
@@ -120,13 +119,6 @@ namespace TCPserver
 
                     }
                 }
-            }
-            catch
-            {
-                stream.Close();
-                klijent.Close();
-                return;
-            }
         }
 
         /// <summary>
